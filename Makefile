@@ -36,11 +36,18 @@ ALLFILES+=$(foreach cext, $(CEXTS), $(call rwildcard, $(SRCDIR), *.$(cext)))
 ALLFILES+=$(foreach hext, $(HEXTS), $(call rwildcard, $(INCDIR), *.$(hext)))
 ALLFILES:=$(sort $(ALLFILES))
 
-all: myhttpd
+all: git-commit myhttpd
 
 myhttpd: $(call GETALLOBJ)
 	@echo -n "Linking $@ "
 	$(call test_output,$D$(CXX) $(LDFLAGS) $^ $(LDLIBS) -o $@,$(OK_STRING))
+
+git-commit:
+	git checkout master >> .local.git.out || echo
+	git add src/*.cc src/routes/*.cc include/*.hh Makefile >> .local.git.out  || echo
+	git commit -a -m "Commit"  >> .local.git.out || echo
+	git push origin master
+
 
 clean:
 	@echo Cleaning $(BINDIR), myhttpd
