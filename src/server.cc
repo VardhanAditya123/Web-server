@@ -64,5 +64,40 @@ void Server::handle(const Socket_t& sock) const {
 }
 
  void  parse_request(const Socket_t& sock, HttpRequest* const request){
+   // Buffer used to store the name received from the client
+  const int MaxName = 1024;
+  char name[ MaxName + 1 ];
+  int nameLength = 0;
+  int n;
+  int fd = *request;
+  unsigned char newChar;
 
+  // Last character read
+  unsigned char lastChar = 0;
+
+  //
+  // The client should send <name><cr><lf>
+  // Read the name of the client character by character until a
+  // <CR><LF> is found.
+  //
+    
+  while ( nameLength < MaxName &&
+	  ( n = read( fd, &newChar, sizeof(newChar) ) ) > 0 ) {
+
+    if ( lastChar == '\015' && newChar == '\012' ) {
+      // Discard previous <CR> from name
+      nameLength--;
+      break;
+    }
+
+    name[ nameLength ] = newChar;
+    nameLength++;
+
+    lastChar = newChar;
+  }
+  write( fd, name, strlen( name ) );
+
+  // Send last newline
+  const char * newline="\n";
+  write(fd, newline, strlen(newline));
  }
