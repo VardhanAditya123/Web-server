@@ -15,6 +15,7 @@
 #include "errors.hh"
 #include "misc.hh"
 #include "routes.hh"
+using namespace std;
 
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
