@@ -71,10 +71,10 @@ void Server::handle(const Socket_t& sock) const {
   char name[ MaxName + 1 ];
   int nameLength = 0;
   int n;
-  unsigned char newChar;
+  char newChar;
 
   // Last character read
-  unsigned char lastChar = 0;
+  char lastChar = 0;
 
   //
   // The client should send <name><cr><lf>
