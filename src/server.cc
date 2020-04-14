@@ -16,7 +16,7 @@
 #include "misc.hh"
 #include "routes.hh"
 using namespace std;
-
+void  parse_request(const Socket_t& sock, HttpRequest* const request);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 void Server::run_linear() const {
