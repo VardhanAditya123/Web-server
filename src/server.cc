@@ -64,5 +64,5 @@ void Server::handle(const Socket_t& sock) const {
 }
 
  void parse_request(const Socket_t& sock, HttpRequest* const request){
-   cout<"TESTING TESTING"<<endl;
+   cout<<"TESTING TESTING"<<endl;
  }
