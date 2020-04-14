@@ -54,7 +54,7 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: implement parsing HTTP requests
   // recommendation:
    void parse_request(const Socket_t& sock, HttpRequest* const request);
-  parse_request(const Socket_t& sock, HttpRequest* const request)
+  parse_request(const Socket_t& sock, HttpRequest* const request);
   request.print();
 
   HttpResponse resp;
