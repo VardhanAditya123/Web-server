@@ -55,7 +55,7 @@ void Server::handle(const Socket_t& sock) const {
   // recommendation:
    void parse_request(const Socket_t& sock, HttpRequest* const request);
   
-  parse_request(const Socket_t& sock, HttpRequest* const request);
+  void parse_request(const Socket_t& sock, HttpRequest* const request);
   request.print();
 
   HttpResponse resp;
