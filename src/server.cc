@@ -99,5 +99,5 @@ void Server::handle(const Socket_t& sock) const {
 
   // Send last newline
   const char * newline="\n";
-  write(fd, newline, strlen(newline));
+ sock-> write(newline, strlen(newline));
  }
