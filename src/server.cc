@@ -69,7 +69,7 @@ void Server::handle(const Socket_t& sock) const {
   char name[ MaxName + 1 ];
   int nameLength = 0;
   int n;
-  int fd = *request;
+  int fd = *sock;
   unsigned char newChar;
 
   // Last character read
