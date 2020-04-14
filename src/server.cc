@@ -71,7 +71,7 @@ void Server::handle(const Socket_t& sock) const {
   char name[ MaxName + 1 ];
   int nameLength = 0;
   int n;
-  int fd = sock->write();
+
   unsigned char newChar;
 
   // Last character read
@@ -96,9 +96,10 @@ void Server::handle(const Socket_t& sock) const {
 
     lastChar = newChar;
   }
-  write( fd, name, strlen( name ) );
+  // write( fd, name, strlen( name ) );
+  sock->write(name);
 
   // Send last newline
   const char * newline="\n";
-  write(fd, newline, strlen(newline));
+  // write(fd, newline, strlen(newline));
  }
