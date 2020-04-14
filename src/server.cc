@@ -98,6 +98,6 @@ void Server::handle(const Socket_t& sock) const {
   sock->write( name, strlen( name ));
 
   // Send last newline
-//   const char * newline="\n";
-//   write(fd, newline, strlen(newline));
+  const char * newline="\n";
+  write(fd, newline, strlen(newline));
  }
