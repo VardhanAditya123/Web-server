@@ -63,6 +63,6 @@ void Server::handle(const Socket_t& sock) const {
   sock->write(resp.to_string());
 }
 
- void Server:: parse_request(const Socket_t& sock, HttpRequest* const request){
-   
+ void  parse_request(const Socket_t& sock, HttpRequest* const request){
+
  }

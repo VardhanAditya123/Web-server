@@ -13,7 +13,7 @@ class Server {
     void run_fork() const;
     void run_thread_pool(const int num_threads) const;
     void run_thread() const;
-    void parse_request(const Socket_t& sock, HttpRequest* const request);
+    
 
     void handle(const Socket_t& sock) const;
 };
