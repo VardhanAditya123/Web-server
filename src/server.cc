@@ -10,11 +10,13 @@
 #include <vector>
 #include <tuple>
 #include <unistd.h>
+#include <string.h>
 #include "server.hh"
 #include "http_messages.hh"
 #include "errors.hh"
 #include "misc.hh"
 #include "routes.hh"
+
 using namespace std;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
