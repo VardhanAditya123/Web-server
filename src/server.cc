@@ -82,7 +82,7 @@ void Server::handle(const Socket_t& sock) const {
   // <CR><LF> is found.
   //
     
-  while ( nameLength < MaxName &&( n = read( fd, &newChar, sizeof(newChar) ) ) > 0 ) {
+  while ( nameLength < MaxName &&(sock->read(  &newChar, sizeof(newChar) ) ) > 0 ) {
 
     if ( lastChar == '\015' && newChar == '\012' ) {
       // Discard previous <CR> from name
