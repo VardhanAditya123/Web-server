@@ -48,7 +48,7 @@ std::vector<Route_t> route_map = {
   std::make_pair("", handle_default)
 };
 */
- void parse_request(const Socket_t& sock, HttpRequest* const request);
+
 void Server::handle(const Socket_t& sock) const {
   HttpRequest request;
   // TODO: implement parsing HTTP requests
@@ -63,3 +63,6 @@ void Server::handle(const Socket_t& sock) const {
   sock->write(resp.to_string());
 }
 
+ void Server:: parse_request(const Socket_t& sock, HttpRequest* const request){
+   
+ }
