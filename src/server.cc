@@ -114,7 +114,8 @@ void Server::handle(const Socket_t& sock) const {
      
     } 
     std::fstream fs;
-    fs.open (vec.at(1), std::fstream::in | std::fstream::out | std::fstream::app);
+    string fn = "http-root-dir/htdocs/index.html"+vec.at(1);
+    fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
      if (fs.is_open())
   {
     while ( getline (fs,line) )
