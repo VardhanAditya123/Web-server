@@ -55,22 +55,6 @@ std::vector<Route_t> route_map = {
 */
 
 
-// void Server::handle(const Socket_t& sock) const {
-//   // Maybe parse the request and print it too
- 
-//   HttpResponse resp;
-//   resp.http_version = "HTTP/1.2";
-//   resp.status_code = 200;
-//   resp.reason_phrase = "OK";
-//   resp.headers["Connection"] = "close";
-//   resp.headers["Content-Length"] = 12;
-//   resp.message_body = "Hello CS252!";
- 
-//   std::cout << "Start of HTTP response:" << std::endl;
-//   std::cout << "{" << resp.to_string() << "}" << std::endl;
-//   sock->write(resp.to_string());
-// }
-
 void Server::handle(const Socket_t& sock) const {
   HttpRequest request;
   // TODO: implement parsing HTTP requests
