@@ -95,6 +95,7 @@ void Server::handle(const Socket_t& sock) const {
  void  parse_request(const Socket_t& sock, HttpRequest* const request){
    // Buffer used to store the name received from the client
   vector <string> vec;
+  vector <string>head;
   char *name;
   char newChar;
 
@@ -132,7 +133,7 @@ void Server::handle(const Socket_t& sock) const {
     request-> http_version = vec.at(2);
     line = sock->readline();
     while(line.length()!=0){
-      cout << line << endl;
+      // cout << line << endl;
       line=sock->readline();
     }
     // std::map<std::string, std::string> headers;
