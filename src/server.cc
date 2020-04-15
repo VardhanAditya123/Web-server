@@ -99,6 +99,8 @@ void Server::handle(const Socket_t& sock) const {
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
+  line.pop_back();
+  line.pop_back();
   // name = (char*)(line.c_str());
   // sock->write( name, strlen( name ));
   // const char * newline="\n";
@@ -120,7 +122,7 @@ void Server::handle(const Socket_t& sock) const {
   
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
-    request-> http_version = (vec.at(2)).pop_back();
+    request-> http_version = vec.at(2);
     // std::map<std::string, std::string> headers;
     // message_body;
  }
