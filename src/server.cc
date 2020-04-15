@@ -103,8 +103,6 @@ void Server::handle(const Socket_t& sock) const {
      
     } 
     std::fstream fs;
-    string fn = "http-root-dir/htdocs"+vec.at(1);
-    file_path = fn;
     cout << fn << endl;
     fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
      if (fs.is_open())
@@ -121,6 +119,8 @@ void Server::handle(const Socket_t& sock) const {
     if(vec.at(1).compare("/")==0){
       vec.at(1) = "index.html";
     }
+    string fn = "http-root-dir/htdocs"+vec.at(1);
+    file_path = fn;
     request->request_uri = vec.at(1);
     request-> http_version = vec.at(2);
       line = sock->readline();
