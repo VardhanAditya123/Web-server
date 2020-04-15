@@ -84,7 +84,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Conection"] = "close";
   resp.headers["Content-Length"] = 12;
   resp.message_body = "Hello CS252!";
-
+ 
   std::cout << resp.to_string() << std::endl;
   sock->write(resp.to_string());
 }
