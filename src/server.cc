@@ -95,6 +95,7 @@ void Server::handle(const Socket_t& sock) const {
 
     lastChar = newChar;
   }
+  name[ nameLength ] = 0;
   sock->write( name, strlen( name ));
 
   // Send last newline
