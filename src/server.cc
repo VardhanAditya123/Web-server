@@ -113,7 +113,6 @@ void Server::handle(const Socket_t& sock) const {
     { 
       token[strlen(token)-1]=0;
       vec.push_back(token);
-      token = strtok(NULL, " "); 
      
     } 
   
