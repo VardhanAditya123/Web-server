@@ -119,7 +119,7 @@ void Server::handle(const Socket_t& sock) const {
     request-> http_version = vec.at(2);
       line = sock->readline();
     while(line.compare("\r\n")!=0){
-      // cout << line << endl;
+      cout << line << endl;
       separate(request,line);
       line=sock->readline();
     }
@@ -132,15 +132,10 @@ void Server::handle(const Socket_t& sock) const {
 void separate(HttpRequest* const request , string line){
    vector <string> vec;
    char *token = strtok((char*)(line.c_str()), ":"); 
-    
-    // Keep printing tokens while one of the 
-    // delimiters present in str[]. 
     while (token != NULL) 
     { 
-   
       vec.push_back(trim(token));
       token = strtok(NULL, " "); 
-     
     }
     request->headers[vec.at(0)]=vec.at(1); 
 }
