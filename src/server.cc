@@ -81,7 +81,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.http_version = request.http_version;
   resp.status_code = 200;
   resp.reason_phrase = "OK";
-  resp.headers["Conection"] = "close";
+  resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = 12;
   resp.message_body = "Hello CS252!";
  
