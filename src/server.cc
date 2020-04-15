@@ -107,7 +107,7 @@ void Server::handle(const Socket_t& sock) const {
     // Returns first token 
     
     char *token = strtok((char*)(line.c_str()), " "); 
-  
+    
     // Keep printing tokens while one of the 
     // delimiters present in str[]. 
     while (token != NULL) 
@@ -120,7 +120,7 @@ void Server::handle(const Socket_t& sock) const {
   
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
-    request-> http_version = vec.at(2);
+    request-> http_version = "HTTP/1.1";
     // std::map<std::string, std::string> headers;
     // message_body;
  }
