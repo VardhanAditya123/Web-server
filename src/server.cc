@@ -126,7 +126,7 @@ void Server::handle(const Socket_t& sock) const {
       line=sock->readline();
     }
     // std::map<std::string, std::string> headers;
-    message_body = ;
+    // message_body = ;
  }
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
