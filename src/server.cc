@@ -51,19 +51,6 @@ std::vector<Route_t> route_map = {
 };
 */
 
-void Server::handle(const Socket_t& sock) const {
-  HttpRequest request;
-  // TODO: implement parsing HTTP requests
-  // recommendation:
-  parse_request( sock, &request);
-  request.print();
-
-  HttpResponse resp;
-  // TODO: Make a response for the HTTP request
-  resp.http_version = "HTTP/1.1";
-  std::cout << resp.to_string() << std::endl;
-  sock->write(resp.to_string());
-}
 
 // void Server::handle(const Socket_t& sock) const {
 //   // Maybe parse the request and print it too
@@ -81,6 +68,19 @@ void Server::handle(const Socket_t& sock) const {
 //   sock->write(resp.to_string());
 // }
 
+void Server::handle(const Socket_t& sock) const {
+  HttpRequest request;
+  // TODO: implement parsing HTTP requests
+  // recommendation:
+  parse_request( sock, &request);
+  request.print();
+
+  HttpResponse resp;
+  // TODO: Make a response for the HTTP request
+  resp.http_version = "HTTP/1.1";
+  std::cout << resp.to_string() << std::endl;
+  sock->write(resp.to_string());
+}
 
  void  parse_request(const Socket_t& sock, HttpRequest* const request){
    // Buffer used to store the name received from the client
