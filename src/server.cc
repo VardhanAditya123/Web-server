@@ -87,32 +87,10 @@ void Server::handle(const Socket_t& sock) const {
    // Buffer used to store the name received from the client
   vector <string> vec;
   char *name;
-  int nameLength = 0;
-  int n;
   char newChar;
 
   // Last character read
   char lastChar = 0;
-
-  //
-  // The client should send <name><cr><lf>
-  // Read the name of the client character by character until a
-  // <CR><LF> is found.
-  //
-    
-  // while ( nameLength < MaxName &&(sock->read(  &newChar, sizeof(newChar) ) ) > 0 ) {
-
-  //   if ( lastChar == '\015' && newChar == '\012' ) {
-  //     // Discard previous <CR> from name
-  //     nameLength--;
-  //     break;
-  //   }
-
-  //   name[ nameLength ] = newChar;
-  //   nameLength++;
-
-  //   lastChar = newChar;
-  // }
   string line = sock->readline();
   name = (char*)(line.c_str());
   sock->write( name, strlen( name ));
@@ -133,7 +111,7 @@ void Server::handle(const Socket_t& sock) const {
   
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
-    // http_version;
+    request-> http_version = vec.at(2);
     // std::map<std::string, std::string> headers;
     // message_body;
  }
