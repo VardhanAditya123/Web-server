@@ -17,6 +17,7 @@
 #include "misc.hh"
 #include "routes.hh"
 #include <cstring>
+#include <fstream>
 
 using namespace std;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
@@ -112,10 +113,12 @@ void Server::handle(const Socket_t& sock) const {
       token = strtok(NULL, " "); 
      
     } 
-  
+    std::fstream fs;
+    fs.open (vec.at(i), std::fstream::in | std::fstream::out | std::fstream::app);
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
     request-> http_version = vec.at(2);
     // std::map<std::string, std::string> headers;
     // message_body;
  }
+ 
