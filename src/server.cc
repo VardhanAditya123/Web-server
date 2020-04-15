@@ -114,7 +114,7 @@ void Server::handle(const Socket_t& sock) const {
      
     } 
     std::fstream fs;
-    string fn = "http-root-dir/htdocs/index.html"+vec.at(1);
+    string fn = "http-root-dir/htdocs"+vec.at(1);
     fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
      if (fs.is_open())
   {
