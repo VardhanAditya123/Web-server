@@ -104,7 +104,7 @@ void Server::handle(const Socket_t& sock) const {
   // sock-> write(newline, strlen(newline));
   
     // Returns first token 
-    line = line.pop_back(); 
+     line.pop_back(); 
     char *token = strtok((char*)(line.c_str()), " "); 
   
     // Keep printing tokens while one of the 
