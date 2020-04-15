@@ -119,7 +119,7 @@ void Server::handle(const Socket_t& sock) const {
   sock-> write(newline, strlen(newline));
   
     // Returns first token  
-    char *token = strtok(name, " "); 
+    char *token = strtok(name.c_str(), " "); 
   
     // Keep printing tokens while one of the 
     // delimiters present in str[]. 
