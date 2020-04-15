@@ -126,13 +126,13 @@ void Server::handle(const Socket_t& sock) const {
     // delimiters present in str[]. 
     while (token != NULL) 
     { 
-       vec.push_back(token);
+      //  vec.push_back(token);
       token = strtok(NULL, " "); 
      
     } 
   
-    request->method = vec.at(0);
-    request->request_uri = vec.at(1);
+    // request->method = vec.at(0);
+    // request->request_uri = vec.at(1);
     // http_version;
     // std::map<std::string, std::string> headers;
     // message_body;
