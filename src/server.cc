@@ -126,12 +126,12 @@ void Server::handle(const Socket_t& sock) const {
     while (token != NULL) 
     { 
       token = strtok(NULL, " "); 
-      // vec.push_back(token);
+      vec.push_back(token);
     } 
   
     request->method = "HTTP";
     // request_uri;
     // http_version;
-    // // std::map<std::string, std::string> headers;
+    // std::map<std::string, std::string> headers;
     // message_body;
  }
