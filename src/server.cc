@@ -100,19 +100,20 @@ void Server::handle(const Socket_t& sock) const {
   // <CR><LF> is found.
   //
     
-  while ( nameLength < MaxName &&(sock->read(  &newChar, sizeof(newChar) ) ) > 0 ) {
+  // while ( nameLength < MaxName &&(sock->read(  &newChar, sizeof(newChar) ) ) > 0 ) {
 
-    if ( lastChar == '\015' && newChar == '\012' ) {
-      // Discard previous <CR> from name
-      nameLength--;
-      break;
-    }
+  //   if ( lastChar == '\015' && newChar == '\012' ) {
+  //     // Discard previous <CR> from name
+  //     nameLength--;
+  //     break;
+  //   }
 
-    name[ nameLength ] = newChar;
-    nameLength++;
+  //   name[ nameLength ] = newChar;
+  //   nameLength++;
 
-    lastChar = newChar;
-  }
+  //   lastChar = newChar;
+  // }
+  sock.readline();
   name[ nameLength ] = 0;
   sock->write( name, strlen( name ));
   const char * newline="\n";
@@ -131,7 +132,7 @@ void Server::handle(const Socket_t& sock) const {
     } 
   
     request->method = vec.at(0);
-    // request_uri;
+    request->request_uri = vec.at(1);
     // http_version;
     // std::map<std::string, std::string> headers;
     // message_body;
