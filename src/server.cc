@@ -115,9 +115,9 @@ void Server::handle(const Socket_t& sock) const {
   //   lastChar = newChar;
   // }
   string line = sock->readline();
-  sock->write( name, strlen( name ));
-  const char * newline="\n";
-  sock-> write(newline, strlen(newline));
+  // sock->write( name, strlen( name ));
+  // const char * newline="\n";
+  // sock-> write(newline, strlen(newline));
   
     // Returns first token  
     char *token = strtok((char*)(line.c_str()), " "); 
