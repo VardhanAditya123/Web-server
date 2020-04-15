@@ -70,7 +70,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = 12;
   resp.headers["Content-Type"] = "html";
-  resp.message_body = "CS 252 is a shit class !";
+  resp.message_body = "CS 252 is a super shit class !";
  
   std::cout << resp.to_string() << std::endl; 
   sock->write(resp.to_string());
