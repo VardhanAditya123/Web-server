@@ -111,7 +111,7 @@ void Server::handle(const Socket_t& sock) const {
   {
     while ( getline (fs,line) )
     {
-       cout << line << '\n';
+      //  cout << line << '\n';
        msg+=line;
     }
     fs.close();
