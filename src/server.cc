@@ -104,11 +104,11 @@ void Server::handle(const Socket_t& sock) const {
   string line = sock->readline();
   cout << line << endl;
   char *token = strtok((char*)(line.c_str()), " "); 
-      line = sock->readline();
-    while(line.compare("\r\n")!=0){
-      cout << line << endl;
-      line=sock->readline();
-    }
+    //   line = sock->readline();
+    // while(line.compare("\r\n")!=0){
+    //   cout << line << endl;
+    //   line=sock->readline();
+    // }
     // Keep printing tokens while one of the 
     // delimiters present in str[]. 
     while (token != NULL) 
