@@ -85,7 +85,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = 12;
-  resp.headers["Content-Type"] = get_content_type("/hello");
+  resp.headers["Content-Type"] = get_content_type(file_path);
   resp.message_body = "Hello CS252!";
  
   std::cout << resp.to_string() << std::endl;
