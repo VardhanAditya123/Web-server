@@ -69,7 +69,7 @@ void Server::handle(const Socket_t& sock) const {
   // Maybe parse the request and print it too
  
   HttpResponse resp;
-  resp.http_version = "HTTP/1.1";
+  resp.http_version = "HTTP/1.2";
   resp.status_code = 200;
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
