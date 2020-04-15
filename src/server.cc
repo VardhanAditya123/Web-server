@@ -114,7 +114,7 @@ void Server::handle(const Socket_t& sock) const {
     while (token != NULL) 
     { 
    
-      vec.push_back(token);
+      vec.push_back(trim(token));
       token = strtok(NULL, " "); 
      
     } 
