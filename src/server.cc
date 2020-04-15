@@ -126,3 +126,17 @@ void Server::handle(const Socket_t& sock) const {
  }
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
+
+void separate(){
+   char *token = strtok((char*)(line.c_str()), ":"); 
+    
+    // Keep printing tokens while one of the 
+    // delimiters present in str[]. 
+    while (token != NULL) 
+    { 
+   
+      vec.push_back(trim(token));
+      token = strtok(NULL, " "); 
+     
+    } 
+}
