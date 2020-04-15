@@ -115,6 +115,14 @@ void Server::handle(const Socket_t& sock) const {
     } 
     std::fstream fs;
     fs.open (vec.at(1), std::fstream::in | std::fstream::out | std::fstream::app);
+     if (fs.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      cout << line << '\n';
+    }
+    myfile.close();
+  }
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
     request-> http_version = vec.at(2);
