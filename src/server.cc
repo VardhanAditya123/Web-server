@@ -119,7 +119,7 @@ void Server::handle(const Socket_t& sock) const {
 
   
     // Returns first token  
-    char *token = strtok(str, " "); 
+    char *token = strtok(name, " "); 
   
     // Keep printing tokens while one of the 
     // delimiters present in str[]. 
