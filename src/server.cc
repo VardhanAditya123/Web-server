@@ -20,6 +20,7 @@
 #include <fstream>
 
 using namespace std;
+string file_path;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
@@ -84,7 +85,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = 12;
-  resp.headers["Content-Type"] = "text/text";
+  resp.headers["Content-Type"] = get_content_type(file_path);
   resp.message_body = "Hello CS252!";
  
   std::cout << resp.to_string() << std::endl;
@@ -115,6 +116,7 @@ void Server::handle(const Socket_t& sock) const {
     } 
     std::fstream fs;
     string fn = "http-root-dir/htdocs"+vec.at(1);
+    file_path = fn;
     cout << fn << endl;
     fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
      if (fs.is_open())
