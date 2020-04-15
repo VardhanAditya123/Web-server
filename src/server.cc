@@ -86,8 +86,7 @@ void Server::handle(const Socket_t& sock) const {
  void  parse_request(const Socket_t& sock, HttpRequest* const request){
    // Buffer used to store the name received from the client
   vector <string> vec;
-  const int MaxName = 1024;
-  char name[ MaxName + 1 ];
+  char *name;
   int nameLength = 0;
   int n;
   char newChar;
