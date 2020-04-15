@@ -117,7 +117,7 @@ void Server::handle(const Socket_t& sock) const {
     fs.open (vec.at(1), std::fstream::in | std::fstream::out | std::fstream::app);
      if (fs.is_open())
   {
-    while ( getline (myfile,line) )
+    while ( getline (fs,line) )
     {
       cout << line << '\n';
     }
