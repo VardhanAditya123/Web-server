@@ -70,7 +70,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = 12;
   resp.headers["Content-Type"] = get_content_type(file_path);
-  resp.message_body = "Hello CS252!";
+  resp.message_body = "Federer is the GOAT!";
  
   std::cout << resp.to_string() << std::endl;
   sock->write(resp.to_string());
