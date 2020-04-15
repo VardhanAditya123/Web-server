@@ -67,7 +67,7 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: Make a response for the HTTP request
   resp.http_version = request.http_version;
   resp.status_code = 200;
-  resp.reason_phrase = "OK";
+  resp.reason_phrase = "OKK";
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = 12;
   resp.headers["Content-Type"] = "html";
@@ -115,7 +115,6 @@ void Server::handle(const Socket_t& sock) const {
   {
     while ( getline (fs,line) )
     {
-      //  cout << line << '\n';
        msg+=line;
     }
     fs.close();
