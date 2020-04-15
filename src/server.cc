@@ -125,8 +125,9 @@ void Server::handle(const Socket_t& sock) const {
     // delimiters present in str[]. 
     while (token != NULL) 
     { 
+       vec.push_back(token);
       token = strtok(NULL, " "); 
-      vec.push_back(token);
+     
     } 
   
     request->method = "HTTP";
