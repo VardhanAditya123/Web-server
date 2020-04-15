@@ -126,8 +126,7 @@ void Server::handle(const Socket_t& sock) const {
     while (token != NULL) 
     { 
       token = strtok(NULL, " "); 
-      string s = token;
-      vec.push_back(token);
+      // vec.push_back(token);
     } 
   
     request->method = "HTTP";
