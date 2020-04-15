@@ -119,14 +119,14 @@ void Server::handle(const Socket_t& sock) const {
     request-> http_version = vec.at(2);
       line = sock->readline();
     while(line.compare("\r\n")!=0){
-      cout << line ;
+      // cout << line ;
       line.pop_back();
       line.pop_back();
       separate(request,line);
       line=sock->readline();
     }
     // std::map<std::string, std::string> headers;
-    // message_body;
+    message_body = ;
  }
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
