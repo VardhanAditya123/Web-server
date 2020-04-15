@@ -116,7 +116,8 @@ void Server::handle(const Socket_t& sock) const {
   name[ nameLength ] = 0;
   string s = name;
   sock->write( name, strlen( name ));
-
+  const char * newline="\n";
+  sock-> write(newline, strlen(newline));
   
     // Returns first token  
     char *token = strtok(name, " "); 
@@ -129,9 +130,6 @@ void Server::handle(const Socket_t& sock) const {
       vec.push_back(token);
     } 
   
-  // Send last newline
-  const char * newline="\n";
- sock-> write(newline, strlen(newline));
     request->method = "HTTP";
     // request_uri;
     // http_version;
