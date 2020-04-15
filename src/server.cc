@@ -84,6 +84,7 @@ void Server::handle(const Socket_t& sock) const {
 
  void  parse_request(const Socket_t& sock, HttpRequest* const request){
    // Buffer used to store the name received from the client
+  vector <string> vec;
   const int MaxName = 1024;
   char name[ MaxName + 1 ];
   int nameLength = 0;
@@ -116,6 +117,18 @@ void Server::handle(const Socket_t& sock) const {
   string s = name;
   sock->write( name, strlen( name ));
 
+  
+    // Returns first token  
+    char *token = strtok(str, " "); 
+  
+    // Keep printing tokens while one of the 
+    // delimiters present in str[]. 
+    while (token != NULL) 
+    { 
+      token = strtok(NULL, " "); 
+      vec.push_back(token);
+    } 
+  
   // Send last newline
   const char * newline="\n";
  sock-> write(newline, strlen(newline));
