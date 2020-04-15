@@ -83,6 +83,7 @@ void Server::handle(const Socket_t& sock) const {
   vector <string>head;
   char *name;
   char newChar;
+  string msg;
 
   // Last character read
   char lastChar = 0;
@@ -111,8 +112,10 @@ void Server::handle(const Socket_t& sock) const {
     while ( getline (fs,line) )
     {
        cout << line << '\n';
+       msg+=line
     }
     fs.close();
+   
   }
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
@@ -126,7 +129,7 @@ void Server::handle(const Socket_t& sock) const {
       line=sock->readline();
     }
     // std::map<std::string, std::string> headers;
-    // message_body = ;
+    request->message_body = msg ;
  }
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
