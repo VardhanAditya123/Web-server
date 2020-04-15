@@ -102,8 +102,8 @@ void Server::handle(const Socket_t& sock) const {
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
-  line.pop_back();
-  line.pop_back();
+  // line.pop_back();
+  // line.pop_back();
   cout << line << endl;
   char *token = strtok((char*)(line.c_str()), " "); 
     //   line = sock->readline();
