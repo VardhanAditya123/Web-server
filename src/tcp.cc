@@ -94,7 +94,7 @@ void TCPSocket::write(char const * const buf, const size_t buf_len) {
 TCPSocketAcceptor::TCPSocketAcceptor(const int portno) {
     addr.sin_family = AF_INET;
     addr.sin_port = htons(portno);
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 
     _master_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (_master_socket < 0) {
