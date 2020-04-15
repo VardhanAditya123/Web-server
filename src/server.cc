@@ -132,7 +132,7 @@ void Server::handle(const Socket_t& sock) const {
     request-> http_version = vec.at(2);
     line = sock->readline();
     while(line!=NULL){
-      cout << sock << endl;
+      cout << line << endl;
     }
     // std::map<std::string, std::string> headers;
     // message_body;
