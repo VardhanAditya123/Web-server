@@ -133,6 +133,7 @@ void Server::handle(const Socket_t& sock) const {
     line = sock->readline();
     while(line.length()!=0){
       cout << line << endl;
+      line=sock->readline();
     }
     // std::map<std::string, std::string> headers;
     // message_body;
