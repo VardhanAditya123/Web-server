@@ -108,7 +108,7 @@ void Server::handle(const Socket_t& sock) const {
   char *token = strtok((char*)(line.c_str()), " "); 
       line = sock->readline();
     while(line.compare("\r\n")!=0){
-      // cout << line << endl;
+      cout << line << endl;
       line=sock->readline();
     }
     // Keep printing tokens while one of the 
