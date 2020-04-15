@@ -119,7 +119,7 @@ void Server::handle(const Socket_t& sock) const {
     request-> http_version = vec.at(2);
       line = sock->readline();
     while(line.compare("\r\n")!=0){
-      cout << line << endl;
+      cout << line ;
       separate(request,line);
       line=sock->readline();
     }
