@@ -22,6 +22,7 @@
 using namespace std;
 string file_path;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
+void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 void Server::run_linear() const {
@@ -118,7 +119,8 @@ void Server::handle(const Socket_t& sock) const {
     request-> http_version = vec.at(2);
       line = sock->readline();
     while(line.compare("\r\n")!=0){
-      cout << line << endl;
+      // cout << line << endl;
+      separate(request,line);
       line=sock->readline();
     }
     // std::map<std::string, std::string> headers;
@@ -127,7 +129,8 @@ void Server::handle(const Socket_t& sock) const {
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
 
-void separate(){
+void separate(HttpRequest* const request , string line){
+   vector <string> vec;
    char *token = strtok((char*)(line.c_str()), ":"); 
     
     // Keep printing tokens while one of the 
@@ -138,5 +141,6 @@ void separate(){
       vec.push_back(trim(token));
       token = strtok(NULL, " "); 
      
-    } 
+    }
+    request->head[vec.at(0)]=vec.at(1); 
 }
