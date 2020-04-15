@@ -114,7 +114,6 @@ void Server::handle(const Socket_t& sock) const {
     lastChar = newChar;
   }
   name[ nameLength ] = 0;
-  string s = name;
   sock->write( name, strlen( name ));
   const char * newline="\n";
   sock-> write(newline, strlen(newline));
@@ -127,6 +126,7 @@ void Server::handle(const Socket_t& sock) const {
     while (token != NULL) 
     { 
       token = strtok(NULL, " "); 
+      string s = token;
       vec.push_back(token);
     } 
   
