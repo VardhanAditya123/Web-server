@@ -16,6 +16,7 @@
 #include "errors.hh"
 #include "misc.hh"
 #include "routes.hh"
+#include <cstring>
 
 using namespace std;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
