@@ -118,6 +118,9 @@ void Server::handle(const Socket_t& sock) const {
    
   }
     request->method = vec.at(0);
+    if(vec.at(1).compare('/')==0){
+      vec.at(i) = index.html;
+    }
     request->request_uri = vec.at(1);
     request-> http_version = vec.at(2);
       line = sock->readline();
