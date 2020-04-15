@@ -79,6 +79,12 @@ void Server::handle(const Socket_t& sock) const {
   HttpResponse resp;
   // TODO: Make a response for the HTTP request
   resp.http_version = "HTTP/1.1";
+  resp.status_code = 200;
+  resp.reason_phrase = "OK";
+  resp.headers["Connection"] = "close";
+  resp.headers["Content-Length"] = 12;
+  resp.message_body = "Hello CS252!";
+
   std::cout << resp.to_string() << std::endl;
   sock->write(resp.to_string());
 }
