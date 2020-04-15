@@ -121,7 +121,7 @@ void Server::handle(const Socket_t& sock) const {
     {
       cout << line << '\n';
     }
-    myfile.close();
+    fs.close();
   }
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
