@@ -72,7 +72,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Content-Type"] = "html";
   resp.message_body = "Tejashvi likes betroot and bananas !";
  
-  std::cout << resp.to_string() << std::endl;
+  std::cout << resp.to_string() << std::endl; 
   sock->write(resp.to_string());
 }
 
