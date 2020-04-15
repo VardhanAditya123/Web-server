@@ -28,7 +28,7 @@ std::string HttpResponse::to_string() const {
 
     // Look at RFC 2616 Section 6 for details on how a response message looks:
     // https://tools.ietf.org/html/rfc2616#section-6
-    ss << http_version << " 200 OK\r\n";
+    ss << http_version << status_code <<" "<< headers.at(status_code) <<"\r\n";
     ss << "Connection: "<< headers.at("Connection")  <<"\r\n";
     ss << "Content-Length: 12\r\n";
     ss << "\r\n";
