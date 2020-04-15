@@ -114,7 +114,7 @@ void Server::handle(const Socket_t& sock) const {
      
     } 
     std::fstream fs;
-    fs.open (vec.at(i), std::fstream::in | std::fstream::out | std::fstream::app);
+    fs.open (vec.at(1), std::fstream::in | std::fstream::out | std::fstream::app);
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
     request-> http_version = vec.at(2);
