@@ -103,8 +103,8 @@ void Server::handle(const Socket_t& sock) const {
   const char * newline="\n";
  sock-> write(newline, strlen(newline));
     request->method = "HTTP";
-    request_uri;
-    http_version;
-    // std::map<std::string, std::string> headers;
-    message_body;
+    // request_uri;
+    // http_version;
+    // // std::map<std::string, std::string> headers;
+    // message_body;
  }
