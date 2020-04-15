@@ -142,5 +142,5 @@ void separate(HttpRequest* const request , string line){
       token = strtok(NULL, " "); 
      
     }
-    request->head[vec.at(0)]=vec.at(1); 
+    request->headers[vec.at(0)]=vec.at(1); 
 }
