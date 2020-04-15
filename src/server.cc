@@ -69,7 +69,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = 12;
-  resp.headers["Content-Type"] = get_content_type(file_path);
+  resp.headers["Content-Type"] = "html";
   resp.message_body = "Turkey , please leave!";
  
   std::cout << resp.to_string() << std::endl;
