@@ -30,9 +30,9 @@ std::string HttpResponse::to_string() const {
     // https://tools.ietf.org/html/rfc2616#section-6
     ss << http_version << status_code <<" "<< default_status_reasons.at(status_code) <<"\r\n";
     ss << "Connection: "<< headers.at("Connection")  <<"\r\n";
-    ss << "Content-Length: 12\r\n";
+    ss << "Content-Length:" << message_body.length() <<"\r\n";
     ss << "\r\n";
-    ss << "Hello CS252!\r\n";
+    ss << message_body<<"\r\n";
     return ss.str();
 }
 
