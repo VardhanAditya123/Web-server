@@ -120,7 +120,9 @@ void Server::handle(const Socket_t& sock) const {
       line = sock->readline();
     while(line.compare("\r\n")!=0){
       cout << line ;
-      separate(request,trim(line));
+      line.pop_back();
+      line.pop_back();
+      separate(request,line);
       line=sock->readline();
     }
     // std::map<std::string, std::string> headers;
