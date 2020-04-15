@@ -132,7 +132,7 @@ void Server::handle(const Socket_t& sock) const {
     } 
   
     request->method = vec.at(0);
-    // request->request_uri = vec.at(1);
+    request->request_uri = vec.at(1);
     // http_version;
     // std::map<std::string, std::string> headers;
     // message_body;
