@@ -131,11 +131,11 @@ void Server::handle(const Socket_t& sock) const {
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
     request-> http_version = vec.at(2);
-    line = sock->readline();
-    while(line.length()!=0){
-      cout << line << endl;
-      line=sock->readline();
-    }
+    // line = sock->readline();
+    // while(line.length()!=0){
+    //   cout << line << endl;
+    //   line=sock->readline();
+    // }
     // std::map<std::string, std::string> headers;
     // message_body;
  }
