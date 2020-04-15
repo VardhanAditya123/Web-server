@@ -113,8 +113,7 @@ void Server::handle(const Socket_t& sock) const {
 
   //   lastChar = newChar;
   // }
-  sock->readline();
-  name[ nameLength ] = 0;
+  name = sock->readline();
   sock->write( name, strlen( name ));
   const char * newline="\n";
   sock-> write(newline, strlen(newline));
