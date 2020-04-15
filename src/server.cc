@@ -120,7 +120,7 @@ void Server::handle(const Socket_t& sock) const {
   
     request->method = vec.at(0);
     request->request_uri = vec.at(1);
-    request-> http_version = vec.at(2);
+    request-> http_version = vec.at(2).push_back();
     // std::map<std::string, std::string> headers;
     // message_body;
  }

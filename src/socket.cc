@@ -21,6 +21,6 @@ std::string Socket::readline() {
             break;
         }
     }
- 
+    
     return str;
 }
