@@ -111,7 +111,7 @@ void Server::handle(const Socket_t& sock) const {
     // delimiters present in str[]. 
     while (token != NULL) 
     { 
-      token[strlen(token)]=0;
+      token[strlen(token)-1]=0;
       vec.push_back(token);
       token = strtok(NULL, " "); 
      
