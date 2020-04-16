@@ -73,9 +73,9 @@ void Server::handle(const Socket_t& sock) const {
   resp.status_code = 401;
   }
   else{
-    // if(resp.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
-    //   resp.status_code = 200;
-    // }
+    if(resp.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
+      resp.status_code = 200;
+    }
     resp.status_code=200;
   }
   resp.reason_phrase = "OK";
