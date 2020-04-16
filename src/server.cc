@@ -40,7 +40,6 @@ if (slaveSocket >= 0) {
 int ret = fork();
  if (ret == 0) {
 handle(slaveSocket);
-exit(0);
 }
 else
 close(4);
