@@ -43,7 +43,7 @@ handle(slaveSocket);
 exit(0);
 }
 else
-exit(0);
+close(4);
 }
 }
 }
