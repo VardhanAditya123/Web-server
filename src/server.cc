@@ -74,9 +74,9 @@ void Server::handle(const Socket_t& sock) const {
       resp.status_code = 401;
    }
     else{
-        string c = (request.headers).at("Authorization");
-         if(c.compare( "Basic YWRpdHlhOnZhcmRoYW4K") == 0)
-         resp.status_code=200; 
+        // string c = (request.headers).at("Authorization");
+        //  if(c.compare( "Basic YWRpdHlhOnZhcmRoYW4K") == 0)
+         resp.status_code=201; 
     }
     
   
