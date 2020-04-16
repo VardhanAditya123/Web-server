@@ -29,10 +29,10 @@ std::string HttpResponse::to_string() const {
     // Look at RFC 2616 Section 6 for details on how a response message looks:
     // https://tools.ietf.org/html/rfc2616#section-6
     ss << http_version <<" "<< status_code <<" "<< default_status_reasons.at(status_code) <<"\r\n";
-    ss << "WWW-Authenticate:" <<"Basic realm=\"CS 252_web_server_p5 \"" << "\r\n" ;
     ss << "Connection: "<< headers.at("Connection")  <<"\r\n";
     ss << "Content-Length:" << message_body.length() <<"\r\n";
     ss << "Content-Type:" << headers.at("Content-Type") <<"\r\n";
+    ss << "WWW-Authenticate:" <<"Basic realm=\"CS 252_web_server_p5 \"" << "\r\n" ;
     ss << "\r\n";
     ss << message_body<<"\r\n\r\n";
     return ss.str();
