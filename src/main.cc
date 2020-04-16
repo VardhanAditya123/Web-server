@@ -14,7 +14,9 @@
 #include "socket.hh"
 #include "tcp.hh"
 #include "tls.hh"
-
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 enum concurrency_mode {
     E_NO_CONCURRENCY = 0,
     E_FORK_PER_REQUEST = 'f',
