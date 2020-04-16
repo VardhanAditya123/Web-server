@@ -41,8 +41,6 @@ int ret = fork();
 handle(slaveSocket);
 exit(0);
 }
-
-else
 close(4);
 }
 }
