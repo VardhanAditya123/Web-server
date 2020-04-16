@@ -19,6 +19,7 @@
 #include <cstring>
 #include <fstream>
  #include <pthread.h>
+ #include <thread>
 using namespace std;
 string file_path;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
