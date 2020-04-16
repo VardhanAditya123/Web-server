@@ -58,6 +58,8 @@ std::vector<Route_t> route_map = {
 
 void Server::handle(const Socket_t& sock) const {
   HttpRequest request;
+  // TODO: implement parsing HTTP requests
+  // recommendation:
   parse_request( sock, &request);
   request.print();
 
@@ -65,26 +67,23 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: Make a response for the HTTP request
   resp.http_version = request.http_version;
   resp.message_body = request.message_body;
-  resp.status_code = 200;
+  resp.status_code = 401;
   //  cout<< "DEBUGG " << resp.headers["Authorization"] << endl;
   // if ( (request.headers).find("Authorization") == (resp.headers).end() ) {
   // resp.status_code = 401;
   // }
   // else{
-    // if(request.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
-    //   resp.status_code = 200;
-    // }
+    if(request.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
+      resp.status_code = 200;
+    }
   //   resp.status_code=200;
   // }
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
   resp.headers["Content-Type"] = "html";
-  // if((request.headers).find("Authorization") == (resp.headers).end()){
-  // resp.headers["WWW-Authenticate"] ="Basic realm=\"CS 252_web_server_p5 \"";
-  // resp.status_code = 401;
-  // }
- 
+  resp.headers["WWW-Authenticate"] ="Basic realm=\"CS 252_web_server_p5 \"";
+
  
    std::cout << resp.to_string() << std::endl; 
   sock->write(resp.to_string());
