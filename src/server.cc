@@ -66,7 +66,11 @@ void Server::handle(const Socket_t& sock) const {
   HttpResponse resp;
   // TODO: Make a response for the HTTP request
   resp.http_version = request.http_version;
+
   resp.status_code = 200;
+  if ( (resp.headers).find("Authorization") == m.end() ) {
+  resp.status_code = 401;
+  }
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
