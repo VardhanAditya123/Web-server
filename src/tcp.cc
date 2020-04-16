@@ -17,7 +17,7 @@
 
 #include "errors.hh"
 #include "tcp.hh"
-
+using namespce std;
 TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _addr(addr) {
     char inet_pres[INET_ADDRSTRLEN];
     // sin_family will be AF_INET
@@ -121,7 +121,7 @@ Socket_t TCPSocketAcceptor::accept_connection() const {
     if (s == -1) {
         throw ConnectionError("Unable to accept connection: " + std::string(strerror(errno)));
     }
-    cout << "DDEBUG  " << s <<endl;
+    cout << "DDEBUG  " << s << endl;
     return std::make_unique<TCPSocket>(s, addr);
 }
 
