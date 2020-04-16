@@ -71,16 +71,19 @@ void Server::handle(const Socket_t& sock) const {
   // resp.status_code = 401;
   // }
   // else{
-    if(request.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
-      resp.status_code = 200;
-    }
+    // if(request.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
+    //   resp.status_code = 200;
+    // }
   //   resp.status_code=200;
   // }
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
   resp.headers["Content-Type"] = "html";
+  if(resp.headers["Authorization"].length()==0){
   resp.headers["WWW-Authenticate"] ="Basic realm=\"CS 252_web_server_p5 \"";
+  resp.status_code = 401;
+  }
 
  
    std::cout << resp.to_string() << std::endl; 
