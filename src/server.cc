@@ -68,16 +68,14 @@ void Server::handle(const Socket_t& sock) const {
   resp.http_version = request.http_version;
   resp.message_body = request.message_body;
   resp.reason_phrase = "OK";
-  //  string c = (request.headers).at("Authorization");
-  string c ="";
-    // if((request.headers).find("Authorization")== (request.headers).end()){
-      if(c.length()==0){
+ 
+    if((request.headers).find("Authorization")== (request.headers).end()){
       request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
       resp.status_code = 401;
    }
     else{
-    
-        //  if(c.compare( "Basic YWRpdHlhOnZhcmRoYW4K") == 0)
+        string c = (request.headers).at("Authorization");
+         if(c.compare( "Basic YWRpdHlhOnZhcmRoYW4K") == 0)
          resp.status_code=200; 
     }
     
