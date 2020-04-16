@@ -42,7 +42,8 @@ int ret = fork();
 handle(slaveSocket);
 exit(0);
 }
-close(fileno((FILE*)slaveSocket));
+else
+close(fileno(slaveSocket));
 }
 }
 }
