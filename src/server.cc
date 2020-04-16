@@ -65,7 +65,7 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: Make a response for the HTTP request
   resp.http_version = request.http_version;
   resp.message_body = request.message_body;
-  resp.status_code = 401;
+  resp.status_code = 200;
   //  cout<< "DEBUGG " << resp.headers["Authorization"] << endl;
   // if ( (request.headers).find("Authorization") == (resp.headers).end() ) {
   // resp.status_code = 401;
