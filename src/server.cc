@@ -69,8 +69,8 @@ void Server::handle(const Socket_t& sock) const {
   resp.message_body = request.message_body;
   resp.status_code = 200;
   
-    if(request.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
-      resp.status_code = 200;
+    if((request.headers).find("Authorization")== (request.headers).end()){
+      // resp.status_code = 200;
     }
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
