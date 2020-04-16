@@ -79,6 +79,9 @@ void Server::handle(const Socket_t& sock) const {
          if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4=") == 0){
          resp.status_code=200; 
          }
+         else{
+           resp.status_code = 401;
+         }
     }
     
   
