@@ -143,7 +143,7 @@ void Server::handle(const Socket_t& sock) const {
       separate(request,line);
       line=sock->readline();
     }
-    request->headers["Authorization"] = "Basic "+"YWRpdHlhOnZhcmRoYW4K"
+    request->headers["Authorization"] = "Basic YWRpdHlhOnZhcmRoYW4K"
     // std::map<std::string, std::string> headers;
     request->message_body = msg ;
  }
