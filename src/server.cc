@@ -75,6 +75,7 @@ void Server::handle(const Socket_t& sock) const {
 
     }
     else{
+      if(resp.headers["Authorization"] == "YWRpdHlhOnZhcmRoYW4K")
       resp.status_code = 200;
     }
     
