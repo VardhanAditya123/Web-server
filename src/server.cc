@@ -42,7 +42,7 @@ int ret = fork();
 handle(slaveSocket);
 exit(0);
 }
-close(slaveSocket);
+close((int)slaveSocket);
 }
 }
 }
