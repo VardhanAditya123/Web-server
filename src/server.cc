@@ -36,6 +36,7 @@ void Server::run_fork() const {
 while (1) {
 Socket_t slaveSocket = _acceptor.accept_connection();
 int ret = fork();
+cout << ret << endl;
 if (ret == 0) {
 handle(slaveSocket);
 exit(0);
