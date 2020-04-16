@@ -68,7 +68,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.http_version = request.http_version;
   resp.message_body = request.message_body;
   resp.reason_phrase = "OK";
-  resp.status_code=401; 
+  resp.status_code=200; 
     if((request.headers).find("Authorization")!= (request.headers).end()){
       request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
       resp.status_code = 401;
