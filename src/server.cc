@@ -74,10 +74,10 @@ void Server::handle(const Socket_t& sock) const {
       request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
       resp.status_code = 401;
    }
-    else{
-         if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4K") == 0)
-         resp.status_code=401; 
-    }
+    // else{
+    //      if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4K") == 0)
+    //      resp.status_code=401; 
+    // }
     
   
   resp.headers["Connection"] = "close";
