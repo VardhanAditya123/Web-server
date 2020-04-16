@@ -73,7 +73,7 @@ void Server::handle(const Socket_t& sock) const {
        resp.status_code = 401;
     //    resp.headers["WWW-Authenticate"] ="Basic realm=\"CS 252_web_server_p5 \"";
     //    resp.reason_phrase = "Unauthorized";
-    // }
+    }
   
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
