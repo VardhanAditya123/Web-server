@@ -68,7 +68,6 @@ void Server::handle(const Socket_t& sock) const {
   resp.http_version = request.http_version;
   resp.message_body = request.message_body;
   resp.reason_phrase = "OK";
-  cout << "DDEbug  " << request.headers["Authorization"] << endl;
   string s =  request.headers["Authorization"];
   resp.status_code = 401;
     if(s.length()==0){
@@ -147,7 +146,6 @@ void Server::handle(const Socket_t& sock) const {
       separate(request,line);
       line=sock->readline();
     }
-    // request->headers["Authorization"] = "Basic YWRpdHlhOnZhcmRoYW4K"
     request->message_body = msg ;
  }
 //  GET /index.html HTTP/1.1
