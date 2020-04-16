@@ -76,8 +76,10 @@ void Server::handle(const Socket_t& sock) const {
       resp.status_code = 401;
    }
     else{
-         if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4K=") == 0)
+         if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4K=") == 0){
+         cout << "WTF " << endl;
          resp.status_code=200; 
+         }
     }
     
   
