@@ -43,7 +43,7 @@ handle(slaveSocket);
 
 }
 else
-FILE *fd = flieno(4);
+FILE *fd = fileno(4);
 close(fd);
 }
 }
