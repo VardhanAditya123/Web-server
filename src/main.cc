@@ -17,6 +17,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <sys/wait.h>
 enum concurrency_mode {
     E_NO_CONCURRENCY = 0,
     E_FORK_PER_REQUEST = 'f',
