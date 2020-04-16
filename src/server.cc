@@ -70,7 +70,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.status_code = 401;
   resp.reason_phrase = "OK";
     if((request.headers).find("Authorization")!= (request.headers).end()){
-      //  resp.status_code = 401;
+      resp.status_code = 200;
 
     }
     // else{
