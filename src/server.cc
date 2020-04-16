@@ -75,7 +75,7 @@ void Server::handle(const Socket_t& sock) const {
    }
     else{
         string c;
-        for (auto kvp=headers.begin(); kvp != headers.end(); kvp++) {
+        for (auto kvp=requesr.headers.begin(); kvp != request.headers.end(); kvp++) {
         // std::cout << "field-name: " << kvp->first << "; field-value: " << kvp->second << std::endl;
         if(kvp->first.compare("Authorization")==0){
             c = kvp->first;
