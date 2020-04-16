@@ -68,12 +68,13 @@ void Server::handle(const Socket_t& sock) const {
   resp.http_version = request.http_version;
   resp.message_body = request.message_body;
   resp.status_code = 200;
-  
+  resp.reason_phrase = "OK";
     if((request.headers).find("Authorization")== (request.headers).end()){
        resp.headers["WWW-Authenticate"] ="Basic realm=\"CS 252_web_server_p5 \"";
-       
+       resp.status_code = 401;
+       resp.reason_phrase = "Unauthorized";
     }
-  resp.reason_phrase = "OK";
+  
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
   resp.headers["Content-Type"] = "html";
