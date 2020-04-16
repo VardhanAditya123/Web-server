@@ -42,7 +42,7 @@ handle(slaveSocket);
 exit(0);
 }
 else
-close(fileno(slaveSocket));
+close(fileno(slaveSocket.s));
 }
 }
 }
