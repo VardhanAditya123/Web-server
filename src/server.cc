@@ -69,14 +69,14 @@ void Server::handle(const Socket_t& sock) const {
   resp.message_body = request.message_body;
   resp.status_code = 200;
   //  cout<< "DEBUGG " << resp.headers["Authorization"] << endl;
-  if ( (request.headers).find("Authorization") == (resp.headers).end() ) {
+  if ( (resp.headers).find("Authorization") == (resp.headers).end() ) {
   resp.status_code = 401;
   }
   else{
     // if(resp.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
     //   resp.status_code = 200;
     // }
-    // resp.status_code=200;
+    resp.status_code=200;
   }
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
@@ -143,7 +143,7 @@ void Server::handle(const Socket_t& sock) const {
       separate(request,line);
       line=sock->readline();
     }
-    request->headers["Authorization"] = "Basic YWRpdHlhOnZhcmRoYW4K";
+    // request->headers["Authorization"] = "Basic YWRpdHlhOnZhcmRoYW4K"
     // std::map<std::string, std::string> headers;
     request->message_body = msg ;
  }
