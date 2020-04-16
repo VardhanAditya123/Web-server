@@ -36,18 +36,16 @@ void Server::run_fork() const {
 while (1) {
 Socket_t slaveSocket = _acceptor.accept_connection();
 // cout << slaveSocket << endl;
-if (slaveSocket >= 0) {
 int ret = fork();
 if (ret == 0) {
 handle(slaveSocket);
-}
-else
-close(4);
+exit(0);
 }
 
 }
 
 }
+
 
 void Server::run_thread() const {
   // TODO: Task 1.4
