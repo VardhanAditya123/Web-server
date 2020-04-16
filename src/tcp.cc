@@ -121,6 +121,7 @@ Socket_t TCPSocketAcceptor::accept_connection() const {
     if (s == -1) {
         throw ConnectionError("Unable to accept connection: " + std::string(strerror(errno)));
     }
+    cout << "DDEBUG  " << s <<endl;
     return std::make_unique<TCPSocket>(s, addr);
 }
 
