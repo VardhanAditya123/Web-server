@@ -45,12 +45,12 @@ int main(int argc, char** argv) {
     sigemptyset(&sa.sa_mask);
     sigaction(SIGINT, &sa, NULL);
     enum concurrency_mode mode = E_NO_CONCURRENCY;
-    char use_https = 0;
+    char use_https = 0; 
     int port_no = 0;
     int num_threads = 0;  // for use when running in pool of threads mode
-
+    
     char usage[] = "USAGE: myhttpd [-f|-t|-pNUM_THREADS] [-s] [-h] PORT_NO\n";
-
+     signal(SIGCHLD, sigchildHandler);
     if (argc == 1) {
         fputs(usage, stdout);
         return 0;
@@ -126,4 +126,9 @@ int main(int argc, char** argv) {
         break;
     }
     delete acceptor;
+}
+
+void sigchildHandler(int sig_num) 
+{ 
+  while (waitpid(-1, NULL, WNOHANG) > 0);
 }
