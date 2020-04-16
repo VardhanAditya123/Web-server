@@ -39,7 +39,7 @@ int slaveSocket = _acceptor.accept_connection();
 if (slaveSocket >= 0) {
 int ret = fork();
  if (ret == 0) {
-handle(sock);
+handle(slaveSocket);
 exit(0);
 }
 close(slaveSocket);
