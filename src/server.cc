@@ -32,20 +32,20 @@ void Server::run_linear() const {
   }
 }
 
-void Server::run_fork() const {
-while (1) {
-Socket_t slaveSocket = _acceptor.accept_connection();
-if (slaveSocket >= 0) {
-int ret = fork();
- if (ret == 0) {
-handle(slaveSocket);
-exit(0);
-}
-// else
-// close(fileno(slaveSocket));
+// void Server::run_fork() const {
+// while (1) {
+// Socket_t slaveSocket = _acceptor.accept_connection();
+// if (slaveSocket >= 0) {
+// int ret = fork();
+//  if (ret == 0) {
+// handle(slaveSocket);
+// exit(0);
 // }
-}
-}
+// // else
+// // close(fileno(slaveSocket));
+// // }
+// }
+// }
 
 void Server::run_thread() const {
   // TODO: Task 1.4
