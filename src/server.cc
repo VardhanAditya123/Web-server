@@ -38,9 +38,8 @@ Socket_t slaveSocket = _acceptor.accept_connection();
 // cout << slaveSocket << endl;
 if (slaveSocket >= 0) {
 int ret = fork();
- if (ret == 0) {
+if (ret == 0) {
 handle(slaveSocket);
-
 }
 else
 close(4);
