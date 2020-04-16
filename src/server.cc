@@ -154,7 +154,7 @@ void separate(HttpRequest* const request , string line){
    vector <string> vec;
    char *token = strtok((char*)(line.c_str()), ":"); 
     while (token != NULL) 
-    { 
+    { cout << token << endl;
       vec.push_back(trim(token));
       token = strtok(NULL, " "); 
     }
