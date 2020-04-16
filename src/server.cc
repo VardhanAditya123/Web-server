@@ -48,10 +48,12 @@ exit(0);
 
 void Server::run_thread() const {
   // TODO: Task 1.4
+while(1){
 pthread_attr_t attr;
 pthread_attr_init(&attr);
 pthread_attr_setdetachstate(&attr,PTHREAD_CREATE_DETACHED);
-pthread_create(&thread, &attr,handle, (void *) slaveSocket);
+pthread_create(&thread, &attr,handle  , (void *) slaveSocket);
+}
 }
 
 void Server::run_thread_pool(const int num_threads) const {
