@@ -160,7 +160,7 @@ void Server::handle(const Socket_t& sock) const {
       line=sock->readline();
     }
     request->message_body = msg ;
-    close(sock);
+    close(4);
  }
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
