@@ -49,6 +49,7 @@ exit(0);
 void Server::run_thread() const {
   // TODO: Task 1.4
 while(1){
+Socket_t slaveSocket = _acceptor.accept_connection();
 pthread_attr_t attr;
 pthread_attr_init(&attr);
 pthread_attr_setdetachstate(&attr,PTHREAD_CREATE_DETACHED);
