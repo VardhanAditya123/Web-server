@@ -75,7 +75,7 @@ void Server::handle(const Socket_t& sock) const {
    }
     else{
         //  if(c.compare( "Basic YWRpdHlhOnZhcmRoYW4K") == 0)
-         resp.status_code=200; 
+         resp.status_code=401; 
     }
     
   
