@@ -69,7 +69,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.message_body = request.message_body;
   resp.status_code = 200;
   //  cout<< "DEBUGG " << resp.headers["Authorization"] << endl;
-  if ( (resp.headers).find("Authorization") == (resp.headers).end() ) {
+  if ( (request.headers).find("Authorization") == (resp.headers).end() ) {
   resp.status_code = 401;
   }
   else{
