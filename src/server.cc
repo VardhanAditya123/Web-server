@@ -42,8 +42,9 @@ handle(slaveSocket);
 exit(0);
 }
 
-}else
+else
 close(4);
+}
 }
 }
 
