@@ -33,7 +33,18 @@ void Server::run_linear() const {
 }
 
 void Server::run_fork() const {
-  // TODO: Task 1.4
+while (1) {
+int slaveSocket = _acceptor.accept_connection();
+
+if (slaveSocket >= 0) {
+int ret = fork();
+ if (ret == 0) {
+handle(sock);
+exit(0);
+}
+close(slaveSocket);
+}
+}
 }
 
 void Server::run_thread() const {
