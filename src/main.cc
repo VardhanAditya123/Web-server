@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
     int num_threads = 0;  // for use when running in pool of threads mode
     
     char usage[] = "USAGE: myhttpd [-f|-t|-pNUM_THREADS] [-s] [-h] PORT_NO\n";
-     signal(SIGCHLD, sigchildHandler);
+     signal(SIGCHLD, sigchildHandler1);
     if (argc == 1) {
         fputs(usage, stdout);
         return 0;
@@ -131,7 +131,7 @@ int main(int argc, char** argv) {
     delete acceptor;
 }
 
-void sigchildHandler(int sig_num) 
+void sigchildHandler1(int sig_num) 
 { 
   while (waitpid(-1, NULL, WNOHANG) > 0);
 }
