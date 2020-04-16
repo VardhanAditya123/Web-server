@@ -73,6 +73,7 @@ void Server::handle(const Socket_t& sock) const {
   }
   else{
     if(resp.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
+      cout << (resp.headers["Authorization"] << endl;
       resp.status_code = 200;
     }
   }
