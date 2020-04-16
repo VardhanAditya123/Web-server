@@ -73,7 +73,7 @@ void Server::handle(const Socket_t& sock) const {
       resp.status_code = 401;
    }
     else{
-         resp.status_code=200; 
+        //  resp.status_code=200; 
     }
     
   
