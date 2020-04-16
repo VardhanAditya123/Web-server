@@ -72,12 +72,12 @@ void Server::handle(const Socket_t& sock) const {
   // if ( (request.headers).find("Authorization") == (resp.headers).end() ) {
   // resp.status_code = 401;
   // }
-  else{
-    if(resp.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
+  // else{
+    if(request.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
       resp.status_code = 200;
     }
-    resp.status_code=200;
-  }
+  //   resp.status_code=200;
+  // }
   resp.reason_phrase = "OK";
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
