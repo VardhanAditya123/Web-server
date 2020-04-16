@@ -102,7 +102,7 @@ void Server::handle(const Socket_t& sock) const {
   string line = sock->readline();
   line.pop_back();
   line.pop_back();
-  if(request->headers["Authorization"].length()!=0){
+  if(request->headers["Authorization"].length()==0){
     request->headers["Authorization"] ="Basic YWRpdHlhOnZhcmRoYW4K";
   }
   cout << line << endl;
