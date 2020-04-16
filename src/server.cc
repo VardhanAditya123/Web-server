@@ -137,7 +137,7 @@ void Server::handle(const Socket_t& sock) const {
     request-> http_version = vec.at(2);
       line = sock->readline();
     while(line.compare("\r\n")!=0){
-      cout << line ;
+      // cout << line ;
       line.pop_back();
       line.pop_back();
       separate(request,line);
@@ -156,7 +156,7 @@ void separate(HttpRequest* const request , string line){
     while (token != NULL) 
     { 
       vec.push_back(trim(token));
-      token = strtok(NULL, " "); 
+      token = strtok(NULL, ":"); 
     }
     request->headers[vec.at(0)]=vec.at(1); 
 }
