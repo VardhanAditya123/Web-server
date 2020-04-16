@@ -80,9 +80,12 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
   resp.headers["Content-Type"] = "html";
-  if(resp.headers["Authorization"].length()==0){
+  if(request.headers["Authorization"].length()==0){
   resp.headers["WWW-Authenticate"] ="Basic realm=\"CS 252_web_server_p5 \"";
   resp.status_code = 401;
+  }
+  else{
+
   }
 
  
