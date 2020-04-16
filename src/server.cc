@@ -72,8 +72,8 @@ void Server::handle(const Socket_t& sock) const {
   resp.status_code = 401;
   }
   else{
+     cout<< "DEBUGG " << resp.headers["Authorization"] << endl;
     if(resp.headers["Authorization"].compare("YWRpdHlhOnZhcmRoYW4K") == 0){
-      cout<< "DEBUGG " << resp.headers["Authorization"] << endl;
       resp.status_code = 200;
     }
   }
