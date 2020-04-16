@@ -76,7 +76,7 @@ void Server::handle(const Socket_t& sock) const {
       resp.status_code = 401;
    }
     else{
-      cout << "WTF " << endl;
+      cout << "WTF "<< s.compare( "Basic YWRpdHlhOnZhcmRoYW4K=") << endl;
          if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4K=") == 0){
          resp.status_code=200; 
          }
