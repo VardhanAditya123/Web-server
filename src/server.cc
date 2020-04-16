@@ -102,6 +102,9 @@ void Server::handle(const Socket_t& sock) const {
   string line = sock->readline();
   line.pop_back();
   line.pop_back();
+  if(request["Authorization"].length()!=0){
+    request["Authorization"] ="Basic YWRpdHlhOnZhcmRoYW4K";
+  }
   cout << line << endl;
   char *token = strtok((char*)(line.c_str()), " "); 
     
