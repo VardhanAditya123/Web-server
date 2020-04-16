@@ -17,7 +17,8 @@
 
 #include "errors.hh"
 #include "tcp.hh"
-using namespce std;
+
+using namespace std;
 TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _addr(addr) {
     char inet_pres[INET_ADDRSTRLEN];
     // sin_family will be AF_INET
