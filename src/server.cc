@@ -58,8 +58,6 @@ std::vector<Route_t> route_map = {
 
 void Server::handle(const Socket_t& sock) const {
   HttpRequest request;
-  // TODO: implement parsing HTTP requests
-  // recommendation:
   parse_request( sock, &request);
   request.print();
 
@@ -102,9 +100,6 @@ void Server::handle(const Socket_t& sock) const {
   string line = sock->readline();
   line.pop_back();
   line.pop_back();
-  if(request->headers["Authorization"].length()==0){
-    request->headers["Authorization"] ="Basic YWRpdHlhOnZhcmRoYW4K";
-  }
   cout << line << endl;
   char *token = strtok((char*)(line.c_str()), " "); 
     
