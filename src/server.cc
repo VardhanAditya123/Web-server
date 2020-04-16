@@ -145,7 +145,6 @@ void Server::handle(const Socket_t& sock) const {
       line=sock->readline();
     }
     // request->headers["Authorization"] = "Basic YWRpdHlhOnZhcmRoYW4K"
-    // std::map<std::string, std::string> headers;
     request->message_body = msg ;
  }
 //  GET /index.html HTTP/1.1
