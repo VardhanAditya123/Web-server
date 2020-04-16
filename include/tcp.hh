@@ -9,7 +9,7 @@
 #include "socket.hh"
 
 class TCPSocket : public Socket {
- private:
+ public:
     const int _socket;
     const struct sockaddr_in _addr;
  public:
