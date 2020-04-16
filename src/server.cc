@@ -74,10 +74,10 @@ void Server::handle(const Socket_t& sock) const {
        resp.headers["WWW-Authenticate"] ="Basic realm=\"CS 252_web_server_p5 \"";
 
     }
-    else{
-      if(request.headers["Authorization"] == "YWRpdHlhOnZhcmRoYW4K")
-      resp.status_code = 200;
-    }
+    // else{
+    //   if(request.headers["Authorization"] == "YWRpdHlhOnZhcmRoYW4K")
+    //   resp.status_code = 200;
+    // }
     
   
   resp.headers["Connection"] = "close";
