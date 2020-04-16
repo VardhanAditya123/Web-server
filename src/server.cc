@@ -48,13 +48,19 @@ exit(0);
 
 void Server::run_thread() const {
   // TODO: Task 1.4
-while(1){
-Socket_t slaveSocket = _acceptor.accept_connection();
+while (1) {
+// Accept request
+Socket_t sock = _acceptor.accept_connection();
+// Put socket in new ThreadParams struct
+ThreadParams * threadParams = new ThreadParams;
+threadParams->server = this;
+threadParams->sock = std::move(sock);
+// Create thread
+pthread_t thrID;
 pthread_attr_t attr;
-pthread_t thread;
 pthread_attr_init(&attr);
-pthread_attr_setdetachstate(&attr,PTHREAD_CREATE_DETACHED);
-pthread_create(&thread, &attr,handle,slaveSocket);
+pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,(void *) threadParams);
 }
 }
 
