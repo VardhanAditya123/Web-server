@@ -34,7 +34,7 @@ void Server::run_linear() const {
 
 void Server::run_fork() const {
 while (1) {
-int slaveSocket = _acceptor.accept_connection();
+Socket_t slaveSocket = _acceptor.accept_connection();
 
 if (slaveSocket >= 0) {
 int ret = fork();
