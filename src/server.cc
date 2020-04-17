@@ -28,7 +28,7 @@ void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 string filename;
-streampos size;
+// streampos size;
 int hflag=0;
     char *buff;
 
