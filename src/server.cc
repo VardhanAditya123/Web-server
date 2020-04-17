@@ -97,7 +97,7 @@ void Server::run_thread_pool(const int num_threads) const {
   Socket_t  master_socket = _acceptor.accept_connection(); 
   ThreadParams * threadParams = new ThreadParams;
   threadParams->server = this;
-  threadParams->sock = std::move(sock);
+  threadParams->sock = std::move(master_socket);
   dispatchThread(threadParams);
 
   for (int i=0; i<num_threads; i++) {
