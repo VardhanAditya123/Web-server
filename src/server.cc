@@ -173,7 +173,7 @@ void Server::handle(const Socket_t& sock) const {
 
   std::cout << resp.to_string() << std::endl;
   size_t len =  (resp.message_body).length();
-  sock->write(resp.to_string(),len);
+  sock->write((resp.to_string()).c_str(),len);
 }
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request){
