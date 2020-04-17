@@ -257,7 +257,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       //   file.close();
       // }
      
-      std::ifstream fin(fn, ios::in | ios::binary );
+      std::ifstream fin(fn,  ios::binary );
       fin.read(buff, 1000000);
       msg = buff;
       cout <<"The size is :" << sizeof(buff) << endl;
