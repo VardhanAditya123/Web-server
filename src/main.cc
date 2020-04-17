@@ -36,18 +36,18 @@ void sigchildHandler1(int sig_num)
 
 
 int main(int argc, char** argv) {
-    struct rlimit mem_limit = { .rlim_cur = 40960000, .rlim_max = 91280000 };
-    struct rlimit cpu_limit = { .rlim_cur = 300, .rlim_max = 600 };
-    struct rlimit nproc_limit = { .rlim_cur = 50, .rlim_max = 100 };
-    if (setrlimit(RLIMIT_AS, &mem_limit)) {
-        perror("Couldn't set memory limit\n");
-    }
-    if (setrlimit(RLIMIT_CPU, &cpu_limit)) {
-        perror("Couldn't set CPU limit\n");
-    }
-    if (setrlimit(RLIMIT_NPROC, &nproc_limit)) {
-        perror("Couldn't set NPROC limit\n");
-    }
+    // struct rlimit mem_limit = { .rlim_cur = 40960000, .rlim_max = 91280000 };
+    // struct rlimit cpu_limit = { .rlim_cur = 300, .rlim_max = 600 };
+    // struct rlimit nproc_limit = { .rlim_cur = 50, .rlim_max = 100 };
+    // if (setrlimit(RLIMIT_AS, &mem_limit)) {
+    //     perror("Couldn't set memory limit\n");
+    // }
+    // if (setrlimit(RLIMIT_CPU, &cpu_limit)) {
+    //     perror("Couldn't set CPU limit\n");
+    // }
+    // if (setrlimit(RLIMIT_NPROC, &nproc_limit)) {
+    //     perror("Couldn't set NPROC limit\n");
+    // }
 
     struct sigaction sa;
     sa.sa_handler = signal_handler;
