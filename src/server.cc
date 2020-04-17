@@ -81,7 +81,7 @@ t.detach();
 
 void Server::run_thread_pool(const int num_threads) const {
   Socket_t masterSocket;
-  std::thread[num_threads] t(dispatchThread, threadParams);
+  std::thread t[num_threads](dispatchThread, threadParams);
  for (int i=0; i<num_threads; i++) {
 pthread_create(&thread[i], NULL, loopthread,masterSocket);
 
