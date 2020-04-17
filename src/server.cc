@@ -18,8 +18,8 @@
 #include "routes.hh"
 #include <cstring>
 #include <fstream>
- #include <pthread.h>
- #include <thread>
+#include <pthread.h>
+#include <thread>
 using namespace std;
 string file_path;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
@@ -34,15 +34,15 @@ void Server::run_linear() const {
 }
 
 void Server::run_fork() const {
-while (1) {
-Socket_t slaveSocket = _acceptor.accept_connection();
-int ret = fork();
-if (ret == 0) {
-handle(slaveSocket);
-exit(0);
-}
+  while (1) {
+    Socket_t slaveSocket = _acceptor.accept_connection();
+    int ret = fork();
+    if (ret == 0) {
+      handle(slaveSocket);
+      exit(0);
+    }
 
-}
+  }
 
 }
 
@@ -50,69 +50,67 @@ exit(0);
 // PTHREAD VERSION
 struct ThreadParams {
 
-const Server * server;
-Socket_t sock;
+  const Server * server;
+  Socket_t sock;
 
 };
 void dispatchThread( ThreadParams * params) {
 
-printf("Dispatch Thread\n");
-// Thread dispatching this request
-params->server->handle(params->sock);
-// Delete params struct
-delete params;
+  printf("Dispatch Thread\n");
+  // Thread dispatching this request
+  params->server->handle(params->sock);
+  // Delete params struct
+  delete params;
 
 }
 
 
 void Server::run_thread() const {
-while (1) {
-// Accept request
-Socket_t sock = _acceptor.accept_connection();
-// Put socket in new ThreadParams struct
-ThreadParams * threadParams = new ThreadParams;
-threadParams->server = this;
-threadParams->sock = std::move(sock);
-// Create thread
-std::thread t(dispatchThread, threadParams);
-t.detach();
-}
+  while (1) {
+    // Accept request
+    Socket_t sock = _acceptor.accept_connection();
+    // Put socket in new ThreadParams struct
+    ThreadParams * threadParams = new ThreadParams;
+    threadParams->server = this;
+    threadParams->sock = std::move(sock);
+    // Create thread
+    std::thread t(dispatchThread, threadParams);
+    t.detach();
+  }
 }
 
 void Server::run_thread_pool(const int num_threads) const {
   Socket_t masterSocket;
-  ThreadParams * threadParams = new ThreadParams;
-threadParams->server = this;
-threadParams->sock = std::move(masterSocket);
-  std::thread t[num_threads](dispatchThread, threadParams);
- for (int i=0; i<num_threads; i++) {
-pthread_create(&thread[i], NULL, loopthread,masterSocket);
 
-}
-loopthread (masterSocket);
+  std::thread t[num_threads](dispatchThread, threadParams);
+  for (int i=0; i<num_threads; i++) {
+    pthread_create(&thread[i], NULL, loopthread,masterSocket);
+
+  }
+  loopthread (masterSocket);
 }
 
 
 void *loopthread (int masterSocket) {
-while (1) {
-int slaveSocket = accept(masterSocket,&sockInfo, &alen);
+  while (1) {
+    int slaveSocket = accept(masterSocket,&sockInfo, &alen);
 
-if (slaveSocket >= 0) {
-dispatchHTTP(slaveSocket);
-}
-}
+    if (slaveSocket >= 0) {
+      dispatchHTTP(slaveSocket);
+    }
+  }
 }
 
 // example route map. you could loop through these routes and find the first route which
 // matches the prefix and call the corresponding handler. You are free to implement
 // the different routes however you please
 /*
-std::vector<Route_t> route_map = {
-  std::make_pair("/cgi-bin", handle_cgi_bin),
-  std::make_pair("/", handle_htdocs),
-  std::make_pair("", handle_default)
-};
-*/
+   std::vector<Route_t> route_map = {
+   std::make_pair("/cgi-bin", handle_cgi_bin),
+   std::make_pair("/", handle_htdocs),
+   std::make_pair("", handle_default)
+   };
+ */
 
 
 void Server::handle(const Socket_t& sock) const {
@@ -129,32 +127,32 @@ void Server::handle(const Socket_t& sock) const {
   resp.reason_phrase = "OK";
   string s =  request.headers["Authorization"];
   // resp.status_code = 401;
-    if(s.length()==0){
-      request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
-      resp.status_code = 401;
-   }
-    else{
-      cout << s << endl;
-         if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4=") == 0){
-         resp.status_code=200; 
-         }
-         else{
-           resp.status_code = 401;
-         }
+  if(s.length()==0){
+    request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
+    resp.status_code = 401;
+  }
+  else{
+    cout << s << endl;
+    if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4=") == 0){
+      resp.status_code=200; 
     }
-    
-  
+    else{
+      resp.status_code = 401;
+    }
+  }
+
+
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
   resp.headers["Content-Type"] = "html";
- 
- 
-   std::cout << resp.to_string() << std::endl; 
+
+
+  std::cout << resp.to_string() << std::endl; 
   sock->write(resp.to_string());
 }
 
- void  parse_request(const Socket_t& sock, HttpRequest* const request){
-   // Buffer used to store the name received from the client
+void  parse_request(const Socket_t& sock, HttpRequest* const request){
+  // Buffer used to store the name received from the client
   vector <string> vec;
   vector <string>head;
   char *name;
@@ -168,58 +166,58 @@ void Server::handle(const Socket_t& sock) const {
   line.pop_back();
   cout << line << endl;
   char *token = strtok((char*)(line.c_str()), " "); 
-    
-    // Keep printing tokens while one of the 
-    // delimiters present in str[]. 
-    while (token != NULL) 
-    { 
-   
-      vec.push_back(trim(token));
-      token = strtok(NULL, " "); 
-     
-    } 
-    std::fstream fs;
-    // cout << fn << endl;
-     if(vec.at(1).compare("/")==0){
-      vec.at(1) = "/index.html";
-    }
-    string fn = "http-root-dir/htdocs"+vec.at(1);
-    file_path = fn;
-    
-    fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
-     if (fs.is_open())
+
+  // Keep printing tokens while one of the 
+  // delimiters present in str[]. 
+  while (token != NULL) 
+  { 
+
+    vec.push_back(trim(token));
+    token = strtok(NULL, " "); 
+
+  } 
+  std::fstream fs;
+  // cout << fn << endl;
+  if(vec.at(1).compare("/")==0){
+    vec.at(1) = "/index.html";
+  }
+  string fn = "http-root-dir/htdocs"+vec.at(1);
+  file_path = fn;
+
+  fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
+  if (fs.is_open())
   {
     while ( getline (fs,line) )
     {
-       msg+=line;
+      msg+=line;
     }
     fs.close();
-   
+
   }
-    request->method = vec.at(0);
-    request->request_uri = vec.at(1);
-    request-> http_version = vec.at(2);
-      line = sock->readline();
-    while(line.compare("\r\n")!=0){
-      // cout << line ;
-      line.pop_back();
-      line.pop_back();
-      separate(request,line);
-      line=sock->readline();
-    }
-    request->message_body = msg ;
-    
- }
+  request->method = vec.at(0);
+  request->request_uri = vec.at(1);
+  request-> http_version = vec.at(2);
+  line = sock->readline();
+  while(line.compare("\r\n")!=0){
+    // cout << line ;
+    line.pop_back();
+    line.pop_back();
+    separate(request,line);
+    line=sock->readline();
+  }
+  request->message_body = msg ;
+
+}
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
 
 void separate(HttpRequest* const request , string line){
-   vector <string> vec;
-   char *token = strtok((char*)(line.c_str()), ":"); 
-    while (token != NULL) 
-    { 
-      vec.push_back(trim(token));
-      token = strtok(NULL, ":"); 
-    }
-    request->headers[vec.at(0)]=vec.at(1); 
+  vector <string> vec;
+  char *token = strtok((char*)(line.c_str()), ":"); 
+  while (token != NULL) 
+  { 
+    vec.push_back(trim(token));
+    token = strtok(NULL, ":"); 
+  }
+  request->headers[vec.at(0)]=vec.at(1); 
 }
