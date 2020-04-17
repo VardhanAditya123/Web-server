@@ -74,15 +74,13 @@ ThreadParams * threadParams = new ThreadParams;
 threadParams->server = this;
 threadParams->sock = std::move(sock);
 // Create thread
-pthread_t thrID;
-pthread_attr_t attr;
-pthread_attr_init(&attr);
-pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,(void *) threadParams);
+std::thread t(dispatchThread, threadParams);
+t.detach();
 }
 }
 
 void Server::run_thread_pool(const int num_threads) const {
+  
  for (int i=0; i<4; i++) {
 pthread_create(&thread[i], NULL, loopthread,masterSocket);
 
