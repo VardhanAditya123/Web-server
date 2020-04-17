@@ -25,6 +25,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 string filename;
+int hflag=0;
 void Server::run_linear() const {
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
@@ -207,24 +208,36 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     vec.at(1) = "/index.html";
   }
 
-  if (vec.at(1).find("html") != std::string::npos ) {
-    std::cout << "YESS found!" << '\n';
-}
+   if (vec.at(1).find("html") != std::string::npos ) {
+     hflag = 1;
+   }
 
   string fn = "http-root-dir/htdocs"+vec.at(1);
   filename=fn;
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app |  std::fstream::binary);
   if (fs.is_open())
   {
+    if (hflag==1 ) {
     while ( getline (fs,line) )
     {
       msg+=line;
     }
     fs.close();
-
-  }
-  if(vec.at(1).compare("/hello")==0){
+    if(vec.at(1).compare("/hello")==0){
     msg="Hello CS252!";
+    }
+    }
+  }
+  else{
+
+    std::ifstream input( "C:\\Final.gif", std::ios::binary );
+    std::ofstream output( "C:\\myfile.gif", std::ios::binary );
+
+    std::copy( 
+        std::istreambuf_iterator<char>(input), 
+        std::istreambuf_iterator<char>( ),
+        std::ostreambuf_iterator<char>(output));
+
   }
   request->method = vec.at(0);
   request->request_uri = vec.at(1);
