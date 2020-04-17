@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
     int num_threads = 0;  // for use when running in pool of threads mode
     
     char usage[] = "USAGE: myhttpd [-f|-t|-pNUM_THREADS] [-s] [-h] PORT_NO\n";
-    signal(SIGCHLD, sigchildHandler1);
+    // signal(SIGCHLD, sigchildHandler1);
     if (argc == 1) {
         fputs(usage, stdout);
         return 0;
