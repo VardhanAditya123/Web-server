@@ -80,7 +80,7 @@ void Server::run_thread() const {
 }
 
 
-void* Server::run_linear2(Server* serv) const {
+void* Server::run_linear2(const Server* serv) const {
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
     handle(sock);
