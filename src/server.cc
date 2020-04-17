@@ -257,10 +257,12 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       std::ifstream input( fn, std::ios::binary );
 
     // copies all data into buffer
-    char*memblock;
-     memblock(std::istreambuf_iterator<char>(input), {});
+    char*buffer;
+    
+    std::vector<unsigned char> v(std::istreambuf_iterator<char>(input), {});
+    std::copy(_v.begin(), _v.end(), buffer);
      size = input.tellg();
-     sock->write(memblock,size);
+     sock->write(buffer,size);
     }
   
 
