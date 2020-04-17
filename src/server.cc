@@ -262,7 +262,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     
   
       std::ifstream fin(fn, ios::in | ios::binary );
-      fin.read(buffer, 1000000);
+      fin.read(buff, 1000000);
     }
   
 
