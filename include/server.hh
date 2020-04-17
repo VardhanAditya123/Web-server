@@ -14,7 +14,7 @@ class Server {
     void run_thread_pool(const int num_threads) const;
     void run_thread() const;
     void handle(const Socket_t& sock) const;
-    void loopthread (const Socket_t& sock) ;
+    void loopthread ( Socket_t& sock) ;
 };
 
 #endif  // INCLUDE_SERVER_HH_
