@@ -183,7 +183,9 @@ void Server::handle(const Socket_t& sock) const {
   }
   else{
     sock->write(memblock,size);
+    delete memblock;
   }
+  
   hflag = 0;
 }
 
