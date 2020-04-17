@@ -80,7 +80,7 @@ void Server::run_thread() const {
 }
 
 
-void Server::loopthread ( Socket_t sock)  {
+void Server::loopthread ( Socket_t sock) const  {
  while (1) {
   sock = _acceptor.accept_connection();
   
