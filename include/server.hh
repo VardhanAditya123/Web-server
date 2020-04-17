@@ -4,7 +4,7 @@
 #include "socket.hh"
 
 class Server {
- public:
+ private:
     SocketAcceptor const& _acceptor;
 
  public:
