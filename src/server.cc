@@ -47,8 +47,25 @@ exit(0);
 }
 
 
+// PTHREAD VERSION
+struct ThreadParams {
+
+const Server * server;
+Socket_t sock;
+
+};
+void dispatchThread( ThreadParams * params) {
+
+printf("Dispatch Thread\n");
+// Thread dispatching this request
+params->server->handle(params->sock);
+// Delete params struct
+delete params;
+
+}
+
+
 void Server::run_thread() const {
-  // TODO: Task 1.4
 while (1) {
 // Accept request
 Socket_t sock = _acceptor.accept_connection();
@@ -61,7 +78,7 @@ pthread_t thrID;
 pthread_attr_t attr;
 pthread_attr_init(&attr);
 pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-pthread_create(&thrID, &attr, (void* (*)(void*) )handle,(void *) threadParams);
+pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,(void *) threadParams);
 }
 }
 
