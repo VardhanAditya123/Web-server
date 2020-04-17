@@ -271,7 +271,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     line=sock->readline();
   }
 
-  request->message_body = msg ;
+  request->message_body = buff ;
 
 }
 //  GET /index.html HTTP/1.1
