@@ -80,7 +80,7 @@ void Server::run_thread() const {
 }
 
 
-void Server::loopthread ()  {
+void Server::loopthread () const  {
 
   
   while (1) {
