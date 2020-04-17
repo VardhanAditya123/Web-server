@@ -246,7 +246,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     else{
       // streampos size;
       cout << "TESTING" <<fn << endl;
-      ifstream file (fn, ios::in|ios::binary|ios::ate);
+      ifstream file (fn, ios::binary);
       if (file.is_open())
       {
         size = file.tellg();
@@ -254,7 +254,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         file.seekg (0, ios::beg);
         file.read (memblock, size);
         file.close();
-        memblock[size]='\0';
       }
     }
   
