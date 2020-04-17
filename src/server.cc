@@ -241,7 +241,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     file.close();
 
 
+
     delete[] memblock;
+  }
   }
    
 
