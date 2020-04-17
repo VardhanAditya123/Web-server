@@ -245,15 +245,13 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       // streampos size;
       cout << "TESTING" <<fn << endl;
       ifstream file (fn, ios::in|ios::binary|ios::ate);
-      ofstream file1 (fn, ios::out|ios::binary);
       if (file.is_open())
       {
         size = file.tellg();
         cout << "SIIZE: " << size << endl;
         buff = new char [size];
         file.seekg (0, ios::beg);
-        // file.read (buff, size);
-        file1.write(buff,size);
+        file.read (buff, size);
         cout << buff <<endl;
         file.close();
       }
