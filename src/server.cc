@@ -206,7 +206,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
 
   string fn = "http-root-dir/htdocs"+vec.at(1);
-  filename=gn;
+  filename=fn;
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
   if (fs.is_open())
   {
