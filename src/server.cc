@@ -203,7 +203,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   } 
   std::fstream fs;
   // cout << fn << endl;
-  if(vec.at(1).compare("/")==0){
+  if((vec.at(1)).compare("/")==0){
     vec.at(1) = "/index.html";
   }
 
