@@ -30,6 +30,7 @@ Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 string filename;
 streampos size;
 int hflag=0;
+char*buffer;
 
 void Server::run_linear() const {
   while (1) {
@@ -180,10 +181,10 @@ void Server::handle(const Socket_t& sock) const {
     std::cout << resp.to_string() << std::endl;
     sock->write(resp.to_string());
   }
-  // else{
-  //   cout << resp.headers["Content-Type"] << endl;
-  //   sock->write(memblock,size);
-  // }
+  else{
+    cout << resp.headers["Content-Type"] << endl;
+    sock->write(buffer,size);
+  }
   
   hflag = 0;
 }
@@ -257,12 +258,10 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       std::ifstream input( fn, std::ios::binary );
 
     // copies all data into buffer
-    char*buffer;
     
-    std::vector<unsigned char> v(std::istreambuf_iterator<char>(input), {});
-    std::copy(v.begin(), v.end(), buffer);
-     size = input.tellg();
-     sock->write(buffer,size);
+      std::vector<unsigned char> v(std::istreambuf_iterator<char>(input), {});
+      std::copy(v.begin(), v.end(), buffer);
+      size = input.tellg();
     }
   
 
