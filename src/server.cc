@@ -258,7 +258,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
     // copies all data into buffer
     char*memblock;
-    std::vector<unsigned char> memblock(std::istreambuf_iterator<char>(input), {});
+     memblock(std::istreambuf_iterator<char>(input), {});
      size = input.tellg();
      sock->write(memblock,size);
     }
