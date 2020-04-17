@@ -95,8 +95,7 @@ void Server::run_thread_pool(const int num_threads) const {
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 
   for (int i=0; i<num_threads; i++) {
-    // (void*)(*fun_ptr)(void*){run_linear2};
-    pthread_create(&thread[i],&attr,void *(*run_linear2)(void*),this);
+    pthread_create(&thread[i],&attr,run_linear2,this);
   } 
 }
 
