@@ -80,7 +80,7 @@ void Server::run_thread() const {
 }
 
 
-void Server::loopthread (const Socket_t& sock) const {
+void Server::loopthread (ThreadParams * params) const {
   while (1) {
       handle(sock);
     }
