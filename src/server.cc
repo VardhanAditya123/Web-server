@@ -229,7 +229,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
   else{
      std::ifstream input( fn, std::ios::binary );
-     ifstream.read(msg);
+     input.read(msg);
   }
    
 
