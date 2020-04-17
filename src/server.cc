@@ -251,8 +251,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         cout << "SIIZE: " << size << endl;
         buff = new char [size];
         file.seekg (0, ios::beg);
-        FILE * filp = fopen(fn.c_str(), "rb"); 
-        int bytes_read = fread(buff, sizeof(char), size, filp);
+        file.read (buff, size);
         cout << buff <<endl;
         file.close();
       }
