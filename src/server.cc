@@ -30,7 +30,7 @@ Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 string filename;
 streampos size;
 int hflag=0;
-char*buffer;
+    char buff[1000000];
 
 void Server::run_linear() const {
   while (1) {
@@ -260,7 +260,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
     // copies all data into buffer
     
-      char buff[1000000];
+  
       FILE * filp = fopen(fn.c_str(), "rb"); 
       int bytes_read = fread(buff, sizeof(char),1000000 , filp);
       buffer=buff;
