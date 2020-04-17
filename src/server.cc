@@ -80,11 +80,11 @@ void Server::run_thread() const {
 }
 
 
-void Server::loopthread (int a) const  {
+void Server::loopthread (const Socket_t& sock) const  {
 
   
   while (1) {
-  Socket_t  sock = _acceptor.accept_connection();
+  sock = _acceptor.accept_connection();
   
   ThreadParams * threadParams = new ThreadParams;
   threadParams->server = this;
@@ -98,16 +98,17 @@ void Server::loopthread (int a) const  {
 
 void Server::run_thread_pool(const int num_threads) const {
   pthread_t thread[num_threads];
+  Socket_t  master_socket = _acceptor.accept_connection();
   for (int i=0; i<num_threads; i++) {
     
     pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-    pthread_create(&thread[i], &attr, loopthread,1);
+    pthread_create(&thread[i], &attr, loopthread,matches);
     
 
   }
-  loopthread (1);
+  loopthread (master_socket);
 }
 
 
