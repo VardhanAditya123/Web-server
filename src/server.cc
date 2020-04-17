@@ -81,7 +81,7 @@ void Server::run_thread() const {
 
 
 void Server::loopthread () const  {
-  cout << "HERERERE" << endl
+  cout << "HERERERE" << endl;
  while (1) {
 
   Socket_t sock = _acceptor.accept_connection();
