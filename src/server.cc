@@ -250,7 +250,8 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       if (file.is_open())
       {
         size = file.tellg();
-        memblock = new char [size];
+        memblock = new char [size+1];
+        memblock[size+1]="\0";
         file.seekg (0, ios::beg);
         file.read (memblock, size);
         file.close();
