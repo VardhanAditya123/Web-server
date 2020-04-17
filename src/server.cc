@@ -87,7 +87,7 @@ void* Server::run_linear2(Server* serv) const {
   }
 }
 
-void* run_linear3()  {
+void* run_linear3() const  {
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
     handle(sock);
