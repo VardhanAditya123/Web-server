@@ -249,8 +249,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       {
         size = file.tellg();
         cout << "SIIZE: " << size << endl;
-        buff = new char [3793];
-        cout << "F@ " << sizeof(buff) << endl;
+        buff = new char [size];
         file.seekg (0, ios::beg);
         file.read (buff, size);
         file.close();
