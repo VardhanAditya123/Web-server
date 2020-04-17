@@ -80,28 +80,30 @@ void Server::run_thread() const {
 }
 
 
-void loopthread (ThreadParams * params)  {
-  while (1) {
-     printf("Dispatch Thread\n");
-  // Thread dispatching this request
-  params->server->handle(params->sock);
-  // Delete params struct
-  delete params;
-    }
- }
+void loopthread ()  {
 
-void Server::run_thread_pool(const int num_threads) const {
+  
+  while (1) {
   Socket_t  sock = _acceptor.accept_connection();
   pthread_t thread[num_threads];
   ThreadParams * threadParams = new ThreadParams;
   threadParams->server = this;
   threadParams->sock = std::move(sock);
+  printf("Dispatch Thread\n");
+  // Thread dispatching this request
+  params->server->handle(params->sock);
+  delete params;
+    }
+ }
+
+void Server::run_thread_pool(const int num_threads) const {
+  
   for (int i=0; i<num_threads; i++) {
     
     pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-    pthread_create(&thread[i], &attr, (void* (*)(void*) )loopthread,(void *) threadParams);
+    pthread_create(&thread[i], &attr, (void* (*)(void*) )loopthread);
     
 
   }
