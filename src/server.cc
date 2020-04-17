@@ -88,6 +88,20 @@ void Server::run_linear2(Server &server) const {
 }
 
 
+
+
+void Server::run_thread_pool(const int num_threads) const {
+  pthread_t thread[num_threads];
+  pthread_attr_t attr;
+  pthread_attr_init(&attr);
+  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+  Socket_t master = _acceptor.accept_connection();
+
+  for (int i=0; i<num_threads; i++) {
+    pthread_create(&thread[i],&attr,run_linear2,&this);
+  } 
+}
+
 void Server::loopthread () const  {
 
  while (1) {
@@ -100,18 +114,6 @@ void Server::loopthread () const  {
   dispatchThread(threadParams);
   }
  }
-
-void Server::run_thread_pool(const int num_threads) const {
-  pthread_t thread[num_threads];
-  pthread_attr_t attr;
-  pthread_attr_init(&attr);
-  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-  Socket_t master = _acceptor.accept_connection();
-
-  for (int i=0; i<num_threads; i++) {
-    pthread_create(&thread[i],&attr,run_linear2,this);
-  } 
-}
 
 
 
