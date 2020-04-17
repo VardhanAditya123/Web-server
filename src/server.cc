@@ -82,13 +82,12 @@ void Server::run_thread() const {
 
 void Server::loopthread ()   {
  while (1) {
-  
+  Socket_t sock = _acceptor.accept_connection();
   ThreadParams * threadParams = new ThreadParams;
   threadParams->server = this;
   threadParams->sock = std::move(sock);
   printf("Dispatch Thread\n");
   dispatchThread(threadParams);
-  sock = _acceptor.accept_connection();
   }
  }
 
