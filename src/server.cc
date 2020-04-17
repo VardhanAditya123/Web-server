@@ -259,6 +259,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
     // copies all data into buffer
     std::vector<unsigned char> memblock(std::istreambuf_iterator<char>(input), {});
+     size = input.tellg();
     }
   
 
