@@ -97,7 +97,7 @@ void Server::run_thread_pool(const int num_threads) const {
   pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
   Socket_t master = _acceptor.accept_connection();
-  Server * ser = new Server();
+  Server * ser = new Server(master);
   for (int i=0; i<num_threads; i++) {
     std::thread t(&Server::loopthread,ser);  
   }
