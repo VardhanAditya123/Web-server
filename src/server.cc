@@ -100,7 +100,8 @@ void Server::run_thread_pool(const int num_threads) const {
 
   for (int i=0; i<num_threads; i++) {
     //  pthread_create(&thread[i], &attr,(void* (*)(void*) )loopthread,NULL);
-    pthread_create(&thread[i], &attr,(void* (*)(void*) ) loopthread ,(void *)NULL);
+    std::thread thread[i](loopthread, NULL);
+    // pthread_create(&thread[i], &attr,(void* (*)(void*) ) loopthread ,(void *)NULL);
     
   }
   loopthread ();
