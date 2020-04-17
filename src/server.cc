@@ -171,8 +171,9 @@ void Server::handle(const Socket_t& sock) const {
   // resp.headers["Content-Type"] = "html";
 
 
-  std::cout << resp.to_string() << std::endl; 
-  sock->write(resp.to_string(),(resp.message_body).length());
+  std::cout << resp.to_string() << std::endl;
+  size_t len =  (resp.message_body).length();
+  sock->write(resp.to_string(),len);
 }
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request){
