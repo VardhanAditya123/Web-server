@@ -83,7 +83,7 @@ void Server::run_thread_pool(const int num_threads) const {
   Socket_t masterSocket;
   ThreadParams * threadParams = new ThreadParams;
 threadParams->server = this;
-threadParams->sock = std::move(sock);
+threadParams->sock = std::move(masterSocket);
   std::thread t[num_threads](dispatchThread, threadParams);
  for (int i=0; i<num_threads; i++) {
 pthread_create(&thread[i], NULL, loopthread,masterSocket);
