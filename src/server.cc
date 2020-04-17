@@ -203,12 +203,12 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   } 
   std::fstream fs;
   // cout << fn << endl;
-  if((vec.at(1)).compare("/")==0){
+  if(vec.at(1).compare("/")==0){
     vec.at(1) = "/index.html";
   }
 
   if (vec.at(1)).find("html") != std::string::npos ) {
-    std::cout << "YESS yess found!" << '\n';
+    std::cout << "YESS found!" << '\n';
 }
 
   string fn = "http-root-dir/htdocs"+vec.at(1);
