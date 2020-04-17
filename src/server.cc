@@ -93,7 +93,11 @@ void Server::run_thread_pool(const int num_threads) const {
   Socket_t masterSocket;
   pthread_t thread[num_threads];
   for (int i=0; i<num_threads; i++) {
-    pthread_create(&thread[i], NULL, loopthread,masterSocket);
+    pthread_t thrID;
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+    pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,(void *) threadParams);
 
   }
   loopthread (masterSocket);
