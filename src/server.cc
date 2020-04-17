@@ -207,6 +207,10 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     vec.at(1) = "/index.html";
   }
 
+  if (vec.at(1)).find("html") != std::string::npos ) {
+    std::cout << "YESS yess found!" << '\n';
+}
+
   string fn = "http-root-dir/htdocs"+vec.at(1);
   filename=fn;
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app |  std::fstream::binary);
