@@ -90,7 +90,6 @@ void Server::run_thread_pool(const int num_threads) const {
   Socket_t  sock = _acceptor.accept_connection();;
   pthread_t thread[num_threads];
   for (int i=0; i<num_threads; i++) {
-    pthread_t thrID;
     pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
