@@ -88,6 +88,9 @@ void* Server::run_linear2(Server* serv) const {
 }
 
 
+void test(){
+  cout << "TESTING TESTING " << endl;
+}
 
 void Server::run_thread_pool(const int num_threads) const {
   pthread_t thread[num_threads];
