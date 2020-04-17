@@ -94,10 +94,6 @@ void* Server::run_linear2(const Server* serv) const {
 }
 
 
-void test() {
-  cout << "TESTING TESTING " << endl;
-}
-
 void Server::run_thread_pool(const int num_threads) const {
   pthread_t thread[num_threads];
   pthread_attr_t attr;
@@ -158,7 +154,7 @@ void Server::handle(const Socket_t& sock) const {
     resp.status_code = 401;
   }
   else{
-    cout << s << endl;
+
     if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4=") == 0){
       resp.status_code=200; 
     }
