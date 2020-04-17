@@ -260,7 +260,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     char*buffer;
     
     std::vector<unsigned char> v(std::istreambuf_iterator<char>(input), {});
-    std::copy(_v.begin(), _v.end(), buffer);
+    std::copy(v.begin(), v.end(), buffer);
      size = input.tellg();
      sock->write(buffer,size);
     }
