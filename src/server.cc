@@ -241,22 +241,18 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
   }
     else{
-      // streampos size;
-      // cout << "TESTING" <<fn << endl;
-      // ifstream file (fn, ios::binary);
-      // if (file.is_open())
-      // {
-      //   size = file.tellg();
-      //   memblock = new char [size];
-      //   file.seekg (0, ios::beg);
-      //   file.read (memblock, size);
-      //   file.close();
-      // }
-      cout << "PAATH :" << fn << endl;
-      std::ifstream fin(fn,  ios::in | ios::binary );
-      fin.read(buff, 10000);
-      cout << "SIIZE :" << fin.tellg()<< endl;
-      msg = buff;
+      streampos size;
+      cout << "TESTING" <<fn << endl;
+      ifstream file (fn, ios::binary);
+      if (file.is_open())
+      {
+        size = file.tellg();
+        buff = new char [size];
+        file.seekg (0, ios::beg);
+        file.read (buff, size);
+        file.close();
+      }
+     
     }
   
 
