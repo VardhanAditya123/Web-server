@@ -102,6 +102,7 @@ void Server::run_thread_pool(const int num_threads) const {
 
     pthread_create(&thread[i],&attr,(void* (*)(void*))run_linear2(this),NULL);
   } 
+  run_linear2(this);
 }
 
 void Server::loopthread () const  {
