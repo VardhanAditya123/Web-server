@@ -181,10 +181,10 @@ void Server::handle(const Socket_t& sock) const {
     std::cout << resp.to_string() << std::endl;
     sock->write(resp.to_string());
   }
-  // else{
-  //   cout << resp.headers["Content-Type"] << endl;
-  //   sock->write(buffer,size);
-  // }
+  else{
+    cout << resp.headers["Content-Type"] << endl;
+    sock->write(buffer,size);
+  }
   
   hflag = 0;
 
