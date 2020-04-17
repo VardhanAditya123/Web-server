@@ -265,6 +265,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       int bytes_read = fread(buff, sizeof(char),1000000 , filp);
       buffer=buff;
       size=bytes_read;
+      msg=buff;
     }
   
 
