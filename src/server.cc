@@ -182,7 +182,7 @@ void Server::handle(const Socket_t& sock) const {
   sock->write(resp.to_string());
   }
   else{
-    sock->write(streampos,size);
+    sock->write(memblock,size);
   }
 }
 
