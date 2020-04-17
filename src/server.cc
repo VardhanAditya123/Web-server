@@ -21,11 +21,16 @@
 #include <pthread.h>
 #include <thread>
 using namespace std;
+
+
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
+
 string filename;
+char * memblock;
 int hflag=0;
+
 void Server::run_linear() const {
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
@@ -229,8 +234,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
   else{
   streampos size;
-  char * memblock;
-
   ifstream file ("example.bin", ios::in|ios::binary|ios::ate);
   if (file.is_open())
   {
@@ -239,10 +242,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     file.seekg (0, ios::beg);
     file.read (memblock, size);
     file.close();
-
-
-
-    delete[] memblock;
   }
   }
    
