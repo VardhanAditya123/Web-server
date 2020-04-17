@@ -245,6 +245,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       // streampos size;
       cout << "TESTING" <<fn << endl;
       ifstream file (fn, ios::in|ios::binary|ios::ate);
+      ofstream file1 (fn, ios::in|ios::binary|ios::ate);
       if (file.is_open())
       {
         size = file.tellg();
