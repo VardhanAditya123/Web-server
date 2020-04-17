@@ -21,7 +21,6 @@
 #include <pthread.h>
 #include <thread>
 using namespace std;
-string file_path;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
@@ -202,8 +201,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     vec.at(1) = "/index.html";
   }
   string fn = "http-root-dir/htdocs"+vec.at(1);
-  file_path = fn;
-
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
   if (fs.is_open())
   {
