@@ -99,7 +99,7 @@ void Server::run_thread_pool(const int num_threads) const {
   
 
   for (int i=0; i<num_threads; i++) {
-     pthread_create(&thread[i], &attr,loopthread,NULL);
+     pthread_create(&thread[i], &attr,(void* (*)(void*) )loopthread,NULL);
   }
   loopthread ();
 }
