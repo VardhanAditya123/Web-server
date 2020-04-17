@@ -239,7 +239,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
   else{
   // streampos size;
-  ifstream file ("example.bin", ios::in|ios::binary|ios::ate);
+  ifstream file (fn, ios::in|ios::binary|ios::ate);
   if (file.is_open())
   {
     size = file.tellg();
