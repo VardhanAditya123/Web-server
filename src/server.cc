@@ -88,7 +88,7 @@ void* Server::run_linear2(Server* serv) const {
 }
 
 
-void test(){
+void test() const{
   cout << "TESTING TESTING " << endl;
 }
 
