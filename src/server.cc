@@ -86,18 +86,18 @@ void loopthread ()  {
   while (1) {
   Socket_t  sock = _acceptor.accept_connection();
   
-  ThreadParams * params = new ThreadParams;
+  ThreadParams * threadParams = new ThreadParams;
   threadParams->server = this;
   threadParams->sock = std::move(sock);
   printf("Dispatch Thread\n");
   // Thread dispatching this request
-  params->server->handle(params->sock);
-  delete params;
+  threadParams->server->handle(threadParams->sock);
+  delete threadParams;
   }
  }
 
 void Server::run_thread_pool(const int num_threads) const {
-  pthread_t thread[num_threads];
+  thread_t thread[num_threads];
   for (int i=0; i<num_threads; i++) {
     
     pthread_attr_t attr;
