@@ -181,12 +181,13 @@ void Server::handle(const Socket_t& sock) const {
     std::cout << resp.to_string() << std::endl;
     sock->write(resp.to_string());
   }
-  else{
-    cout << resp.headers["Content-Type"] << endl;
-    sock->write(buffer,size);
-  }
+  // else{
+  //   cout << resp.headers["Content-Type"] << endl;
+  //   sock->write(buffer,size);
+  // }
   
   hflag = 0;
+
 }
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request){
@@ -259,9 +260,10 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
     // copies all data into buffer
     
-      std::vector<unsigned char> v(std::istreambuf_iterator<char>(input), {});
-      std::copy(v.begin(), v.end(), buffer);
-      size = input.tellg();
+      char buff[1000000];
+      FILE * filp = fopen(fn, "rb"); 
+      int bytes_read = fread(buffer, sizeof(char), BUFFERSIZE, filp);
+      sock->write(buff,bytes_read);
     }
   
 
