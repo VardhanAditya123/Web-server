@@ -183,7 +183,6 @@ void Server::handle(const Socket_t& sock) const {
   }
   else{
     sock->write(memblock,size);
-    delete memblock;
   }
   
   hflag = 0;
@@ -250,7 +249,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       if (file.is_open())
       {
         size = file.tellg();
-        memblock = new char [size];
+        memblock = new char [size+1];
         file.seekg (0, ios::beg);
         file.read (memblock, size);
         file.close();
