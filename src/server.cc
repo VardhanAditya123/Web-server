@@ -184,6 +184,7 @@ void Server::handle(const Socket_t& sock) const {
   else{
     sock->write(memblock,size);
   }
+  hflag = 0;
 }
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request){
