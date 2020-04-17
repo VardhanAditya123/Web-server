@@ -100,7 +100,7 @@ void Server::run_thread_pool(const int num_threads) const {
   Server * ser ;
   for (int i=0; i<num_threads; i++) {
     std::thread t(&Server::loopthread,ser);  
-  }
+  } 
   loopthread ();
 }
 
