@@ -256,14 +256,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       //   file.read (memblock, size);
       //   file.close();
       // }
-      std::ifstream input( fn, std::ios::binary );
-
-    // copies all data into buffer
-    
-  
+     
       std::ifstream fin(fn, ios::in | ios::binary );
       fin.read(buff, 1000000);
       msg = buff;
+      cout <<"The size is :" << sizeof(buff) << endl;
     }
   
 
