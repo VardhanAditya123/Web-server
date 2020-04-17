@@ -98,11 +98,10 @@ void Server::run_thread_pool(const int num_threads) const {
     threadParams = new ThreadParams;
     threadParams->server = this;
     threadParams->sock = std::move(sock);
-    pthread_t thrID;
     pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-    pthread_create(&thrID, &attr, (void* (*)(void*) )loopthread,(void *) threadParams);
+    pthread_create(&thread[i], &attr, (void* (*)(void*) )loopthread,(void *) threadParams);
     
 
   }
