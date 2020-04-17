@@ -79,6 +79,16 @@ void Server::run_thread() const {
   }
 }
 
+
+void *loopthread (int masterSocket) {
+  while (1) {
+    int slaveSocket = accept(masterSocket,&sockInfo, &alen);
+
+    if (slaveSocket >= 0) {
+      dispatchHTTP(slaveSocket);
+    }
+  }
+}
 void Server::run_thread_pool(const int num_threads) const {
   Socket_t masterSocket;
   pthread_t thread[num_threads];
@@ -90,15 +100,7 @@ void Server::run_thread_pool(const int num_threads) const {
 }
 
 
-void *loopthread (int masterSocket) {
-  while (1) {
-    int slaveSocket = accept(masterSocket,&sockInfo, &alen);
 
-    if (slaveSocket >= 0) {
-      dispatchHTTP(slaveSocket);
-    }
-  }
-}
 
 // example route map. you could loop through these routes and find the first route which
 // matches the prefix and call the corresponding handler. You are free to implement
