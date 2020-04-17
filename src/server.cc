@@ -80,7 +80,7 @@ void Server::run_thread() const {
 }
 
 
-void loopthread (ThreadParams * params) const {
+void loopthread (ThreadParams * params)  {
   while (1) {
      printf("Dispatch Thread\n");
   // Thread dispatching this request
