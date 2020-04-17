@@ -103,7 +103,7 @@ void Server::run_thread_pool(const int num_threads) const {
     pthread_create(&thread[i], &attr, (void* (*)(void*) )loopthread,(void *) threadParams);
 
   }
-  loopthread (sock);
+  loopthread (threadParams);
 }
 
 
