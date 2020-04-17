@@ -99,10 +99,7 @@ void Server::run_thread_pool(const int num_threads) const {
   Socket_t master = _acceptor.accept_connection();
 
   for (int i=0; i<num_threads; i++) {
-    //  pthread_create(&thread[i], &attr,(void* (*)(void*) )loopthread,NULL);
-    std::thread t(&Server::loopthread,NULL);
-    // pthread_create(&thread[i], &attr,(void* (*)(void*) ) loopthread ,(void *)NULL);
-    
+    std::thread t(&Server::loopthread,NULL);  
   }
   loopthread ();
 }
