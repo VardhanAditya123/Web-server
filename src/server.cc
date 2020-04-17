@@ -83,16 +83,14 @@ pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,(void *) threadP
 }
 
 void Server::run_thread_pool(const int num_threads) const {
-  // TODO: Task 1.4
-}
-
-void poolOfThreads( int masterSocket ) {
-for (int i=0; i<4; i++) {
+ for (int i=0; i<4; i++) {
 pthread_create(&thread[i], NULL, loopthread,masterSocket);
 
 }
 loopthread (masterSocket);
 }
+
+
 void *loopthread (int masterSocket) {
 while (1) {
 int slaveSocket = accept(masterSocket,
