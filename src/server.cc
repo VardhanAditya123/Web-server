@@ -225,6 +225,8 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string fn = "http-root-dir/htdocs"+vec.at(1);
   filename=fn;
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app |  std::fstream::binary);
+  
+  if(hflag == 1){
   if (fs.is_open()){
 
     if (hflag==1 ) {
@@ -237,7 +239,8 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         msg="Hello CS252!";
       }
     }
-
+  }
+  }
     else{
       // streampos size;
       cout << "TESTING" <<fn << endl;
@@ -251,7 +254,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         file.close();
       }
     }
-  }
+  
 
 
 
