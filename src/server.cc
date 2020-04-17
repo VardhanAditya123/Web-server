@@ -236,7 +236,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     msg="Hello CS252!";
     }
     }
-  }
+  
   else{
   // streampos size;
   cout << "TESTING" <<fn << endl;
@@ -248,6 +248,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     file.seekg (0, ios::beg);
     file.read (memblock, size);
     file.close();
+  }
   }
   }
    
