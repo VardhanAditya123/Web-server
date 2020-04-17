@@ -179,7 +179,7 @@ void Server::handle(const Socket_t& sock) const {
   }
   else{
     cout << resp.headers["Content-Type"] << endl;
-    cout << buff[6] << endl;
+    cout << buff[7] << endl;
     sock->write(buff,size);
   }
   
