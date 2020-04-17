@@ -217,7 +217,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   if(vec.at(1).compare("/")==0){
     vec.at(1) = "/index.html";
   }
-cout << "FUCK " << endl;
+
   if (vec.at(1).find("html") != std::string::npos || vec.at(1).find("svg") != std::string::npos ) {
     hflag = 1;
   }
@@ -272,7 +272,7 @@ cout << "FUCK " << endl;
     line=sock->readline();
   }
 
-  request->message_body = buff ;
+  request->message_body = msg ;
 
 }
 //  GET /index.html HTTP/1.1
