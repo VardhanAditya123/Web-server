@@ -30,7 +30,7 @@ Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 string filename;
 streampos size;
 int hflag=0;
-    char buff[1000000];
+    char *buff;
 
 void Server::run_linear() const {
   while (1) {
