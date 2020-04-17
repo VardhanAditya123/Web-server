@@ -252,7 +252,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       //   file.read (memblock, size);
       //   file.close();
       // }
-     
+      cout << "PAATH :" << fn << endl;
       std::ifstream fin(fn,  ios::binary );
       fin.read(buff, 1000000);
       msg = buff;
