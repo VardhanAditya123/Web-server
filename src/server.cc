@@ -28,7 +28,7 @@ void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 string filename;
-// streampos size;
+streampos size;
 int hflag=0;
     char *buff;
 
@@ -179,7 +179,7 @@ void Server::handle(const Socket_t& sock) const {
   }
   else{
     cout << resp.headers["Content-Type"] << endl;
-    // sock->write(buff,size);
+    sock->write(buff,size);
   }
   
   hflag = 0;
@@ -243,11 +243,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     else{
       streampos size;
       cout << "TESTING" <<fn << endl;
-      ifstream file (fn, ios::in|ios::binary|ios::ate);
+      ifstream file (fn, ios::binary);
       if (file.is_open())
       {
         size = file.tellg();
-        cout << "SIIZE: " << size << endl;
+        cout << "SIIZE: " << size << endl
         buff = new char [size];
         file.seekg (0, ios::beg);
         file.read (buff, size);
