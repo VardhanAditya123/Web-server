@@ -228,8 +228,20 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     }
   }
   else{
-     std::ifstream input( fn, std::ios::binary );
-     input.read(msg);
+  streampos size;
+  char * memblock;
+
+  ifstream file ("example.bin", ios::in|ios::binary|ios::ate);
+  if (file.is_open())
+  {
+    size = file.tellg();
+    memblock = new char [size];
+    file.seekg (0, ios::beg);
+    file.read (memblock, size);
+    file.close();
+
+
+    delete[] memblock;
   }
    
 
