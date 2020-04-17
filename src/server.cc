@@ -28,7 +28,8 @@ void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 string filename;
-char * memblock;
+// char * memblock;
+ std::vector<unsigned char> memblock
 streampos size;
 int hflag=0;
 
