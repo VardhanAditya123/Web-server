@@ -80,9 +80,13 @@ void Server::run_thread() const {
 }
 
 
-void Server::loopthread (ThreadParams * params) const {
+void loopthread (ThreadParams * params) const {
   while (1) {
-      handle(sock);
+     printf("Dispatch Thread\n");
+  // Thread dispatching this request
+  params->server->handle(params->sock);
+  // Delete params struct
+  delete params;
     }
  }
 

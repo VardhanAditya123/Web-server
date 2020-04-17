@@ -13,7 +13,7 @@ class Server {
     void run_fork() const;
     void run_thread_pool(const int num_threads) const;
     void run_thread() const;
-    void Server::loopthread (ThreadParams * params) const
+   //  void loopthread (const Socket_t& sock) const;
 
     void handle(const Socket_t& sock) const;
 };
