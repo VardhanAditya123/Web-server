@@ -10,7 +10,7 @@ class Server {
  public:
     explicit Server(SocketAcceptor const& acceptor);
     void run_linear() const;
-    void run_linear2(&Server) const;
+    void run_linear2(Server& serv) const;
     void run_fork() const;
     void run_thread_pool(const int num_threads) const;
     void run_thread() const;

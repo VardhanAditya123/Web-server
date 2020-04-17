@@ -33,13 +33,6 @@ void Server::run_linear() const {
   }
 }
 
-void Server::run_linear2(Server &server) const {
-  while (1) {
-    Socket_t sock = _acceptor.accept_connection();
-    handle(sock);
-  }
-}
-
 void Server::run_fork() const {
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
@@ -87,8 +80,16 @@ void Server::run_thread() const {
 }
 
 
+void Server::run_linear2(Server &server) const {
+  while (1) {
+    Socket_t sock = _acceptor.accept_connection();
+    handle(sock);
+  }
+}
+
+
 void Server::loopthread () const  {
-  cout << "HERERERE" << endl;
+
  while (1) {
 
   Socket_t sock = _acceptor.accept_connection();
