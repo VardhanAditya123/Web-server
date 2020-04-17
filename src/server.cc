@@ -24,7 +24,7 @@ using namespace std;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
-
+string filename;
 void Server::run_linear() const {
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
@@ -167,7 +167,7 @@ void Server::handle(const Socket_t& sock) const {
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
-  resp.headers["Content-Type"] = "html";
+  resp.headers["Content-Type"] = get_content_type(filename);
 
 
   std::cout << resp.to_string() << std::endl; 
@@ -206,6 +206,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
 
   string fn = "http-root-dir/htdocs"+vec.at(1);
+  filename=gn;
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
   if (fs.is_open())
   {
