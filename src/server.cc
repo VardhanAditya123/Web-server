@@ -82,7 +82,7 @@ void Server::run_thread() const {
 
 void *loopthread (Socket_t sock) {
   while (1) {
-      handler(sock);
+      handle(sock);
     }
  }
 
