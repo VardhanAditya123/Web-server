@@ -93,11 +93,11 @@ void loopthread (ThreadParams * params)  {
 void Server::run_thread_pool(const int num_threads) const {
   Socket_t  sock = _acceptor.accept_connection();
   pthread_t thread[num_threads];
-  ThreadParams * threadParams;
+  ThreadParams * threadParams = new ThreadParams;
+  threadParams->server = this;
+  threadParams->sock = std::move(sock);
   for (int i=0; i<num_threads; i++) {
-    threadParams = new ThreadParams;
-    threadParams->server = this;
-    threadParams->sock = std::move(sock);
+    
     pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
@@ -105,7 +105,7 @@ void Server::run_thread_pool(const int num_threads) const {
     
 
   }
-  // loopthread (threadParams);
+  loopthread (threadParams);
 }
 
 
