@@ -90,9 +90,7 @@ void Server::loopthread (const Socket_t& sock) const  {
   threadParams->server = this;
   threadParams->sock = std::move(sock);
   printf("Dispatch Thread\n");
-  // Thread dispatching this request
-  threadParams->server->handle(threadParams->sock);
-  delete threadParams;
+  dispatchThread(threadParams);
   }
  }
 
