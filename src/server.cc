@@ -180,10 +180,10 @@ void Server::handle(const Socket_t& sock) const {
     std::cout << resp.to_string() << std::endl;
     sock->write(resp.to_string());
   }
-  else{
-    cout << resp.headers["Content-Type"] << endl;
-    sock->write(memblock,size);
-  }
+  // else{
+  //   cout << resp.headers["Content-Type"] << endl;
+  //   sock->write(memblock,size);
+  // }
   
   hflag = 0;
 }
@@ -259,6 +259,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     // copies all data into buffer
     std::vector<unsigned char> memblock(std::istreambuf_iterator<char>(input), {});
      size = input.tellg();
+     sock->write(memblock,size);
     }
   
 
