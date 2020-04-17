@@ -261,7 +261,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     // copies all data into buffer
     
       char buff[1000000];
-      FILE * filp = fopen(fn, "rb"); 
+      FILE * filp = fopen(fn.c_str(), "rb"); 
       int bytes_read = fread(buffer, sizeof(char),1000000 , filp);
       sock->write(buff,bytes_read);
     }
