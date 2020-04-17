@@ -95,7 +95,6 @@ void Server::run_thread_pool(const int num_threads) const {
   pthread_attr_t attr;
   pthread_attr_init(&attr);
   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-  Socket_t master = _acceptor.accept_connection();
 
   for (int i=0; i<num_threads; i++) {
     (void*)(*fun_ptr)(void*)=&run_linear2;
