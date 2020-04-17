@@ -98,6 +98,7 @@ void Server::run_thread_pool(const int num_threads) const {
   ThreadParams * threadParams = new ThreadParams;
   threadParams->server = this;
   threadParams->sock = std::move(sock);
+  dispatchThread(threadParams);
 
   for (int i=0; i<num_threads; i++) {
     
