@@ -98,7 +98,7 @@ void Server::run_thread_pool(const int num_threads) const {
 
   for (int i=0; i<num_threads; i++) {
     (void*)(*fun_ptr)(void*){run_linear2};
-    pthread_create(&thread[i],&attr,void *(*fun_ptr) (void *),this);
+    pthread_create(&thread[i],&attr,run_linear2,this);
   } 
 }
 
