@@ -11,7 +11,7 @@ class Server {
     explicit Server(SocketAcceptor const& acceptor);
     void run_linear() const;
     void* run_linear2(const Server*) const;
-    void run_fork() const;
+    void run_fork() const; 
     void run_thread_pool(const int num_threads) const;
     void run_thread() const;
     void handle(const Socket_t& sock) const;
