@@ -183,7 +183,7 @@ void Server::handle(const Socket_t& sock) const {
   }
   else{
     cout << resp.headers["Content-Type"] << endl;
-    sock->write(buff,(size_t)size);
+    sock->write(buff,size);
   }
   
   hflag = 0;
@@ -261,10 +261,8 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     // copies all data into buffer
     
   
-      FILE * filp = fopen(fn.c_str(), "rb"); 
-      int bytes_read = fread(buff, sizeof(char),1000000 , filp);
-      size=bytes_read;
-      msg=buff;
+      std::ifstream fin(fn, ios::in | ios::binary );
+      fin.read(buffer, 1000000);
     }
   
 
