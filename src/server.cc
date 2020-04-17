@@ -80,7 +80,7 @@ void Server::run_thread() const {
 }
 
 
-void Server::loopthread (Socket_t master) const  {
+void Server::loopthread () const  {
  while (1) {
   Socket_t sock = _acceptor.accept_connection();
   ThreadParams * threadParams = new ThreadParams;
@@ -88,7 +88,7 @@ void Server::loopthread (Socket_t master) const  {
   threadParams->sock = std::move(sock);
   printf("Dispatch Thread\n");
   dispatchThread(threadParams);
-  } 
+  }
  }
 
 void Server::run_thread_pool(const int num_threads) const {
@@ -100,10 +100,10 @@ void Server::run_thread_pool(const int num_threads) const {
 
   for (int i=0; i<num_threads; i++) {
     //  pthread_create(&thread[i], &attr,(void* (*)(void*) )loopthread,NULL);
-    pthread_create(&thread[i], &attr, loopthread ,master);
+    pthread_create(&thread[i], &attr,(void* (*)(void*) ) loopthread ,(void *)NULL);
     
   }
-  loopthread (master);
+  loopthread ();
 }
 
 
