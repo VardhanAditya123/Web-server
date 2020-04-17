@@ -99,8 +99,7 @@ void Server::run_thread_pool(const int num_threads) const {
   
 
   for (int i=0; i<num_threads; i++) {
-    // pthread_create(&thread[i], &attr,loopthread,NULL);
-     thread[i]=std::thread t(dispatchThread, threadParams);
+     pthread_create(&thread[i], &attr,loopthread,NULL);
      t.detach();
     
 
