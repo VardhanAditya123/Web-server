@@ -93,7 +93,7 @@ void loopthread (ThreadParams * params) const {
 void Server::run_thread_pool(const int num_threads) const {
   Socket_t  sock = _acceptor.accept_connection();;
   pthread_t thread[num_threads];
-  ThreadParams * threadParams
+  ThreadParams * threadParams;
   for (int i=0; i<num_threads; i++) {
     threadParams = new ThreadParams;
     threadParams->server = this;
