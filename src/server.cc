@@ -269,8 +269,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     separate(request,line);
     line=sock->readline();
   }
-
+  if(hflag == 1)
   request->message_body = msg ;
+
+  else
+  request->message_body = buff;
 
 }
 //  GET /index.html HTTP/1.1
