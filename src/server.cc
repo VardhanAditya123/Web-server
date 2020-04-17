@@ -98,7 +98,7 @@ void Server::run_thread_pool(const int num_threads) const {
   Socket_t master = _acceptor.accept_connection();
 
   for (int i=0; i<num_threads; i++) {
-    pthread_create(&thread[i],&attr,(void* (*)(void*))&run_linear2,this);
+    pthread_create(&thread[i],&attr,(void* (*)(void*))run_linear2,this);
   } 
 }
 
