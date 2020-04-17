@@ -88,9 +88,7 @@ void Server::run_thread_pool(const int num_threads) const {
 
 void poolOfThreads( int masterSocket ) {
 for (int i=0; i<4; i++) {
-pthread_create(&thread[i], NULL, loopthread,
-
-masterSocket);
+pthread_create(&thread[i], NULL, loopthread,masterSocket);
 
 }
 loopthread (masterSocket);
