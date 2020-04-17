@@ -259,7 +259,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     }
   
 
-
+ 
 
   request->method = vec.at(0);
   request->request_uri = vec.at(1);
