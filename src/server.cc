@@ -98,7 +98,7 @@ void Server::loopthread (const Socket_t& sock) const  {
 
 void Server::run_thread_pool(const int num_threads) const {
   pthread_t thread[num_threads];
-  Socket_t  master_socket = _acceptor.accept_connection();
+  Socket_t  master_socket ;
   for (int i=0; i<num_threads; i++) {
     
     pthread_attr_t attr;
