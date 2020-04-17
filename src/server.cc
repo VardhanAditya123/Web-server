@@ -80,27 +80,24 @@ void Server::run_thread() const {
 }
 
 
-void *loopthread (int masterSocket) {
+void *loopthread (Socket_t sock) {
   while (1) {
-    int slaveSocket = accept(masterSocket,&sockInfo, &alen);
-
-    if (slaveSocket >= 0) {
       dispatchHTTP(slaveSocket);
     }
-  }
-}
+ }
+
 void Server::run_thread_pool(const int num_threads) const {
-  Socket_t masterSocket;
+  Socket_t  sock = _acceptor.accept_connection();;
   pthread_t thread[num_threads];
   for (int i=0; i<num_threads; i++) {
     pthread_t thrID;
     pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-    pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,(void *) threadParams);
+    pthread_create(&thread[i], &attr, (void* (*)(void*) )dispatchThread,(void *) threadParams);
 
   }
-  loopthread (masterSocket);
+  loopthread (sock);
 }
 
 
