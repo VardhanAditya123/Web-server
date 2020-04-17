@@ -207,7 +207,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     vec.at(1) = "/index.html";
   }
 
-  if (vec.at(1)).find("html") != std::string::npos ) {
+  if (vec.at(1).find("html") != std::string::npos ) {
     std::cout << "YESS found!" << '\n';
 }
 
