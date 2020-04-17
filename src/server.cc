@@ -29,7 +29,6 @@ Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 string filename;
 // char * memblock;
- std::vector<unsigned char> memblock;
 streampos size;
 int hflag=0;
 
