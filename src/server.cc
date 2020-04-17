@@ -253,8 +253,8 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       //   file.close();
       // }
       cout << "PAATH :" << fn << endl;
-      std::ifstream fin(fn,  ios::binary );
-      fin.read(buff, 1000000);
+      std::ifstream fin(fn,  ios::in | ios::binary );
+      fin.read(buff, 1000);
       cout << "SIIZE :" << fin.tellg()<< endl;
       msg = buff;
     }
