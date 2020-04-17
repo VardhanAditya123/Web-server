@@ -80,9 +80,9 @@ void Server::run_thread() const {
 }
 
 
-void Server::loopthread ( Socket_t sock) const  {
+void Server::loopthread ( Socket_t sock1) const  {
  while (1) {
-  sock = _acceptor.accept_connection();
+  Socket_t sock = _acceptor.accept_connection();
   
   ThreadParams * threadParams = new ThreadParams;
   threadParams->server = this;
