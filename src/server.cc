@@ -216,6 +216,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     fs.close();
 
   }
+  if(vec.at(1).compare("/hello")==0){
+    msg="Hello CS252!";
+  }
   request->method = vec.at(0);
   request->request_uri = vec.at(1);
   request-> http_version = vec.at(2);
@@ -227,10 +230,8 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     separate(request,line);
     line=sock->readline();
   }
+
   request->message_body = msg ;
-  if(vec.at(1).compare("/hello")==0){
-    msg="Hello CS252!";
-  }
 
 }
 //  GET /index.html HTTP/1.1
