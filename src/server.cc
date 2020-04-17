@@ -79,14 +79,14 @@ t.detach();
 }
 }
 
-void Server::run_thread_pool(const int num_threads) const {
+// void Server::run_thread_pool(const int num_threads) const {
   
- for (int i=0; i<4; i++) {
-pthread_create(&thread[i], NULL, loopthread,masterSocket);
+//  for (int i=0; i<4; i++) {
+// pthread_create(&thread[i], NULL, loopthread,masterSocket);
 
-}
-loopthread (masterSocket);
-}
+// }
+// loopthread (masterSocket);
+// }
 
 
 void *loopthread (int masterSocket) {
