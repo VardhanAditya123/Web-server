@@ -113,16 +113,16 @@ void Server::run_thread_pool(const int num_threads) const {
 
 void Server::loopthread () const  {
 
- while (1) {
+  while (1) {
 
-  Socket_t sock = _acceptor.accept_connection();
-  ThreadParams * threadParams = new ThreadParams;
-  threadParams->server = this;
-  threadParams->sock = std::move(sock);
-  printf("Dispatch Thread\n");
-  dispatchThread(threadParams);
+    Socket_t sock = _acceptor.accept_connection();
+    ThreadParams * threadParams = new ThreadParams;
+    threadParams->server = this;
+    threadParams->sock = std::move(sock);
+    printf("Dispatch Thread\n");
+    dispatchThread(threadParams);
   }
- }
+}
 
 
 
@@ -170,7 +170,7 @@ void Server::handle(const Socket_t& sock) const {
   if((resp.message_body).length()==0){
     resp.status_code = 404;
   }
- 
+
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = (request.message_body).length();
@@ -178,8 +178,8 @@ void Server::handle(const Socket_t& sock) const {
   // resp.headers["Content-Type"] = "html";
 
   if(hflag==1){
-  std::cout << resp.to_string() << std::endl;
-  sock->write(resp.to_string());
+    std::cout << resp.to_string() << std::endl;
+    sock->write(resp.to_string());
   }
   else{
     sock->write(memblock,size);
@@ -218,42 +218,43 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     vec.at(1) = "/index.html";
   }
 
-   if (vec.at(1).find("html") != std::string::npos ) {
-     hflag = 1;
-   }
+  if (vec.at(1).find("html") != std::string::npos ) {
+    hflag = 1;
+  }
 
   string fn = "http-root-dir/htdocs"+vec.at(1);
   filename=fn;
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app |  std::fstream::binary);
   if (fs.is_open()){
-    if (hflag==1 ) {
-    while ( getline (fs,line) )
-    {
-      msg+=line;
-    }
-    fs.close();
-    if(vec.at(1).compare("/hello")==0){
-    msg="Hello CS252!";
-    }
-    }
-  
-  else{
-  // streampos size;
-  cout << "TESTING" <<fn << endl;
-  ifstream file (fn, ios::in|ios::binary|ios::ate);
-  if (file.is_open())
-  {
-    size = file.tellg();
-    memblock = new char [size];
-    file.seekg (0, ios::beg);
-    file.read (memblock, size);
-    file.close();
-  }
-  }
-  }
-   
 
-   
+    if (hflag==1 ) {
+      while ( getline (fs,line) )
+      {
+        msg+=line;
+      }
+      fs.close();
+      if(vec.at(1).compare("/hello")==0){
+        msg="Hello CS252!";
+      }
+    }
+
+    else{
+      // streampos size;
+      cout << "TESTING" <<fn << endl;
+      ifstream file (fn, ios::in|ios::binary|ios::ate);
+      if (file.is_open())
+      {
+        size = file.tellg();
+        memblock = new char [size];
+        file.seekg (0, ios::beg);
+        file.read (memblock, size);
+        file.close();
+      }
+    }
+  }
+
+
+
   request->method = vec.at(0);
   request->request_uri = vec.at(1);
   request-> http_version = vec.at(2);
