@@ -88,7 +88,7 @@ void Server::loopthread (Socket_t master) const  {
   threadParams->sock = std::move(sock);
   printf("Dispatch Thread\n");
   dispatchThread(threadParams);
-  }
+  } 
  }
 
 void Server::run_thread_pool(const int num_threads) const {
