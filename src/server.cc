@@ -204,6 +204,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   if(vec.at(1).compare("/")==0){
     vec.at(1) = "/index.html";
   }
+
   string fn = "http-root-dir/htdocs"+vec.at(1);
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app);
   if (fs.is_open())
@@ -227,6 +228,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     line=sock->readline();
   }
   request->message_body = msg ;
+  if(vec.at(1).compare("/hello")==0){
+    vec.at(1) = "Hello CS252";
+  }
 
 }
 //  GET /index.html HTTP/1.1
