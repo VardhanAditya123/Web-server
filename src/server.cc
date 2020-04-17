@@ -29,6 +29,7 @@ Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 string filename;
 char * memblock;
+streampos size;
 int hflag=0;
 
 void Server::run_linear() const {
@@ -176,10 +177,13 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Content-Type"] = get_content_type(filename);
   // resp.headers["Content-Type"] = "html";
 
-
+  if(hflag==1){
   std::cout << resp.to_string() << std::endl;
-  size_t len =  (resp.message_body).length();
   sock->write(resp.to_string());
+  }
+  else{
+    sock->write(streampos,size);
+  }
 }
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request){
@@ -233,7 +237,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     }
   }
   else{
-  streampos size;
+  // streampos size;
   ifstream file ("example.bin", ios::in|ios::binary|ios::ate);
   if (file.is_open())
   {
