@@ -215,8 +215,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string fn = "http-root-dir/htdocs"+vec.at(1);
   filename=fn;
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app |  std::fstream::binary);
-  if (fs.is_open())
-  {
+  if (fs.is_open()){
     if (hflag==1 ) {
     while ( getline (fs,line) )
     {
@@ -229,16 +228,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     }
   }
   else{
-
-    std::ifstream input( "C:\\Final.gif", std::ios::binary );
-    std::ofstream output( "C:\\myfile.gif", std::ios::binary );
-
-    std::copy( 
-        std::istreambuf_iterator<char>(input), 
-        std::istreambuf_iterator<char>( ),
-        std::ostreambuf_iterator<char>(output));
-
+     std::ifstream input( fn, std::ios::binary );
   }
+   
+
+   
   request->method = vec.at(0);
   request->request_uri = vec.at(1);
   request-> http_version = vec.at(2);
