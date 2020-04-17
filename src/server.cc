@@ -81,6 +81,7 @@ t.detach();
 
 void Server::run_thread_pool(const int num_threads) const {
   Socket_t masterSocket;
+  std::thread[num_threads] t(dispatchThread, threadParams);
  for (int i=0; i<num_threads; i++) {
 pthread_create(&thread[i], NULL, loopthread,masterSocket);
 
@@ -91,8 +92,7 @@ loopthread (masterSocket);
 
 void *loopthread (int masterSocket) {
 while (1) {
-int slaveSocket = accept(masterSocket,
-&sockInfo, &alen);
+int slaveSocket = accept(masterSocket,&sockInfo, &alen);
 
 if (slaveSocket >= 0) {
 dispatchHTTP(slaveSocket);
