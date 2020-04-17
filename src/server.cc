@@ -97,7 +97,7 @@ void loopthread ()  {
  }
 
 void Server::run_thread_pool(const int num_threads) const {
-  thread_t thread[num_threads];
+  pthread_t thread[num_threads];
   for (int i=0; i<num_threads; i++) {
     
     pthread_attr_t attr;
