@@ -245,16 +245,20 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
     else{
       // streampos size;
-      cout << "TESTING" <<fn << endl;
-      ifstream file (fn, ios::binary);
-      if (file.is_open())
-      {
-        size = file.tellg();
-        memblock = new char [size];
-        file.seekg (0, ios::beg);
-        file.read (memblock, size);
-        file.close();
-      }
+      // cout << "TESTING" <<fn << endl;
+      // ifstream file (fn, ios::binary);
+      // if (file.is_open())
+      // {
+      //   size = file.tellg();
+      //   memblock = new char [size];
+      //   file.seekg (0, ios::beg);
+      //   file.read (memblock, size);
+      //   file.close();
+      // }
+      std::ifstream input( fn, std::ios::binary );
+
+    // copies all data into buffer
+    std::vector<unsigned char> memblock(std::istreambuf_iterator<char>(input), {});
     }
   
 
