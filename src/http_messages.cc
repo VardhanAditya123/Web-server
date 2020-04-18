@@ -23,6 +23,7 @@ const std::map<const int, const std::string> default_status_reasons = {
 std::string HttpResponse::to_string() const {
     // TODO: Create a valid HTTP response string from the structure
     std::stringstream ss;
+    std::string str;
     // The following is an example of how to use stringstream.
     // You should remove all of this and create a valid HTTP response
     // message based on the variables defined in http_messages.hh
@@ -30,15 +31,25 @@ std::string HttpResponse::to_string() const {
     // Look at RFC 2616 Section 6 for details on how a response message looks:
     // https://tools.ietf.org/html/rfc2616#section-6
     
-    ss << http_version <<" "<< status_code <<" "<< default_status_reasons.at(status_code) <<"\r\n";
-    ss << "Connection: "<< headers.at("Connection")  <<"\r\n";
-    ss << "Content-Length:" << message_body.length() <<"\r\n";
-    ss << "Content-Type:" << headers.at("Content-Type") <<"\r\n";
+    // ss << http_version <<" "<< status_code <<" "<< default_status_reasons.at(status_code) <<"\r\n";
+    // ss << "Connection: "<< headers.at("Connection")  <<"\r\n";
+    // ss << "Content-Length:" << message_body.length() <<"\r\n";
+    // ss << "Content-Type:" << headers.at("Content-Type") <<"\r\n";
+    // // if(status_code == 401)
+    // ss << "WWW-Authenticate:" << "Basic realm=\"CS 252_web_server_p5 \"" << "\r\n" ;
+    // ss << "\r\n";
+    // ss << message_body<<"\r\n\r\n";
+    // return ss.str();
+
+    str + http_version +" "+ status_code +" "+ default_status_reasons.at(status_code) +"\r\n";
+    str + "Connection: "+ headers.at("Connection")  +"\r\n";
+    str + "Content-Length:" + message_body.length() +"\r\n";
+    str + "Content-Type:" + headers.at("Content-Type") +"\r\n";
     // if(status_code == 401)
-    ss << "WWW-Authenticate:" << "Basic realm=\"CS 252_web_server_p5 \"" << "\r\n" ;
-    ss << "\r\n";
-    ss << message_body<<"\r\n\r\n";
-    return ss.str();
+    str + "WWW-Authenticate:" + "Basic realm=\"CS 252_web_server_p5 \"" + "\r\n" ;
+    str + "\r\n";
+    str + message_body+"\r\n\r\n";
+    return str;
 }
 
 void HttpRequest::print() const {
