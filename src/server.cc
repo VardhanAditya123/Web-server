@@ -248,7 +248,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
     else{
       // streampos size;
-      cout  <<fn << endl;
+      // cout  <<fn << endl;
       ifstream file (fn, ios::in|ios::binary|ios::ate);
       if (file.is_open())
       {
@@ -258,7 +258,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
        nstr="";
       int c;
       FILE *f = fopen(fn.c_str(), "rb");
-      cout << "SIIIZE: " << size <<endl;
+      // cout << "SIIIZE: " << size <<endl;
       for(int i = 0 ; i < size ; i++){
         c = fgetc(f);
         nstr+=c;
