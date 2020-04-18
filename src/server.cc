@@ -225,7 +225,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
     else{
       // streampos size;
-      // cout  <<fn << endl;
+      cout  <<fn << endl;
       ifstream file (fn, ios::in|ios::binary|ios::ate);
       if (file.is_open())
       {
