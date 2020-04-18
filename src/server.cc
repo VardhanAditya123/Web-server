@@ -180,7 +180,7 @@ void Server::handle(const Socket_t& sock) const {
   }
   else{
     cout << resp.headers["Content-Type"] << endl;
-    sock->write(nstr,nstr.length());
+    sock->write(nstr.c_str(),nstr.length());
   }
   
   hflag = 0;
