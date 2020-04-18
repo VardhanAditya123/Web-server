@@ -37,6 +37,7 @@ streampos size;
 int hflag=0;
 string nstr;
     char *buff;
+    int ms_len;
 
 void Server::run_linear() const {
   while (1) {
@@ -147,7 +148,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.message_body = request.message_body;
   resp.reason_phrase = "OK";
   string s =  request.headers["Authorization"];
- 
+  resp.m_len = ms_len;
   if(s.length()==0){
     request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
     resp.status_code = 401;
@@ -246,7 +247,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         msg="Hello CS252!";
       }
     }
+    ms_len=msg.length();
   }
+  
   }
     else{
       // streampos size;
@@ -261,11 +264,13 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       int c;
       FILE *f = fopen(fn.c_str(), "rb");
       cout <<fn<< " SIIIZE: " << size <<endl;
-      for(int i = 0 ; i < size ; i++){
+      int i = 0;
+      for( i = 0 ; i < size ; i++){
         c = fgetc(f);
         nstr+=c;
       }
-      cout <<fn<< " SIIIZE2: " << nstr.length() << endl;
+      ms_len = i;
+    cout <<fn<< " SIIIZE2: " << nstr.length() << endl;
      msg=nstr;
      fclose(f);
     }
