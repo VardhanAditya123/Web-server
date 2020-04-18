@@ -49,10 +49,10 @@ int main(int argc, char** argv) {
     //     perror("Couldn't set NPROC limit\n");
     // }
 
-    // struct sigaction sa;
-    // sa.sa_handler = signal_handler;
-    // sigemptyset(&sa.sa_mask);
-    // sigaction(SIGINT, &sa, NULL);
+    struct sigaction sa;
+    sa.sa_handler = signal_handler;
+    sigemptyset(&sa.sa_mask);
+    sigaction(SIGINT, &sa, NULL);
     // signal(SIGCHLD,sigchildHandler1);
     enum concurrency_mode mode = E_NO_CONCURRENCY;
     char use_https = 0; 
