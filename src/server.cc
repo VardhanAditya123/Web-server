@@ -317,7 +317,7 @@ void separate(HttpRequest* const request , string line){
     first +=ch;
   }
   i+=1;
-  for(int i = 0 ; i <line.length();i++  ){
+  for(  ; i <line.length();i++  ){
     char ch = line.at(i);
     second+=ch;
   }
