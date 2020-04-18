@@ -278,6 +278,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   request-> http_version = vec.at(2);
   line = sock->readline();
   while(line.compare("\r\n")!=0){
+    cout << line << endl;
     line.pop_back();
     line.pop_back();
     separate(request,line);
