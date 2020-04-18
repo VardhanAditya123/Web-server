@@ -142,7 +142,7 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: implement parsing HTTP requests
   // recommendation:
   parse_request( sock, &request);
-  // request.print();
+  request.print();
 
   HttpResponse resp;
   // TODO: Make a response for the HTTP request
@@ -176,10 +176,11 @@ void Server::handle(const Socket_t& sock) const {
   // resp.headers["Content-Type"] = "html";
 
   if(hflag==1){
+    // std::cout << resp.to_string() << std::endl;
     sock->write(resp.to_string());
   }
   else{
-    // resp.headercout << s["Content-Type"] << endl;
+    cout << resp.headers["Content-Type"] << endl;
     sock->write(resp.to_string());
   }
   
@@ -200,6 +201,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string line = sock->readline();
   line.pop_back();
   line.pop_back();
+  cout << line << endl;
   char *token = strtok((char*)(line.c_str()), " "); 
 
   // Keep printing tokens while one of the 
@@ -242,7 +244,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
     else{
       // streampos size;
-      
+      cout << "TESTING" <<fn << endl;
       ifstream file (fn, ios::in|ios::binary|ios::ate);
       if (file.is_open())
       {
