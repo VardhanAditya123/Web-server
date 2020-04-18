@@ -257,7 +257,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         c = fgetc(f);
         nstr+=c;
       }
-     
+     msg=nstr;
     }
   
 
