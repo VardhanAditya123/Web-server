@@ -71,7 +71,6 @@ void Server::run_thread() const {
     // Create thread
     std::thread t([s=std::move(sock),server = this] {server->handle(s);});
     t.detach();
-    waitpid(-1, NULL, WNOHANG) ;
   }
 }
 
