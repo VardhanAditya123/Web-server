@@ -80,7 +80,7 @@ void Server::run_thread() const {
     // Put socket in new ThreadParams struct
 
     // Create thread
-    std::thread t([s=std::move(sock,server = this)] {server->handle(s)});
+    std::thread t([s=std::move(sock),server = this] {server->handle(s)});
     t.detach();
   }
 }
