@@ -200,9 +200,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
-  line.pop_back();
-  line.pop_back();
-  cout << line << endl;
+  // line.pop_back();
+  // line.pop_back();
+  // cout << line << endl;
   char *token = strtok((char*)(line.c_str()), " "); 
 
   // Keep printing tokens while one of the 
