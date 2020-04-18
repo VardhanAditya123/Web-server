@@ -298,7 +298,7 @@ void separate(HttpRequest* const request , string line){
     vec.push_back(trim(token));
     token = strtok(NULL, ":"); 
   }
-  if(vec.size() < 3){
+  if(vec.size() !=2){
     cout << "FINAL ERRROR" << endl;
   }
   request->headers[vec.at(0)]=vec.at(1); 
