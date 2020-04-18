@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
     // sa.sa_handler = signal_handler;
     // sigemptyset(&sa.sa_mask);
     // sigaction(SIGINT, &sa, NULL);
-    signal(SIGCHILD,sigchildHandler1)
+    signal(SIGCHLD,sigchildHandler1)
     enum concurrency_mode mode = E_NO_CONCURRENCY;
     char use_https = 0; 
     int port_no = 0;
