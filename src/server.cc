@@ -267,9 +267,13 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       //   nstr+=c;
       // }
       int i = 0;
-       while(fgets(buf, sizeof(buf), f)!=NULL) {
-         i+=1;
-       }
+      do {
+      char c = fgetc(f);
+      buf[i]=c
+      if( feof(f) ) {
+         break ;
+      }
+   } while(1);
        
      ms_len = i;
      msg=buf;
