@@ -262,6 +262,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         nstr+=c;
       }
      msg=nstr;
+     fclose(f);
     }
   
 
