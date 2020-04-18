@@ -81,9 +81,10 @@ void Server::run_thread() const {
 pthread_mutex_t mutex;
 while (1) {
 // Accept request
-pthread_mutex_lock(&mutex);
+
 Socket_t sock = _acceptor.accept_connection();
 // Put socket in new ThreadParams struct
+pthread_mutex_lock(&mutex);
 ThreadParams * threadParams = new ThreadParams;
 threadParams->server = this;
 threadParams->sock = std::move(sock);
