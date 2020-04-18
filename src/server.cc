@@ -260,12 +260,12 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
        nstr="";
       int c;
       FILE *f = fopen(fn.c_str(), "rb");
-      cout << "SIIIZE: " << size <<endl;
+      cout <<fn<< " SIIIZE: " << size <<endl;
       for(int i = 0 ; i < size ; i++){
         c = fgetc(f);
         nstr+=c;
       }
-      cout << "SIIIZE2: " << nstr.length() << endl;
+      cout <<fn<< " SIIIZE2: " << nstr.length() << endl;
      msg=nstr;
      fclose(f);
     }
