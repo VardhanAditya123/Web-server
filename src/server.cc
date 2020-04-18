@@ -322,6 +322,6 @@ void separate(HttpRequest* const request , string line){
     second+=ch;
   }
   
-  request->headers[first]=second; 
+  request->headers[trim(first)]=trim(second); 
   // request->headers[vec.at(0)]=vec.at(1); 
 }
