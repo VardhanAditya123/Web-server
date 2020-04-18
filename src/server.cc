@@ -31,7 +31,7 @@ using namespace std;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
-
+mutex_unlock(&mutex);
 string filename;
 streampos size;
 int hflag=0;
