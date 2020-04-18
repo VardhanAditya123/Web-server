@@ -151,7 +151,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Content-Length"] = (request.message_body).length();
   resp.headers["Content-Type"] = get_content_type(filename);
   if(filename.find("hello") != std::string::npos){
-    resp.headers["Content-Type"] = html;
+    resp.headers["Content-Type"] = "html";
   }
   // resp.headers["Content-Type"] = "html";
 
