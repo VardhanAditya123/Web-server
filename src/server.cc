@@ -82,7 +82,7 @@ void Server::run_thread() const {
     threadParams->server = this;
     threadParams->sock = std::move(sock);
     // Create thread
-    std::thread t(dispatchThread, threadParams);
+    std::thread t([s=std::move(sock,server = this)] {server->handle(s)});
     t.detach();
   }
 }
