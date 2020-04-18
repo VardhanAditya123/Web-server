@@ -153,7 +153,7 @@ void Server::handle(const Socket_t& sock) const {
   // resp.headers["Content-Type"] = "html";
 
   if(hflag==1){
-    // std::cout << resp.to_string() << std::endl;
+    std::cout << resp.to_string() << std::endl;
     sock->write(resp.to_string());
   }
   else{
@@ -253,7 +253,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
 
   request->message_body = msg ;
-   cout << msg << endl;
+   
 }
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
