@@ -202,10 +202,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
-  // line=trim(line);
-
+  cout << line << endl;
   char *token = strtok((char*)(line.c_str()), " "); 
- cout << line << endl;
+
   // Keep printing tokens while one of the 
   // delimiters present in str[]. 
   char*arrr[3];
