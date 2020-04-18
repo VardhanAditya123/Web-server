@@ -261,22 +261,23 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
        nstr="";
       int c;
       FILE *f = fopen(fn.c_str(), "rb");
-      // int i = 0;
-      // for( i = 0 ; i < size ; i++){
-      //   c = fgetc(f);
-      //   nstr+=c;
-      // }
       int i = 0;
-      do {
-      char c = fgetc(f);
-      buf[i]=c;
-      if( feof(f) ) {
-         break ;
+      for( i = 0 ; i < size ; i++){
+        c = fgetc(f);
+        nstr+=c;
       }
-   } while(1);
+  //     int i = 0;
+  //     do {
+  //     char c = fgetc(f);
+  //     buf[i]=c;
+  //     if( feof(f) ) {
+  //        break ;
+  //     }
+  //  } while(1);
+
      buf[i]='\0';
      ms_len = i;
-     msg=buf;
+     msg=nstr;
      fclose(f);
     }
   
