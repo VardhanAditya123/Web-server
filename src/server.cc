@@ -55,22 +55,6 @@ void Server::run_fork() const {
 }
 
 
-// PTHREAD VERSION
-struct ThreadParams {
-
-  const Server * server;
-  Socket_t sock;
-
-};
-void dispatchThread( ThreadParams * params) {
-
-  printf("Dispatch Thread\n");
-  // Thread dispatching this request
-  params->server->handle(params->sock);
-  // Delete params struct
-  delete params;
-
-}
 
 
 void Server::run_thread() const {
