@@ -164,7 +164,7 @@ void Server::handle(const Socket_t& sock) const {
     }
   }
 
-  if((resp.message_body).length()==0){
+  if(resp.message_body.length()==0){
     resp.status_code = 404;
   }
 
