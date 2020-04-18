@@ -125,6 +125,7 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: Make a response for the HTTP request
   resp.http_version = request.http_version;
   resp.message_body = request.message_body;
+  cout << resp.message_body.length();
   resp.reason_phrase = "OK";
   string s =  request.headers["Authorization"];
  
