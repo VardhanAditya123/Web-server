@@ -216,6 +216,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       fs.close();
       if(vec.at(1).compare("/hello")==0){
         msg="Hello CS252!";
+        cout << "success" << endl;
       }
     }
   }
