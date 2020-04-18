@@ -216,6 +216,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
+  cout << first +" " + second +" "+third << endl;
   std::fstream fs;
   if(vec.size() < 1){
     cout << "REAL SHIT" << endl;
