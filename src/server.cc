@@ -170,7 +170,7 @@ void Server::handle(const Socket_t& sock) const {
 
 
   resp.headers["Connection"] = "close";
-  resp.headers["Content-Length"] = (request.message_body).length();
+  resp.headers["Content-Length"] = request.message_body.length();
   resp.headers["Content-Type"] = get_content_type(filename);
   if(filename.find("hello") != std::string::npos){
     resp.headers["Content-Type"] = "html";
@@ -265,7 +265,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         c = fgetc(f);
         nstr+=c;
       }
-      ms_len = i;
+     ms_len = i;
      msg=nstr;
      fclose(f);
     }
