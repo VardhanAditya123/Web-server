@@ -196,7 +196,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     vec.at(1) = "/index.html";
   }
 
-  if (vec.at(1).find("html") != std::string::npos || vec.at(1).find("svg") != std::string::npos ) {
+  if (vec.at(1).find("html") != std::string::npos || vec.at(1).find("svg") != std::string::npos vec.at(1).find("hello") != std::string::npos) {
     hflag = 1;
   }
 
