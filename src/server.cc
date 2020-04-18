@@ -274,7 +274,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
          break ;
       }
    } while(1);
-       
+     buf[i]='\0';
      ms_len = i;
      msg=buf;
      fclose(f);
