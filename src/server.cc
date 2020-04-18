@@ -216,10 +216,10 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     token = strtok(NULL, " "); 
 
   } 
-  string first = arrr[0]
+  string first = arrr[0];
   string second = arrr[1];
   string third = arrr[2];
-  cout << first <<" " << second <<" "<<third << endl;
+  cout << first +" " + second +" "+third << endl;
   std::fstream fs;
   if(vec.size() < 1){
     cout << "REAL SHIT" << endl;
