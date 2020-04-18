@@ -269,7 +269,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       int i = 0;
       do {
       char c = fgetc(f);
-      buf[i]=c
+      buf[i]=c;
       if( feof(f) ) {
          break ;
       }
