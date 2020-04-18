@@ -67,13 +67,14 @@ Socket_t sock;
 };
 
 void dispatchThread( ThreadParams * params) {
-
+pthread_mutex_t mutex;
+pthread_mutex_lock(&mutex);
 printf("Dispatch Thread\n");
 // Thread dispatching this request
 params->server->handle(params->sock);
 // Delete params struct
 delete params;
-
+pthread_mutex_lock(&mutex);
 }
 
 
