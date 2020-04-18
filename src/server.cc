@@ -212,7 +212,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   { 
 
     vec.push_back(trim(token));
-    arrr[c1++]=trim(token);
+    arrr[c1++]=(trim(token)).c_str();
     token = strtok(NULL, " "); 
 
   } 
