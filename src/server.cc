@@ -83,7 +83,6 @@ pthread_mutex_lock(&mutex);
 Socket_t sock = _acceptor.accept_connection();
 pthread_mutex_unlock(&mutex);
 // Put socket in new ThreadParams struct
-pthread_mutex_lock(&mutex);
 ThreadParams * threadParams = new ThreadParams;
 threadParams->server = this;
 threadParams->sock = std::move(sock);
