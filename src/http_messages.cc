@@ -36,6 +36,7 @@ std::string HttpResponse::to_string() const {
     ss << "WWW-Authenticate:" << "Basic realm=\"CS 252_web_server_p5 \"" << "\r\n" ;
     ss << "\r\n";
     ss << message_body<<"\r\n\r\n";
+    cout << "WEEEEEEB" << endl;
     return ss.str();
 }
 
