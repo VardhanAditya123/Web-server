@@ -19,8 +19,12 @@
 #include <cstring>
 #include <fstream>
 #include <pthread.h>
- #include <stdio.h>
+#include <stdio.h>
 #include <thread>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/wait.h>
 using namespace std;
 
 
