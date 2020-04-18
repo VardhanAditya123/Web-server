@@ -216,9 +216,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     token = strtok(NULL, " "); 
 
   } 
-  string first = vec.at(0);
-  string second = vec.at(1);
-  string third = vec.at(2);
+  string first = arrr[0]
+  string second = arrr[1];
+  string third = arrr[2];
   cout << first +" " + second +" "+third << endl;
   std::fstream fs;
   if(vec.size() < 1){
