@@ -302,7 +302,7 @@ void separate(HttpRequest* const request , string line){
   }
   if(vec.size() != 2){
     for(int i = 2;i<vec.size();i++){
-      vec.at(1)=vec.at(1)+":"vec.at(i);
+      vec.at(1)=vec.at(1)+":"+vec.at(i);
     }
     // cout << "FINAL ERRRORR " <<  vec.size() <<" "<<  line <<endl;
   }
