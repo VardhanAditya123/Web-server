@@ -229,6 +229,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       if (file.is_open())
       {
         size = file.tellg();
+        file.seekg (0, ios::beg);
       }
        nstr="";
       int c;
