@@ -216,7 +216,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       fs.close();
       if(vec.at(1).compare("/hello")==0){
         msg="Hello CS252!";
-        cout << "success" << endl;
       }
     }
   }
@@ -254,7 +253,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
 
   request->message_body = msg ;
-
+   cout << msg << endl;
 }
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
