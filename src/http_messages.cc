@@ -29,6 +29,7 @@ std::string HttpResponse::to_string() const {
 
     // Look at RFC 2616 Section 6 for details on how a response message looks:
     // https://tools.ietf.org/html/rfc2616#section-6
+    ss << "FUCK" << endl;
     ss << http_version <<" "<< status_code <<" "<< default_status_reasons.at(status_code) <<"\r\n";
     ss << "Connection: "<< headers.at("Connection")  <<"\r\n";
     ss << "Content-Length:" << message_body.length() <<"\r\n";
