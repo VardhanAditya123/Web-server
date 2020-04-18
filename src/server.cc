@@ -176,7 +176,7 @@ void Server::handle(const Socket_t& sock) const {
   // resp.headers["Content-Type"] = "html";
 
   if(hflag==1){
-    std::cout << resp.to_string() << std::endl;
+    // std::cout << resp.to_string() << std::endl;
     sock->write(resp.to_string());
   }
   else{
