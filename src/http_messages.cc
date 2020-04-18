@@ -45,15 +45,15 @@ void HttpRequest::print() const {
     // Magic string to help with autograder
     std::cout << "\\\\==////REQ\\\\\\\\==////" << std::endl;
 
-    // std::cout << "Method: {" << method << "}" << std::endl;
+    std::cout << "Method: {" << method << "}" << std::endl;
     std::cout << "Request URI: {" << request_uri << "}" << std::endl;
-    // std::cout << "Query string: {" << query << "}" << std::endl;
-    // std::cout << "HTTP Version: {" << http_version << "}" << std::endl;
+    std::cout << "Query string: {" << query << "}" << std::endl;
+    std::cout << "HTTP Version: {" << http_version << "}" << std::endl;
 
-    // std::cout << "Headers: " << std::endl;
-    // for (auto kvp=headers.begin(); kvp != headers.end(); kvp++) {
-    //     std::cout << "field-name: " << kvp->first << "; field-value: " << kvp->second << std::endl;
-    // }
+    std::cout << "Headers: " << std::endl;
+    for (auto kvp=headers.begin(); kvp != headers.end(); kvp++) {
+        std::cout << "field-name: " << kvp->first << "; field-value: " << kvp->second << std::endl;
+    }
 
     std::cout << "Message body length: " << message_body.length() << std::endl<< message_body << std::endl;
 
