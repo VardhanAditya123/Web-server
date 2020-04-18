@@ -214,7 +214,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
   } 
   std::fstream fs;
-  // cout << fn << endl;
+
   if(vec.at(1).compare("/")==0){
     vec.at(1) = "/index.html";
   }
@@ -244,7 +244,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
     else{
       // streampos size;
-      cout << "TESTING" <<fn << endl;
+      cout  <<fn << endl;
       ifstream file (fn, ios::in|ios::binary|ios::ate);
       if (file.is_open())
       {
