@@ -1,4 +1,5 @@
 #include "http_messages.hh"
+using namespace std;
 
 // You may find this map helpful. You can implement HttpResponse::to_string() such that
 // if no reason_phrase is set, then you try looking up a default_status_reason in this
