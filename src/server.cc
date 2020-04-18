@@ -60,19 +60,39 @@ void Server::run_fork() const {
 }
 
 
+// PTHREAD VERSION
+struct ThreadParams {
+const Server * server;
+Socket_t sock;
+};
 
+void dispatchThread( ThreadParams * params) {
+
+printf("Dispatch Thread\n");
+// Thread dispatching this request
+params->server->handle(params->sock);
+// Delete params struct
+delete params;
+
+}
 
 
 void Server::run_thread() const {
-  while (1) {
-    // Accept request
-    Socket_t sock = _acceptor.accept_connection();
-    // Put socket in new ThreadParams struct
-    
-    // Create thread
-    std::thread t([s=std::move(sock),server = this] {server->handle(s);});
-    t.detach();
-  }
+while (1) {
+// Accept request
+Socket_t sock = _acceptor.accept_connection();
+// Put socket in new ThreadParams struct
+ThreadParams * threadParams = new ThreadParams;
+threadParams->server = this;
+threadParams->sock = std::move(sock);
+// Create thread
+pthread_t thrID;
+pthread_attr_t attr;
+pthread_attr_init(&attr);
+pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,
+(void *) threadParams);
+}
 }
 
 
