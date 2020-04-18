@@ -216,9 +216,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   } 
   std::fstream fs;
 
-  if(vec.size()< 3){
-  cout << "VECT SIZZ: " << vec.size() << endl;
-  }
   if(vec.at(1).compare("/")==0){
     vec.at(1) = "/index.html";
   }
@@ -263,14 +260,12 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
        nstr="";
       int c;
       FILE *f = fopen(fn.c_str(), "rb");
-      cout <<fn<< " SIIIZE: " << size <<endl;
       int i = 0;
       for( i = 0 ; i < size ; i++){
         c = fgetc(f);
         nstr+=c;
       }
       ms_len = i;
-    cout <<fn<< " SIIIZE2: " << nstr.length() << endl;
      msg=nstr;
      fclose(f);
     }
