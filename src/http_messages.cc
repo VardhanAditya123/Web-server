@@ -32,7 +32,7 @@ std::string HttpResponse::to_string() const {
     ss << "Connection: "<< headers.at("Connection")  <<"\r\n";
     ss << "Content-Length:" << message_body.length() <<"\r\n";
     ss << "Content-Type:" << headers.at("Content-Type") <<"\r\n";
-    if(status_code == 401)
+    // if(status_code == 401)
     ss << "WWW-Authenticate:" << headers.at("Authorization") << "\r\n" ;
     ss << "\r\n";
     ss << message_body<<"\r\n\r\n";
