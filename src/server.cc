@@ -30,6 +30,7 @@ Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 string filename;
 streampos size;
 int hflag=0;
+string nstr;
     char *buff;
 
 void Server::run_linear() const {
@@ -179,8 +180,7 @@ void Server::handle(const Socket_t& sock) const {
   }
   else{
     cout << resp.headers["Content-Type"] << endl;
-    cout << buff[7] << endl;
-    sock->write(buff,size);
+    sock->write(nstr,nstr.length());
   }
   
   hflag = 0;
@@ -248,12 +248,13 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       if (file.is_open())
       {
         size = file.tellg();
-        cout << "SIIZE: " << size << endl;
-        buff = new char [size];
-        file.seekg (0, ios::beg);
-        file.read (buff, size);
-        cout << buff <<endl;
-        file.close();
+      }
+       nstr="";
+      int c;
+      FILE *file = fopen(fn, "rb");
+      for(int i = 0 ; i < size ; i++){
+        c = fgetc(file);
+        nstr+=c;
       }
      
     }
