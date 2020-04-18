@@ -83,7 +83,6 @@ while (1) {
 // Accept request
 pthread_mutex_lock(&mutex);
 Socket_t sock = _acceptor.accept_connection();
-pthread_mutex_lock(&mutex);
 // Put socket in new ThreadParams struct
 ThreadParams * threadParams = new ThreadParams;
 threadParams->server = this;
@@ -95,6 +94,7 @@ pthread_attr_init(&attr);
 pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,
 (void *) threadParams);
+pthread_mutex_lock(&mutex);
 }
 }
 
