@@ -267,7 +267,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       //   nstr+=c;
       // }
       int i = 0;
-       while(fread(buf, sizeof(buf), f)!=NULL) {
+       while(fgetc(buf, sizeof(buf), f)!=NULL) {
          i+=1;
        }
        
