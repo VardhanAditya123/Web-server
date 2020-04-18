@@ -202,7 +202,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
-  line=trim(line);
+  // line=trim(line);
 
   char *token = strtok((char*)(line.c_str()), " "); 
  cout << line << endl;
