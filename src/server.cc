@@ -74,7 +74,7 @@ printf("Dispatch Thread\n");
 params->server->handle(params->sock);
 // Delete params struct
 delete params;
-pthread_mutex_lock(&mutex);
+pthread_mutex_unlock(&mutex);
 }
 
 
