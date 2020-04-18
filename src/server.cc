@@ -52,7 +52,8 @@ void Server::run_fork() const {
     if (ret == 0) {
       handle(slaveSocket);
       exit(0);
-    }waitpid(-1, NULL, WNOHANG) ;
+    }
+    // waitpid(-1, NULL, WNOHANG) ;
 
   }
 
