@@ -57,6 +57,7 @@ void Server::run_fork() const {
 
 
 
+
 void Server::run_thread() const {
   while (1) {
     // Accept request
@@ -91,18 +92,7 @@ void Server::run_thread_pool(const int num_threads) const {
   run_linear2(this);
 }
 
-void Server::loopthread () const  {
 
-  while (1) {
-
-    Socket_t sock = _acceptor.accept_connection();
-    ThreadParams * threadParams = new ThreadParams;
-    threadParams->server = this;
-    threadParams->sock = std::move(sock);
-    printf("Dispatch Thread\n");
-    dispatchThread(threadParams);
-  }
-}
 
 
 
