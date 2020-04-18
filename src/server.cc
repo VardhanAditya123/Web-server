@@ -64,13 +64,14 @@ void Server::run_fork() const {
 
 
 void Server::run_thread() const {
+  pthread_mutex_t mutex;
   while (1) {
     // Accept request
     Socket_t sock = _acceptor.accept_connection();
     // Put socket in new ThreadParams struct
-
+    
     // Create thread
-    std::thread t([s=std::move(sock),server = this] {server->handle(s);});
+    std::thread t([s=std::move(sock),server = this] {pthread_mutex_lock(&mutex);server->handle(s);pthread_mutex_unlock(&mutex);});
     t.detach();
   }
 }
