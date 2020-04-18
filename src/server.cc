@@ -292,11 +292,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
 void separate(HttpRequest* const request , string line){
   vector <string> vec;
-  char *token = strtok((char*)(line.c_str()), ":"); 
+  char *token = strtok((char*)(line.c_str()), " "); 
   while (token != NULL) 
   { 
     vec.push_back(trim(token));
-    token = strtok(NULL, ":"); 
+    token = strtok(NULL, " "); 
   }
   if(vec.size() !=2){
     cout << line << endl;
