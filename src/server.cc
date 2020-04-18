@@ -294,17 +294,34 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 void separate(HttpRequest* const request , string line){
   vector <string> vec;
   
-  char *token = strtok((char*)(line.c_str()), ":"); 
-  while (token != NULL) 
-  { 
-    vec.push_back(trim(token));
-    token = strtok(NULL, ":"); 
-  }
-  if(vec.size() != 2){
-    for(int i = 2;i<vec.size();i++){
-      vec.at(1)=vec.at(1)+":"+vec.at(i);
+  // char *token = strtok((char*)(line.c_str()), ":"); 
+  // while (token != NULL) 
+  // { 
+  //   vec.push_back(trim(token));
+  //   token = strtok(NULL, ":"); 
+  // }
+  // if(vec.size() != 2){
+  //   for(int i = 2;i<vec.size();i++){
+  //     vec.at(1)=vec.at(1)+":"+vec.at(i);
+  //   }
+  //   // cout << "FINAL ERRRORR " <<  vec.size() <<" "<<  line <<endl;
+  // }
+  string first="";
+  string second="";
+  int i = 0;
+  for( i = 0 ; i < line.length();i++){
+    char ch = line.at(i);
+    if(ch ==':'){
+      break;
     }
-    // cout << "FINAL ERRRORR " <<  vec.size() <<" "<<  line <<endl;
+    first +=ch;
   }
-  request->headers[vec.at(0)]=vec.at(1); 
+  i+=1;
+  for(int i = 0 ; i <line.length();i++  ){
+    char ch = line.at(i);
+    second+=ch;
+  }
+  
+  request->headers[first]=second; 
+  // request->headers[vec.at(0)]=vec.at(1); 
 }
