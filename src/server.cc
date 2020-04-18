@@ -216,15 +216,30 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     arrr[c1++]=(char*)(trim(token)).c_str();
     token = strtok(NULL, " "); 
 
+
   } 
-  string first = arrr[0];
-  string second = arrr[1];
-  string third = arrr[2];
+  int i1;
+  for(int i1 = 3; i < line.length(); i1++){
+    char ch = line.at(i1);
+    if(ch == ' ' && second.compare("")!=0){
+      second=trim(second);
+      break;
+    }
+    second+=ch;
+  }
+  i1+=1;
+  for( ; i1 < line.length(); i1++){
+    char ch = line.at(i1);
+    third+=ch;
+  }
+  third=trim(third);
+
+  string first = "GET";
+  // string second = arrr[1];
+  // string third = arrr[2];
   cout << first +" " + second +" "+third << endl;
   std::fstream fs;
-  if(vec.size() < 1){
-    cout << "REAL SHIT" << endl;
-  }
+
   if(second.compare("/")==0){
     second = "/index.html";
   }
