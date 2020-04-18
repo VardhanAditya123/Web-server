@@ -206,10 +206,13 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
   // Keep printing tokens while one of the 
   // delimiters present in str[]. 
+  char*arrr[3];
+  int c1=0;
   while (token != NULL) 
   { 
 
     vec.push_back(trim(token));
+    arrr[c++]=trim(token);
     token = strtok(NULL, " "); 
 
   } 
