@@ -54,8 +54,9 @@ void HttpRequest::print() const {
         std::cout << "field-name: " << kvp->first << "; field-value: " << kvp->second << std::endl;
     }
 
-    std::cout << "Message body length: " << message_body.length() << std::endl <<
-      message_body << std::endl;
+    std::cout << "Message body length: " << message_body.length() << std::endl;
+    //  <<
+    //   message_body << std::endl;
 
     // Magic string to help with autograder
     std::cout << "//==\\\\\\\\REQ////==\\\\" << std::endl;
