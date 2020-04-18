@@ -36,9 +36,7 @@ std::string HttpResponse::to_string() const {
     // if(status_code == 401)
     ss << "WWW-Authenticate:" << "Basic realm=\"CS 252_web_server_p5 \"" << "\r\n" ;
     ss << "\r\n";
-     cout << "WEEEEEEB1" << endl;
     ss << message_body<<"\r\n\r\n";
-    cout << "WEEEEEEB2" << endl;
     return ss.str();
 }
 
