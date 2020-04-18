@@ -214,20 +214,23 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     token = strtok(NULL, " "); 
 
   } 
+  string first = vec.at(0);
+  string second = vec.at(1);
+  strinh third = vec.at(2);
   std::fstream fs;
   if(vec.size() < 1){
     cout << "REAL SHIT" << endl;
   }
-  if(vec.at(1).compare("/")==0){
-    vec.at(1) = "/index.html";
+  if(second.compare("/")==0){
+    second = "/index.html";
   }
 
-  if (vec.at(1).find("html") != std::string::npos || vec.at(1).find("svg") != std::string::npos 
-      ||vec.at(1).find("hello") != std::string::npos) {
+  if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos 
+      ||second.find("hello") != std::string::npos) {
     hflag = 1;
   }
 
-  string fn = "http-root-dir/htdocs"+vec.at(1);
+  string fn = "http-root-dir/htdocs"+second;
   filename=fn;
   msg="";
   nstr="";
@@ -242,7 +245,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         msg+=line;
       }
       fs.close();
-      if(vec.at(1).compare("/hello")==0){
+      if(second.compare("/hello")==0){
         msg="Hello CS252!";
       }
     }
@@ -275,9 +278,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
  
 
-  request->method = vec.at(0);
-  request->request_uri = vec.at(1);
-  request-> http_version = vec.at(2);
+  request->method = first;
+  request->request_uri = second;
+  request-> http_version = third;
   line = sock->readline();
   while(line.compare("\r\n")!=0){
     // cout << line << endl;
