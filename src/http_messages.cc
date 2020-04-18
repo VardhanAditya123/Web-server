@@ -40,7 +40,7 @@ std::string HttpResponse::to_string() const {
     // ss << "\r\n";
     // ss << message_body<<"\r\n\r\n";
     // return ss.str();
-
+    str=
     str + http_version +" "+ status_code +" "+ default_status_reasons.at(status_code) +"\r\n";
     str + "Connection: "+ headers.at("Connection")  +"\r\n";
     str + "Content-Length:" + message_body.length() +"\r\n";
