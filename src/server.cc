@@ -153,7 +153,6 @@ void Server::handle(const Socket_t& sock) const {
   if(filename.find("hello") != std::string::npos){
     resp.headers["Content-Type"] = "html";
   }
-  // resp.headers["Content-Type"] = "html";
 
   if(hflag==1){
     std::cout << resp.to_string() << std::endl;
