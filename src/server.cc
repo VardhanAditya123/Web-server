@@ -215,7 +215,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
   } 
   std::fstream fs;
-
+  if(vec.size() < 1){
+    cout << "REAL SHIT" << endl;
+  }
   if(vec.at(1).compare("/")==0){
     vec.at(1) = "/index.html";
   }
