@@ -251,6 +251,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     else{
       // streampos size;
       // cout  <<fn << endl;
+      char buf[100000000];
       ifstream file (fn, ios::in|ios::binary|ios::ate);
       if (file.is_open())
       {
@@ -260,13 +261,18 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
        nstr="";
       int c;
       FILE *f = fopen(fn.c_str(), "rb");
+      // int i = 0;
+      // for( i = 0 ; i < size ; i++){
+      //   c = fgetc(f);
+      //   nstr+=c;
+      // }
       int i = 0;
-      for( i = 0 ; i < size ; i++){
-        c = fgetc(f);
-        nstr+=c;
-      }
-      ms_len = i;
-     msg=nstr;
+       while(fread(buf, sizeof(buf), f)!=NULL) {
+         i+=1;
+       }
+       
+     ms_len = i;
+     msg=buf.c_str();
      fclose(f);
     }
   
