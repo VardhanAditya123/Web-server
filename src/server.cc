@@ -265,6 +265,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         c = fgetc(f);
         nstr+=c;
       }
+      cout << "SIIIZE2: " << nstr.length() << endl;
      msg=nstr;
      fclose(f);
     }
