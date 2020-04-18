@@ -80,7 +80,9 @@ delete params;
 void Server::run_thread() const {
 while (1) {
 // Accept request
+mutex_lock(&mutex);
 Socket_t sock = _acceptor.accept_connection();
+mutex_unlock(&mutex);
 // Put socket in new ThreadParams struct
 ThreadParams * threadParams = new ThreadParams;
 threadParams->server = this;
