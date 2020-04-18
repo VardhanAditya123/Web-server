@@ -32,7 +32,7 @@ std::string HttpResponse::to_string() const {
     
     ss << http_version <<" "<< status_code <<" "<< default_status_reasons.at(status_code) <<"\r\n";
     ss << "Connection: "<< headers.at("Connection")  <<"\r\n";
-    ss << "Content-Length:" << message_body.length() <<"\r\n";
+    ss << "Content-Length:" << m_len <<"\r\n";
     ss << "Content-Type:" << headers.at("Content-Type") <<"\r\n";
     // if(status_code == 401)
     ss << "WWW-Authenticate:" << "Basic realm=\"CS 252_web_server_p5 \"" << "\r\n" ;
