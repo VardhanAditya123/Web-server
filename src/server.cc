@@ -293,19 +293,18 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
 void separate(HttpRequest* const request , string line){
   vector <string> vec;
-  int c = 0;
+  
   char *token = strtok((char*)(line.c_str()), ":"); 
   while (token != NULL) 
   { 
     vec.push_back(trim(token));
-    c+=1;
-    if(c == 2){
-      break;
-    }
     token = strtok(NULL, ":"); 
   }
   if(vec.size() != 2){
-    cout << "FINAL ERRRORR " <<  vec.size() <<" "<<  line <<endl;
+    for(int i = 2;i<vect.size();i++){
+      vec.at(1)+=vec.at(i);
+    }
+    // cout << "FINAL ERRRORR " <<  vec.size() <<" "<<  line <<endl;
   }
   request->headers[vec.at(0)]=vec.at(1); 
 }
