@@ -196,7 +196,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   char *name;
   char newChar;
   string msg;
-
+  string first = "GET";
+  string second = "";
+  string third = "";
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
@@ -234,9 +236,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
   third=trim(third);
 
-  string first = "GET";
-  // string second = arrr[1];
-  // string third = arrr[2];
+
   cout << first +" " + second +" "+third << endl;
   std::fstream fs;
 
