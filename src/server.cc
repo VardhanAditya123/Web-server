@@ -277,7 +277,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         size = file.tellg();
         file.seekg (0, ios::beg);
       }
-       nstr="";
+      
       int c;
       FILE *f = fopen(fn.c_str(), "rb");
       int i = 0;
