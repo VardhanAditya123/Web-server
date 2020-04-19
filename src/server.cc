@@ -188,29 +188,39 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   char newChar;
   string msg;
   string nstr;
-  string first = "GET";
+  string first = "";
   string second = "";
   string third = "";
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
   cout << line << endl;
-  char*arrr[3];
-  int i1 = 0;
-  for( i1 = 3; i1 < line.length(); i1++){
-    char ch = line.at(i1);
-    if(ch == ' ' && second.compare("")!=0){
-      second=trim(second);
-      break;
-    }
-    second+=ch;
-  }
-  i1=i1+1;
-  for( ; i1 < line.length()-2; i1++){
-    char ch = line.at(i1);
-    third+=ch;
-  }
-  third=trim(third);
+  // char*arrr[3];
+  // int i1 = 0;
+  // for( i1 = 3; i1 < line.length(); i1++){
+  //   char ch = line.at(i1);
+  //   if(ch == ' ' && second.compare("")!=0){
+  //     second=trim(second);
+  //     break;
+  //   }
+  //   second+=ch;
+  // }
+  // i1=i1+1;
+  // for( ; i1 < line.length()-2; i1++){
+  //   char ch = line.at(i1);
+  //   third+=ch;
+  // }
+  // third=trim(third);
+  char *token = strtok(line, s);
+   
+   /* walk through other tokens */
+   while( token != NULL ) {
+      vec.push_back(token);
+      token = strtok(NULL, s);
+   }
+   first = vec.at(0);
+   second = vec.at(1);
+   third = vec.at(2);
   std::fstream fs;
 
   if(second.compare("/")==0){
