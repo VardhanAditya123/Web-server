@@ -180,6 +180,7 @@ void Server::handle(const Socket_t& sock) const {
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // Buffer used to store the name received from the client
+  int hflag = 0;
   vector <string> vec;
   vector <string>head;
   char *name;
@@ -229,7 +230,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   if(hflag == 1){
   if (fs.is_open()){
 
-    if (request->==1 ) {
+    if (hflag==1 ) {
       while ( getline (fs,line) )
       {
         msg+=line;
