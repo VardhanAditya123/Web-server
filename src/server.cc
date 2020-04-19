@@ -148,7 +148,7 @@ void Server::handle(const Socket_t& sock) const {
   if(s.length()==0){
     request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
     resp.status_code = 401;
-
+    resp.message_body="";
   }
   else{
 
@@ -160,9 +160,9 @@ void Server::handle(const Socket_t& sock) const {
     }
   }
 
-  if(resp.message_body.length()==0){
-    resp.status_code = 404;
-  }
+  // if(resp.message_body.length()==0){
+  //   resp.status_code = 404;
+  // }
 
 
   resp.headers["Connection"] = "close";
