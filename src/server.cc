@@ -32,7 +32,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
-string filename;
+// string filename;
 int hflag=0;
 
 void Server::run_linear() const {
@@ -166,8 +166,8 @@ void Server::handle(const Socket_t& sock) const {
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
-  resp.headers["Content-Type"] = get_content_type(filename);
-  if(filename.find("hello") != std::string::npos){
+  resp.headers["Content-Type"] = get_content_type(request.filename);
+  if(request.filename.find("hello") != std::string::npos){
     resp.headers["Content-Type"] = "html";
   }
 
@@ -199,22 +199,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   char lastChar = 0;
   string line = sock->readline();
   cout << line << endl;
-  // char *token = strtok((char*)(line.c_str()), " "); 
-
-  // Keep printing tokens while one of the 
-  // delimiters present in str[]. 
   char*arrr[3];
-  // int c1=0;
-
-  // while (token != NULL) 
-  // { 
-
-  //   vec.push_back(trim(token));
-  //   arrr[c1++]=(char*)(trim(token)).c_str();
-  //   token = strtok(NULL, " "); 
-
-
-  // } 
   int i1 = 0;
   for( i1 = 3; i1 < line.length(); i1++){
     char ch = line.at(i1);
@@ -242,7 +227,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
 
   string fn = "http-root-dir/htdocs"+second;
-  filename=fn;
+ 
   msg="";
   nstr="";
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app );
@@ -300,6 +285,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
 
   request->message_body = msg ;
+  request->filename=fn;
    
 }
 //  GET /index.html HTTP/1.1

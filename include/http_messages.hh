@@ -14,7 +14,7 @@ class HttpRequest {
     std::map<std::string, std::string> headers;
     std::string message_body;
     std::string query;  // implemented in Task 2.2
-
+    std::string filename;
     void print() const;
 };
 
