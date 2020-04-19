@@ -33,7 +33,7 @@ void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 // string filename;
-int hflag=0;
+// int hflag=0;
 
 void Server::run_linear() const {
   while (1) {
@@ -223,7 +223,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
   if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos 
       ||second.find("hello") != std::string::npos) {
-    hflag = 1;
+    request->hflag = 1;
   }
 
   string fn = "http-root-dir/htdocs"+second;
@@ -232,10 +232,10 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   nstr="";
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app );
   
-  if(hflag == 1){
+  if(request->hflag == 1){
   if (fs.is_open()){
 
-    if (hflag==1 ) {
+    if (request->==1 ) {
       while ( getline (fs,line) )
       {
         msg+=line;
