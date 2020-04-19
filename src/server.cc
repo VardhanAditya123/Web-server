@@ -35,7 +35,6 @@ Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 string filename;
 streampos size;
 int hflag=0;
-string nstr;
     char *buff;
     int ms_len;
 
@@ -196,6 +195,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   char *name;
   char newChar;
   string msg;
+  string nstr;
   string first = "GET";
   string second = "";
   string third = "";
