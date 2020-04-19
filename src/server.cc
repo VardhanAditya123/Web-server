@@ -229,6 +229,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     second+=ch;
   }
   i1=i1+1;
+  cout << i1 << endl;
   for( ; i1 < line.length(); i1++){
     char ch = line.at(i1);
     third+=ch;
