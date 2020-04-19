@@ -170,17 +170,11 @@ void Server::handle(const Socket_t& sock) const {
   if(request.filename.find("hello") != std::string::npos){
     resp.headers["Content-Type"] = "html";
   }
-
-  if(hflag==1){
-    // std::cout << resp.to_string() << std::endl;
+ 
     sock->write(resp.to_string());
-  }
-  else{
-    // cout << resp.headers["Content-Type"] << endl;
-    sock->write(resp.to_string());
-  }
   
-  hflag = 0;
+  
+
 
 }
 
@@ -223,7 +217,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
   if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos 
       ||second.find("hello") != std::string::npos) {
-    request->hflag = 1;
+    hflag = 1;
   }
 
   string fn = "http-root-dir/htdocs"+second;
@@ -232,7 +226,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   nstr="";
   fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app );
   
-  if(request->hflag == 1){
+  if(hflag == 1){
   if (fs.is_open()){
 
     if (request->==1 ) {
