@@ -33,10 +33,7 @@ void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 
 string filename;
-streampos size;
 int hflag=0;
-    char *buff;
-    int ms_len;
 
 void Server::run_linear() const {
   while (1) {
@@ -147,7 +144,6 @@ void Server::handle(const Socket_t& sock) const {
   resp.message_body = request.message_body;
   resp.reason_phrase = "OK";
   string s =  request.headers["Authorization"];
-  resp.m_len = ms_len;
   if(s.length()==0){
     request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
     resp.status_code = 401;
@@ -264,7 +260,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         msg="Hello CS252!";
       }
     }
-    ms_len=msg.length();
   }
   
   }
@@ -285,7 +280,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         c = fgetc(f);
         nstr+=c;
       }
-     ms_len = i;
      msg=nstr;
      fclose(f);
     }
