@@ -27,7 +27,6 @@ class HttpResponse {
     std::string reason_phrase;
     std::map<std::string, std::string> headers;
     std::string message_body;
-    int m_len;
     std::string to_string() const;
 
     void print() const {

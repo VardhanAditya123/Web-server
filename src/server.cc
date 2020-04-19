@@ -149,6 +149,7 @@ void Server::handle(const Socket_t& sock) const {
     resp.status_code = 404;
   }
   if(s.length()==0){
+
     request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
     resp.status_code = 401;
     resp.message_body="";
