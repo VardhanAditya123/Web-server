@@ -188,41 +188,29 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   char newChar;
   string msg;
   string nstr;
-  string first = "";
+  string first = "GET";
   string second = "";
   string third = "";
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
-  cout << line << endl;
-  line=trim(line);
-  // char*arrr[3];
-  // int i1 = 0;
-  // for( i1 = 3; i1 < line.length(); i1++){
-  //   char ch = line.at(i1);
-  //   if(ch == ' ' && second.compare("")!=0){
-  //     second=trim(second);
-  //     break;
-  //   }
-  //   second+=ch;
-  // }
-  // i1=i1+1;
-  // for( ; i1 < line.length()-2; i1++){
-  //   char ch = line.at(i1);
-  //   third+=ch;
-  // }
-  // third=trim(third);
-  // char s=' ';
-  char *token = strtok((char*)(line.c_str()), " ");
-   
-   /* walk through other tokens */
-   while( token != NULL ) {
-      vec.push_back(trim(token));
-      token = strtok(NULL, " " );
-   }
-   first = vec.at(0);
-   second = vec.at(1);
-   third = vec.at(2);
+  // cout << line << endl;
+  char*arrr[3];
+  int i1 = 0;
+  for( i1 = 3; i1 < line.length(); i1++){
+    char ch = line.at(i1);
+    if(ch == ' ' && second.compare("")!=0){
+      second=trim(second);
+      break;
+    }
+    second+=ch;
+  }
+  i1=i1+1;
+  for( ; i1 < line.length()-2; i1++){
+    char ch = line.at(i1);
+    third+=ch;
+  }
+  third=trim(third);
   std::fstream fs;
 
   if(second.compare("/")==0){
