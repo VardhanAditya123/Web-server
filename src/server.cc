@@ -211,13 +211,13 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   //   third+=ch;
   // }
   // third=trim(third);
-  char s=' ';
-  char *token = strtok((char*)(line.c_str()), s);
+  // char s=' ';
+  char *token = strtok((char*)(line.c_str()), ' ');
    
    /* walk through other tokens */
    while( token != NULL ) {
       vec.push_back(trim(token));
-      token = strtok(NULL, s);
+      token = strtok(NULL, ' ');
    }
    first = vec.at(0);
    second = vec.at(1);
