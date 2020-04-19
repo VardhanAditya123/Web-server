@@ -211,6 +211,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   //   third+=ch;
   // }
   // third=trim(third);
+  char s=" ";
   char *token = strtok(line, s);
    
    /* walk through other tokens */
