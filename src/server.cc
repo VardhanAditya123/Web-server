@@ -217,7 +217,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   cout << third << endl;
   std::fstream fs;
 
-  if(isDir(second)==1){
+  if(isDir(second.c_str())==1){
     if(second.at(second.length()-1 )== '/'){
       second+="index.html";
     }
