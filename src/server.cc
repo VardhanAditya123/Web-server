@@ -27,7 +27,7 @@
 #include <sys/wait.h>
 using namespace std;
 
-
+int isDir(const char *path);
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
@@ -217,6 +217,15 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   cout << third << endl;
   std::fstream fs;
 
+  if(isDir(second)==1){
+    if(second.at(second.length()-1 )== '/'){
+      second+="index.html";
+    }
+    else{
+       second+="/index.html";
+    }
+  }
+
   if(second.compare("/")==0){
     second = "/index.html";
   }
@@ -311,4 +320,17 @@ void separate(HttpRequest* const request , string line){
   
   request->headers[trim(first)]=trim(second); 
 
+}
+
+int isDir(const char *path)
+{
+    struct stat stats;
+
+    stat(path, &stats);
+
+    // Check for file existence
+    if (S_ISDIR(stats.st_mode))
+        return 1;
+
+    return 0;
 }
