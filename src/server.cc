@@ -214,7 +214,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     third+=ch;
   }
   third=trim(third);
-  cout << third << endl
+  cout << third << endl;
   std::fstream fs;
 
   if(second.compare("/")==0){
