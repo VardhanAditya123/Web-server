@@ -150,7 +150,6 @@ void Server::handle(const Socket_t& sock) const {
 
     request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
     resp.status_code = 401;
-    // resp.message_body="";
   }
   else{
 
@@ -209,8 +208,8 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     third+=ch;
   }
   third=trim(third);
-  cout << third << endl;
-  std::fstream fs;
+  // cout << third << endl;
+  std::fstream fs; 
 
   // if(isDir(second.c_str())==1){
   //   if(second.at(second.length()-1 )== '/'){
