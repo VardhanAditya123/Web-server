@@ -199,9 +199,10 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // cout << line << endl;
   char*arrr[3];
   int i1 = 0;
-  for( i1 = 3; i1 < line.length(); i1++){
+  for( i1 = 4; i1 < line.length(); i1++){
     char ch = line.at(i1);
-    if(ch == ' ' && second.compare("")!=0){
+    // if(ch == ' ' && second.compare("")!=0){
+      if(ch == ' '){
       second=trim(second);
       break;
     }
