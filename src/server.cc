@@ -145,9 +145,6 @@ void Server::handle(const Socket_t& sock) const {
   resp.reason_phrase = "OK";
   string s =  request.headers["Authorization"];
   resp.status_code=401;
-    if(resp.message_body.length()==0){
-    resp.status_code = 404;
-  }
   if(s.length()==0){
 
     request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
@@ -164,14 +161,14 @@ void Server::handle(const Socket_t& sock) const {
     }
   }
 
-
+   if(resp.message_body.length()==0){
+    resp.status_code = 404;
+  }
 
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
   resp.headers["Content-Type"] = get_content_type(request.filename);
-  cout << resp.status_code << endl;
-  cout << resp.message_body.length() << endl;
   sock->write(resp.to_string());
   
   
