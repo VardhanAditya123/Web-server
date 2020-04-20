@@ -213,15 +213,15 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // cout << third << endl;
   std::fstream fs; 
 
-  if(isDir(second.c_str())==1){
-    if(second.at(second.length()-1 )== '/'){
-      second+="index.html";
-    }
-    else{
-       second+="/index.html";
-    }
-  }
-cout << second << endl;
+  // if(isDir(second.c_str())==1){
+  //   if(second.at(second.length()-1 )== '/'){
+  //     second+="index.html";
+  //   }
+  //   else{
+  //      second+="/index.html";
+  //   }
+  // }
+
   if(second.compare("/")==0){
     second = "/index.html";
   }
