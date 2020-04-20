@@ -163,12 +163,13 @@ void Server::handle(const Socket_t& sock) const {
 
    if(resp.message_body.length()==0){
     resp.status_code = 404;
-  }
+    }
 
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
   resp.headers["Content-Type"] = get_content_type(request.filename);
+
   sock->write(resp.to_string());
   
   
@@ -209,7 +210,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     third+=ch;
   }
   third=trim(third);
-  // cout << third << endl;
+  cout << third << endl;
   std::fstream fs;
 
   // if(isDir(second.c_str())==1){
