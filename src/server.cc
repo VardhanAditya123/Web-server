@@ -234,7 +234,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
  
   msg="";
   nstr="";
-  fs.open (fn, std::fstream::in | std::fstream::out | std::fstream::app );
+  fs.open (fn, std::fstream::in | std::fstream::out  );
   
   if(hflag == 1){
   if (fs.is_open()){
