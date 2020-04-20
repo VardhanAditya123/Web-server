@@ -170,11 +170,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
   resp.headers["Content-Type"] = get_content_type(request.filename);
-  if(request.filename.find("hello") != std::string::npos){
-    resp.headers["Content-Type"] = "html";
-  }
- 
-    sock->write(resp.to_string());
+  sock->write(resp.to_string());
   
   
 
@@ -230,8 +226,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     second = "/index.html";
   }
 
-  if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos 
-      ||second.find("hello") != std::string::npos) {
+  if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos ) {
     hflag = 1;
   }
 
@@ -250,9 +245,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
         msg+=line;
       }
       fs.close();
-      if(second.compare("/hello")==0){
-        msg="Hello CS252!";
-      }
     }
   }
   
