@@ -203,13 +203,14 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     }
     second+=ch;
   }
-  i1=i1+1;
-  for( ; i1 < line.length()-2; i1++){
-    char ch = line.at(i1);
-    third+=ch;
-  }
-  third=trim(third);
-  cout << third << endl;
+  // i1=i1+1;
+  // for( ; i1 < line.length()-2; i1++){
+  //   char ch = line.at(i1);
+  //   third+=ch;
+  // }
+  // third=trim(third);
+  third = "HTTP/1.0";
+  // cout << third << endl;
   std::fstream fs;
 
   // if(isDir(second.c_str())==1){
