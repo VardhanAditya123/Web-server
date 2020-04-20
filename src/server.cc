@@ -221,7 +221,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
        second+="/index.html";
     }
   }
-
+cout << second << endl;
   if(second.compare("/")==0){
     second = "/index.html";
   }
