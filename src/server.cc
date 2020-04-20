@@ -213,14 +213,14 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   cout << third << endl;
   std::fstream fs;
 
-  if(isDir(second.c_str())==1){
-    if(second.at(second.length()-1 )== '/'){
-      second+="index.html";
-    }
-    else{
-       second+="/index.html";
-    }
-  }
+  // if(isDir(second.c_str())==1){
+  //   if(second.at(second.length()-1 )== '/'){
+  //     second+="index.html";
+  //   }
+  //   else{
+  //      second+="/index.html";
+  //   }
+  // }
 
   if(second.compare("/")==0){
     second = "/index.html";
@@ -235,7 +235,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   msg="";
   nstr="";
   FILE *fptr = fopen(fn.c_str(), "r");
-  
+
   if(fptr!=NULL){
   fs.open (fn, std::fstream::in | std::fstream::out  );
   
