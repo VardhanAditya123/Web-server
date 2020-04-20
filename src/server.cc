@@ -203,11 +203,13 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     second+=ch;
   }
   i1=i1+1;
+  if(line.size!=0){}
   for( ; i1 < line.length()-2; i1++){
     char ch = line.at(i1);
     third+=ch;
   }
   third=trim(third);
+  }
   // cout << third << endl;
   std::fstream fs; 
 
