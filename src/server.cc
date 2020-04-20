@@ -145,11 +145,12 @@ void Server::handle(const Socket_t& sock) const {
   resp.reason_phrase = "OK";
   string s =  request.headers["Authorization"];
   resp.status_code=401;
+  
   if(s.length()==0){
 
     request.headers["WWW-Authenticate"]="Basic realm=\"CS 252_web_server_p5 \"";
     resp.status_code = 401;
-    resp.message_body="";
+    // resp.message_body="";
   }
   else{
 
@@ -161,9 +162,9 @@ void Server::handle(const Socket_t& sock) const {
     }
   }
 
-  //  if(resp.message_body.length()==0){
-  //   resp.status_code = 404;
-  // }
+ if(resp.message_body.length()==0){
+    resp.status_code = 404;
+ }
 
 
   resp.headers["Connection"] = "close";
@@ -192,8 +193,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
-  // cout << line << endl;
-  char*arrr[3];
   int i1 = 0;
   for( i1 = 4; i1 < line.length(); i1++){
     char ch = line.at(i1);
