@@ -171,7 +171,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Content-Length"] = request.message_body.length();
   resp.headers["Content-Type"] = get_content_type(request.filename);
   cout << resp.status_code << endl;
-  cout << resp.message_body << endl;
+  cout << resp.message_body.size() << endl;
   sock->write(resp.to_string());
   
   
