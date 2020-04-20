@@ -234,6 +234,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
  
   msg="";
   nstr="";
+  FILE *fptr = fopen(fn.c_str(), "r");
+  
+  if(fptr!=NULL){
   fs.open (fn, std::fstream::in | std::fstream::out  );
   
   if(hflag == 1){
@@ -270,7 +273,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
      fclose(f);
      }
     }
-  
+  }
 
  
 
