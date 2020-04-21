@@ -288,7 +288,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   while(line.compare("\r\n")!=0){
     // cout << line << endl;
     line.pop_back();
-    line.pop_back();
+    line.pop_back(); 
     separate(request,line);
     line=sock->readline();
   }
