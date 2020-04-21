@@ -250,7 +250,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
       fs.close();
     }
   }
-  
+   
   }
     else{
       streampos size;
