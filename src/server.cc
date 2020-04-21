@@ -154,17 +154,16 @@ void Server::handle(const Socket_t& sock) const {
   else{
 
     if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4=") == 0){
+      if(resp.message_body.length(!=0))
       resp.status_code=200; 
+      else
+      resp.status_code=404;
     }
     else{
       resp.status_code = 401;
     }
   }
 
- if(resp.message_body.length()==0){
-    resp.status_code = 404;
-    resp.message_body = "";
- }
 
 
   resp.headers["Connection"] = "close";
