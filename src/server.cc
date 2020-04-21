@@ -154,7 +154,7 @@ void Server::handle(const Socket_t& sock) const {
   else{
 
     if(s.compare( "Basic YWRpdHlhOnZhcmRoYW4=") == 0){
-      if(resp.message_body.length(!=0))
+      if(resp.message_body.length!=0))
       resp.status_code=200; 
       else
       resp.status_code=404;
