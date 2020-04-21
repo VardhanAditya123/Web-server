@@ -159,6 +159,7 @@ void Server::handle(const Socket_t& sock) const {
       else{
       resp.status_code=404;
       resp.message_body="";
+      }
     }
     else{
       resp.status_code = 401;
