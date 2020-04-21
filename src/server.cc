@@ -194,6 +194,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // Last character read
   char lastChar = 0;
   string line = sock->readline();
+  cout << line << endl;
   int i1 = 0;
   for( i1 = 4; i1 < line.length(); i1++){
     char ch = line.at(i1);
