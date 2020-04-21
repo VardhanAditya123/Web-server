@@ -148,6 +148,7 @@ void Server::handle(const Socket_t& sock) const {
 
   if(resp.message_body.length() == 0){
     resp.status_code=404;
+
   }
   
   if(s.length()==0){
@@ -163,6 +164,7 @@ void Server::handle(const Socket_t& sock) const {
     }
     else{
       resp.status_code = 401;
+      resp.message_body="";
     }
   }
 
