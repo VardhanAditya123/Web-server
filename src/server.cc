@@ -146,7 +146,7 @@ void Server::handle(const Socket_t& sock) const {
   string s =  request.headers["Authorization"];
   resp.status_code=401;
 
-  if(resp.message_body.length == 0){
+  if(resp.message_body.length() == 0){
     resp.status_code=404;
   }
   
