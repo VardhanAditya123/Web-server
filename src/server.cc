@@ -145,6 +145,10 @@ void Server::handle(const Socket_t& sock) const {
   resp.reason_phrase = "OK";
   string s =  request.headers["Authorization"];
   resp.status_code=401;
+
+  if(resp.message_body.length == 0){
+    resp.status_code=404;
+  }
   
   if(s.length()==0){
 
@@ -157,7 +161,7 @@ void Server::handle(const Socket_t& sock) const {
       if(resp.message_body.length()!=0)
       resp.status_code=200; 
       else{
-      resp.status_code=404;
+      resp.status_code=401;
       resp.message_body="";
       }
     }
