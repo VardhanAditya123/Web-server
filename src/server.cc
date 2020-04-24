@@ -238,46 +238,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
  
   msg="";
   nstr="";
-  // FILE *fptr = fopen(fn.c_str(), "r");
-
-  // if(fptr!=NULL){
-  // fs.open (fn, std::fstream::in | std::fstream::out  );
-  
-  // if(hflag == 1){
-  // if (fs.is_open()){
-
-  //   if (hflag==1 ) {
-  //     while ( getline (fs,line) )
-  //     {
-  //       msg+=line;
-  //     }
-  //     fs.close();
-  //   }
-  // }
-   
-  // }
-  //   else{
-  //     streampos size;
-  //     // cout  <<fn << endl;
-  //     ifstream file (fn, ios::in|ios::binary|ios::ate);
-  //     if (file.is_open())
-  //     {
-  //       size = file.tellg();
-  //       file.seekg (0, ios::beg);
-       
-      
-  //     int c;
-  //     FILE *f = fopen(fn.c_str(), "rb");
-  //     int i = 0;
-  //     for( i = 0 ; i < size ; i++){
-  //       c = fgetc(f);
-  //       nstr+=c;
-  //     }
-  //    msg=nstr;
-  //    fclose(f);
-  //    }
-  //   }
-  // }
 
  std::ifstream is(fn);     // open file
   char c;
