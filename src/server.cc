@@ -251,7 +251,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   request-> http_version = third;
   line = sock->readline();
   while(line.compare("\r\n")!=0){
-  input.erase(std::remove(input.begin(), input.end(), '\r\n'),input.end())
+  input.erase(std::remove(input.begin(), input.end(), '\r\n'),input.end());
     separate(request,line);
     line=sock->readline();
   }
