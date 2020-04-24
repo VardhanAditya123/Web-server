@@ -199,7 +199,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string tmp="";
   st.erase(std::remove(st.begin(), st.end(),'\r'),line.end());
   st.erase(std::remove(st.begin(), st.end(),'\n'),line.end());
-  p = strtok (st," ");
+  p = strtok (st.c_str()," ");
   while (p != NULL)
   {
     tmp = p;
