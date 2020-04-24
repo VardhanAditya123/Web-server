@@ -206,8 +206,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     vec.push_back(tmp);
     p = strtok (NULL, " ");
   }
-  return 0;
-}
+
+  first = vec.at(0);
+  second = vec.at(1);
+  third = vec.at(2);
+ 
   // // Last character read
   // char lastChar = 0;
   // string line = sock->readline();
