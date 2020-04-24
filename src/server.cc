@@ -199,7 +199,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string tmp="";
   st.erase(std::remove(st.begin(), st.end(),'\r'),st.end());
   st.erase(std::remove(st.begin(), st.end(),'\n'),st.end());
-  cout << st << endl;
   p = strtok ((char*)st.c_str()," ");
   while (p != NULL)
   {
@@ -212,29 +211,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   second = vec.at(1);
   third = vec.at(2);
  
-  cout << first +" "+ second+" "+third<<endl;
-  // // Last character read
-  // char lastChar = 0;
-  // string line = sock->readline();
-  // cout << line << endl;
-  // int i1 = 0;
-  // for( i1 = 4; i1 < line.length(); i1++){
-  //   char ch = line.at(i1);
-  //   // if(ch == ' ' && second.compare("")!=0){
-  //     if(ch == ' '){
-  //     second=trim(second);
-  //     break;
-  //   }
-  //   second+=ch;
-  // }
-  // i1=i1+1;
-  // if(line.size()!=0){
-  // for( ; i1 < line.length()-2; i1++){
-  //   char ch = line.at(i1);
-  //   third+=ch;
-  // }
-  // third=trim(third);
-  // }
 
   std::fstream fs; 
 
