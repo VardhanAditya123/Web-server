@@ -211,7 +211,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   second = vec.at(1);
   third = vec.at(2);
  
-  cout << first +" "+ second" "+third<<endl;
+  cout << first +" "+ second+" "+third<<endl;
   // // Last character read
   // char lastChar = 0;
   // string line = sock->readline();
