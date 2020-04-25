@@ -202,7 +202,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   st.erase(std::remove(st.begin(), st.end(),'\n'),st.end());
   cout << st << endl;
   pthread_mutex_lock(&_mutex);
-  handle_cgi_bin(&const *request);
+
   p = strtok ((char*)st.c_str()," ");
   while (p != NULL)
   {
