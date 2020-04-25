@@ -24,7 +24,7 @@
 using namespace std;
 // You could implement your logic for handling /cgi-bin requests here
 
-HttpResponse handle_cgi_bin(const HttpRequest& request,vector <string> vec) {
+HttpResponse handle_cgi_bin(HttpRequest* const request,vector <string> vec) {
   HttpResponse response;
   request.print();
   string msg;
