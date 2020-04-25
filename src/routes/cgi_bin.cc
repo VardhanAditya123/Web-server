@@ -23,7 +23,7 @@
 #include <algorithm>
 using namespace std;
 // You could implement your logic for handling /cgi-bin requests here
-
+int isDir(const char *path);
 HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
   HttpResponse response;
   string msg;
@@ -67,9 +67,11 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   request->method = first;
   request->request_uri = second;
   request-> http_version = third;
+  request->message_body = msg ;
   request->print();
 
   return response;
 }
+
 
 

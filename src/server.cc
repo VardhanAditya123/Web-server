@@ -28,13 +28,12 @@
 #include <algorithm>
 using namespace std;
 
-int isDir(const char *path);
+
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 pthread_mutex_t _mutex;
-// string filename;
-// int hflag=0;
+
 
 void Server::run_linear() const {
   while (1) {
@@ -225,36 +224,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     handle_cgi_bin(sock,request,vec);
     return;
   } 
-  std::fstream fs; 
 
-  if(isDir(second.c_str())==1){
-    if(second.at(second.length()-1 )== '/'){
-      second+="index.html";
-    }
-    else{
-       second+="/index.html";
-    }
+  else{
+    handle_cgi_htdocs(sock,request,vec);
+    return;
   }
-
-  if(second.compare("/")==0){
-    second = "/index.html";
-  }
-
-  if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos ) {
-    hflag = 1;
-  }
-
-  string fn = "http-root-dir/htdocs"+second;
- 
-  msg="";
-  nstr="";
-
- std::ifstream is(fn);     // open file
-  char c;
-  while (is.get(c))          // loop getting single characters
-    msg+=c;
-
-  is.close();
 
   request->method = first;
   request->request_uri = second;
@@ -266,8 +240,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     separate(request,line);
     line=sock->readline();
   }
-
-  request->message_body = msg ;
   request->filename=fn;
    
 }
@@ -296,15 +268,3 @@ void separate(HttpRequest* const request , string line){
 
 }
 
-int isDir(const char *path)
-{
-    struct stat stats;
-
-    stat(path, &stats);
-
-    // Check for file existence
-    if (S_ISDIR(stats.st_mode))
-        return 1;
-
-    return 0;
-}
