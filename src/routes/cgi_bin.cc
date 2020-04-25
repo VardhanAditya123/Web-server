@@ -44,7 +44,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
     if (ret == 0) {
       dup2(out[1],1);
       close(out[1]);
-      execvp(fn.c_str(),NULL);
+      execlp(fn.c_str(),NULL);
  
     }
 
