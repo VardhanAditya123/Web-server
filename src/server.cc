@@ -32,7 +32,7 @@ int isDir(const char *path);
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
-
+pthread_mutex_t _mutex;
 // string filename;
 // int hflag=0;
 
@@ -199,7 +199,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string tmp="";
   st.erase(std::remove(st.begin(), st.end(),'\r'),st.end());
   st.erase(std::remove(st.begin(), st.end(),'\n'),st.end());
-  pthread_mutex_t _mutex;
   pthread_mutex_lock(&_mutex);
   p = strtok ((char*)st.c_str()," ");
   while (p != NULL)
