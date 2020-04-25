@@ -23,7 +23,7 @@
 #include <algorithm>
 using namespace std;
 // You could implement your logic for handling /cgi-bin requests here
-void separate(HttpRequest* const request , string line);
+
 HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
   HttpResponse response;
   string msg;
@@ -80,24 +80,4 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   return response;
 }
 
-void separate(HttpRequest* const request , string line){
-  
-  string first="";
-  string second="";
-  int i = 0;
-  for( i = 0 ; i < line.length();i++){
-    char ch = line.at(i);
-    if(ch ==':'){
-      break;
-    }
-    first +=ch;
-  }
-  i+=1;
-  for(  ; i <line.length();i++  ){
-    char ch = line.at(i);
-    second+=ch;
-  }
-  
-  request->headers[trim(first)]=trim(second); 
 
-}
