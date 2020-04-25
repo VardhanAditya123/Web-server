@@ -22,7 +22,7 @@
 #include <sys/wait.h>
 #include <algorithm>
 using namespace std;
-int isDir(const char *path);
+// int isDir(const char *path);
 
 // You may find implementing this function and using it in server.cc helpful
 
@@ -67,15 +67,15 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   return response;
 }
 
-int isDir(const char *path)
-{
-    struct stat stats;
+// int isDir(const char *path)
+// {
+//     struct stat stats;
 
-    stat(path, &stats);
+//     stat(path, &stats);
 
-    // Check for file existence
-    if (S_ISDIR(stats.st_mode))
-        return 1;
+//     // Check for file existence
+//     if (S_ISDIR(stats.st_mode))
+//         return 1;
 
-    return 0;
-}
+//     return 0;
+// }
