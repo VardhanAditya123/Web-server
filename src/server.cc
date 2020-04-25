@@ -208,7 +208,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     vec.push_back(tmp);
     p = strtok (NULL, " ");
   }
-
+  pthread_mutex_unlock(&_mutex);
   if(vec.size()== 3){
   first = vec.at(0);
   second = vec.at(1);
@@ -217,7 +217,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   else{
     return;
   }
- pthread_mutex_unlock(&_mutex);
+ 
 
   std::fstream fs; 
 
