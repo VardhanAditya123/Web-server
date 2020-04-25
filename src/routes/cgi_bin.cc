@@ -40,9 +40,9 @@ HttpResponse handle_cgi_bin(const HttpRequest& request,vector <string> vec) {
 
   is.close();
   cout << msg << endl;
-  request->method = first;
-  request->request_uri = second;
-  request-> http_version = third;
+  request.method = first;
+  request.request_uri = second;
+  request. http_version = third;
   response.http_version = request.http_version;
   return response;
 }
