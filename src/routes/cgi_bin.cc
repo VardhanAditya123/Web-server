@@ -85,6 +85,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   cout <<"TESTING " << msg << endl;
   request->method = first;
   request->request_uri = second;
+  request->query = second3;
   request-> http_version = third;
   request->message_body = msg ;
   request->filename=fn;
