@@ -61,7 +61,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       }
       close(out[0]);
       
-    waitpid(-1, NULL, WNOHANG) ;
+    // waitpid(-1, NULL, WNOHANG) ;
 
   msg = str2;
   cout <<"TESTING " << msg << endl;
