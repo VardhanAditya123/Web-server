@@ -32,7 +32,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string third = vec.at(2);
   string fn = "http-root-dir"+vec.at(1);
     int out[2];
-
+    cout << fn << endl;
     pipe(out);
     int tmpin=dup(0);
     int tmpout=dup(1);
