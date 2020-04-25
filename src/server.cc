@@ -197,8 +197,10 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string line = sock->readline();
   string st = line;
   string tmp="";
+
   st.erase(std::remove(st.begin(), st.end(),'\r'),st.end());
   st.erase(std::remove(st.begin(), st.end(),'\n'),st.end());
+  cout << st << endl;
   pthread_mutex_lock(&_mutex);
   p = strtok ((char*)st.c_str()," ");
   while (p != NULL)
