@@ -123,13 +123,13 @@ void Server::run_thread_pool(const int num_threads) const {
 // example route map. you could loop through these routes and find the first route which
 // matches the prefix and call the corresponding handler. You are free to implement
 // the different routes however you please
-/*
+
    std::vector<Route_t> route_map = {
    std::make_pair("/cgi-bin", handle_cgi_bin),
    std::make_pair("/", handle_htdocs),
    std::make_pair("", handle_default)
    };
- */
+ 
 
 
 void Server::handle(const Socket_t& sock) const {
@@ -202,7 +202,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   st.erase(std::remove(st.begin(), st.end(),'\n'),st.end());
   cout << st << endl;
   pthread_mutex_lock(&_mutex);
-
+  // handle_cgi_bin(const *request);
   p = strtok ((char*)st.c_str()," ");
   while (p != NULL)
   {
