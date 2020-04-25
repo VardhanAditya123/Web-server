@@ -137,7 +137,7 @@ void Server::handle(const Socket_t& sock) const {
   // recommendation:
   parse_request( sock, &request);
   // request.print();
-
+  cout << "FUCK" << endl;
   HttpResponse resp;
   // TODO: Make a response for the HTTP request
   resp.http_version = request.http_version;
@@ -230,7 +230,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   
   }
 
-  cout << "YES YESSS00 " << endl;
+
   line = sock->readline();
   while(line.compare("\r\n")!=0){
   line.erase(std::remove(line.begin(), line.end(),'\r'),line.end());
