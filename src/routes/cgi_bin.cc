@@ -28,8 +28,9 @@ HttpResponse handle_cgi_bin(const HttpRequest& request,vector <string> vec) {
   HttpResponse response;
   request.print();
   string msg;
-  cout << "HERERE" << endl;
-  response.http_version = request.http_version;
+  string first = vec.at(0);
+  string second = vec.at(1);
+  string third = vec.at(2);
   string fn = "http-root-dir"+vec.at(1);
 
   std::ifstream is(fn);     // open file
@@ -39,6 +40,9 @@ HttpResponse handle_cgi_bin(const HttpRequest& request,vector <string> vec) {
 
   is.close();
   cout << msg << endl;
-  // TODO: Task 2.2
+  request->method = first;
+  request->request_uri = second;
+  request-> http_version = third;
+  response.http_version = request.http_version;
   return response;
 }
