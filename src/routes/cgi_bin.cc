@@ -32,9 +32,10 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string third = vec.at(2);
   string second2="";
   string second3="";
+  string second4=second;
   vec.clear();
   string tmp;
-  char* p = strtok ((char*)second.c_str(),"?");
+  char* p = strtok ((char*)second4.c_str(),"?");
   while (p != NULL)
   {
     tmp = p;
