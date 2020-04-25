@@ -38,7 +38,7 @@ HttpResponse handle_cgi_bin(const HttpRequest& request,vector <string> vec) {
     msg+=c;
 
   is.close();
-  cout msg;
+  cout << msg << endl;
   // TODO: Task 2.2
   return response;
 }
