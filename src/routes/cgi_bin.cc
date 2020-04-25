@@ -33,7 +33,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string second2="";
 
   for(int i = 0 ; i < second.length();i++){
-    char c = second.at(i);
+    char ch = second.at(i);
     if(ch=='?'){
       break;
     }
