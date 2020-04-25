@@ -28,7 +28,6 @@
 #include <algorithm>
 using namespace std;
 
-int isDir(const char *path);
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
@@ -202,7 +201,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   st.erase(std::remove(st.begin(), st.end(),'\n'),st.end());
   cout << st << endl;
   pthread_mutex_lock(&_mutex);
-  // handle_cgi_bin(const *request);
   p = strtok ((char*)st.c_str()," ");
   while (p != NULL)
   {
@@ -220,44 +218,15 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     return;
   }
  
-  // cout << second << endl;
-  // if (second.find("cgi-bin") != std::string::npos) {
-  //   handle_cgi_bin(*request);
-  // }
-  std::fstream fs; 
-
-  // if(isDir(second.c_str())==1){
-  //   if(second.at(second.length()-1 )== '/'){
-  //     second+="index.html";
-  //   }
-  //   else{
-  //      second+="/index.html";
-  //   }
-  // }
-
-  if(second.compare("/")==0){
-    second = "/index.html";
+  cout << second << endl;
+  if (second.find("cgi-bin") != std::string::npos) {
+    handle_cgi_bin(sock,request,vec);
   }
-
-  if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos ) {
-    hflag = 1;
+  else{
+    handle_htdocs(sock,request,vec);
   }
+  
 
-  string fn = "http-root-dir/htdocs"+second;
- 
-  msg="";
-  nstr="";
-
- std::ifstream is(fn);     // open file
-  char c;
-  while (is.get(c))          // loop getting single characters
-    msg+=c;
-
-  is.close();
-
-  request->method = first;
-  request->request_uri = second;
-  request-> http_version = third;
   line = sock->readline();
   while(line.compare("\r\n")!=0){
   line.erase(std::remove(line.begin(), line.end(),'\r'),line.end());
@@ -266,9 +235,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     line=sock->readline();
   }
 
-  request->message_body = msg ;
-  request->filename=fn;
-   
 }
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
@@ -295,15 +261,3 @@ void separate(HttpRequest* const request , string line){
 
 }
 
-int isDir(const char *path)
-{
-    struct stat stats;
-
-    stat(path, &stats);
-
-    // Check for file existence
-    if (S_ISDIR(stats.st_mode))
-        return 1;
-
-    return 0;
-}
