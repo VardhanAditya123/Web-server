@@ -230,9 +230,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     return;
   }
 
-  request->method = first;
-  request->request_uri = second;
-  request-> http_version = third;
+
   line = sock->readline();
   while(line.compare("\r\n")!=0){
   line.erase(std::remove(line.begin(), line.end(),'\r'),line.end());
@@ -240,7 +238,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     separate(request,line);
     line=sock->readline();
   }
-  request->filename=fn;
+
    
 }
 //  GET /index.html HTTP/1.1

@@ -68,6 +68,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   request->request_uri = second;
   request-> http_version = third;
   request->message_body = msg ;
+  request->filename=fn;
   request->print();
 
   return response;

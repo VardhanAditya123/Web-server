@@ -61,6 +61,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   request->request_uri = second;
   request-> http_version = third;
   request->message_body = msg ;
+  request->filename=fn;
   return response;
 }
 
