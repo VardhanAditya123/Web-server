@@ -45,10 +45,6 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     second = "/index.html";
   }
 
-  if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos ) {
-    hflag = 1;
-  }
-
   string fn = "http-root-dir/htdocs"+second;
  
   msg="";
@@ -61,7 +57,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
 
   is.close();
 
-  response.http_version = request.http_version;
+  // response.http_version = request.http_version;
   
   request->method = first;
   request->request_uri = second;
