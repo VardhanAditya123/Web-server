@@ -124,11 +124,11 @@ void Server::run_thread_pool(const int num_threads) const {
 // matches the prefix and call the corresponding handler. You are free to implement
 // the different routes however you please
 
-   std::vector<Route_t> route_map = {
-   std::make_pair("/cgi-bin", handle_cgi_bin),
-   std::make_pair("/", handle_htdocs),
-   std::make_pair("", handle_default)
-   };
+  //  std::vector<Route_t> route_map = {
+  //  std::make_pair("/cgi-bin", handle_cgi_bin),
+  //  std::make_pair("/", handle_htdocs),
+  //  std::make_pair("", handle_default)
+  //  };
  
 
 
