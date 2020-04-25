@@ -221,9 +221,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
  
   cout << second << endl;
-  if (second.find(route_map.at(0).first) != std::string::npos) {
-    cout << "FUCKKK" << endl;
-  }
+  // if (second.find(route_map.at(0).first) != std::string::npos) {
+  //   cout << "FUCKKK" << endl;
+  // }
   std::fstream fs; 
 
   // if(isDir(second.c_str())==1){
