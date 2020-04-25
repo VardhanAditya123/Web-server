@@ -11,7 +11,7 @@ using namespace std;
 // You may find handling routes by using these functions (that you need to implement) helpful
 
 // HttpResponse handle_cgi_bin(const HttpRequest& request,vector<string> vec);
-HttpResponse handle_cgi_bin(HttpRequest* const request,vector <string> vec);
+HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 HttpResponse handle_htdocs(const HttpRequest& request);
 HttpResponse handle_default(const HttpRequest& request);
 
