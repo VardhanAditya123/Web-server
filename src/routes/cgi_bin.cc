@@ -53,7 +53,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       dup2(tmpout,1);
       close(tmpin);
       close(tmpout);
-
+      cout <<"FUCKKK" << endl;
       char c;
       string str2;
       while(read(out[0],&c,1)){
