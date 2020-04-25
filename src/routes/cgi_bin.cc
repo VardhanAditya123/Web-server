@@ -61,7 +61,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       dup2(out[1],1);
       close(out[1]);
       setenv( "REQUEST_METHOD","GET",1);
-      setenv("QUERY STRING",second3,c_str(),1);
+      setenv("QUERY STRING",second3.c_str(),1);
       execl(fn.c_str(),NULL);
  
     }
