@@ -32,18 +32,18 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string third = vec.at(2);
   string second2="";
   string second3="";
-
-  for(int i = 0 ; i < second.length();i++){
-    char ch = second.at(i);
-    if(ch!='?'){
-     second2+=ch;
-    }
-    else{
-      second3+=ch;
-    }
-  
+  vec.clear();
+  string tmp;
+  char* p = strtok ((char*)second.c_str(),"?");
+  while (p != NULL)
+  {
+    tmp = p;
+    vec.push_back(tmp);
+    p = strtok (NULL, "?");
   }
 
+  second2 = vec.at(0);
+  second3 = vec.at(1);
 
   
   string fn = "http-root-dir"+second2;
