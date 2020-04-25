@@ -199,6 +199,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   string tmp="";
   st.erase(std::remove(st.begin(), st.end(),'\r'),st.end());
   st.erase(std::remove(st.begin(), st.end(),'\n'),st.end());
+  pthread_mutex_lock(&_mutex);
   p = strtok ((char*)st.c_str()," ");
   while (p != NULL)
   {
@@ -215,7 +216,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   else{
     return;
   }
-  pthread_mutex_lock(&_mutex);
+ 
 
   std::fstream fs; 
 
