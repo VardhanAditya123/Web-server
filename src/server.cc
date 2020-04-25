@@ -226,7 +226,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   } 
 
   else{
-    handle_cgi_htdocs(sock,request,vec);
+    handle_htdocs(sock,request,vec);
     return;
   }
 
