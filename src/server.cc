@@ -220,6 +220,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     return;
   }
  
+  cout << second << endl;
   if (second.find(route_map.at(0).first) != std::string::npos) {
     route_map.at(1).second;
   }
