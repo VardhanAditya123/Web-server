@@ -32,17 +32,38 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string third = vec.at(2);
   string fn = "http-root-dir"+vec.at(1);
 
- 
-
+    int in[2];
+    int out[2];
+    pipe(in); 
+    pipe(out);
+    int tmpin=dup(0);
+    int tmpout=dup(1);
   
-  int ret = fork();
+    int ret = fork();
+  
     if (ret == 0) {
+      dup2(out[1],1);
+      close(out[1]);
       execvp(fn.c_str(),NULL);
-      exit(0);
+ 
     }
+
+      close(out[1]);
+      dup2(tmpin,0);
+      dup2(tmpout,1);
+      close(tmpin);
+      close(tmpout);
+
+      char c;
+      string str2;
+      while(read(out[0],&c,1)){
+        str2+=i;
+      }
+      close(out[0]);
+      
     waitpid(-1, NULL, WNOHANG) ;
 
-
+  msg = str2;
   cout << msg << endl;
   request->method = first;
   request->request_uri = second;
