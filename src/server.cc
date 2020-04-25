@@ -263,7 +263,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   while(line.compare("\r\n")!=0){
   line.erase(std::remove(line.begin(), line.end(),'\r'),line.end());
   line.erase(std::remove(line.begin(), line.end(),'\n'),line.end());
-    Server::separate(request,line);
+    separate(request,line);
     line=sock->readline();
   }
 
@@ -274,7 +274,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
 
-void Server::separate(HttpRequest* const request , string line) const{
+void separate(HttpRequest* const request , string line){
   
   string first="";
   string second="";
