@@ -222,12 +222,12 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   if (second.find("cgi-bin") != std::string::npos) {
     cout << second << endl;
     handle_cgi_bin(sock,request,vec);
-    return;
+    
   } 
 
   else{
     handle_htdocs(sock,request,vec);
-    return;
+  
   }
 
 
