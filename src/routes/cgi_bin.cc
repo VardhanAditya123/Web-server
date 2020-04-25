@@ -67,14 +67,6 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   request->method = first;
   request->request_uri = second;
   request-> http_version = third;
-  // response.http_version = request->http_version;
-  // string line = sock->readline();
-  // while(line.compare("\r\n")!=0){
-  // line.erase(std::remove(line.begin(), line.end(),'\r'),line.end());
-  // line.erase(std::remove(line.begin(), line.end(),'\n'),line.end());
-  //   // separate(request,line);
-  //   line=sock->readline();
-  // }
   request->print();
 
   return response;
