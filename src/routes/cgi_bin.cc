@@ -30,7 +30,17 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
-  string fn = "http-root-dir"+vec.at(1);
+  string second2="";
+
+  for(int i = 0 ; i < second.length();i++){
+    char c = second.at(i);
+    if(ch=='?'){
+      break;
+    }
+    second2+=ch;
+  }
+  
+  string fn = "http-root-dir"+second2;
     int out[2];
     cout << fn << endl;
     pipe(out);
