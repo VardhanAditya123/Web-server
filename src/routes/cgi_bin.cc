@@ -26,7 +26,6 @@ using namespace std;
 
 HttpResponse handle_cgi_bin(HttpRequest* const request,vector <string> vec) {
   HttpResponse response;
-  request.print();
   string msg;
   string first = vec.at(0);
   string second = vec.at(1);
@@ -44,5 +43,6 @@ HttpResponse handle_cgi_bin(HttpRequest* const request,vector <string> vec) {
   request->request_uri = second;
   request-> http_version = third;
   response.http_version = request->http_version;
+  request->print();
   return response;
 }
