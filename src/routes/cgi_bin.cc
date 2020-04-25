@@ -31,8 +31,6 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string second = vec.at(1);
   string third = vec.at(2);
   string fn = "http-root-dir"+vec.at(1);
-  execlp(fn.c_str(),NULL);
-
     int out[2];
 
     pipe(out);
@@ -43,7 +41,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   
     if (ret == 0) {
       dup2(out[1],1);
-      close(out[1]);
+      // close(out[1]);
       execlp(fn.c_str(),NULL);
  
     }
@@ -65,6 +63,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
     // waitpid(-1, NULL, WNOHANG) ;
 
   msg = str2;
+
   cout <<"TESTING " << msg << endl;
   request->method = first;
   request->request_uri = second;
