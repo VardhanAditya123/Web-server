@@ -274,7 +274,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 //  GET /index.html HTTP/1.1
 // GET /hello HTTP/1.1
 
-void separate(HttpRequest* const request , string line){
+void Server::separate(HttpRequest* const request , string line){
   
   string first="";
   string second="";

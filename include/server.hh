@@ -16,6 +16,7 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
+    void separate()const;
 };
 
 #endif  // INCLUDE_SERVER_HH_

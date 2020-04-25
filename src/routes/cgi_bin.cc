@@ -72,7 +72,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   while(line.compare("\r\n")!=0){
   line.erase(std::remove(line.begin(), line.end(),'\r'),line.end());
   line.erase(std::remove(line.begin(), line.end(),'\n'),line.end());
-    separate(request,line);
+    // separate(request,line);
     line=sock->readline();
   }
   request->print();
