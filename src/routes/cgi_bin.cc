@@ -29,7 +29,7 @@ HttpResponse handle_cgi_bin(const HttpRequest& request,vector <string> vec) {
   request.print();
   cout << "HERERE" << endl;
   response.http_version = request.http_version;
-  string fn = "http-root-dir";
+  string fn = "http-root-dir"+vec.at(1);
   // TODO: Task 2.2
   return response;
 }
