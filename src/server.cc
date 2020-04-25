@@ -234,6 +234,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     separate(request,line);
     line=sock->readline();
   }
+  request->print();
 
 }
 //  GET /index.html HTTP/1.1
