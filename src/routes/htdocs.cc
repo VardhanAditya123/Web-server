@@ -27,6 +27,7 @@ int isDir(const char *path);
 // You may find implementing this function and using it in server.cc helpful
 
 HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
+  cout << "GRRAC" << endl;
   HttpResponse response;
   string msg;
   string first = vec.at(0);
@@ -62,6 +63,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   request-> http_version = third;
   request->message_body = msg ;
   request->filename=fn;
+  request.print();
   return response;
 }
 
