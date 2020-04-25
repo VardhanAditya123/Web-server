@@ -4,7 +4,7 @@
 
 HttpResponse handle_cgi_bin(const HttpRequest& request) {
   HttpResponse response;
-  request->print();
+  request.print();
   response.http_version = request.http_version;
   // TODO: Task 2.2
   return response;
