@@ -222,7 +222,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
  
   cout << second << endl;
   if (second.find("cgi-bin") != std::string::npos) {
-    cout << "FUCKKK" << endl;
+    handle_cgi_bin;
   }
   std::fstream fs; 
 
