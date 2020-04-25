@@ -220,7 +220,9 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     return;
   }
  
-
+  if (second.find(route_map.at(0).first) != std::string::npos) {
+    route_map.at(1).second;
+  }
   std::fstream fs; 
 
   // if(isDir(second.c_str())==1){
