@@ -219,7 +219,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     return;
   }
  
-  cout << second << endl;
+  
   if (second.find("cgi-bin") != std::string::npos) {
     handle_cgi_bin(*request);
   } 
@@ -237,7 +237,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   if(second.compare("/")==0){
     second = "/index.html";
   }
-
+cout << second << endl;
   if (second.find("html") != std::string::npos || second.find("svg") != std::string::npos ) {
     hflag = 1;
   }
