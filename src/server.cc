@@ -230,7 +230,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   
   }
 
-
+  cout << "YES YESSS00 " << endl;
   line = sock->readline();
   while(line.compare("\r\n")!=0){
   line.erase(std::remove(line.begin(), line.end(),'\r'),line.end());
