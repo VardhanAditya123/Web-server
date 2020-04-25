@@ -24,7 +24,7 @@
 using namespace std;
 // You could implement your logic for handling /cgi-bin requests here
 
-HttpRequest handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
+HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
   HttpResponse response;
   string msg;
   string first = vec.at(0);
