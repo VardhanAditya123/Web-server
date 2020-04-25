@@ -5,6 +5,7 @@
 HttpResponse handle_cgi_bin(const HttpRequest& request) {
   HttpResponse response;
   request.print();
+  cout << "HERERE" << endl;
   response.http_version = request.http_version;
   // TODO: Task 2.2
   return response;
