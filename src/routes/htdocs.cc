@@ -32,7 +32,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
- 
+    string fn = "http-root-dir"+vec.at(1);
  if(isDir(second.c_str())==1){
     if(second.at(second.length()-1 )== '/'){
       second+="index.html";
