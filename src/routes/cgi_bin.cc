@@ -24,7 +24,7 @@
 using namespace std;
 // You could implement your logic for handling /cgi-bin requests here
 
-HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
+HttpRequest handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
   HttpResponse response;
   string msg;
   string first = vec.at(0);
@@ -32,17 +32,23 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string third = vec.at(2);
   string fn = "http-root-dir"+vec.at(1);
 
-  std::ifstream is(fn);     // open file
-  char c;
-  while (is.get(c))          // loop getting single characters
-    msg+=c;
+ 
 
-  is.close();
+  
+  int ret = fork();
+    if (ret == 0) {
+      execvp(fn,NULL);
+      exit(0);
+    }
+    waitpid(-1, NULL, WNOHANG) ;
+
+
   cout << msg << endl;
   request->method = first;
   request->request_uri = second;
   request-> http_version = third;
   // response.http_version = request->http_version;
   request->print();
+
   return response;
 }
