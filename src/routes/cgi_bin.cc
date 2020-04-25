@@ -57,7 +57,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       char c;
       string str2;
       while(read(out[0],&c,1)){
-        str2+=i;
+        str2+=c;
       }
       close(out[0]);
       
