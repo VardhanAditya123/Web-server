@@ -44,9 +44,10 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   }
 
   second2 = vec.at(0);
-  if(vec.size() >0)
+  if(vec.size() > 1){
   second3 = vec.at(1);
-  cout << "LOLOLy jh " + second3 << endl;
+  request->query = second3;
+  }
   
   string fn = "http-root-dir"+second2;
     int out[2];
@@ -61,6 +62,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       dup2(out[1],1);
       close(out[1]);
       setenv( "REQUEST_METHOD","GET",1);
+      if((request->query).length()!=0)
       setenv("QUERY_STRING",second3.c_str(),1);
       execl(fn.c_str(),NULL);
  
@@ -86,7 +88,6 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   cout <<"TESTING " << msg << endl;
   request->method = first;
   request->request_uri = second;
-  request->query = second3;
   request-> http_version = third;
   request->message_body = msg ;
   request->filename=fn;
