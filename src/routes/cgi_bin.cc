@@ -31,7 +31,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string second = vec.at(1);
   string third = vec.at(2);
   string fn = "http-root-dir"+vec.at(1);
-
+  execlp(fn.c_str(),NULL);
 
     int out[2];
 
@@ -53,7 +53,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       dup2(tmpout,1);
       close(tmpin);
       close(tmpout);
-      cout <<"FUCKKK" << endl;
+  
       char c;
       string str2;
       while(read(out[0],&c,1)){
