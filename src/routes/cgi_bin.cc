@@ -37,7 +37,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   
   int ret = fork();
     if (ret == 0) {
-      execvp(fn.c_str(),NULL);
+      execvp(fn.c_str(),NULL,NULL);
       exit(0);
     }
     waitpid(-1, NULL, WNOHANG) ;
