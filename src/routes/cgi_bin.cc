@@ -31,14 +31,20 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string second = vec.at(1);
   string third = vec.at(2);
   string second2="";
+  string second3="";
 
   for(int i = 0 ; i < second.length();i++){
     char ch = second.at(i);
-    if(ch=='?'){
-      break;
+    if(ch!='?'){
+     second2+=ch;
     }
-    second2+=ch;
+    else{
+      second3+=ch;
+    }
+  
   }
+
+
   
   string fn = "http-root-dir"+second2;
     int out[2];
