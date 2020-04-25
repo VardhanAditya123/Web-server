@@ -46,7 +46,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   second2 = vec.at(0);
   if(vec.size() >0)
   second3 = vec.at(1);
-  cout << "LOLOLy jh " + second2 << endl;
+  cout << "LOLOLy jh " + second3 << endl;
   
   string fn = "http-root-dir"+second2;
     int out[2];
