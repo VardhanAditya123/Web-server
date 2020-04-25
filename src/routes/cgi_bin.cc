@@ -1,5 +1,5 @@
 #include "http_messages.hh"
-
+using namespace std;
 // You could implement your logic for handling /cgi-bin requests here
 
 HttpResponse handle_cgi_bin(const HttpRequest& request) {
