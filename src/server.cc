@@ -220,11 +220,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
   }
  
   
-  if (second.find("cgi-bin") != std::string::npos) {
-    cout << second << endl;
-    handle_cgi_bin(sock,request,vec);
-    return;
-  } 
+  // if (second.find("cgi-bin") != std::string::npos) {
+  //   cout << second << endl;
+  //   handle_cgi_bin(sock,request,vec);
+  //   return;
+  // } 
   std::fstream fs; 
 
   if(isDir(second.c_str())==1){
