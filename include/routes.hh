@@ -6,7 +6,8 @@
 #include <utility>
 #include <vector>
 #include "http_messages.hh"
-
+#include<bits/stdc++.h> 
+using namespace std;
 // You may find handling routes by using these functions (that you need to implement) helpful
 
 HttpResponse handle_cgi_bin(const HttpRequest& request,vector<string> vec);
