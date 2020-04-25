@@ -46,7 +46,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
  
     }
 
-      close(out[1]);
+      // close(out[1]);
       dup2(tmpin,0);
       dup2(tmpout,1);
       close(tmpin);
