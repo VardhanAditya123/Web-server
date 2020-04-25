@@ -63,7 +63,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   request-> http_version = third;
   request->message_body = msg ;
   request->filename=fn;
-  request.print();
+  request->print();
   return response;
 }
 
