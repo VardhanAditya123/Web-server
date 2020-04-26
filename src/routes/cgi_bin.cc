@@ -27,7 +27,7 @@
 #include <stdio.h>
 #include<stdlib.h>
 using namespace std;
-extern typedef void (*httprunfunc)(int ssock, const char* querystring);
+typedef extern void (*httprunfunc)(int ssock, const char* querystring);
 // You could implement your logic for handling /cgi-bin requests here
 int isDir(const char *path);
 HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
