@@ -86,7 +86,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
         perror( "dlsym: httprun not found:");
         exit(1);
       }
-      // Call the function
+    
       hello_httprun( 1, second3.c_str());
     }
 
