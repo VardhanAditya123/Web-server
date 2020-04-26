@@ -57,7 +57,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
 
   string fn = "http-root-dir"+second2;
   int out[2];
-  cout << fn << endl;
+  // cout << fn << endl;
   pipe(out);
   int tmpin=dup(0);
   int tmpout=dup(1);
@@ -112,7 +112,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
 
   msg = str2;
 
-  cout <<"TESTING " << msg << endl;
+  // cout <<"TESTING " << msg << endl;
   request->method = first;
   request->request_uri = second;
   request-> http_version = third;
