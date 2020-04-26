@@ -73,7 +73,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
 
     if(fn.find(".so")!=std::string::npos){
      
-      void * lib = dlopen( "http-root-dir/cgi-bin/jj-mod.so", RTLD_LAZY );
+      void * lib = dlopen( fn.c_str(), RTLD_LAZY );
 
       if ( lib == NULL ) {
         fprintf( stderr, "./jj-mod.so not found\n");
