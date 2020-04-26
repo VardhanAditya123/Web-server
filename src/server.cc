@@ -173,7 +173,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Content-Length"] = request.message_body.length();
   cout << request.filename << endl;
   resp.headers["Content-Type"] = get_content_type(request.filename);
-  if(request.filename.compare("http-root-dir/cgi-bin/jj")==0){
+  if(request.filename.compare("http-root-dir/cgi-bin/jj")==0 || request.filename.compare("http-root-dir/cgi-bin/jj-mod")==0){
      resp.headers["Content-Type"] ="text/html";
   }
 
