@@ -71,7 +71,6 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
     if((request->query).length()!=0)
       setenv("QUERY_STRING",second3.c_str(),1);
 
-    
     if(fn.find(".so")!=std::string::npos){
       void * lib = dlopen( "http-root-dir/cgi-src/jj-mod.so", RTLD_LAZY );
 
@@ -83,10 +82,10 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       httprunfunc hello_httprun;
 
       hello_httprun = (httprunfunc) dlsym( lib, "httprun");
-      // if ( hello_httprun == NULL ) {
-      //   perror( "dlsym: httprun not found:");
-      //   exit(1);
-      // }
+      if ( hello_httprun == NULL ) {
+        perror( "dlsym: httprun not found:");
+        exit(1);
+      }
 
       // Call the function
     
