@@ -57,7 +57,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
 
   string fn = "http-root-dir"+second2;
   int out[2];
-  // cout << fn << endl;
+  cout << fn << endl;
   pipe(out);
   int tmpin=dup(0);
   int tmpout=dup(1);
@@ -72,7 +72,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       setenv("QUERY_STRING",second3.c_str(),1);
 
     if(fn.find(".so")!=std::string::npos){
-      void * lib = dlopen( fn.c_str(), RTLD_LAZY );
+      void * lib = dlopen( "http-root-dir/cgi-bin/./jj-mod.so", RTLD_LAZY );
 
       if ( lib == NULL ) {
         fprintf( stderr, "./jj-mod.so not found\n");
@@ -112,7 +112,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
 
   msg = str2;
 
-  // cout <<"TESTING " << msg << endl;
+  cout <<"TESTING " << msg << endl;
   request->method = first;
   request->request_uri = second;
   request-> http_version = third;
