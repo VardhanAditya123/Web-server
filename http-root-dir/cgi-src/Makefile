@@ -73,12 +73,9 @@ imagemap: imagemap.o
 jj: jj.o util.o
 	$(CC) -no-pie jj.o util.o -o ../cgi-bin/jj
 
-jj-mod: jj-mod.o util.o
-	$(CC) -no-pie jj-mod.o util.o -o ../cgi-bin/jj-mod
-
-jj-mod.so: jj-mod.o 
-	g++ -fPIC    -c -o jj.o jj-mod.c
-	ld -G -o jj-mod.so jj.o -o ../cgi-bin/jj-mod.so
+jj-mod.so: jj-mod.o util.o
+	g++ -fPIC    -c -o jj-mod.o jj-mod.c
+	ld -G -o jj-mod.so jj-mod.o
 
 phf: phf.o util.o
 	$(CC) phf.o util.o -o ../cgi-bin/phf
@@ -87,6 +84,5 @@ change-passwd: change-passwd.o util.o
 	$(CC) change-passwd.o util.o -o ../sec-cgi/change-passwd
 
 clean:
-	rm -f *.o ../cgi-bin/post-query ../cgi-bin/query ../sec-cgi/change-passwd ../cgi-bin/phf ../cgi-bin/jj ../cgi-bin/imagemap 
-	../cgi-bin/jj-mod.so ../cgi-bin/jj-mod
+	rm -f *.o ../cgi-bin/post-query ../cgi-bin/query ../sec-cgi/change-passwd ../cgi-bin/phf ../cgi-bin/jj ../cgi-bin/imagemap ../cgi-bin/jj-mod.so ../cgi-bin/jj-mod
 
