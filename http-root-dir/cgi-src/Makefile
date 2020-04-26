@@ -77,6 +77,7 @@ jj-mod: jj-mod.o util.o
 	$(CC) -no-pie jj-mod.o util.o -o ../cgi-bin/jj-mod
 
 jj-mod.so: jj-mod.o 
+	g++ -fPIC    -c -o jj-mod.o jj-mod.c
 	ld -G -o jj-mod.so jj-mod.o
 
 phf: phf.o util.o
