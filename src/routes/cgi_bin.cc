@@ -72,7 +72,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       setenv("QUERY_STRING",second3.c_str(),1);
 
     if(fn.find(".so")!=std::string::npos){
-      cout << "YES YES YESSSS" << endl;
+     
       void * lib = dlopen( "http-root-dir/cgi-bin/jj-mod.so", RTLD_LAZY );
 
       if ( lib == NULL ) {
