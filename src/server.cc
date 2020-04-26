@@ -173,9 +173,9 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Content-Length"] = request.message_body.length();
   cout << request.filename << endl;
   resp.headers["Content-Type"] = get_content_type(request.filename);
-  // if(request.filename.compare("http-root-dir/cgi-bin/jj")==0){
-  //    resp.headers["Content-Type"] ="html";
-  // }
+  if(request.filename.compare("http-root-dir/cgi-bin/jj")==0){
+     resp.headers["Content-Type"] ="text/html";
+  }
 
   sock->write(resp.to_string());
   
