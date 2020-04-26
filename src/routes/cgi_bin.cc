@@ -22,6 +22,7 @@
 #include <sys/wait.h>
 #include <algorithm>
 using namespace std;
+typedef void (*httprunfunc)(int ssock, const char* querystring);
 // You could implement your logic for handling /cgi-bin requests here
 int isDir(const char *path);
 HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
@@ -45,48 +46,65 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
 
   second2 = vec.at(0);
   if(vec.size() > 1){
-  second3 = vec.at(1);
-  request->query = second3;
+    second3 = vec.at(1);
+    request->query = second3;
   }
-  
+
   string fn = "http-root-dir"+second2;
-    int out[2];
-    cout << fn << endl;
-    pipe(out);
-    int tmpin=dup(0);
-    int tmpout=dup(1);
-  
-    int ret = fork();
-  
-    if (ret == 0) {
-      dup2(out[1],1);
-      close(out[1]);
-      setenv( "REQUEST_METHOD","GET",1);
-      if((request->query).length()!=0)
+  int out[2];
+  cout << fn << endl;
+  pipe(out);
+  int tmpin=dup(0);
+  int tmpout=dup(1);
+
+  int ret = fork();
+
+  if (ret == 0) {
+    dup2(out[1],1);
+    close(out[1]);
+    setenv( "REQUEST_METHOD","GET",1);
+    if((request->query).length()!=0)
       setenv("QUERY_STRING",second3.c_str(),1);
-      if(fn.find(".so")!=std::string::npos){
-         execl(fn.c_str(),NULL);
+
+    if(fn.find(".so")!=std::string::npos){
+      void * lib = dlopen( "./jj-mod.so", RTLD_LAZY );
+
+      if ( lib == NULL ) {
+        fprintf( stderr, "./jj-mod.so not found\n");
+        perror( "dlopen");
+        exit(1);
+      }
+      httprunfunc hello_httprun;
+
+      hello_httprun = (httprunfunc) dlsym( lib, "httprun");
+      if ( hello_httprun == NULL ) {
+        perror( "dlsym: httprun not found:");
+        exit(1);
       }
 
-      else
-      execl(fn.c_str(),NULL);
- 
+      // Call the function
+      hello_httprun( 1, "a=b&c=d");
     }
 
-      close(out[1]);
-      dup2(tmpin,0);
-      dup2(tmpout,1);
-      close(tmpin);
-      close(tmpout);
-  
-      char c;
-      string str2;
-      while(read(out[0],&c,1)){
-        str2+=c;
-      }
-      close(out[0]);
-      
-    // waitpid(-1, NULL, WNOHANG) ;
+    else
+      execl(fn.c_str(),NULL);
+
+  }
+
+  close(out[1]);
+  dup2(tmpin,0);
+  dup2(tmpout,1);
+  close(tmpin);
+  close(tmpout);
+
+  char c;
+  string str2;
+  while(read(out[0],&c,1)){
+    str2+=c;
+  }
+  close(out[0]);
+
+  // waitpid(-1, NULL, WNOHANG) ;
 
   msg = str2;
 
