@@ -78,7 +78,7 @@ jj-mod: jj-mod.o util.o
 
 jj-mod.so: jj-mod.o 
 	g++ -fPIC    -c -o jj-mod.o jj-mod.c
-	ld -G -o jj-mod.so jj-mod.o
+	ld -G -o jj-mod.so jj-mod.o -o ../cgi-bin/jj-mod.so
 
 phf: phf.o util.o
 	$(CC) phf.o util.o -o ../cgi-bin/phf
@@ -87,5 +87,5 @@ change-passwd: change-passwd.o util.o
 	$(CC) change-passwd.o util.o -o ../sec-cgi/change-passwd
 
 clean:
-	rm -f *.o ../cgi-bin/post-query ../cgi-bin/query ../sec-cgi/change-passwd ../cgi-bin/phf ../cgi-bin/jj ../cgi-bin/imagemap
+	rm -f *.o ../cgi-bin/post-query ../cgi-bin/query ../sec-cgi/change-passwd ../cgi-bin/phf ../cgi-bin/jj ../cgi-bin/imagemap ../cgi-bin/jj-mod.so
 
