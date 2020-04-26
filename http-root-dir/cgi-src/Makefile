@@ -62,16 +62,16 @@ ultrix:
 	make all CC=gcc
 
 post-query: post-query.o util.o
-	$(CC) post-query.o util.o -o ../cgi-bin/post-query
+	$(CC) -no-pie post-query.o util.o -o ../cgi-bin/post-query
 
 query: query.o util.o
-	$(CC) query.o util.o -o ../cgi-bin/query
+	$(CC) -no-pie query.o util.o -o ../cgi-bin/query
 
 imagemap: imagemap.o
 	$(CC) imagemap.o -o ../cgi-bin/imagemap
 
 jj: jj.o util.o
-	$(CC) jj.o util.o -o ../cgi-bin/jj
+	$(CC) -no-pie jj.o util.o -o ../cgi-bin/jj
 
 jj-mod: jj.o 
 	ld -G -o hello.so hello.o
