@@ -21,6 +21,10 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <algorithm>
+#include <dlfcn.h>
+#include <link.h>
+#include <errno.h>
+#include<stdlib.h>
 using namespace std;
 typedef void (*httprunfunc)(int ssock, const char* querystring);
 // You could implement your logic for handling /cgi-bin requests here
