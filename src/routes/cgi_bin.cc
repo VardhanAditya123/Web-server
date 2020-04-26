@@ -88,6 +88,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       }
 
       // Call the function
+      cout << "SUCFFFCESSS" << endl;
       hello_httprun( 1, "a=b&c=d");
     }
 
