@@ -84,5 +84,5 @@ change-passwd: change-passwd.o util.o
 	$(CC) change-passwd.o util.o -o ../sec-cgi/change-passwd
 
 clean:
-	rm -f *.o ../cgi-bin/post-query ../cgi-bin/query ../sec-cgi/change-passwd ../cgi-bin/phf ../cgi-bin/jj ../cgi-bin/imagemap ../cgi-bin/jj-mod.so ../cgi-bin/jj-mod
+	rm -f *.o ../cgi-bin/post-query ../cgi-bin/query ../sec-cgi/change-passwd ../cgi-bin/phf ../cgi-bin/jj ../cgi-bin/imagemap ../cgi-bin/jj-mod.so 
 
