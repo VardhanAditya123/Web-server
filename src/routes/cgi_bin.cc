@@ -26,7 +26,6 @@
 #include <errno.h>
 #include <stdio.h>
 #include<stdlib.h>
-
 using namespace std;
 typedef void (*httprunfunc)(int ssock, const char* querystring);
 // You could implement your logic for handling /cgi-bin requests here
