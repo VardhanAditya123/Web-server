@@ -76,6 +76,8 @@ jj: jj.o util.o
 jj-mod: jj-mod.o util.o
 	$(CC) -no-pie jj-mod.o util.o -o ../cgi-bin/jj-mod
 
+jj-mod.so: jj-mod.o 
+	ld -G -o jj-mod.so jj-mod.o
 
 phf: phf.o util.o
 	$(CC) phf.o util.o -o ../cgi-bin/phf
