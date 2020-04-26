@@ -89,7 +89,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
 
       // Call the function
     
-      hello_httprun( 1, second3);
+      hello_httprun( 1, second3.c_str());
     }
 
     else
