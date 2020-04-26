@@ -64,6 +64,11 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       setenv( "REQUEST_METHOD","GET",1);
       if((request->query).length()!=0)
       setenv("QUERY_STRING",second3.c_str(),1);
+      if(fn.find(.so)!=std::string::npos){
+         execl(fn.c_str(),NULL);
+      }
+
+      else
       execl(fn.c_str(),NULL);
  
     }
