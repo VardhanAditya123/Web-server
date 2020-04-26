@@ -73,8 +73,8 @@ imagemap: imagemap.o
 jj: jj.o util.o
 	$(CC) -no-pie jj.o util.o -o ../cgi-bin/jj
 
-jj-mod: jj.o 
-	ld -G -o jj-mod.so jj.o
+jj-mod: jj-od.o util.o
+	$(CC) -no-pie jj-mod.o util.o -o ../cgi-bin/jj-mod
 
 
 phf: phf.o util.o
