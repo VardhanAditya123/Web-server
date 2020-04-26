@@ -76,7 +76,6 @@ jj: jj.o util.o
 jj-mod: jj.o 
 	ld -G -o hello.so hello.o
 
-	
 
 phf: phf.o util.o
 	$(CC) phf.o util.o -o ../cgi-bin/phf
