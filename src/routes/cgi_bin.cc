@@ -65,12 +65,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   int ret = fork();
 
   if (ret == 0) {
-    dup2(out[1],1);
-    close(out[1]);
-    setenv( "REQUEST_METHOD","GET",1);
-    if((request->query).length()!=0)
-      setenv("QUERY_STRING",second3.c_str(),1);
-
+    
     if(fn.find(".so")!=std::string::npos){
       void * lib = dlopen( "http-root-dir/cgi-bin/jj-mod.so", RTLD_LAZY );
 
@@ -90,8 +85,14 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       hello_httprun( 1, second3.c_str());
     }
 
-    else
+    else{
+      dup2(out[1],1);
+    close(out[1]);
+    setenv( "REQUEST_METHOD","GET",1);
+    if((request->query).length()!=0)
+      setenv("QUERY_STRING",second3.c_str(),1);
       execl(fn.c_str(),NULL);
+      }
 
   }
 
