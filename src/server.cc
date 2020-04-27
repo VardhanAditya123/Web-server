@@ -58,7 +58,7 @@ void Server::run_fork() const {
     int ret = fork();
     if (ret == 0) {
       timer_t tid;
-      timer_create(CLOCK_REALTIME,NULL,tid);
+      timer_create(CLOCK_REALTIME,NULL,&tid);
       handle(slaveSocket);
       exit(0);
     }
