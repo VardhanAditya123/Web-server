@@ -118,7 +118,7 @@ int isDir(const char *path)
     return 0;
 }
 
-void generate_html(string& msg string& fn){
+void generate_html(string& msg ,string& fn){
       string name;
       string link;
     DIR * d = opendir(fn.c_str());
