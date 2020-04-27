@@ -14,7 +14,7 @@ using namespace std;
 HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 HttpResponse handle_default(const HttpRequest& request);
-void handle_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
+void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 
 typedef std::function<HttpResponse(const HttpRequest&)> Route_Handler_t;
 
