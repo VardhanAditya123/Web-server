@@ -99,9 +99,9 @@ std::string generate_html(std::string fn){
     perror("opendir: ");
     exit(1);
   }
-  for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
-    puts(ent->d_name);
-  }
-  // closedir(d);
+  // for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+  //   puts(ent->d_name);
+  // }
+  closedir(d);
 
 }
