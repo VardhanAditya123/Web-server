@@ -53,7 +53,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   else{
      if(second.compare("/")==0)
      second="/index.html";
-  }
+  
   
   fn = "http-root-dir/htdocs"+second;
   msg="";
@@ -65,6 +65,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
 
   is.close();
   
+  }
   }
 
   // response.http_version = request.http_version;
