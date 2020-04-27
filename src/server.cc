@@ -52,6 +52,7 @@ void Server::run_fork() const {
   
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
+    req_count+=1;
     int ret = fork();
     if (ret == 0) {
       handle(slaveSocket);
