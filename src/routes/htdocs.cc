@@ -94,14 +94,6 @@ int isDir(const char *path)
 
 std::string generate_html(std::string fn){
 
-  DIR * dr = opendir(fn.c_str());
-  struct dirent *de;
-  if (NULL == dr) {
-    perror("opendir: ");
-    exit(1);
-  }
-  while ((de = readdir(dr)) != NULL) 
-  //  printf("%s\n", de->d_name); 
-   closedir(dr);
+ 
 
 }
