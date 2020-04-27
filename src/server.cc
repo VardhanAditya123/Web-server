@@ -229,7 +229,6 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
 
   st.erase(std::remove(st.begin(), st.end(),'\r'),st.end());
   st.erase(std::remove(st.begin(), st.end(),'\n'),st.end());
-  cout << st << endl;
   pthread_mutex_lock(&_mutex);
   p = strtok ((char*)st.c_str()," ");
   while (p != NULL)
@@ -248,7 +247,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     return;
   }
  
-  cout << second << endl;
+
   if (second.find("cgi-bin") != std::string::npos) {
     handle_cgi_bin(sock,request,vec);
   }
@@ -302,7 +301,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Number of Requests: " + std::to_string(req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
 
-  cout << msg << endl;
+  // cout << msg << endl;
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
