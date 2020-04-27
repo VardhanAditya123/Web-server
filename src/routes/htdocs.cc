@@ -46,7 +46,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
 
   if(dir_flag == 1){
      if(second.at(second.length()-1 )== '/'){
-       std::ifstream is(fn); 
+      
     generate_html(fn);
     }
   }
