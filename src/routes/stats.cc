@@ -31,7 +31,7 @@ void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
-
+  auto end = std::chrono::system_clock::now();
   string fn = second;
   request->method = first;
   request->request_uri = second;
