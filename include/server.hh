@@ -6,7 +6,7 @@
 class Server {
  private:
     SocketAcceptor const& _acceptor;
-    auto min_time, max_time, start_time, min_time_URL, max_time_URL;
+    double min_time, max_time, start_time, min_time_URL, max_time_URL;
 
  public:
     explicit Server(SocketAcceptor const& acceptor);
