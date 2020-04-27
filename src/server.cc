@@ -58,18 +58,16 @@ void Server::run_fork() const {
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
     req_count+=1;
+    timer_t tid;
+    struct itimerspec * iti;
     int ret = fork();
     if (ret == 0) {
-      timer_t tid;
-      struct itimerspec * iti;
       timer_create(CLOCK_REALTIME,NULL,&tid);
-      cout << timer_gettime(tid,iti) << endl;
       handle(slaveSocket);
-    
-      cout << iti->it_interval.tv_nsec << endl;
       exit(0);
     }
     waitpid(-1, NULL, WNOHANG) ;
+    cout << iti->it_interval.tv_nsec << endl;
 
   }
 
