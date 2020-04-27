@@ -35,6 +35,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string third = vec.at(2);
 
  if(isDir(second.c_str())==1){
+   cout << "LOLLOL" << endl;
     if(second.at(second.length()-1 )== '/'){
       second+="index.html";
     }
