@@ -55,6 +55,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     perror("opendir: ");
     exit(1);
     }
+ 
   for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
     name =  ent->d_name;
     link =  name;
@@ -65,6 +66,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     else{
     link = "\""+link + "\"";
     }
+    closedir(d1);
     msg+="<p><a href="+ link + ">"+name+"</a></p>";
     msg+="\n";
  
