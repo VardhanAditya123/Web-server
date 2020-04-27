@@ -59,7 +59,6 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   msg="";
   std::ifstream is(fn);     // open file
   if(is.is_open()){
-  cout <<" FILE EXISTS" << endl;
   char c;
   while (is.get(c))          // loop getting single characters
     msg+=c;
@@ -92,14 +91,14 @@ int isDir(const char *path)
 }
 
 std::string generate_html(std::string fn){
-  // cout
-  // DIR * d = opendir(fn.c_str());
-  // if (NULL == d) {
-  //   perror("opendir: ");
-  //   exit(1);
-  // }
-  // for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
-  //   cout << (ent->d_name) << endl;
-  // }
-  // closedir(d);
+
+  DIR * d = opendir(fn.c_str());
+  if (NULL == d) {
+    perror("opendir: ");
+    exit(1);
+  }
+  for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+    cout << (ent->d_name) << endl;
+  }
+  closedir(d);
 }
