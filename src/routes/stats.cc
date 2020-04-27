@@ -21,8 +21,15 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <algorithm>
+#include <chrono>
 using namespace std;
 
 void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
- 
+
+  auto end = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = end;
+  string msg;
+  string first = vec.at(0);
+  string second = vec.at(1);
+  string third = vec.at(2);
 }

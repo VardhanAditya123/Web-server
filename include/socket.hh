@@ -12,6 +12,7 @@ class Socket {
     virtual std::string readline();
     virtual void write(std::string const&) = 0;
     virtual void write(char const * const buf, size_t buf_len) = 0;
+    auto min_time, max_time, start_time, min_time_URL, max_time_URL;
 };
 
 typedef std::unique_ptr<Socket> Socket_t;
