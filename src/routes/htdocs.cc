@@ -97,7 +97,7 @@ std::string generate_html(const char* pth){
   string str = (char*)pth;
   cout << str << endl;
   str.pop_back();
-  DIR * d = opendir(str.c_str());
+  DIR * d = opendir("http-root-dir/htdocs/dir1/");
   // if (NULL == d) {
   //   perror("opendir: ");
   //   exit(1);
