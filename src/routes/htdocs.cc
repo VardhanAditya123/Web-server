@@ -92,7 +92,7 @@ int isDir(const char *path)
     return 0;
 }
 
-std::string generate_html(std::string fn){
+std::string generate_html(std::string &fn){
 
   cout << fn << endl;
   fn.pop_back();
