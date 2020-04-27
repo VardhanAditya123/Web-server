@@ -51,12 +51,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   }
 
   else{
-  if(second.compare("/")==0){
-    second = "/index.html";
-  }
-
-  else{
-    second+="/index.html";
+     second+="/index.html";
   }
   
   fn = "http-root-dir/htdocs"+second;
