@@ -58,11 +58,13 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   fn = "http-root-dir/htdocs"+second;
   msg="";
   std::ifstream is(fn);     // open file
+  if(is.is_open()){
   char c;
   while (is.get(c))          // loop getting single characters
     msg+=c;
 
   is.close();
+  }
 
   // response.http_version = request.http_version;
   
