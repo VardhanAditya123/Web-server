@@ -116,6 +116,7 @@ void generate_file(string& msg ,string& fn,string& second){
 
 
   fn = "http-root-dir/htdocs"+second;
+  cout << fn <<endl;
   std::ifstream is(fn);     // open file
   if(is.is_open()){
     char c;
