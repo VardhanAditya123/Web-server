@@ -42,7 +42,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   cout << fn << endl;
   string name;
   string link;
-  
+  cout << second << endl;
   if(isDir(fn.c_str())==1 && second.at(second.length()-1) =='/' ){
     dir_flag =  1;
   }
