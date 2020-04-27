@@ -23,6 +23,6 @@
 #include <algorithm>
 using namespace std;
 
-void handle_stats(const HttpRequest& request) {
+void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
  
 }
