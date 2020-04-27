@@ -31,7 +31,7 @@ std::string generate_html(std::string fn);
 // You may find implementing this function and using it in server.cc helpful
 
 HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
-
+  int dir_flag = 0;
   HttpResponse response;
   string msg;
   string first = vec.at(0);
@@ -48,6 +48,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     cout <<second << endl;
     if(second.at(second.length()-1 )== '/'){
     generate_html(fn);
+    dir_flag = 1;
     }
     else{
        second+="/index.html";
@@ -55,15 +56,16 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   }
 
 
-   fn = "http-root-dir/htdocs"+second;
- 
+  fn = "http-root-dir/htdocs"+second;
   msg="";
+  if(dir_flag!=1){
   std::ifstream is(fn);     // open file
   char c;
   while (is.get(c))          // loop getting single characters
     msg+=c;
 
   is.close();
+  }
 
   // response.http_version = request.http_version;
   
