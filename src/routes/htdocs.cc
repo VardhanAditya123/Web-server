@@ -56,7 +56,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     exit(1);
     }
  
-  for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+     for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
     name =  ent->d_name;
     link =  name;
     DIR * d1 = opendir((fn+name).c_str());
@@ -115,5 +115,10 @@ int isDir(const char *path)
 
     return 0;
 }
+
+void generate_html(string& s){
+  
+}
+
 
 
