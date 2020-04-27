@@ -213,7 +213,7 @@ void Server::handle(const Socket_t& sock) const {
 
     req_count+=1;
     timer_gettime(tid,iti);
-    cout << iti->it_interval.tv_sec << endl;
+    cout << iti->it_value.tv_sec << endl;
 
 
 }
