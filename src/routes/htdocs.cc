@@ -38,15 +38,15 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string second = vec.at(1);
   string third = vec.at(2);
   string fn = "http-root-dir/htdocs"+second;
- if(isDir(fn.c_str())==1){
+//  if(isDir(fn.c_str())==1){
    
-    if(second.at(second.length()-1 )== '/'){
-     generate_html(fn);
-    }
-    else{
-       second+="/index.html";
-    }
-  }
+//     if(second.at(second.length()-1 )== '/'){
+//      generate_html(fn);
+//     }
+//     else{
+//        second+="/index.html";
+//     }
+//   }
 
   if(second.compare("/")==0){
     second = "/index.html";
