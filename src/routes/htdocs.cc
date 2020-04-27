@@ -41,7 +41,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   cout << fn << endl;
 
  if(isDir(fn.c_str())==1){
-    cout <<" YES SEY" << endl;
+    cout <<second << endl;
     if(second.at(second.length()-1 )== '/'){
      second+="index.html";
     }
