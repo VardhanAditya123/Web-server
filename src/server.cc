@@ -67,7 +67,7 @@ void Server::run_fork() const {
       exit(0);
     }
     waitpid(-1, NULL, WNOHANG) ;
-    cout << iti->it_interval.tv_nsec << endl;
+    cout << iti->it_interval.tv_sec << endl;
 
   }
 
