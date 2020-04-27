@@ -95,7 +95,7 @@ std::string generate_html(std::string fn){
 
 
   auto const dir_path = fs::path(fn);
-  for (auto const & elem : fs::directory_iterator(dir_path)) {
+  for (auto const & elem : fs::directory_iterator(fn)) {
     std::cout << elem << endl;
   }
   cout << endl;
