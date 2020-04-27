@@ -94,10 +94,14 @@ int isDir(const char *path)
 
 std::string generate_html(std::string fn){
 
-
-  auto const dir_path = fs::path(fn.c_str());
-  for (auto const & elem : fs::directory_iterator(fn.c_str())) {
-    std::cout << elem << endl;
+  DIR * d = opendir(fn.c_str());
+  if (NULL == d) {
+    perror("opendir: ");
+    exit(1);
   }
-  cout << endl;
+  for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+    puts(ent->d_name);
+  }
+  closedir(d);
+
 }
