@@ -33,7 +33,7 @@ std::string generate_html(std::string fn);
 HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
   int dir_flag = 0;
   HttpResponse response;
-  string msg;
+  string msg = "";
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
@@ -56,7 +56,6 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   
   
   fn = "http-root-dir/htdocs"+second;
-  msg="";
   std::ifstream is(fn);     // open file
   if(is.is_open()){
   char c;
