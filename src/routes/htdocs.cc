@@ -101,7 +101,7 @@ std::string generate_html(std::string fn){
     exit(1);
   }
   while ((de = readdir(dr)) != NULL) 
-   printf("%s\n", de->d_name); 
-  closedir(dr);
+  //  printf("%s\n", de->d_name); 
+   closedir(dr);
 
 }
