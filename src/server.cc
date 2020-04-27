@@ -63,10 +63,11 @@ void Server::run_fork() const {
     int ret = fork();
     if (ret == 0) {
       timer_create(CLOCK_REALTIME,NULL,&tid);
+      int timer_settime(timer_t timerid, 0, iti , NULL);
       handle(slaveSocket);
       exit(0);
     }
-    timer_gettime(*tid,iti);
+    timer_gettime(tid,iti);
     cout << iti->it_value.tv_sec << endl;
     waitpid(-1, NULL, WNOHANG) ;
 
