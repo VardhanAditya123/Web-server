@@ -26,6 +26,9 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <algorithm>
+#include <algorithm>
+#include <chrono>
+#include <ctime>
 using namespace std;
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
