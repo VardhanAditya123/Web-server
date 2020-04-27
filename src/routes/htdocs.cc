@@ -21,6 +21,10 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <algorithm>
+#include <dirent.h>
+#include <experimental/filesystem>
+#include <string>
+
 using namespace std;
 int isDir(const char *path);
 std::string generate_html(std::string fn);
@@ -84,5 +88,13 @@ int isDir(const char *path)
 }
 
 std::string generate_html(std::string fn){
-
+  DIR * d = opendir(argv[1]);
+  if (NULL == d) {
+    perror("opendir: ");
+    exit(1);
+  }
+  for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+    cout << (ent->d_name) << endl;
+  }
+  closedir(d);
 }
