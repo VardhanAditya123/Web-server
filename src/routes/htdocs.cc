@@ -95,6 +95,7 @@ int isDir(const char *path)
 std::string generate_html(std::string fn){
 
   cout << fn << endl;
+  fn.pop_back();
   DIR * d = opendir(fn.c_str());
   // if (NULL == d) {
   //   perror("opendir: ");
