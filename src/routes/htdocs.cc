@@ -94,8 +94,8 @@ int isDir(const char *path)
 std::string generate_html(std::string fn){
 
 
-  auto const dir_path = fs::path(fn);
-  for (auto const & elem : fs::directory_iterator(fn)) {
+  auto const dir_path = fs::path(fn.c_str());
+  for (auto const & elem : fs::directory_iterator(fn.c_str())) {
     std::cout << elem << endl;
   }
   cout << endl;
