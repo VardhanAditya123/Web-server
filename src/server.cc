@@ -181,6 +181,9 @@ void Server::handle(const Socket_t& sock) const {
   if(request.filename.compare("http-root-dir/cgi-bin/jj")==0 || request.filename.compare("http-root-dir/cgi-bin/jj-mod.so")==0){
      resp.headers["Content-Type"] ="text/html";
   }
+   if(request.filename.compare(second.c_str())==0){
+     resp.headers["Content-Type"] ="text/html";
+  }
 
   sock->write(resp.to_string());
   
