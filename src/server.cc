@@ -158,7 +158,7 @@ void Server::handle(const Socket_t& sock) const {
   struct sigevent *sevp;
   sevp->sigev_notify = SIGEV_NONE;
   timer_create(CLOCK_REALTIME,sevp,&tid);
-  timer_settime(tid, NULL, iti , NULL);
+
 
   HttpRequest request;
   // TODO: implement parsing HTTP requests
