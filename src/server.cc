@@ -34,7 +34,7 @@ auto start = std::chrono::system_clock::now();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
-void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec)
+void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 pthread_mutex_t _mutex;
 // string filename;
 // int hflag=0;
