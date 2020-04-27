@@ -151,7 +151,13 @@ void Server::run_thread_pool(const int num_threads) const {
  
 
 
-void Server::handle(const Socket_t& sock) const {
+void Server::handle(const Socket_t& sock) const { 
+
+  timer_t tid;
+  struct itimerspec * iti;
+  timer_create(CLOCK_REALTIME,NULL,&tid);
+  timer_settime(tid, 0, iti , NULL);
+
   HttpRequest request;
   // TODO: implement parsing HTTP requests
   // recommendation:
@@ -204,7 +210,10 @@ void Server::handle(const Socket_t& sock) const {
 
   sock->write(resp.to_string());
   
-  
+
+    req_count+=1;
+    timer_gettime(tid,iti);
+    cout << iti->it_interval.tv_sec << endl;
 
 
 }
