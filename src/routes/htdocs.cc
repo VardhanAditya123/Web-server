@@ -46,6 +46,10 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   if(isDir(fn.c_str())==1 && second.at(second.length()-1) =='/' && second.length()!=1 ){
     dir_flag =  1;
   }
+
+  if(isDir(fn.c_str())==1 && second.at(second.length()-1) !='/' ){
+    fn+="/index.html";
+  }
   // cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
     generate_html(msg,fn);
