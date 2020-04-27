@@ -292,5 +292,6 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   request-> http_version = third;
   request->message_body = msg ;
   request->filename=fn;
+  cout << "SECC " << second << endl;
 }
 
