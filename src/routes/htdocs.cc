@@ -56,7 +56,7 @@ cout << "FLAG  "<< dir_flag <<endl;
     }
   for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
     name =  ent->d_name;
-    link = fn + name;
+    link =  name;
     link = "\""+link + "\"";
     msg+="<p><a href="+ link + ">"+name+"</a></p>";
     msg+="\n";
