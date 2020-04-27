@@ -155,7 +155,7 @@ void Server::handle(const Socket_t& sock) const {
 
   timer_t tid;
   struct itimerspec * iti;
-  timer_create(CLOCK_REALTIME,NULL,&tid);
+  timer_create(CLOCK_REALTIME,SIGEV_NONE,&tid);
   timer_settime(tid, NULL, iti , NULL);
 
   HttpRequest request;
