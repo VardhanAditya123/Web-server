@@ -40,9 +40,13 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string fn = "http-root-dir/htdocs"+second;
   cout << fn << endl;
 
- if(isDir(fn.c_str())==1){
+  if(second.compare("/")==0){
+    second = "/index.html";
+  }
+
+ else if(isDir(fn.c_str())==1){
     cout <<second << endl;
-    if(second.at(second.length()-1 )== '/'){
+    if(second.at(second.length()-1 )== '/' && second.length){
      second+="index.html";
     }
     else{
@@ -50,9 +54,6 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     }
   }
 
-  if(second.compare("/")==0){
-    second = "/index.html";
-  }
 
    fn = "http-root-dir/htdocs"+second;
  
