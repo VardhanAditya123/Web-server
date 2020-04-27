@@ -34,6 +34,7 @@ using namespace std;
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
+void handle_stat();
 pthread_mutex_t _mutex;
 // string filename;
 // int hflag=0;
@@ -231,7 +232,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     handle_cgi_bin(sock,request,vec);
   }
   else if(second.find("stats") != std::string::npos){
-    handle_stats(sock,request,vec);
+    handle_stat(sock,request,vec);
   }
   else{
     handle_htdocs(sock,request,vec);
@@ -269,6 +270,10 @@ void separate(HttpRequest* const request , string line){
   }
   
   request->headers[trim(first)]=trim(second); 
+
+}
+
+void handle_stat(){
 
 }
 
