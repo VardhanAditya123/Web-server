@@ -56,7 +56,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     }
   for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
     name =  ent->d_name;
-    link = fn + name
+    link = fn + name;
     link = "\""+link + "\"";
     msg+="<p><a href="+ link + ">"+name+"</a></p>";
     msg+="\n";
