@@ -200,6 +200,9 @@ void Server::handle(const Socket_t& sock) const {
   else if(request.filename.compare("/stats")==0){
      resp.headers["Content-Type"] ="html";
   }
+  else if(request.filename.compare("/di1/")==0){
+     resp.headers["Content-Type"] ="html";
+  }
   else{
     resp.headers["Content-Type"] = get_content_type(request.filename);
   }
