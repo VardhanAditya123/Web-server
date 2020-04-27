@@ -57,7 +57,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
  
   }
     closedir(d);
-    msg = "LOLOLOL";
+   
   }
 
   else{
