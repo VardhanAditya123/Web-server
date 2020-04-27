@@ -60,10 +60,10 @@ void Server::run_fork() const {
     req_count+=1;
     timer_t tid;
     struct itimerspec * iti;
-    timer_create(CLOCK_REALTIME,NULL,&tid);
-    timer_settime(tid, 0, iti , NULL);
     int ret = fork();
     if (ret == 0) {
+      timer_create(CLOCK_REALTIME,NULL,&tid);
+      timer_settime(tid, 0, iti , NULL);
       handle(slaveSocket);
       exit(0);
     }
