@@ -55,7 +55,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     }
   for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
     name =  ent->d_name;
-    msg+="<p><a href=\"https://www.w3schools.com/html/\">"+str+"</a></p>";
+    msg+="<p><a href=\"https://www.w3schools.com/html/\">"+name+"</a></p>";
     msg+="\n";
  
   }
