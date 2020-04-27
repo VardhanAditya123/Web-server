@@ -24,7 +24,7 @@
 #include <dirent.h>
 #include <experimental/filesystem>
 #include <string>
-
+namespace fs = std::experimental::filesystem;
 using namespace std;
 int isDir(const char *path);
 std::string generate_html(std::string fn);
