@@ -20,7 +20,6 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
-    static int fflag;
    //  std::chrono::time_point<std::chrono::system_clock> min_time, max_time, min_time_URL, max_time_URL;
    //  std::chrono::time_point<std::chrono::system_clock> start=std::chrono::system_clock::now();
   
