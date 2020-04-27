@@ -232,7 +232,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     handle_cgi_bin(sock,request,vec);
   }
   else if(second.find("stats") != std::string::npos){
-    handle_stat(sock,request,vec);
+    handle_stat();
   }
   else{
     handle_htdocs(sock,request,vec);
