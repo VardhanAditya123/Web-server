@@ -17,5 +17,5 @@ class Server {
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
     auto min_time;
-
+}
 #endif  // INCLUDE_SERVER_HH_
