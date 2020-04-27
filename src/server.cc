@@ -42,7 +42,7 @@ void Server::run_linear() const {
   }
 }
 
-void Server::run_fork() const {\
+void Server::run_fork() const {
   auto start = std::chrono::system_clock::now();
   start_time = (double)start;
   while (1) {
