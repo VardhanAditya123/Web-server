@@ -59,6 +59,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   msg="";
   std::ifstream is(fn);     // open file
   if(is.is_open()){
+  cout <<" FILE EXISTS" << endl;
   char c;
   while (is.get(c))          // loop getting single characters
     msg+=c;
