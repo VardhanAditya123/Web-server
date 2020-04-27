@@ -22,7 +22,7 @@
 #include <sys/wait.h>
 #include <algorithm>
 using namespace std;
-// int isDir(const char *path);
+int isDir(const char *path);
 
 // You may find implementing this function and using it in server.cc helpful
 
@@ -33,6 +33,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
+
  if(isDir(second.c_str())==1){
     if(second.at(second.length()-1 )== '/'){
       second+="index.html";
