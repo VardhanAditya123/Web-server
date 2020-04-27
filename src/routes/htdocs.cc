@@ -39,14 +39,15 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string second = vec.at(1);
   string third = vec.at(2);
   string fn = "http-root-dir/htdocs"+second;
-  cout << fn << endl;
+  // cout << fn << endl;
   string name;
   string link;
-  cout << second << endl;
+
+
   if(isDir(fn.c_str())==1 && second.at(second.length()-1) =='/' && second.length()!=1 ){
     dir_flag =  1;
   }
-cout << "FLAG  "<< dir_flag <<endl; 
+  cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
       
     DIR * d = opendir(fn.c_str());
@@ -57,7 +58,13 @@ cout << "FLAG  "<< dir_flag <<endl;
   for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
     name =  ent->d_name;
     link =  name;
+    DIR * d1 = opendir((fn+name).c_str());
+    if(d1!=NULL){
+       link = "\""+link +"/"+ "\"";
+    }
+    else{
     link = "\""+link + "\"";
+    }
     msg+="<p><a href="+ link + ">"+name+"</a></p>";
     msg+="\n";
  
@@ -107,19 +114,4 @@ int isDir(const char *path)
     return 0;
 }
 
-// // std::string generate_html(const char* pth){
 
-//   string str = (char*)pth;
-//   cout << str << endl;
-//   str.pop_back();
-//   DIR * d = opendir("http-root-dir/htdocs/dir1/");
-//   // if (NULL == d) {
-//   //   perror("opendir: ");
-//   //   exit(1);
-//   // }
-//   // for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
-//   //   puts(ent->d_name);
-//   // }
-//   closedir(d);
-
-// }
