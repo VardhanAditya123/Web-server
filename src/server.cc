@@ -43,7 +43,7 @@ void Server::run_linear() const {
 }
 
 void Server::run_fork() const {
-  // Server:start_time = std::chrono::system_clock::now();
+  start_time = std::chrono::system_clock::now();
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
     int ret = fork();
