@@ -46,27 +46,13 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   if(isDir(fn.c_str())==1 && second.at(second.length()-1) =='/' && second.length()!=1 ){
     dir_flag =  1;
   }
-  cout << "FLAG  "<< dir_flag <<endl; 
+  // cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
   generate_html(msg,fn);
    
   }
 
   else{
-    //  if(second.compare("/")==0)
-    //  second="/index.html";
-  
-  
-    //  fn = "http-root-dir/htdocs"+second;
-    //  std::ifstream is(fn);     // open file
-    //  if(is.is_open()){
-    //  char c;
-    //  while (is.get(c))          // loop getting single characters
-    //  msg+=c;
-
-    //  is.close();
-  
-    // }
     generate_file(msg,fn,second);
   }
 
