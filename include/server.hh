@@ -6,6 +6,7 @@
 class Server {
  private:
     SocketAcceptor const& _acceptor;
+    auto min_time, max_time, start_time, min_time_URL, max_time_URL;
 
  public:
     explicit Server(SocketAcceptor const& acceptor);
@@ -16,7 +17,6 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
-    auto min_time, max_time, start_time, min_time_URL, max_time_URL;
 };
 
 #endif  // INCLUDE_SERVER_HH_
