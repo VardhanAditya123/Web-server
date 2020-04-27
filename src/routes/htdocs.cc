@@ -48,15 +48,15 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   }
   // cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
-  generate_html(msg,fn);
-   
+    generate_html(msg,fn);
+
   }
 
   else{
     generate_file(msg,fn,second);
   }
 
-  
+
   request->method = first;
   request->request_uri = second;
   request-> http_version = third;
@@ -67,60 +67,60 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
 
 int isDir(const char *path)
 {
-    struct stat stats;
+  struct stat stats;
 
-    stat(path, &stats);
+  stat(path, &stats);
 
-    // Check for file existence
-    if (S_ISDIR(stats.st_mode))
-        return 1;
+  // Check for file existence
+  if (S_ISDIR(stats.st_mode))
+    return 1;
 
-    return 0;
+  return 0;
 }
 
 void generate_html(string& msg ,string& fn){
-      string name;
-      string link;
-    DIR * d = opendir(fn.c_str());
-    if (NULL == d) {
+  string name;
+  string link;
+  DIR * d = opendir(fn.c_str());
+  if (NULL == d) {
     perror("opendir: ");
     exit(1);
-    }
- 
-     for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+  }
+
+  for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
     name =  ent->d_name;
     link =  name;
     DIR * d1 = opendir((fn+name).c_str());
     if(d1!=NULL){
-       link = "\""+link +"/"+ "\"";
+      link = "\""+link +"/"+ "\"";
     }
     else{
-    link = "\""+link + "\"";
+      link = "\""+link + "\"";
     }
     closedir(d1);
     msg+="<p><a href="+ link + ">"+name+"</a></p>";
     msg+="\n";
- 
+
   }
-    closedir(d);
+  closedir(d);
 
 }
 
 void generate_file(string& msg ,string& fn,string& second){
-    if(second.compare("/")==0)
-     second="/index.html";
-  
-  
-     fn = "http-root-dir/htdocs"+second;
-     std::ifstream is(fn);     // open file
-     if(is.is_open()){
-     char c;
-     while (is.get(c))          // loop getting single characters
-     msg+=c;
+  if(second.compare("/")==0)
+    second="/index.html";
 
-     is.close();
-  
-    }
+
+  fn = "http-root-dir/htdocs"+second;
+  std::ifstream is(fn);     // open file
+  if(is.is_open()){
+    char c;
+    while (is.get(c))          // loop getting single characters
+      msg+=c;
+
+    is.close();
+
+  }
 }
 
 
