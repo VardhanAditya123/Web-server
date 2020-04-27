@@ -48,7 +48,6 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     cout <<second << endl;
     if(second.at(second.length()-1 )== '/'){
     generate_html(fn);
-    dir_flag = 1;
     }
     else{
        second+="/index.html";
@@ -58,14 +57,12 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
 
   fn = "http-root-dir/htdocs"+second;
   msg="";
-  if(dir_flag!=1){
   std::ifstream is(fn);     // open file
   char c;
   while (is.get(c))          // loop getting single characters
     msg+=c;
 
   is.close();
-  }
 
   // response.http_version = request.http_version;
   
