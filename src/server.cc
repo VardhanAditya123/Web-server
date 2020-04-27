@@ -200,7 +200,7 @@ void Server::handle(const Socket_t& sock) const {
   else if(request.filename.compare("/stats")==0){
      resp.headers["Content-Type"] ="html";
   }
-  else if(request.filename.compare("/dir1/")==0){
+  else if(request.filename.compare("http-root-dir/htdocs/dir1/")==0){
      resp.headers["Content-Type"] ="html";
   }
   else{
