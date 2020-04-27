@@ -20,7 +20,7 @@ class Server {
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
     std::chrono::time_point<std::chrono::system_clock> min_time, max_time, min_time_URL, max_time_URL;
-    std::chrono::time_point<std::chrono::system_clock> start_time=std::chrono::system_clock::now();
+    std::chrono::time_point<std::chrono::system_clock> start=std::chrono::system_clock::now();
 };
 
 #endif  // INCLUDE_SERVER_HH_

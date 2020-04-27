@@ -28,7 +28,7 @@ using namespace std;
 void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
 
   auto end = std::chrono::system_clock::now();
-//   std::chrono::duration<double> elapsed_seconds = end;
+  std::chrono::duration<double> elapsed_seconds = end - start; 
   string msg;
   string first = vec.at(0);
   string second = vec.at(1);
