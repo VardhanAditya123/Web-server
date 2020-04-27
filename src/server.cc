@@ -30,6 +30,7 @@
 #include <chrono>
 #include <ctime>
 #include <time.h>
+ #include <signal.h>
 
 using namespace std;
 
