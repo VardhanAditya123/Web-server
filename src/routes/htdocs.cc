@@ -40,7 +40,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string fn = "http-root-dir/htdocs"+second;
   cout << fn << endl;
   
-  if(isDir(fn.c_str())==1 && fn.find(dir1.c_str()) != std::string::npos){
+  if(isDir(fn.c_str())==1 && fn.find("dir1") != std::string::npos){
     dir_flag =  1;
   }
 
