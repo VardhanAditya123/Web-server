@@ -62,7 +62,7 @@ void Server::run_fork() const {
     struct itimerspec * iti;
     int ret = fork();
     if (ret == 0) {
-      timer_create(CLOCK_MONOTONIC,NULL,&tid);
+      timer_create(CLOCK_REALTIME,NULL,&tid);
       handle(slaveSocket);
       exit(0);
     }
