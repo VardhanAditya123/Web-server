@@ -47,7 +47,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   if(second.compare("/dir1/")==0){
       
     generate_html(fn);
-
+    msg = "LOLOLOL";
   }
 
   else{
