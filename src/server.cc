@@ -29,7 +29,7 @@
 #include <algorithm>
 #include <chrono>
 #include <ctime>
- #include <time.h>
+#include <time.h>
 
 using namespace std;
 
@@ -57,6 +57,8 @@ void Server::run_fork() const {
     req_count+=1;
     int ret = fork();
     if (ret == 0) {
+      timer_t tid;
+      timer_create(CLOCK_REALTIME,NULL,tid);
       handle(slaveSocket);
       exit(0);
     }
