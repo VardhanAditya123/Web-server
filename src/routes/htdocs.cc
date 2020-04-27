@@ -39,22 +39,26 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string third = vec.at(2);
   string fn = "http-root-dir/htdocs"+second;
   cout << fn << endl;
+  
+  if(isDir(fn.c_str())==1){
+    dir_flag =  1;
+  }
 
+  if(dir_flag == 1){
+     if(second.at(second.length()-1 )== '/'){
+    generate_html(fn);
+    }
+  }
+
+  else{
   if(second.compare("/")==0){
     second = "/index.html";
   }
 
- else if(isDir(fn.c_str())==1){
-    cout <<second << endl;
-    if(second.at(second.length()-1 )== '/'){
-    generate_html(fn);
-    }
-    else{
-       second+="/index.html";
-    }
+  else{
+    second+="/index.html";
   }
-
-
+  
   fn = "http-root-dir/htdocs"+second;
   msg="";
   std::ifstream is(fn);     // open file
@@ -64,6 +68,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     msg+=c;
 
   is.close();
+  }
   }
 
   // response.http_version = request.http_version;
