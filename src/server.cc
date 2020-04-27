@@ -65,7 +65,7 @@ void Server::run_fork() const {
       struct itimerspec * iti;
       handle(slaveSocket);
       cout << timer_gettime(tid,iti) << endl;
-      cout << iti->it_interva.time << endl;
+      cout << iti->it_interval.time << endl;
       exit(0);
     }
     waitpid(-1, NULL, WNOHANG) ;
