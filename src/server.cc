@@ -135,7 +135,7 @@ void Server::run_thread_pool(const int num_threads) const {
  
 
 
-void Server::handle(const Socket_t& sock) const {
+void Server::handle(const Socket_t& sock)  {
   HttpRequest request;
   // TODO: implement parsing HTTP requests
   // recommendation:
