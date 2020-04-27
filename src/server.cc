@@ -156,7 +156,7 @@ void Server::handle(const Socket_t& sock) const {
   timer_t tid;
   struct itimerspec * iti;
   timer_create(CLOCK_REALTIME,NULL,&tid);
-  // timer_settime(tid, 0, iti , NULL);
+  timer_settime(tid, NULL, iti , NULL);
 
   HttpRequest request;
   // TODO: implement parsing HTTP requests
