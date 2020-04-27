@@ -41,12 +41,11 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
  if(isDir(fn.c_str())==1){
    
     if(second.at(second.length()-1 )== '/'){
-      second+="index.html";
+     generate_html(fn);
     }
     else{
        second+="/index.html";
     }
-    generate_html(fn);
   }
 
   if(second.compare("/")==0){
@@ -88,7 +87,7 @@ int isDir(const char *path)
 }
 
 std::string generate_html(std::string fn){
-  DIR * d = opendir(argv[1]);
+  DIR * d = opendir(fn.c_str());
   if (NULL == d) {
     perror("opendir: ");
     exit(1);
