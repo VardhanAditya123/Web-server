@@ -8,7 +8,7 @@
 
 class Server {
 
-   int fflag;
+   static int fflag;
  private:
     SocketAcceptor const& _acceptor;
 
