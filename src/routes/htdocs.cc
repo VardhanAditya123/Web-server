@@ -23,7 +23,7 @@
 #include <algorithm>
 using namespace std;
 int isDir(const char *path);
-
+std::string generate_html(std::string);
 // You may find implementing this function and using it in server.cc helpful
 
 HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
@@ -42,6 +42,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     else{
        second+="/index.html";
     }
+    generate_html(fn);
   }
 
   if(second.compare("/")==0){
@@ -80,4 +81,8 @@ int isDir(const char *path)
         return 1;
 
     return 0;
+}
+
+generate_html(std::string fn){
+  
 }
