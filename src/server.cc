@@ -44,10 +44,6 @@ pthread_mutex_t _mutex;
 
 int req_count = 0;
 vector<timer_t>timer;
-struct itimerspec {
-    struct timespec it_interval;  /* Timer interval */
-    struct timespec it_value;     /* Initial expiration */
-};
 
 
 void Server::run_linear() const {
