@@ -26,9 +26,17 @@
 using namespace std;
 
 void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
-
+  
   string msg;
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
+
+
+  string fn = second;
+  request->method = first;
+  request->request_uri = second;
+  request-> http_version = third;
+  request->message_body = msg ;
+  request->filename=fn;
 }
