@@ -35,6 +35,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 pthread_mutex_t _mutex;
+auto start = std::chrono::system_clock::now();
 // string filename;
 // int hflag=0;
 
@@ -135,7 +136,7 @@ void Server::run_thread_pool(const int num_threads) const {
  
 
 
-void Server::handle(const Socket_t& sock)  {
+void Server::handle(const Socket_t& sock) const {
   HttpRequest request;
   // TODO: implement parsing HTTP requests
   // recommendation:
