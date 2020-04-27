@@ -119,7 +119,8 @@ int isDir(const char *path)
 }
 
 void generate_html(string& msg string& fn){
-  
+      string name;
+      string link;
     DIR * d = opendir(fn.c_str());
     if (NULL == d) {
     perror("opendir: ");
