@@ -33,9 +33,9 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
-
- if(isDir(second.c_str())==1){
-   cout << "LOLLOL" << endl;
+  string fn = "http-root-dir/htdocs"+second;
+ if(isDir(fn.c_str())==1){
+   
     if(second.at(second.length()-1 )== '/'){
       second+="index.html";
     }
@@ -48,7 +48,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     second = "/index.html";
   }
 
-  string fn = "http-root-dir/htdocs"+second;
+   fn = "http-root-dir/htdocs"+second;
  
   msg="";
   std::ifstream is(fn);     // open file
