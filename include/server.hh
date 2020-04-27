@@ -2,6 +2,9 @@
 #define INCLUDE_SERVER_HH_
 
 #include "socket.hh"
+#include <algorithm>
+#include <chrono>
+#include <ctime>
 
 class Server {
  private:
@@ -16,7 +19,7 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
-    double min_time, max_time, start_time, min_time_URL, max_time_URL;
+   std::chrono::time_point<std::chrono::system_clock> min_time, max_time, start_time, min_time_URL, max_time_URL;
 };
 
 #endif  // INCLUDE_SERVER_HH_
