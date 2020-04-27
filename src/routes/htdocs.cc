@@ -23,7 +23,7 @@
 #include <algorithm>
 using namespace std;
 int isDir(const char *path);
-std::string generate_html(std::string);
+std::string generate_html(std::string fn);
 // You may find implementing this function and using it in server.cc helpful
 
 HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
@@ -84,5 +84,5 @@ int isDir(const char *path)
 }
 
 generate_html(std::string fn){
-  
+
 }
