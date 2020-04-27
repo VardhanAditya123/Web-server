@@ -66,7 +66,7 @@ void Server::run_fork() const {
       handle(slaveSocket);
       exit(0);
     }
-    cout << iti->it_interval.tv_sec << endl;
+    cout << iti->it_value.tv_sec << endl;
     waitpid(-1, NULL, WNOHANG) ;
 
 
