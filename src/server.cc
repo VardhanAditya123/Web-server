@@ -44,6 +44,12 @@ pthread_mutex_t _mutex;
 
 int req_count = 0;
 vector<timer_t>timer;
+struct itimerspec {
+    struct timespec it_interval;  /* Timer interval */
+    struct timespec it_value;     /* Initial expiration */
+};
+
+
 void Server::run_linear() const {
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
@@ -60,7 +66,9 @@ void Server::run_fork() const {
     if (ret == 0) {
       timer_t tid;
       timer_create(CLOCK_REALTIME,NULL,&tid);
+      struct itimerspec t=iti;
       handle(slaveSocket);
+      cout << timer_gettime(tid,&iti);
       exit(0);
     }
     waitpid(-1, NULL, WNOHANG) ;
