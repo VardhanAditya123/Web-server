@@ -104,6 +104,6 @@ std::string generate_html(std::string fn){
   // for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
   //   puts(ent->d_name);
   // }
-  // closedir(d);
+  closedir(d);
 
 }
