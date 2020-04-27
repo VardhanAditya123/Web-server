@@ -21,7 +21,7 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <algorithm>
-using namespace std;er
+using namespace std;
 
 void handle_stats(const HttpRequest& request) {
  
