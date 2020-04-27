@@ -31,7 +31,6 @@ void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
-  Server::fflag = 1;
 
   string fn = second;
   request->method = first;
