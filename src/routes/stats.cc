@@ -32,7 +32,6 @@ void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string
   string second = vec.at(1);
   string third = vec.at(2);
   auto end = std::chrono::system_clock::now();
-  std::chrono::duration<double> elapsed_seconds = end-Server::start;
   string fn = second;
   request->method = first;
   request->request_uri = second;
