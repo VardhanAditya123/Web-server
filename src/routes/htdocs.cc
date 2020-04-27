@@ -53,20 +53,21 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   }
 
   else{
-     if(second.compare("/")==0)
-     second="/index.html";
+    //  if(second.compare("/")==0)
+    //  second="/index.html";
   
   
-     fn = "http-root-dir/htdocs"+second;
-     std::ifstream is(fn);     // open file
-     if(is.is_open()){
-     char c;
-     while (is.get(c))          // loop getting single characters
-     msg+=c;
+    //  fn = "http-root-dir/htdocs"+second;
+    //  std::ifstream is(fn);     // open file
+    //  if(is.is_open()){
+    //  char c;
+    //  while (is.get(c))          // loop getting single characters
+    //  msg+=c;
 
-     is.close();
+    //  is.close();
   
-    }
+    // }
+    generate_file(msg,fn,second);
   }
 
   
@@ -120,7 +121,20 @@ void generate_html(string& msg ,string& fn){
 }
 
 void generate_file(string& msg ,string& fn,string& second){
+    if(second.compare("/")==0)
+     second="/index.html";
+  
+  
+     fn = "http-root-dir/htdocs"+second;
+     std::ifstream is(fn);     // open file
+     if(is.is_open()){
+     char c;
+     while (is.get(c))          // loop getting single characters
+     msg+=c;
 
+     is.close();
+  
+    }
 }
 
 
