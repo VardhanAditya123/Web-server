@@ -22,6 +22,7 @@
 #include <sys/wait.h>
 #include <algorithm>
 #include <chrono>
+#include <ctime>    
 using namespace std;
 
 void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
