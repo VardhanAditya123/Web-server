@@ -181,7 +181,7 @@ void Server::handle(const Socket_t& sock) const {
      resp.headers["Content-Type"] ="text/html";
   }
   else if(request.filename.compare("/stats")==0){
-     resp.headers["Content-Type"] ="text/html";
+     resp.headers["Content-Type"] ="html";
   }
   else{
     resp.headers["Content-Type"] = get_content_type(request.filename);
@@ -282,7 +282,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   string msg;
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end-start;
-  msg= "Aditya Vardhan    lol" ;
+  msg= "Aditya Vardhan" ;
   msg+= "elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   cout << msg << endl;
   string first = vec.at(0);
