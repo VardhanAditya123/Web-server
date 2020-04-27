@@ -274,10 +274,10 @@ void separate(HttpRequest* const request , string line){
 }
 
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
-    auto end = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end-start;
-    std::cout   << "elapsed time: " << elapsed_seconds.count() << "\n";
-    string msg;
+  string msg;
+  auto end = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = end-start;
+  msg +=  "elapsed time: " << elapsed_seconds.count() << "\n";
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
