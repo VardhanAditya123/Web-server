@@ -282,7 +282,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   string msg;
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end-start;
-  msg= "Aditya Vardhan    " ;
+  msg= "Aditya Vardhan    lol" ;
   msg+= "elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   cout << msg << endl;
   string first = vec.at(0);
