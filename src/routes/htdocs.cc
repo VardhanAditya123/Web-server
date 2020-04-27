@@ -27,7 +27,7 @@
 namespace fs = std::experimental::filesystem;
 using namespace std;
 int isDir(const char *path);
-std::string generate_html(std::string &fn);
+std::string generate_htm(const char* pth);
 
 // You may find implementing this function and using it in server.cc helpful
 
@@ -92,7 +92,7 @@ int isDir(const char *path)
     return 0;
 }
 
-std::string generate_html(std::string &fn){
+std::string generate_html(const char* pth){
 
   cout << fn << endl;
   fn.pop_back();
