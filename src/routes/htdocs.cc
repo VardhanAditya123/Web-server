@@ -53,7 +53,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     exit(1);
     }
   for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
-    msg+=ent->d_name +std::to_string('\n');
+    msg+=ent->d_name ;
     msg+="\n";
  
   }
