@@ -21,7 +21,7 @@ class Server {
     void loopthread() const ;
    //  std::chrono::time_point<std::chrono::system_clock> min_time, max_time, min_time_URL, max_time_URL;
    //  std::chrono::time_point<std::chrono::system_clock> start=std::chrono::system_clock::now();
-    static auto start = std::chrono::system_clock::now();
+  
 };
 
 #endif  // INCLUDE_SERVER_HH_
