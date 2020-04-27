@@ -34,7 +34,7 @@ auto start = std::chrono::system_clock::now();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
-void handle_stat();
+void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec)
 pthread_mutex_t _mutex;
 // string filename;
 // int hflag=0;
@@ -232,7 +232,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     handle_cgi_bin(sock,request,vec);
   }
   else if(second.find("stats") != std::string::npos){
-    handle_stat();
+     handle_htdocs(sock,request,vec);
   }
   else{
     handle_htdocs(sock,request,vec);
@@ -273,9 +273,20 @@ void separate(HttpRequest* const request , string line){
 
 }
 
-void handle_stat(){
+void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout   << "elapsed time: " << elapsed_seconds.count() << "\n";
+    string msg;
+  string first = vec.at(0);
+  string second = vec.at(1);
+  string third = vec.at(2);
+  auto end = std::chrono::system_clock::now();
+  string fn = second;
+  request->method = first;
+  request->request_uri = second;
+  request-> http_version = third;
+  request->message_body = msg ;
+  request->filename=fn;
 }
 
