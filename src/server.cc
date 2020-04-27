@@ -275,5 +275,6 @@ void separate(HttpRequest* const request , string line){
 
 void handle_stat(){
     auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
 }
 
