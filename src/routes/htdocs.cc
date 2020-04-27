@@ -28,6 +28,7 @@ namespace fs = std::experimental::filesystem;
 using namespace std;
 int isDir(const char *path);
 std::string generate_html(const char* pth);
+void generate_html(string& msg string& fn);
 
 // You may find implementing this function and using it in server.cc helpful
 
@@ -50,28 +51,29 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
       
-    DIR * d = opendir(fn.c_str());
-    if (NULL == d) {
-    perror("opendir: ");
-    exit(1);
-    }
+  //   DIR * d = opendir(fn.c_str());
+  //   if (NULL == d) {
+  //   perror("opendir: ");
+  //   exit(1);
+  //   }
  
-     for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
-    name =  ent->d_name;
-    link =  name;
-    DIR * d1 = opendir((fn+name).c_str());
-    if(d1!=NULL){
-       link = "\""+link +"/"+ "\"";
-    }
-    else{
-    link = "\""+link + "\"";
-    }
-    closedir(d1);
-    msg+="<p><a href="+ link + ">"+name+"</a></p>";
-    msg+="\n";
+  //    for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+  //   name =  ent->d_name;
+  //   link =  name;
+  //   DIR * d1 = opendir((fn+name).c_str());
+  //   if(d1!=NULL){
+  //      link = "\""+link +"/"+ "\"";
+  //   }
+  //   else{
+  //   link = "\""+link + "\"";
+  //   }
+  //   closedir(d1);
+  //   msg+="<p><a href="+ link + ">"+name+"</a></p>";
+  //   msg+="\n";
  
-  }
-    closedir(d);
+  // }
+  //   closedir(d);
+  generate_html(msg,fn);
    
   }
 
@@ -116,8 +118,31 @@ int isDir(const char *path)
     return 0;
 }
 
-void generate_html(string& s){
+void generate_html(string& msg string& fn){
   
+    DIR * d = opendir(fn.c_str());
+    if (NULL == d) {
+    perror("opendir: ");
+    exit(1);
+    }
+ 
+     for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+    name =  ent->d_name;
+    link =  name;
+    DIR * d1 = opendir((fn+name).c_str());
+    if(d1!=NULL){
+       link = "\""+link +"/"+ "\"";
+    }
+    else{
+    link = "\""+link + "\"";
+    }
+    closedir(d1);
+    msg+="<p><a href="+ link + ">"+name+"</a></p>";
+    msg+="\n";
+ 
+  }
+    closedir(d);
+
 }
 
 
