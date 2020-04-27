@@ -47,7 +47,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
  else if(isDir(fn.c_str())==1){
     cout <<second << endl;
     if(second.at(second.length()-1 )== '/'){
-  
+    generate_html(fn);
     }
     else{
        second+="/index.html";
