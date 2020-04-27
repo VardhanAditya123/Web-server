@@ -49,7 +49,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
 cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
       
-    DIR * d = opendir(fn.c_str());
+    DIR * d = opendir("http-root-dir/htdocs/dir1/");
     if (NULL == d) {
     perror("opendir: ");
     exit(1);
