@@ -47,7 +47,8 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
 
   if(second.compare("/dir1/")==0){
       
-    generate_html(fn.c_str());
+    DIR * d = opendir("http-root-dir/htdocs/dir1/");
+     closedir(d);
     msg = "LOLOLOL";
   }
 
@@ -92,19 +93,19 @@ int isDir(const char *path)
     return 0;
 }
 
-std::string generate_html(const char* pth){
+// std::string generate_html(const char* pth){
 
-  string str = (char*)pth;
-  cout << str << endl;
-  str.pop_back();
-  DIR * d = opendir("http-root-dir/htdocs/dir1/");
-  // if (NULL == d) {
-  //   perror("opendir: ");
-  //   exit(1);
-  // }
-  // for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
-  //   puts(ent->d_name);
-  // }
-  closedir(d);
+//   string str = (char*)pth;
+//   cout << str << endl;
+//   str.pop_back();
+//   DIR * d = opendir("http-root-dir/htdocs/dir1/");
+//   // if (NULL == d) {
+//   //   perror("opendir: ");
+//   //   exit(1);
+//   // }
+//   // for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
+//   //   puts(ent->d_name);
+//   // }
+//   closedir(d);
 
-}
+// }
