@@ -42,7 +42,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 pthread_mutex_t _mutex;
 
 int req_count = 0;
-
+vector<timer_t>timer;
 void Server::run_linear() const {
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
