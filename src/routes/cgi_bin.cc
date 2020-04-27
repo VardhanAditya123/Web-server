@@ -115,7 +115,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
 
   msg = str2;
 
-  cout <<"TESTING " << msg << endl;
+  // cout <<"TESTING " << msg << endl;
   request->method = first;
   request->request_uri = second;
   request-> http_version = third;
