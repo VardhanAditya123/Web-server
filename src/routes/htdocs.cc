@@ -94,7 +94,7 @@ int isDir(const char *path)
 
 std::string generate_html(std::string fn){
 
-  DIR * d = opendir(fn.c_str());
+  // DIR * d = opendir(fn.c_str());
   // if (NULL == d) {
   //   perror("opendir: ");
   //   exit(1);
@@ -102,6 +102,6 @@ std::string generate_html(std::string fn){
   // for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
   //   puts(ent->d_name);
   // }
-  closedir(d);
+  // closedir(d);
 
 }
