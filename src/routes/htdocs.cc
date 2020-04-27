@@ -29,6 +29,7 @@ using namespace std;
 int isDir(const char *path);
 std::string generate_html(const char* pth);
 void generate_html(string& msg ,string& fn);
+void generate_file(string& msg ,string& fn,string& second);
 
 // You may find implementing this function and using it in server.cc helpful
 
@@ -41,38 +42,12 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   string third = vec.at(2);
   string fn = "http-root-dir/htdocs"+second;
   // cout << fn << endl;
-  string name;
-  string link;
-
 
   if(isDir(fn.c_str())==1 && second.at(second.length()-1) =='/' && second.length()!=1 ){
     dir_flag =  1;
   }
   cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
-      
-  //   DIR * d = opendir(fn.c_str());
-  //   if (NULL == d) {
-  //   perror("opendir: ");
-  //   exit(1);
-  //   }
- 
-  //    for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
-  //   name =  ent->d_name;
-  //   link =  name;
-  //   DIR * d1 = opendir((fn+name).c_str());
-  //   if(d1!=NULL){
-  //      link = "\""+link +"/"+ "\"";
-  //   }
-  //   else{
-  //   link = "\""+link + "\"";
-  //   }
-  //   closedir(d1);
-  //   msg+="<p><a href="+ link + ">"+name+"</a></p>";
-  //   msg+="\n";
- 
-  // }
-  //   closedir(d);
   generate_html(msg,fn);
    
   }
@@ -94,14 +69,12 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     }
   }
 
-  // response.http_version = request.http_version;
   
   request->method = first;
   request->request_uri = second;
   request-> http_version = third;
   request->message_body = msg ;
   request->filename=fn;
-  // request->print();
   return response;
 }
 
@@ -143,6 +116,10 @@ void generate_html(string& msg ,string& fn){
  
   }
     closedir(d);
+
+}
+
+void generate_file(string& msg ,string& fn,string& second){
 
 }
 
