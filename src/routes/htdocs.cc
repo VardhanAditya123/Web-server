@@ -63,7 +63,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     msg+=c;
 
   is.close();
-  }
+  
   }
 
   // response.http_version = request.http_version;
