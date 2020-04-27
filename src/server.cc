@@ -29,6 +29,8 @@
 #include <algorithm>
 #include <chrono>
 #include <ctime>
+ #include <time.h>
+
 using namespace std;
 
 
@@ -285,9 +287,10 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   string msg;
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end-start;
-  msg+= "Aditya Vardhan\n" ;
+  msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string(req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
+
   cout << msg << endl;
   string first = vec.at(0);
   string second = vec.at(1);
