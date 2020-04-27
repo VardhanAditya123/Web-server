@@ -47,7 +47,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
     dir_flag =  1;
   }
 
-  if(second.compare("/dir1/")==0){
+  if(dir_flag==1){
       
     DIR * d = opendir("http-root-dir/htdocs/dir1/");
     if (NULL == d) {
