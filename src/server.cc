@@ -153,15 +153,7 @@ void Server::run_thread_pool(const int num_threads) const {
 
 void Server::handle(const Socket_t& sock) const { 
 
-  timer_t tid;
-  struct itimerspec * iti;
-  struct sigevent *sevp;
-  sevp->sigev_notify = SIGEV_NONE;
-  timer_create(CLOCK_REALTIME,sevp,&tid);
-  
-    req_count+=1;
-    timer_gettime(tid,iti);
-    cout << iti->it_value.tv_sec << endl;
+
 
   HttpRequest request;
   // TODO: implement parsing HTTP requests
