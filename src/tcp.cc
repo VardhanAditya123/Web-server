@@ -56,7 +56,7 @@ ssize_t TCPSocket::read(char* buf, size_t buf_len) {
     if (r == -1) {
         throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
     }
-    return r;
+    return _socket;
 }
 
 std::string TCPSocket::readline() {
