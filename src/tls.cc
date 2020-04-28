@@ -147,7 +147,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
             SSL_write(ssl, reply, strlen(reply));
         }
 
-        SSL_free(_ssl_ctx);
+        SSL_free(ssl);
         close(client);
 
 
