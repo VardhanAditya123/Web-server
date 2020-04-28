@@ -152,7 +152,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
 
 
     close(sock);
-    SSL_CTX_free(_ssl_ctx);
+    SSL_CTX_free(ctx);
     cleanup_openssl();
     return std::make_unique<TLSSocket>(s, addr);
 }
