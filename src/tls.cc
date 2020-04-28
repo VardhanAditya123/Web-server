@@ -101,7 +101,7 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     _addr.sin_port = htons(portno);
     _addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    s = socket(AF_INET, SOCK_STREAM, 0);
+    _master_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (s < 0) {
 	perror("Unable to create socket");
 	exit(EXIT_FAILURE);
