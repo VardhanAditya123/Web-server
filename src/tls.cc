@@ -39,10 +39,12 @@ char TLSSocket::getc() {
     return c;
 }
 
-ssize_t TLSSocket::read(char *buf, size_t buf_len) {
-    // TODO: Task 2.1
-    ssize_t r = 0;
-    return r;
+ssize_t TCPSocket::read(char* buf, size_t buf_len) {
+    ssize_t r = recv(_socket, buf, buf_len, 0);
+    if (r == -1) {
+        throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
+    }
+
 }
 
 std::string TLSSocket::readline() {
@@ -121,6 +123,9 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
     //while in examples
     //remodel to tcp
 }
+
+
+
 
 TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
     // TODO: Task 2.1
