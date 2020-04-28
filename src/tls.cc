@@ -34,7 +34,7 @@ TLSSocket::~TLSSocket() noexcept {
 }
 
 char TLSSocket::getc() {
-      char c;
+      char c[1];
       //   SSL_read(ssl, request, 4096);
 	// 		puts(request);
     //         SSL_write(ssl, reply, strlen(reply));
