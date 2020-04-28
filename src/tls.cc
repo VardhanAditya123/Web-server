@@ -86,9 +86,9 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     // TODO: Task 2.1
     //call all methods
     //init , create , configure
-    SSL_CTX *ctx;
+   
     init_openssl();
-    ctx = create_context();
+    _ssl_ctx = create_context();
     configure_context(ctx);
     int s;
     struct sockaddr_in addr;
