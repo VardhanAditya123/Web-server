@@ -24,7 +24,7 @@ SSL_CTX *create_context();
 void init_openssl();
 void configure_context(SSL_CTX *ctx);
 void cleanup_openssl();
-
+using namespace std;
 TLSSocket::TLSSocket(int port_no, struct sockaddr_in addr, SSL* ssl) :
   _socket(port_no), _addr(addr), _ssl(ssl) {
     // TODO: Task 2.1
