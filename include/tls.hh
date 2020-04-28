@@ -19,7 +19,6 @@ class TLSSocket : public Socket {
     ~TLSSocket() noexcept;
     char getc();
     ssize_t read(char* buf, size_t buf_len);
-    int ret_sock();
     std::string readline();
     void write(std::string const&);
     void write(char const * const buf, size_t len);

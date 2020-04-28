@@ -88,10 +88,6 @@ void TLSSocket::write(char const * const buf, const size_t buf_len) {
   }
 }
 
-int TLSSocket::ret_sock(){
-    return _socket;
-}
-
 TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
 
    
