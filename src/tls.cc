@@ -43,9 +43,7 @@ char TLSSocket::getc() {
         throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
     } else if (read > 1) {
         throw ConnectionError("Read more than one byte when expecting to only read one.");
-    } else if (read == 0) {
-        c = EOF;
-    }
+    } 
     return c;
 }
 
@@ -158,7 +156,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
 
 TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
     // TODO: Task 2.1
-     close(_master_socket);
+    sclose(_master_socket);
     SSL_CTX_free(_ssl_ctx);
     cleanup_openssl();
 }
