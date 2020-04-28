@@ -148,7 +148,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
             ERR_print_errors_fp(stderr);
         }
 
-    return std::make_unique<TLSSocket>(client, addr);
+    return std::make_unique<TLSSocket>(client, addr,_ssl);
 }
 
 
