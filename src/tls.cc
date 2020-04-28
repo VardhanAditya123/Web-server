@@ -61,10 +61,21 @@ void TLSSocket::write(std::string const &str) {
     write(str.c_str(), str.length());
 }
 
-void TLSSocket::write(char const *const buf, const size_t buf_len) {
-    if (buf == NULL)
-        return;
-    // TODO: Task 2.1
+void TLSSocket::write(char const * const buf, const size_t buf_len) {
+    if (buf == NULL) return;
+  int ret_code = send(_socket, buf, buf_len, 0);
+  if (ret_code == -1) {
+      throw ConnectionError("Unable to write: " + std::string(strerror(errno)));
+  } else if ((size_t)ret_code != buf_len) {
+      size_t i;
+      std::stringstream buf_hex_stream;
+      for (i = 0; i < buf_len; i++)
+        buf_hex_stream << std::hex << buf[i];
+
+      throw ConnectionError("Could not write all bytes of: \'" + buf_hex_stream.str() +
+          "\'. Expected " + std::to_string(buf_len) + " but actually sent " +
+          std::to_string(ret_code));
+  }
 }
 
 int TLSSocket::ret_sock(){
