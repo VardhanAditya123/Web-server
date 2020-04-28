@@ -35,10 +35,7 @@ TLSSocket::~TLSSocket() noexcept {
 
 char TLSSocket::getc() {
       char c;
-    //   SSL_read(ssl, request, 4096);
-	// 		puts(request);
-    //         SSL_write(ssl, reply, strlen(reply));
-    ssize_t read = SSL_read(_ssl,c, 1);
+    ssize_t read = SSL_read(_socket, &c, 1, 0);
     if (read < 0) {
         throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
     } else if (read > 1) {
@@ -145,7 +142,6 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
 
         ssl = SSL_new(_ssl_ctx);
         SSL_set_fd(ssl, client);
-        _ssl = ssl;
 
         if (SSL_accept(ssl) <= 0) {
             ERR_print_errors_fp(stderr);
