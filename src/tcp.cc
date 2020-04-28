@@ -19,7 +19,7 @@
 #include "tcp.hh"
 
 using namespace std;
-TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _addr(addr) {
+TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _addr(addr) _socket2(port_no) {
     char inet_pres[INET_ADDRSTRLEN];
     // sin_family will be AF_INET
     if (inet_ntop(addr.sin_family, &(addr.sin_addr), inet_pres, INET_ADDRSTRLEN)) {
@@ -56,7 +56,7 @@ ssize_t TCPSocket::read(char* buf, size_t buf_len) {
     if (r == -1) {
         throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
     }
-    return _socket;
+
 }
 
 std::string TCPSocket::readline() {
