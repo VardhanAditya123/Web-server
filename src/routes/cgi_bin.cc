@@ -61,7 +61,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   pipe(out);
   int tmpin=dup(0);
   int tmpout=dup(1);
-  cout << "FD  : " <<sock->ret_sock()<< endl;
+  // cout << "FD  : " <<sock->ret_sock()<< endl;
   int ret = fork();
 
   if (ret == 0) {
