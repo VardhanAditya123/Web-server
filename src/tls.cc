@@ -67,6 +67,10 @@ void TLSSocket::write(char const *const buf, const size_t buf_len) {
     // TODO: Task 2.1
 }
 
+int TLSSocket::ret_sock(){
+    return _socket;
+}
+
 TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     // TODO: Task 2.1
     //call all methods
