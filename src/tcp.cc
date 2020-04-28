@@ -19,7 +19,7 @@
 #include "tcp.hh"
 
 using namespace std;
-TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _addr(addr) _socket2(port_no)  {
+TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _addr(addr), _socket2(port_no)  {
     char inet_pres[INET_ADDRSTRLEN];
     // sin_family will be AF_INET
     if (inet_ntop(addr.sin_family, &(addr.sin_addr), inet_pres, INET_ADDRSTRLEN)) {
