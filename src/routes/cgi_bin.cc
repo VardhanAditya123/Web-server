@@ -61,7 +61,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   pipe(out);
   int tmpin=dup(0);
   int tmpout=dup(1);
-
+  cout << "FD  : " <<sock->ret_sock()<< endl;
   int ret = fork();
 
   if (ret == 0) {
@@ -87,7 +87,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
         perror( "dlsym: httprun not found:");
         exit(1);
       }
-      cout << "FD  : " <<sock->ret_sock()<< endl;
+    
       hello_httprun(1 , second3.c_str());
       exit(1);
      
