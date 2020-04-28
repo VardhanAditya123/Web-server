@@ -122,7 +122,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
     //call
     //while in examples
     //remodel to tcp
-       while(1) {
+
         struct sockaddr_in addr;
         uint len = sizeof(addr);
         SSL *ssl;
@@ -149,11 +149,12 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
 
         SSL_free(ssl);
         close(client);
-    }
+
 
     close(sock);
     SSL_CTX_free(ctx);
     cleanup_openssl();
+    return std::make_unique<TLSSocket>(s, addr);
 }
 
 
