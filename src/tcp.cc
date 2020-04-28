@@ -69,13 +69,13 @@ std::string TCPSocket::readline() {
         str.append(1, '\n');
     }
     return str;
-}
+} 
 
 void TCPSocket::write(std::string const& str) {
     write(str.c_str(), str.length());
 }
 int TCPSocket::ret_sock(){
-    return _socket2;
+    return _socket;
 }
 
 void TCPSocket::write(char const * const buf, const size_t buf_len) {
