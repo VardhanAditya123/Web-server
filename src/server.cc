@@ -206,7 +206,8 @@ void Server::handle(const Socket_t& sock) const {
   else{
     resp.headers["Content-Type"] = get_content_type(request.filename);
   }
-
+ 
+  if(request.message_body.length()!=0)
   sock->write(resp.to_string());
 
 }
