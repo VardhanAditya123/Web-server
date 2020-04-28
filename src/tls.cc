@@ -38,7 +38,7 @@ char TLSSocket::getc() {
       //   SSL_read(ssl, request, 4096);
 	// 		puts(request);
     //         SSL_write(ssl, reply, strlen(reply));
-    ssize_t read = SSL_read(_ssl, c,  0);
+    ssize_t read = SSL_read(_ssl, c, 1);
     if (read < 0) {
         throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
     } else if (read > 1) {
