@@ -150,10 +150,6 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
         SSL_free(ssl);
         close(client);
 
-
-    close(_master_socket);
-    SSL_CTX_free(_ssl_ctx);
-    cleanup_openssl();
     return std::make_unique<TLSSocket>(s, addr);
 }
 
@@ -162,6 +158,9 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
 
 TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
     // TODO: Task 2.1
+     close(_master_socket);
+    SSL_CTX_free(_ssl_ctx);
+    cleanup_openssl();
 }
 
 SSL_CTX *create_context()
