@@ -74,6 +74,7 @@ void TLSSocket::write(std::string const &str) {
 }
 
 void TLSSocket::write(char const * const buf, const size_t buf_len) {
+    cout << buf_len << endl;
     if (buf == NULL || buf_len == 0) return;
   int ret_code = SSL_write(_ssl, buf, buf_len);
   if (ret_code == -1) {
