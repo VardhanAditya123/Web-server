@@ -129,7 +129,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
         const char reply[] = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/text\r\nContent-Length: 11\r\n\r\nHello World";
 		char request[4096];
 
-        int client = accept(sock, (struct sockaddr*)&addr, &len);
+        int client = accept(_master_socket, (struct sockaddr*)&addr, &len);
         if (client < 0) {
             perror("Unable to accept");
             exit(EXIT_FAILURE);
