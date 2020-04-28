@@ -206,7 +206,7 @@ void Server::handle(const Socket_t& sock) const {
   else{
     resp.headers["Content-Type"] = get_content_type(request.filename);
   }
-  if(resp.status_code != 401)
+  // if(resp.status_code != 401)
   sock->write(resp.to_string());
 
 }
