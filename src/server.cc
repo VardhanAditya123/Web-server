@@ -208,7 +208,7 @@ void Server::handle(const Socket_t& sock) const {
   }
 
   sock->write(resp.to_string());
-
+  sock->ret_sock();
 
 
 }
