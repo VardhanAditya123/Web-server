@@ -73,7 +73,7 @@ void TLSSocket::write(std::string const &str) {
 
 void TLSSocket::write(char const * const buf, const size_t buf_len) {
     if (buf == NULL) return;
-  int ret_code = SSL_write(_ssl, buf, buf_len, 0);
+  int ret_code = SSL_write(_ssl, buf, buf_len);
   if (ret_code == -1) {
       throw ConnectionError("Unable to write: " + std::string(strerror(errno)));
   } else if ((size_t)ret_code != buf_len) {
