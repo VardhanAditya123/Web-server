@@ -90,9 +90,6 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     init_openssl();
     _ssl_ctx = create_context();
     configure_context(_ssl_ctx);
-    int s;
-
-
     _addr.sin_family = AF_INET;
     _addr.sin_port = htons(portno);
     _addr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -122,6 +119,38 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
     //call
     //while in examples
     //remodel to tcp
+       while(1) {
+        struct sockaddr_in addr;
+        uint len = sizeof(addr);
+        SSL *ssl;
+        const char reply[] = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/text\r\nContent-Length: 11\r\n\r\nHello World";
+		char request[4096];
+
+        int client = accept(sock, (struct sockaddr*)&addr, &len);
+        if (client < 0) {
+            perror("Unable to accept");
+            exit(EXIT_FAILURE);
+        }
+
+        ssl = SSL_new(ctx);
+        SSL_set_fd(ssl, client);
+
+        if (SSL_accept(ssl) <= 0) {
+            ERR_print_errors_fp(stderr);
+        }
+        else {
+			SSL_read(ssl, request, 4096);
+			puts(request);
+            SSL_write(ssl, reply, strlen(reply));
+        }
+
+        SSL_free(ssl);
+        close(client);
+    }
+
+    close(sock);
+    SSL_CTX_free(ctx);
+    cleanup_openssl();
 }
 
 
