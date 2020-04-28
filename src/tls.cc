@@ -93,9 +93,9 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     int s;
 
 
-    addr.sin_family = AF_INET;
-    addr.sin_port = htons(portno);
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    _addr.sin_family = AF_INET;
+    _addr.sin_port = htons(portno);
+    _addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     s = socket(AF_INET, SOCK_STREAM, 0);
     if (s < 0) {
