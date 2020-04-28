@@ -75,21 +75,11 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     // TODO: Task 2.1
     //call all methods
     //init , create , configure
-}
-
-Socket_t TLSSocketAcceptor::accept_connection() const {
-    // TODO: Task 2.1
-    //call
-    //while in examples
-    //remodel to tcp
-}
-
-TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
      int s;
     struct sockaddr_in addr;
 
     addr.sin_family = AF_INET;
-    addr.sin_port = htons(port);
+    addr.sin_port = htons(portno);
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     s = socket(AF_INET, SOCK_STREAM, 0);
@@ -108,6 +98,19 @@ TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
 	exit(EXIT_FAILURE);
     }
 
+
+
+}
+
+Socket_t TLSSocketAcceptor::accept_connection() const {
+    // TODO: Task 2.1
+    //call
+    //while in examples
+    //remodel to tcp
+}
+
+TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
+    // TODO: Task 2.1
 }
 
 SSL_CTX *create_context()
