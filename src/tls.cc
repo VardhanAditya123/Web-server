@@ -103,7 +103,7 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
 	exit(EXIT_FAILURE);
     }
 
-    if (bind(s, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+    if (bind(s, (struct sockaddr*)&_addr, sizeof(_addr)) < 0) {
 	perror("Unable to bind");
 	exit(EXIT_FAILURE);
     }
