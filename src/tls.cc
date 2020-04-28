@@ -102,17 +102,17 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     _addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     _master_socket = socket(AF_INET, SOCK_STREAM, 0);
-    if (s < 0) {
+    if ( _master_socket < 0) {
 	perror("Unable to create socket");
 	exit(EXIT_FAILURE);
     }
 
-    if (bind(s, (struct sockaddr*)&_addr, sizeof(_addr)) < 0) {
+    if (bind( _master_socket, (struct sockaddr*)&_addr, sizeof(_addr)) < 0) {
 	perror("Unable to bind");
 	exit(EXIT_FAILURE);
     }
 
-    if (listen(s, 1) < 0) {
+    if (listen( _master_socket, 1) < 0) {
 	perror("Unable to listen");
 	exit(EXIT_FAILURE);
     }
