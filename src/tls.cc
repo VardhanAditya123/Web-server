@@ -91,7 +91,7 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     _ssl_ctx = create_context();
     configure_context(_ssl_ctx);
     int s;
-    struct sockaddr_in addr;
+
 
     addr.sin_family = AF_INET;
     addr.sin_port = htons(portno);
