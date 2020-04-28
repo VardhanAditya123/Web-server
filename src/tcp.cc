@@ -74,6 +74,9 @@ std::string TCPSocket::readline() {
 void TCPSocket::write(std::string const& str) {
     write(str.c_str(), str.length());
 }
+int TCPSocket::ret_sock(){
+    return _socket2;
+}
 
 void TCPSocket::write(char const * const buf, const size_t buf_len) {
     if (buf == NULL) return;
