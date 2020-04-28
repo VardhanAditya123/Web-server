@@ -44,7 +44,7 @@ char TLSSocket::getc() {
     } else if (read > 1) {
         throw ConnectionError("Read more than one byte when expecting to only read one.");
     } 
-    return c;
+    return c[0];
 }
 
 ssize_t TLSSocket::read(char* buf, size_t buf_len) {
