@@ -34,8 +34,15 @@ TLSSocket::~TLSSocket() noexcept {
 }
 
 char TLSSocket::getc() {
-    // TODO: Task 2.1
-    char c = '\0';
+      char c;
+    ssize_t read = SSL_read(_socket, &c, 1, 0);
+    if (read < 0) {
+        throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
+    } else if (read > 1) {
+        throw ConnectionError("Read more than one byte when expecting to only read one.");
+    } else if (read == 0) {
+        c = EOF;
+    }
     return c;
 }
 
@@ -65,7 +72,7 @@ void TLSSocket::write(std::string const &str) {
 
 void TLSSocket::write(char const * const buf, const size_t buf_len) {
     if (buf == NULL) return;
-  int ret_code = send(_socket, buf, buf_len, 0);
+  int ret_code = SSL_write(_socket, buf, buf_len, 0);
   if (ret_code == -1) {
       throw ConnectionError("Unable to write: " + std::string(strerror(errno)));
   } else if ((size_t)ret_code != buf_len) {
@@ -126,9 +133,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
         struct sockaddr_in addr;
         uint len = sizeof(addr);
         SSL *ssl;
-        const char reply[] = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/text\r\nContent-Length: 11\r\n\r\nHello World";
-		char request[4096];
-
+    
         int client = accept(_master_socket, (struct sockaddr*)&addr, &len);
         if (client < 0) {
             perror("Unable to accept");
@@ -141,16 +146,8 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
         if (SSL_accept(ssl) <= 0) {
             ERR_print_errors_fp(stderr);
         }
-        else {
-			SSL_read(ssl, request, 4096);
-			puts(request);
-            SSL_write(ssl, reply, strlen(reply));
-        }
 
-        SSL_free(ssl);
-        close(client);
-
-    return std::make_unique<TLSSocket>(s, addr);
+    return std::make_unique<TLSSocket>(client, addr);
 }
 
 
