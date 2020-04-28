@@ -156,7 +156,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
 
 TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
     // TODO: Task 2.1
-    sclose(_master_socket);
+    close(_master_socket);
     SSL_CTX_free(_ssl_ctx);
     cleanup_openssl();
 }
