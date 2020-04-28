@@ -90,6 +90,9 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     init_openssl();
     _ssl_ctx = create_context();
     configure_context(_ssl_ctx);
+    int s;
+
+
     _addr.sin_family = AF_INET;
     _addr.sin_port = htons(portno);
     _addr.sin_addr.s_addr = htonl(INADDR_ANY);
