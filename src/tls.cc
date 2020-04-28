@@ -39,7 +39,7 @@ char TLSSocket::getc() {
     return c;
 }
 
-ssize_t TCPSocket::read(char* buf, size_t buf_len) {
+ssize_t TLSSocket::read(char* buf, size_t buf_len) {
     ssize_t r = recv(_socket, buf, buf_len, 0);
     if (r == -1) {
         throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
