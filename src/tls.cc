@@ -135,7 +135,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
             exit(EXIT_FAILURE);
         }
 
-        ssl = SSL_new(ctx);
+        ssl = SSL_new(_sssl_ctx);
         SSL_set_fd(ssl, client);
 
         if (SSL_accept(ssl) <= 0) {
