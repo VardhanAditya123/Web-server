@@ -40,7 +40,7 @@ using namespace std;
 
 
 double findMax();
-
+double findMin();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
