@@ -51,7 +51,7 @@ pthread_mutex_t _mutex;
 auto start_server = std::chrono::system_clock::now();
 struct server_stats{
 int req_count = 0;
-vector<double>timer;
+std::vector<double>timer;
 double max;
 };
 
