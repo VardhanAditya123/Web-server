@@ -203,3 +203,6 @@ void configure_context(SSL_CTX *ctx)
 	exit(EXIT_FAILURE);
     }
 }
+
+// openssl req -newkey rsa:4096 -nodes -sha512 -x509 -days 21 -nodes -out cert.pem -keyout key.pem
+// chmod 700 *.pem
