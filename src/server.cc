@@ -72,7 +72,6 @@ void Server::run_fork() const {
       handle(slaveSocket);
       exit(0);
     }
-    update_stats();
     waitpid(-1, NULL, WNOHANG) ;
 
 
@@ -214,6 +213,7 @@ void Server::handle(const Socket_t& sock) const {
   }
     
   sock->write(resp.to_string());
+     update_stats();
 
 
 }
