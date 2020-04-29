@@ -48,10 +48,10 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 void update_stats();
 
 pthread_mutex_t _mutex;
-vector<double>timer;
 auto start_server = std::chrono::system_clock::now();
 struct server_stats{
 int req_count = 0;
+vector<double>timer;
 };
 
 struct server_stats* s1 = (server_stats*)mmap(NULL, sizeof(s1), PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
@@ -213,7 +213,11 @@ void Server::handle(const Socket_t& sock) const {
   }
     
   sock->write(resp.to_string());
-     update_stats();
+  auto end = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = end-start;
+  (s1->(timer)).push_back(elapsed_seconds.count());
+  update_stats();
+
 
 
 }
