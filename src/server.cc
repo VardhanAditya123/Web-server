@@ -333,7 +333,10 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 }
 
 long findMax(){
-
+  
+  if(max.size()<=0){
+    return 0; 
+  }
   int max = timer.at(0);
   for( int i = 0 ; i < timer.size() ; i++){
     if(timer.at(i) > max){
