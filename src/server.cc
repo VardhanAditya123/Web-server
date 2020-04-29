@@ -338,7 +338,7 @@ long findMax(){
     return 0; 
   }
 
-  int max = timer.at(0);
+  long max = timer.at(0);
   for( int i = 0 ; i < timer.size() ; i++){
     if(timer.at(i) > max){
       max = timer.at(i);
