@@ -52,7 +52,7 @@ vector<double>timer;
 
 struct server_stats{
 int req_count = 0;
-double start_server = std::chrono::system_clock::now();
+std::chrono::_V2::system_clock:: start_server = std::chrono::system_clock::now();
 };
 
 struct server_stats s1;
