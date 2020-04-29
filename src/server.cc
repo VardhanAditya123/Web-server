@@ -324,6 +324,16 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   request-> http_version = third;
   request->message_body = msg ;
   request->filename=fn;
-  cout << "DEBUG" << endl;
+
+}
+
+void findMax(){
+
+  int max = timer.at(0);
+  for( int i = 0 ; i < timer.size ; i++){
+    if(timer.at(i) > max){
+      max = timer.at(1);
+    }
+  }
 }
 
