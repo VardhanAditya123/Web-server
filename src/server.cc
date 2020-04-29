@@ -344,7 +344,7 @@ double findMin(){
   
   if(s1->val < s1-> min){
     s1->min = s1->val;
-    cout << s1->min << endl;
+    cout << "MIN "<<s1->min << endl;
   }
    return s1->min;
 }
