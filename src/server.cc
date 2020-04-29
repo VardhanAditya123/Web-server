@@ -340,10 +340,10 @@ double findMax(){
 
    s1->max = s1->timer.at(0);
   for( int i = 0 ; i < s1->timer.size() ; i++){
-    // cout <<"AFTER "<< s1->timer.at(i) << endl;
-    if(s1->timer.at(i) > s1->max){
-      s1->max = s1->timer.at(i);
-    }
+    cout <<"IN FUNC "<< s1->timer.at(i) << endl;
+    // if(s1->timer.at(i) > s1->max){
+    //   s1->max = s1->timer.at(i);
+    // }
   }
   // cout <<"FIINAL" << setprecision(5)<< max << endl;
   return s1->max;
