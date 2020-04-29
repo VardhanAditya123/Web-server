@@ -338,12 +338,12 @@ double findMax(){
    return s1->max;
 }
 
-double findMax(){
+double findMin(){
   
-  if(s1->val > s1-> max){
-    s1->max = s1->val;
+  if(s1->val < s1-> max){
+    s1->min = s1->val;
   }
-   return s1->max;
+   return s1->min;
 }
 
 void update_stats(){
