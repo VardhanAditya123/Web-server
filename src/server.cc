@@ -218,7 +218,7 @@ void Server::handle(const Socket_t& sock) const {
   std::chrono::duration<double> elapsed_seconds = end-start;
   cout << "BEFORE  " << elapsed_seconds.count() << endl;
   (s1->timer).push_back(elapsed_seconds.count());
-  (s1->timer).at((s1->timer.length()-1);
+  (s1->timer).at(s1->timer.length()-1);
   update_stats();
 
 
