@@ -216,12 +216,7 @@ void Server::handle(const Socket_t& sock) const {
  
   sock->write(resp.to_string());
 
-  auto end = std::chrono::system_clock::now();
-  std::chrono::duration<double> ns = end-start;
-  cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 
-  timer.push_back(ns.count());
-  cout << timer.size()<< endl;
-  req_count+=1;
+  handle_stat();
 
 
 }
@@ -348,3 +343,12 @@ double findMax(){
   return max;
 }
 
+
+void handle_stat(){
+  auto end = std::chrono::system_clock::now();
+  std::chrono::duration<double> ns = end-start;
+  cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 
+  timer.push_back(ns.count());
+  cout << timer.size()<< endl;
+  req_count+=1;
+}
