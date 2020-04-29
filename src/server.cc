@@ -215,7 +215,7 @@ void Server::handle(const Socket_t& sock) const {
   sock->write(resp.to_string());
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end-start;
-  cout << elapsed_seconds.count() << endl;
+  // cout << elapsed_seconds.count() << endl;
   (s1->timer).push_back(elapsed_seconds.count());
   update_stats();
 
@@ -338,6 +338,7 @@ double findMax(){
 
   double max = s1->timer.at(0);
   for( int i = 0 ; i < s1->timer.size() ; i++){
+    cout << s1->timer.at(i) << endl;
     if(s1->timer.at(i) > max){
       max = s1->timer.at(i);
     }
