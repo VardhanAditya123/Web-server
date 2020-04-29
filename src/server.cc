@@ -342,6 +342,6 @@ double findMax(){
 }
 
 void update_stats(){
-s1.req_count+=1;
+s1->req_count+=1;
 
 }
