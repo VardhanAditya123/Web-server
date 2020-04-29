@@ -45,7 +45,7 @@ double findMax();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) req_count(0) { }
-void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
+// void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 
 
 pthread_mutex_t _mutex;
@@ -303,7 +303,7 @@ void separate(HttpRequest* const request , string line){
 
 }
 
-void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
+void Server::handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
   string msg;
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
