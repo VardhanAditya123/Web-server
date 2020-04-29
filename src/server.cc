@@ -44,13 +44,13 @@ double findMax();
 // void update_stats();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
-Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
+Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor),int Server::req_count = 0 { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 
 
 pthread_mutex_t _mutex;
 vector<double>timer;
-int Server::req_count = 0;
+// int Server::req_count = 0;
   
 
 void Server::run_linear() const {
