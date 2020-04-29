@@ -52,6 +52,7 @@ auto start_server = std::chrono::system_clock::now();
 struct server_stats{
 int req_count = 0;
 vector<double>timer;
+double max;
 };
 
 struct server_stats* s1 = (server_stats*)mmap(NULL, 10000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
@@ -314,7 +315,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string( s1->req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
-  msg+= "Longest request: "+ std::to_string(findMax())+ "\n";
+  msg+= "Longest request: "+ std::to_string(s1->max)+ "\n";
 
   // // cout <<"MAX FOUND " << findMax() << endl;
   string first = vec.at(0);
@@ -336,11 +337,11 @@ double findMax(){
     return 0; 
   }
 
-  double max = s1->timer.at(0);
+   s1->max = s1->timer.at(0);
   for( int i = 0 ; i < s1->timer.size() ; i++){
     cout <<"AFTER "<< s1->timer.at(i) << endl;
-    if(s1->timer.at(i) > max){
-      max = s1->timer.at(i);
+    if(s1->timer.at(i) > s1->max){
+      s1->max = s1->timer.at(i);
     }
   }
   // cout <<"FIINAL" << setprecision(5)<< max << endl;
@@ -349,5 +350,6 @@ double findMax(){
 
 void update_stats(){
 s1->req_count+=1;
+findMax();
 
 }
