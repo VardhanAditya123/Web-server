@@ -10,6 +10,7 @@ class Server {
 
  private:
     SocketAcceptor const& _acceptor;
+    int req_count;
 
  public:
     explicit Server(SocketAcceptor const& acceptor);
