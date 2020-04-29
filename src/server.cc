@@ -312,7 +312,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string(req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
-  msg+= "Longest request: "+ std::to_string(max_element(std::begin(timer), std::end(timer)))+ "\n";
+  msg+= "Longest request: "+ std::to_string((long)max_element(std::begin(timer), std::end(timer)))+ "\n";
 
   // cout << msg << endl;
   string first = vec.at(0);
