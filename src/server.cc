@@ -53,7 +53,7 @@ struct server_stats{
 int req_count = 0;
 std::vector<double>timer;
 double max;
-double min;
+double min=10;
 double val;
 };
 
