@@ -338,7 +338,7 @@ double findMax(){
 
   double max = s1->timer.at(0);
   for( int i = 0 ; i < s1->timer.size() ; i++){
-    cout << s1->timer.at(i) << endl;
+    cout <<"AFTER "<< s1->timer.at(i) << endl;
     if(s1->timer.at(i) > max){
       max = s1->timer.at(i);
     }
