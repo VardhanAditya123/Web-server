@@ -43,7 +43,7 @@ void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 pthread_mutex_t _mutex;
-
+struct timespec start, finish; 
 int req_count = 0;
 vector<timer_t>timer;
 
@@ -155,6 +155,7 @@ void Server::run_thread_pool(const int num_threads) const {
 void Server::handle(const Socket_t& sock) const { 
 
 
+  clock_gettime(CLOCK_REALTIME, &start); 
 
   HttpRequest request;
   // TODO: implement parsing HTTP requests
@@ -212,8 +213,10 @@ void Server::handle(const Socket_t& sock) const {
     resp.headers["Content-Type"] = get_content_type(request.filename);
   }
    
-
+  
   sock->write(resp.to_string());
+   clock_gettime(CLOCK_REALTIME, &finish); 
+
 
 }
 
