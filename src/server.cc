@@ -40,7 +40,7 @@ using namespace std;
 auto start_server = std::chrono::system_clock::now();
 
 
-long findMax();
+double findMax();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
@@ -49,7 +49,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 pthread_mutex_t _mutex;
 int req_count = 0;
-vector<long>timer;
+vector<double>timer;
 
 
 void Server::run_linear() const {
@@ -318,7 +318,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   msg+= "Longest request: "+ std::to_string(findMax())+ "\n";
 
-  cout <<"MAX FOUND " << findMax() << endl;
+  // cout <<"MAX FOUND " << findMax() << endl;
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
@@ -331,13 +331,13 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 }
 
-long findMax(){
+double findMax(){
   
   if(timer.size()<=0){
     return 0; 
   }
 
-  long max = timer.at(0);
+  double max = timer.at(0);
   for( int i = 0 ; i < timer.size() ; i++){
     if(timer.at(i) > max){
       max = timer.at(i);
