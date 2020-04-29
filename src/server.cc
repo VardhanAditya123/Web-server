@@ -338,8 +338,18 @@ double findMax(){
    return s1->max;
 }
 
+double findMax(){
+  
+  if(s1->val > s1-> max){
+    s1->max = s1->val;
+  }
+   return s1->max;
+}
+
 void update_stats(){
 s1->req_count+=1;
 findMax();
+fndMin();
 
 }
+
