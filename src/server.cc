@@ -41,6 +41,7 @@ auto start_server = std::chrono::system_clock::now();
 
 
 double findMax();
+void update_stats();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
@@ -220,6 +221,7 @@ void Server::handle(const Socket_t& sock) const {
   cout << timer.size()<< endl;
   req_count+=1;
   sock->write(resp.to_string());
+
   
 
 
