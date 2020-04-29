@@ -221,6 +221,12 @@ void Server::handle(const Socket_t& sock) const {
   (s1->timer).push_back(12);
   cout << "AFTER PUSH" << (s1->timer).at((s1->timer).size()-1) <<endl;
   update_stats();
+  for( int i = 0 ; i < s1->timer.size() ; i++){
+    cout <<"IN FUNC "<< s1->timer.at(i) << endl;
+    // if(s1->timer.at(i) > s1->max){
+    //   s1->max = s1->timer.at(i);
+    // }
+  }
 
 
 
