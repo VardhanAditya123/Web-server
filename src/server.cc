@@ -41,7 +41,7 @@ auto start_server = std::chrono::system_clock::now();
 
 
 double findMax();
-void update_stats(auto &start);
+void update_stats();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
@@ -310,7 +310,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string(req_count) + "\n";
-  msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
+  // msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   msg+= "Longest request: "+ std::to_string(findMax())+ "\n";
 
   // cout <<"MAX FOUND " << findMax() << endl;
@@ -345,10 +345,10 @@ double findMax(){
 
 
 void update_stats(auto &start){
-  auto end = std::chrono::system_clock::now();
-  std::chrono::duration<double> ns = end-start;
-  cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 
-  timer.push_back(ns.count());
-  cout << timer.size()<< endl;
+  // auto end = std::chrono::system_clock::now();
+  // std::chrono::duration<double> ns = end-start;
+  // cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 
+  // timer.push_back(ns.count());
+  // cout << timer.size()<< endl;
   req_count+=1;
 }
