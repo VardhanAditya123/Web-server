@@ -21,7 +21,6 @@ class Server {
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
     void update_stats();
-    void Server::handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
     int req_count;
 
   
