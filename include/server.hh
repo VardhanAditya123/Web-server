@@ -11,7 +11,7 @@ class Server {
  private:
     SocketAcceptor const& _acceptor;
     int req_count;
-      void update_stats() ;
+    void update_stats() const;
 
  public:
     explicit Server(SocketAcceptor const& acceptor);
