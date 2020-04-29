@@ -349,5 +349,5 @@ void Server::update_stats() const{
   // cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 
   // timer.push_back(ns.count());
   // cout << timer.size()<< endl;
-  // req_count+=1;
+  req_count+=1;
 }
