@@ -20,7 +20,7 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
-    static int req_count;
+    int req_count;
 
   
 };
