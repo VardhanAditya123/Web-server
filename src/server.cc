@@ -216,7 +216,6 @@ void Server::handle(const Socket_t& sock) const {
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request){
   // Buffer used to store the name received from the client
-  Server::req_count+=1;
   int hflag = 0;
   vector <string> vec;
   vector <string>head;
