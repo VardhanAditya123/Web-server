@@ -343,7 +343,7 @@ double findMax(){
       max = s1->timer.at(i);
     }
   }
-  cout <<"FIINAL" << setprecision(5)<< max << endl;
+  // cout <<"FIINAL" << setprecision(5)<< max << endl;
   return max;
 }
 
