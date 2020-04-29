@@ -46,7 +46,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
-
+void update_stats();
 
 pthread_mutex_t _mutex;
 vector<double>timer;
@@ -336,4 +336,6 @@ double findMax(){
   return max;
 }
 
-
+void update_stats(){
+  
+}
