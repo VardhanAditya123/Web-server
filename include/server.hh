@@ -10,7 +10,6 @@ class Server {
 
  private:
     SocketAcceptor const& _acceptor;
-    int req_count;
 
  public:
     explicit Server(SocketAcceptor const& acceptor);
@@ -21,6 +20,7 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
+    int req_count;
 
   
 };
