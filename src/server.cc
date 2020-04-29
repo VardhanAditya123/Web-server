@@ -55,11 +55,9 @@ std::vector<double>timer;
 double max;
 double min;
 double val;
-};
+} s1;
 
 // struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
- struct server_stats* s1;
-
 void Server::run_linear() const {
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
@@ -219,7 +217,7 @@ void Server::handle(const Socket_t& sock) const {
   // auto end = std::chrono::system_clock::now();
   // std::chrono::duration<double> elapsed_seconds = end-start;
   // cout << "BEFORE  " << elapsed_seconds.count() << endl;
-  // s1->val = elapsed_seconds.count();
+  // s1.val = elapsed_seconds.count();
   update_stats();
 
 }
@@ -313,10 +311,10 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
   
   msg+= "Name: Aditya Vardhan\n" ;
-  msg+= "Number of Requests: " + std::to_string( s1->req_count) + "\n";
+  msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
-  msg+= "Longest request: "+ std::to_string(s1->max)+ "\n";
-  msg+= "Shortest request: "+ std::to_string(s1->min)+ "\n";
+  msg+= "Longest request: "+ std::to_string(s1.max)+ "\n";
+  msg+= "Shortest request: "+ std::to_string(s1.min)+ "\n";
 
 
   // // cout <<"MAX FOUND " << findMax() << endl;
@@ -334,25 +332,24 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 double findMax(){
   
-  if(s1->val > s1-> max){
-    s1->max = s1->val;
+  if(s1.val > s1. max){
+    s1.max = s1.val;
   }
-   return s1->max;
+   return s1.max;
 }
 
 double findMin(){
-  cout << "MIN "<<s1->min << endl;
-  if(s1->val < s1-> min){
-    s1->min = s1->val;
-    cout << "MIN "<<s1->min << endl;
+  cout << "MIN "<<s1.min << endl;
+  if(s1.val < s1. min){
+    s1.min = s1.val;
+    cout << "MIN "<<s1.min << endl;
   }
-   return s1->min;
+   return s1.min;
 }
 
 void update_stats(){
-s1->req_count+=1;
+s1.req_count+=1;
 findMax();
 findMin();
 
 }
-
