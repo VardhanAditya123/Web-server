@@ -160,6 +160,10 @@ void Server::handle(const Socket_t& sock) const {
   parse_request( sock, &request);
    request.print();
 
+   if( request.message_body.length()==0){
+     return;
+    }
+    
   HttpResponse resp;
   // TODO: Make a response for the HTTP request
   resp.http_version = request.http_version;
@@ -189,9 +193,7 @@ void Server::handle(const Socket_t& sock) const {
     }
   }
 
-    // if( resp.status_code == 401 && request.message_body.length()==0){
-    //  return;
-    // }
+   
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
