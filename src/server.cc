@@ -54,7 +54,7 @@ struct server_stats{
 int req_count = 0;
 };
 
-struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+struct server_stats* s1 = (server_stats*)mmap(NULL, sizeof(s1), PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 
 
 void Server::run_linear() const {
