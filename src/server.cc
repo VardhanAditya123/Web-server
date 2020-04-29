@@ -221,7 +221,7 @@ void Server::handle(const Socket_t& sock) const {
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> ns = end-start;
   // cout <<"NANO SEC " << ns << endl; 
-  timer.push_back(ns.count);
+  timer.push_back(ns.count());
 
 
 }
