@@ -189,9 +189,6 @@ void Server::handle(const Socket_t& sock) const {
     }
   }
 
-    if( resp.status_code == 401 && request.message_body.length()==0){
-     return;
-   }
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
