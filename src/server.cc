@@ -63,7 +63,7 @@ void Server::run_fork() const {
   
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
-    req_count+=1;
+    Server::req_count+=1;
     timer_t tid;
     struct itimerspec * iti;
     int ret = fork();
