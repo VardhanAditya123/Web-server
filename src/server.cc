@@ -216,10 +216,10 @@ void Server::handle(const Socket_t& sock) const {
   }
     
   sock->write(resp.to_string());
-  auto end = std::chrono::system_clock::now();
-  std::chrono::duration<double> elapsed_seconds = end-start;
-  cout << "BEFORE  " << elapsed_seconds.count() << endl;
-  s1->val = elapsed_seconds.count();
+  // auto end = std::chrono::system_clock::now();
+  // std::chrono::duration<double> elapsed_seconds = end-start;
+  // cout << "BEFORE  " << elapsed_seconds.count() << endl;
+  // s1->val = elapsed_seconds.count();
   update_stats();
 
 }
