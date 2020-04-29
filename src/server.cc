@@ -63,17 +63,11 @@ void Server::run_fork() const {
   
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
-    Server::req_count+=1;
-    timer_t tid;
-    struct itimerspec * iti;
     int ret = fork();
     if (ret == 0) {
-      timer_create(CLOCK_REALTIME,NULL,&tid);
-      timer_settime(tid, 0, iti , NULL);
       handle(slaveSocket);
       exit(0);
     }
-    timer_gettime(tid,iti);
     waitpid(-1, NULL, WNOHANG) ;
 
 
