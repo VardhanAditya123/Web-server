@@ -330,15 +330,15 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 double findMax(){
   
-  cout << " VECC SIZE: " << timer.size() << endl;
+  cout << " VECC SIZE: " << s1->timer.size() << endl;
   if(timer.size()<=0){
     return 0; 
   }
 
-  double max = timer.at(0);
-  for( int i = 0 ; i < timer.size() ; i++){
-    if(timer.at(i) > max){
-      max = timer.at(i);
+  double max = s1->timer.at(0);
+  for( int i = 0 ; i < s1->timer.size() ; i++){
+    if(s1->timer.at(i) > max){
+      max = s1->timer.at(i);
     }
   }
   cout <<"FIINAL" << max << endl;
