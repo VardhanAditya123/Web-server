@@ -48,7 +48,6 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 
 pthread_mutex_t _mutex;
-struct timespec start, finish; 
 int req_count = 0;
 vector<long>timer;
 
@@ -159,7 +158,7 @@ void Server::run_thread_pool(const int num_threads) const {
 
 void Server::handle(const Socket_t& sock) const { 
 
-
+  struct timespec start, finish; 
   clock_gettime(CLOCK_REALTIME, &start); 
 
   HttpRequest request;
@@ -221,7 +220,7 @@ void Server::handle(const Socket_t& sock) const {
   
   sock->write(resp.to_string());
   clock_gettime(CLOCK_REALTIME, &finish); 
- long ns = finish.tv_nsec - start.tv_nsec; 
+  long ns = finish.tv_nsec - start.tv_nsec; 
   timer.push_back(ns);
 
 
