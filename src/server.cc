@@ -202,7 +202,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Content-Length"] = request.message_body.length();
 
   if(request.filename.compare("/stats")==0){
-     resp.headers["Content-Type"] ="html";
+     request.content_type="html";
   }
 
   if((request.content_type).length()!=0){
