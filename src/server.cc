@@ -212,7 +212,6 @@ void Server::handle(const Socket_t& sock) const {
     resp.headers["Content-Type"] = get_content_type(request.filename);
   }
     
-  cout << resp.headers["Content-Type"] << endl;
   sock->write(resp.to_string());
 
 
