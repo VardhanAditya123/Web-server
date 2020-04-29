@@ -40,7 +40,7 @@ TCPSocket::~TCPSocket() noexcept {
 
 char TCPSocket::getc() {
     char c;
-    ssize_t read = recv(_socket, &c, 1, 0);
+    ssize_t read = recv( _socket, &c, 1, 0);
     if (read < 0) {
         throw ConnectionError("Unable to read a character: " + std::string(strerror(errno)));
     } else if (read > 1) {
