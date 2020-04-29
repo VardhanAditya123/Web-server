@@ -158,10 +158,9 @@ void Server::run_thread_pool(const int num_threads) const {
 
 void Server::handle(const Socket_t& sock) const { 
 
-  struct timespec start, finish; 
-  clock_gettime(CLOCK_REALTIME, &start); 
-
+  auto start_server = std::chrono::system_clock::now();
   HttpRequest request;
+  
   // TODO: implement parsing HTTP requests
   // recommendation:
   parse_request( sock, &request);
@@ -312,8 +311,8 @@ void separate(HttpRequest* const request , string line){
 
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
   string msg;
-  auto end = std::chrono::system_clock::now();
-  std::chrono::duration<double> elapsed_seconds = end-start_server;
+  auto end_server = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = end_server-start_server;
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string(req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
