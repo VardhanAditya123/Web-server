@@ -26,11 +26,13 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <algorithm>
-#include <algorithm>
 #include <chrono>
 #include <ctime>
 #include <time.h>
- #include <signal.h>
+#include <signal.h>
+#include <stdio.h> 
+#include <sys/time.h>   
+#include <sys/resource.h> 
 
 using namespace std;
 
