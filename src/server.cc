@@ -341,7 +341,7 @@ double findMax(){
 }
 
 double findMin(){
-  
+  cout << "MIN "<<s1->min << endl;
   if(s1->val < s1-> min){
     s1->min = s1->val;
     cout << "MIN "<<s1->min << endl;
