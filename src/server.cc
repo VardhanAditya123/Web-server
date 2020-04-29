@@ -344,7 +344,7 @@ long findMax(){
       max = timer.at(i);
     }
   }
-  cout << max << endl;
+  cout <<"FIINAL" << max << endl;
   return max;
 }
 
