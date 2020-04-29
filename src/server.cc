@@ -55,6 +55,7 @@ int req_count = 0;
 auto start_server = std::chrono::system_clock::now();
 };
 
+struct server_stats s1;
 
 void Server::run_linear() const {
   while (1) {
@@ -307,7 +308,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
   msg+= "Name: Aditya Vardhan\n" ;
-  msg+= "Number of Requests: " + std::to_string( server_stats.req_count) + "\n";
+  msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   // // msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   // msg+= "Longest request: "+ std::to_string(findMax())+ "\n";
 
@@ -342,6 +343,6 @@ double findMax(){
 }
 
 void update_stats(){
-server_stats.req_count+=1;
+s1.req_count+=1;
 
 }
