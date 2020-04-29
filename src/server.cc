@@ -319,7 +319,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   msg+= "Longest request: "+ std::to_string(findMax())+ "\n";
 
-  cout <<"MAX FOUND" <<findMax << endl;
+  cout <<"MAX FOUND " << findMax << endl;
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
