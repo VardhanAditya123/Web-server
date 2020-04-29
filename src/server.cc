@@ -341,7 +341,7 @@ double findMax(){
       max = s1->timer.at(i);
     }
   }
-  cout <<"FIINAL" << max << setprecision(5)<< endl;
+  cout <<"FIINAL" << setprecision(5)<< max << endl;
   return max;
 }
 
