@@ -220,7 +220,8 @@ void Server::handle(const Socket_t& sock) const {
   
   sock->write(resp.to_string());
   clock_gettime(CLOCK_REALTIME, &finish); 
-  long ns = finish.tv_nsec - start.tv_nsec; 
+  long ns = finish.tv_nsec - start.tv_nsec;
+  cout <<"NANO SEC " << ns << endl; 
   timer.push_back(ns);
 
 
@@ -336,6 +337,7 @@ long findMax(){
   if(timer.size()<=0){
     return 0; 
   }
+
   int max = timer.at(0);
   for( int i = 0 ; i < timer.size() ; i++){
     if(timer.at(i) > max){
