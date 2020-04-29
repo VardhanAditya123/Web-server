@@ -218,7 +218,7 @@ void Server::handle(const Socket_t& sock) const {
   // std::chrono::duration<double> elapsed_seconds = end-start;
   // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   // s1.val = elapsed_seconds.count();
-
+  update_stats();
 
 }
 
@@ -315,6 +315,9 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   msg+= "Longest request: "+ std::to_string(s1.max)+ "\n";
   msg+= "Shortest request: "+ std::to_string(s1.min)+ "\n";
+
+
+  // // cout <<"MAX FOUND " << findMax() << endl;
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
@@ -335,3 +338,18 @@ double findMax(){
    return s1.max;
 }
 
+double findMin(){
+  cout << "MIN "<<s1.min << endl;
+  if(s1.val < s1. min){
+    s1.min = s1.val;
+    cout << "MIN "<<s1.min << endl;
+  }
+   return s1.min;
+}
+
+void update_stats(){
+s1.req_count+=1;
+findMax();
+findMin();
+
+}
