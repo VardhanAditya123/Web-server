@@ -45,7 +45,7 @@ double findMax();
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) req_count(0) { }
-// void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
+void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 
 
 pthread_mutex_t _mutex;
@@ -303,16 +303,16 @@ void separate(HttpRequest* const request , string line){
 
 }
 
-void Server::handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
+void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
   string msg;
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
-  msg+= "Name: Aditya Vardhan\n" ;
-  msg+= "Number of Requests: " + std::to_string(_acceptor.req_count) + "\n";
-  // msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
-  msg+= "Longest request: "+ std::to_string(findMax())+ "\n";
+  // msg+= "Name: Aditya Vardhan\n" ;
+  // msg+= "Number of Requests: " + std::to_string(_acceptor.req_count) + "\n";
+  // // msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
+  // msg+= "Longest request: "+ std::to_string(findMax())+ "\n";
 
-  // cout <<"MAX FOUND " << findMax() << endl;
+  // // cout <<"MAX FOUND " << findMax() << endl;
   string first = vec.at(0);
   string second = vec.at(1);
   string third = vec.at(2);
