@@ -114,7 +114,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   // waitpid(-1, NULL, WNOHANG) ;
 
   msg = str2;
-
+  msg.erase(0, msg.find("\n") + 1);
   // cout <<"TESTING " << msg << endl;
   request->method = first;
   request->request_uri = second;
