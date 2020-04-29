@@ -53,9 +53,11 @@ struct server_stats{
 int req_count = 0;
 std::vector<double>timer;
 double max;
+double min;
+double val;
 };
 
-struct server_stats* s1 = (server_stats*)mmap(NULL, 1000000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 
 
 void Server::run_linear() const {
@@ -217,18 +219,8 @@ void Server::handle(const Socket_t& sock) const {
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end-start;
   cout << "BEFORE  " << elapsed_seconds.count() << endl;
-  // (s1->timer).push_back((float)elapsed_seconds.count());
-  (s1->timer).push_back(12);
-  cout << "AFTER PUSH" << (s1->timer).at((s1->timer).size()-1) <<endl;
+  s1->val = elapsed_seconds.count();
   update_stats();
-  for( int i = 0 ; i < s1->timer.size() ; i++){
-    cout <<"IN FUNC "<< s1->timer.at(i) << endl;
-    // if(s1->timer.at(i) > s1->max){
-    //   s1->max = s1->timer.at(i);
-    // }
-  }
-
-
 
 }
 
@@ -340,20 +332,10 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 double findMax(){
   
-  cout << " VECC SIZE: " << s1->timer.size() << endl;
-  if(s1->timer.size()<=0){
-    return 0; 
+  if(s1->val > s1-> max){
+    s1->max = s1->val;
   }
-
-   s1->max = s1->timer.at(0);
-  for( int i = 0 ; i < s1->timer.size() ; i++){
-    cout <<"IN FUNC "<< s1->timer.at(i) << endl;
-    // if(s1->timer.at(i) > s1->max){
-    //   s1->max = s1->timer.at(i);
-    // }
-  }
-  // cout <<"FIINAL" << setprecision(5)<< max << endl;
-  return s1->max;
+   return s1->max;
 }
 
 void update_stats(){
