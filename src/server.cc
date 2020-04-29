@@ -333,6 +333,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 double findMax(){
   
+  cout << " VECC SIZE: " << timer.size() << endl;
   if(timer.size()<=0){
     return 0; 
   }
