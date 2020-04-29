@@ -48,7 +48,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 
 pthread_mutex_t _mutex;
-int req_count = 0;
+// int req_count = 0;
 vector<double>timer;
 
 
@@ -63,7 +63,7 @@ void Server::run_fork() const {
   
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
-    // req_count+=1;
+    req_count+=1;
     timer_t tid;
     struct itimerspec * iti;
     int ret = fork();
@@ -223,7 +223,6 @@ void Server::handle(const Socket_t& sock) const {
   cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 
   timer.push_back(ns.count());
   cout << timer.size()<< endl;
-  req_count+=1;
 
 
 }
