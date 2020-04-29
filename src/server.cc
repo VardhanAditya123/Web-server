@@ -345,7 +345,7 @@ double findMax(){
     }
   }
   // cout <<"FIINAL" << setprecision(5)<< max << endl;
-  return max;
+  return s1->max;
 }
 
 void update_stats(){
