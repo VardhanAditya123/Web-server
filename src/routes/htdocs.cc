@@ -52,6 +52,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   }
   // cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
+    request->content_type="text/html;charset=us-ascii";
     generate_html(msg,fn);
 
   }
@@ -107,6 +108,7 @@ void generate_html(string& msg ,string& fn){
 
   }
   closedir(d);
+  
 
 }
 

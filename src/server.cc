@@ -201,14 +201,12 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
 
-  if(request.filename.compare("http-root-dir/cgi-bin/jj")==0 || request.filename.compare("http-root-dir/cgi-bin/jj-mod.so")==0){
-     resp.headers["Content-Type"] ="text/html";
-  }
-  else if(request.filename.compare("/stats")==0){
+  if(request.filename.compare("/stats")==0){
      resp.headers["Content-Type"] ="html";
   }
-  else if(request.filename.find("dir1")!= std::string::npos){
-     resp.headers["Content-Type"] ="html";
+
+  if((request->content_type).length()!=0){
+    resp.headers["Content-Type"] = request.content_type;
   }
   else{
     resp.headers["Content-Type"] = get_content_type(request.filename);

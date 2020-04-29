@@ -15,6 +15,7 @@ class HttpRequest {
     std::string message_body;
     std::string query;  // implemented in Task 2.2
     std::string filename;
+    std::string content_type;
     void print() const;
 };
 
