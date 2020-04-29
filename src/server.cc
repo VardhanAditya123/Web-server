@@ -343,7 +343,7 @@ double findMax(){
 }
 
 
-void Server::update_stats() const{
+void Server::update_stats() {
   // auto end = std::chrono::system_clock::now();
   // std::chrono::duration<double> ns = end-start;
   // cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 

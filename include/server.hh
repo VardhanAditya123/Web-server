@@ -21,7 +21,7 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
-    void update_stats() const;
+    void update_stats() ;
 
   
 };
