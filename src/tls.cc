@@ -30,7 +30,7 @@ TLSSocket::TLSSocket(int port_no, struct sockaddr_in addr, SSL* ssl) :
     // TODO: Task 2.1
 }
 TLSSocket::~TLSSocket() noexcept {
-    // TODO: Task 2.1
+    close(_socket);
 }
 
 char TLSSocket::getc() {
