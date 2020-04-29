@@ -166,7 +166,7 @@ void Server::handle(const Socket_t& sock) const {
   resp.message_body = request.message_body;
   resp.reason_phrase = "OK";
   string s =  request.headers["Authorization"];
-  resp.status_code=401;
+  resp.status_code=200;
 
   if(resp.message_body.length() == 0){
     resp.status_code=404;
@@ -189,6 +189,9 @@ void Server::handle(const Socket_t& sock) const {
     }
   }
 
+    // if( resp.status_code == 401 && request.message_body.length()==0){
+    //  return;
+    // }
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
