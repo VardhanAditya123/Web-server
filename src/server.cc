@@ -53,7 +53,7 @@ vector<double>timer;
 struct server_stats{
 int req_count = 0;
 auto start_server = std::chrono::system_clock::now();
-}
+};
 
 
 void Server::run_linear() const {
