@@ -349,7 +349,7 @@ double findMin(){
 void update_stats(){
 s1->req_count+=1;
 findMax();
-fndMin();
+findMin();
 
 }
 
