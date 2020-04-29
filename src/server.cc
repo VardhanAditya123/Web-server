@@ -41,7 +41,7 @@ auto start_server = std::chrono::system_clock::now();
 
 
 double findMax();
-void update_stats();
+void update_stats(auto &start);
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
@@ -216,7 +216,7 @@ void Server::handle(const Socket_t& sock) const {
  
   sock->write(resp.to_string());
 
- update_stats();
+ update_stats(auto &start);
 
 
 }
@@ -344,7 +344,7 @@ double findMax(){
 }
 
 
-void update_stats(){
+void update_stats(auto &start){
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> ns = end-start;
   cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 
