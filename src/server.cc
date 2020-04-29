@@ -205,7 +205,7 @@ void Server::handle(const Socket_t& sock) const {
      resp.headers["Content-Type"] ="html";
   }
 
-  if((request->content_type).length()!=0){
+  if((request.content_type).length()!=0){
     resp.headers["Content-Type"] = request.content_type;
   }
   else{
