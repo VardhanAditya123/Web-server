@@ -221,8 +221,8 @@ void Server::handle(const Socket_t& sock) const {
   
   sock->write(resp.to_string());
   clock_gettime(CLOCK_REALTIME, &finish); 
-  long secs = finish.tv_sec - start.tv_sec; 
-  timer.push_back(secs);
+ long ns = finish.tv_nsec - start.tv_nsec; 
+  timer.push_back(ns);
 
 
 }
