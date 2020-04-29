@@ -342,7 +342,7 @@ double findMax(){
 
 double findMin(){
   
-  if(s1->val < s1-> max){
+  if(s1->val < s1-> min){
     s1->min = s1->val;
   }
    return s1->min;
