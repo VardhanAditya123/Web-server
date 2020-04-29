@@ -48,7 +48,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 
 pthread_mutex_t _mutex;
-// int req_count = 0;
+int req_count = 0;
 vector<double>timer;
 
 
@@ -211,12 +211,16 @@ void Server::handle(const Socket_t& sock) const {
   }
    
   
-  sock->write(resp.to_string());
+ 
+ 
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> ns = end-start;
   cout <<"NANO SEC " << std::to_string(ns.count()) << endl; 
   timer.push_back(ns.count());
   cout << timer.size()<< endl;
+
+  sock->write(resp.to_string());
+  
 
 
 }
