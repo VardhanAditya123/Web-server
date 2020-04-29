@@ -338,7 +338,7 @@ double findMax(){
   }
 
   double max = timer.at(0);
-  for( int i = 0 ; i < timer.size() ; i++){
+  for( int i = 0 ; i < timer.length() ; i++){
     if(timer.at(i) > max){
       max = timer.at(i);
     }
