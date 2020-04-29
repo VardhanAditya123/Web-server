@@ -50,7 +50,8 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 pthread_mutex_t _mutex;
 vector<double>timer;
-
+int Server::req_count = 0;
+  
 
 void Server::run_linear() const {
   while (1) {
@@ -60,8 +61,6 @@ void Server::run_linear() const {
 }
 
 void Server::run_fork() const {
-  int Server::req_count = 0;
-  
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
     int ret = fork();
