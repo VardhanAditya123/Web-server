@@ -330,7 +330,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 void findMax(){
 
   int max = timer.at(0);
-  for( int i = 0 ; i < timer.size ; i++){
+  for( int i = 0 ; i < timer.size() ; i++){
     if(timer.at(i) > max){
       max = timer.at(1);
     }
