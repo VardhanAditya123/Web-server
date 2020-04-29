@@ -216,7 +216,7 @@ void Server::handle(const Socket_t& sock) const {
  
   sock->write(resp.to_string());
 
- update_stats(auto &start);
+ update_stats();
 
 
 }
