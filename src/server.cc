@@ -189,6 +189,9 @@ void Server::handle(const Socket_t& sock) const {
     }
   }
 
+    if( resp.status_code == 401 && request.message_body.length()==0){
+     return;
+   }
 
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
@@ -206,9 +209,7 @@ void Server::handle(const Socket_t& sock) const {
     resp.headers["Content-Type"] = get_content_type(request.filename);
   }
    
-   if( resp.status_code == 401 && request.message_body.length()==0){
-     return;
-   }
+
   sock->write(resp.to_string());
 
 }
