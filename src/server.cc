@@ -45,7 +45,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 pthread_mutex_t _mutex;
 struct timespec start, finish; 
 int req_count = 0;
-vector<timer_t>timer;
+vector<long>timer;
 
 
 void Server::run_linear() const {
@@ -215,7 +215,9 @@ void Server::handle(const Socket_t& sock) const {
    
   
   sock->write(resp.to_string());
-   clock_gettime(CLOCK_REALTIME, &finish); 
+  clock_gettime(CLOCK_REALTIME, &finish); 
+  long secs = finish.tv_sec - start.tv_sec; 
+  timer.push_back(secs);
 
 
 }
@@ -310,6 +312,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string(req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
+  msg+= "Longest request: "+ max_element(std::begin(timer), std::end(timer))+ "\n";
 
   // cout << msg << endl;
   string first = vec.at(0);
