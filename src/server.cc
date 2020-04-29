@@ -158,12 +158,12 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: implement parsing HTTP requests
   // recommendation:
   parse_request( sock, &request);
-   request.print();
+  //  request.print();
 
    if( request.message_body.length()==0){
      return;
     }
-    
+
   HttpResponse resp;
   // TODO: Make a response for the HTTP request
   resp.http_version = request.http_version;
