@@ -158,7 +158,7 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: implement parsing HTTP requests
   // recommendation:
   parse_request( sock, &request);
-  //  request.print();
+   request.print();
 
    if( request.message_body.length()==0  && (request.request_uri).length()==0){
      return;
