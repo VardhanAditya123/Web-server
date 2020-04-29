@@ -158,7 +158,7 @@ void Server::run_thread_pool(const int num_threads) const {
 
 void Server::handle(const Socket_t& sock) const { 
 
-  auto start_server = std::chrono::system_clock::now();
+  auto start = std::chrono::system_clock::now();
   HttpRequest request;
   
   // TODO: implement parsing HTTP requests
@@ -218,8 +218,7 @@ void Server::handle(const Socket_t& sock) const {
    
   
   sock->write(resp.to_string());
-  clock_gettime(CLOCK_REALTIME, &finish); 
-  long ns = finish.tv_nsec - start.tv_nsec;
+  auto end = std::chrono::system_clock::now();
   cout <<"NANO SEC " << ns << endl; 
   timer.push_back(ns);
 
