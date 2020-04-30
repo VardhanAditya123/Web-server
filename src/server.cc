@@ -39,13 +39,13 @@ using namespace std;
 
 
 
-double findMax(string &fn);
-double findMin(string &fn);
+double findMax(string &fn ,struct server_stats s1);
+double findMin(string &fn,struct server_stats s1);
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
-void update_stats(HttpRequest* const request);
+void update_stats(HttpRequest* const request,struct server_stats s1);
 void update_logs(const Socket_t& sock,HttpRequest* const request);
 void handle_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 pthread_mutex_t _mutex;
@@ -234,7 +234,7 @@ void Server::handle(const Socket_t& sock) const {
   std::chrono::duration<double> elapsed_seconds = end-start;
   // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   s1.val = elapsed_seconds.count();
-  update_stats(&request);
+  update_stats(&request,s1);
   update_logs( sock, &request);
 
 }
@@ -370,10 +370,10 @@ double findMin(string &fn){
    return s1.min;
 }
 
-void update_stats(HttpRequest* const request){
+void update_stats(HttpRequest* const request,struct server_stats &s1){
   s1.req_count+=1;
-  findMax(request->request_uri);
-  findMin(request->request_uri);
+  findMax(request->request_uri,s1);
+  findMin(request->request_uri,s1);
 }
 
 void update_logs(const Socket_t& sock,HttpRequest* const request){
