@@ -37,7 +37,8 @@ string max_url;
 string min_url;
 double val;
 int p_no;
-}s1;
+};
+mutable struct server_stats s1;
 
   
 };
