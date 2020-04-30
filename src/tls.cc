@@ -28,12 +28,14 @@ using namespace std;
 TLSSocket::TLSSocket(int port_no, struct sockaddr_in addr, SSL* ssl) :
   _socket(port_no), _addr(addr), _ssl(ssl) {
     // TODO: Task 2.1
-}
-TLSSocket::~TLSSocket() noexcept {
     char inet_pres[INET_ADDRSTRLEN];
     // sin_family will be AF_INET
     if (inet_ntop(addr.sin_family, &(addr.sin_addr), inet_pres, INET_ADDRSTRLEN)) {
         ip = inet_pres;
+}
+
+
+TLSSocket::~TLSSocket() noexcept {
     close(_socket);
 }
 
