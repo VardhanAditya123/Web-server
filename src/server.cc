@@ -66,7 +66,7 @@ void Server::run_linear() const {
   s1.min = 10;
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
-    _acceptor.get_pno()
+    _acceptor.get_pno();
     handle(sock);
   }
 }
