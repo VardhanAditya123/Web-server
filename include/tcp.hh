@@ -32,7 +32,7 @@ class TCPSocketAcceptor : public SocketAcceptor {
     explicit TCPSocketAcceptor(const int portno);
     ~TCPSocketAcceptor() noexcept;
     Socket_t accept_connection() const;
-    int port_number;
+    static int port_number;
 };
 
 #endif  // INCLUDE_TCP_HH_
