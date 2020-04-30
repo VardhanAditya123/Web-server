@@ -61,8 +61,8 @@ double val;
 }s1;
 
 
-void Server::get_portno()const{
-  
+int Server::get_portno()const{
+
 }
 
 // struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
