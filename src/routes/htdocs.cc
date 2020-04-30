@@ -95,7 +95,7 @@ void generate_html(string& msg ,string& fn){
   for (dirent * ent = readdir(d); NULL != ent; ent = readdir(d)) {
     name =  ent->d_name;
     link =  name;
-    if(name.at(0)=="."){
+    if(name.at(0)=='.'){
       continue;
     }
     DIR * d1 = opendir((fn+name).c_str());
