@@ -131,8 +131,8 @@ Socket_t TCPSocketAcceptor::accept_connection() const {
     return std::make_unique<TCPSocket>(s, addr);
 }
 
-int TCPSocketAcceptor::get_portno(int portno) {
-   return portno;
+int TCPSocketAcceptor::get_portno() {
+   return port_number;
 }
 
 
