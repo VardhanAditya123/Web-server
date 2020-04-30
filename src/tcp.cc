@@ -24,7 +24,8 @@ TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _
     // sin_family will be AF_INET
     if (inet_ntop(addr.sin_family, &(addr.sin_addr), inet_pres, INET_ADDRSTRLEN)) {
         std::cout << "Received a connection from " << inet_pres << std::endl;
-    }
+    } 
+    
 }
 
 TCPSocket::~TCPSocket() noexcept {
