@@ -10,6 +10,7 @@ class Server {
 
  private:
     SocketAcceptor const& _acceptor;
+    int port_number;
    
 
  public:
@@ -21,6 +22,7 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
+    void set_portno();
     int req_count;
 
 
