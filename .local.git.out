@@ -58420,3 +58420,67 @@ M	src/tcp.cc
 M	src/tls.cc
 Your branch is behind 'origin/master' by 68 commits, and can be fast-forwarded.
   (use "git pull" to update your local branch)
+[master d88c871] Commit
+ Committer: Aditya Vardhan Merla <amerla@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 51 files changed, 60377 insertions(+), 1122 deletions(-)
+ create mode 100644 .clang-format
+ create mode 100644 .local.git.out
+ create mode 100644 cert.pem
+ create mode 100755 examples/daytime-server
+ create mode 100755 examples/tls
+ create mode 100755 examples/use-dlopen
+ create mode 100755 http-root-dir/cgi-bin/jj
+ create mode 100755 http-root-dir/cgi-bin/jj-mod.so
+ create mode 100644 http-root-dir/cgi-src/jj-mod.c
+ create mode 100644 http-root-dir/cgi-src/jj-mod.o
+ create mode 100644 http-root-dir/cgi-src/jj.o
+ create mode 100644 http-root-dir/cgi-src/util.o
+ create mode 100755 "http-root-dir/htdocs\bV"
+ create mode 100755 http-root-dir/htdocs/favicon.ico
+ create mode 100755 http-root-dir/htdocs/hello.html
+ create mode 100755 http-root-dir/htdocs/robots.txt
+ create mode 100755 http-root-dir/htdocs/simple.ht
+ create mode 100755 http-root-dir/htdocs127.0.0.1
+ create mode 100755 http-root-dir/htdocs127.0.0.1:42043
+ create mode 100755 http-root-dir/htdocs42043
+ create mode 100755 http-root-dir/htdocs6V
+ create mode 100755 http-root-dir/htdocs@V
+ create mode 100755 http-root-dir/htdocsA
+ create mode 100755 http-root-dir/htdocsBasic
+ create mode 100755 http-root-dir/htdocsV
+ create mode 100755 http-root-dir/htdocsnU
+ create mode 100755 http-root-dir/htdocspt:
+ create mode 100755 http-root-dir/htdocsqys
+ create mode 100755 http-root-dir/htdocsxinu0.prdu3
+ create mode 100755 "http-root-dir/htdocs\223U"
+ create mode 100755 "http-root-dir/htdocs\233U"
+ create mode 100755 "http-root-dir/htdocs\301U"
+ create mode 100755 "http-root-dir/htdocs\363U"
+ rewrite include/http_messages.hh (70%)
+ rewrite include/server.hh (72%)
+ create mode 100644 key.pem
+ create mode 100644 method
+ create mode 100644 myhttpd.log
+ create mode 100644 request_uri
+ create mode 100644 server
+ rewrite src/http_messages.cc (84%)
+ rewrite src/main.cc (81%)
+ rewrite src/misc.cc (69%)
+ rewrite src/tcp.cc (75%)
+ rewrite src/tls.cc (79%)
+M	.local.git.out
+Your branch and 'origin/master' have diverged,
+and have 1 and 68 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
