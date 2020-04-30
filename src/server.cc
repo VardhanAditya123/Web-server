@@ -281,7 +281,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
      handle_stat(sock,request,vec);
   }
    else if(second.find("logs") != std::string::npos){
-    
+     update_logs(sock,request,vec);
   }
   else{
     handle_htdocs(sock,request,vec);
@@ -373,3 +373,6 @@ void update_stats(HttpRequest* const request){
   findMin(request->request_uri);
 }
 
+void update_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
+  
+}
