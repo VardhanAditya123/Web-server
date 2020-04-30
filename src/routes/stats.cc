@@ -1,32 +1,32 @@
-#include <fcntl.h>
-#include <pthread.h>
-#include <stdio.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
-
-#include <algorithm>
-#include <chrono>
-#include <cstring>
-#include <ctime>
-#include <fstream>
+#include "http_messages.hh"
 #include <functional>
 #include <iostream>
 #include <sstream>
-#include <thread>
-#include <tuple>
 #include <vector>
-
-#include "errors.hh"
+#include <tuple>
+#include <unistd.h>
+#include <string.h>
+#include "server.hh"
 #include "http_messages.hh"
+#include "errors.hh"
 #include "misc.hh"
 #include "routes.hh"
-#include "server.hh"
+#include <cstring>
+#include <fstream>
+#include <pthread.h>
+#include <stdio.h>
+#include <thread>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/wait.h>
+#include <algorithm>
+#include <chrono>
+#include <ctime>    
 using namespace std;
 
-void handle_stats(const Socket_t& sock, HttpRequest* const request, vector<string> vec) {
+void handle_stats(const Socket_t& sock,HttpRequest* const request,vector <string> vec) {
+  
   string msg;
   string first = vec.at(0);
   string second = vec.at(1);
@@ -35,7 +35,7 @@ void handle_stats(const Socket_t& sock, HttpRequest* const request, vector<strin
   string fn = second;
   request->method = first;
   request->request_uri = second;
-  request->http_version = third;
-  request->message_body = msg;
-  request->filename = fn;
+  request-> http_version = third;
+  request->message_body = msg ;
+  request->filename=fn;
 }
