@@ -97,7 +97,7 @@ void TCPSocket::write(char const * const buf, const size_t buf_len) {
 }
 
 TCPSocketAcceptor::TCPSocketAcceptor(const int portno) {
-    // cout << portno << endl;
+    cout << portno << endl;
     addr.sin_family = AF_INET;
     addr.sin_port = htons(portno);
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
