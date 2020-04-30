@@ -26,6 +26,18 @@ class Server {
     int ip_address;
     int req_count;
     std::chrono::time_point<std::chrono::system_clock> a;
+               
+struct server_stats{
+int req_count = 0;
+std::vector<double>timer;
+std::chrono::time_point<std::chrono::system_clock>start_server;
+double max;
+double min;
+string max_url;
+string min_url;
+double val;
+int p_no;
+}s1;
 
   
 };
