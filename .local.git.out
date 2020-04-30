@@ -58352,6 +58352,7 @@ After doing this, you may fix the identity used for this commit with:
  2 files changed, 26 insertions(+), 1 deletion(-)
 M	.local.git.out
 Your branch is up to date with 'origin/master'.
+<<<<<<< HEAD
 [master 3c61c2b] Commit
  Committer: Aditya Vardhan Merla <amerla@data.cs.purdue.edu>
 Your name and email address were configured automatically based
@@ -58738,3 +58739,7 @@ and have 15 and 68 different commits each, respectively.
 Your branch and 'origin/master' have diverged,
 and have 16 and 68 different commits each, respectively.
   (use "git pull" to merge the remote branch into yours)
+=======
+>>>>>>> 3c61c2ba19a786cc7b80ecc8b307e89304d31e4e
+.local.git.out: needs merge
+src/routes/htdocs.cc: needs merge
