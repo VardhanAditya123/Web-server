@@ -347,7 +347,7 @@ double findMax(string &fn){
 }
 
 double findMin(string &fn){
-  cout << "MIN "<<s1.min << endl;
+  // cout << "MIN "<<s1.min << endl;
   if(s1.val < s1. min){
     s1.min = s1.val;
     s1.min_url = fn;
