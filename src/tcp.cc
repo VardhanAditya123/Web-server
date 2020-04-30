@@ -34,6 +34,7 @@ TCPSocket::~TCPSocket() noexcept {
     char inet_pres[INET_ADDRSTRLEN];
     // sin_family will be AF_INET
     if (inet_ntop(_addr.sin_family, &(_addr.sin_addr), inet_pres, INET_ADDRSTRLEN)) {
+        ip = inet_pres;
         std::cout << " from " << inet_pres;
     }
     std::cout << std::endl;
@@ -41,7 +42,7 @@ TCPSocket::~TCPSocket() noexcept {
 }
 
 string TCPSocket:: set_ip(){
-
+return
 }
 char TCPSocket::getc() {
     char c;
