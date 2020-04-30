@@ -23,6 +23,7 @@ TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _
     char inet_pres[INET_ADDRSTRLEN];
     // sin_family will be AF_INET
     if (inet_ntop(addr.sin_family, &(addr.sin_addr), inet_pres, INET_ADDRSTRLEN)) {
+        ip = inet_pres;
         std::cout << "Received a connection from " << inet_pres << std::endl;
     } 
     
@@ -39,6 +40,9 @@ TCPSocket::~TCPSocket() noexcept {
     close(_socket);
 }
 
+int TCPSocket:: set_ip(){
+
+}
 char TCPSocket::getc() {
     char c;
     ssize_t read = recv( _socket, &c, 1, 0);

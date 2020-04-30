@@ -12,6 +12,7 @@ class TCPSocket : public Socket {
  private:
     const int _socket;
     const struct sockaddr_in _addr;
+    int ip;
  public:
     TCPSocket(int port_no, struct sockaddr_in _addr);
     ~TCPSocket() noexcept;
