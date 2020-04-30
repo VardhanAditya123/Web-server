@@ -214,6 +214,10 @@ void Server::handle(const Socket_t& sock) const {
      request.content_type="html";
   }
 
+  if(request.filename.compare("/logs")==0){
+     request.content_type="html";
+  }
+
   if((request.content_type).length()!=0){
     resp.headers["Content-Type"] = request.content_type;
   }
