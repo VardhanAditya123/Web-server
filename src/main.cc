@@ -119,6 +119,7 @@ int main(int argc, char** argv) {
         acceptor = new TCPSocketAcceptor(port_no);
     }
     Server server(*acceptor);
+    server.port_number = port_no;
     switch (mode) {
     case E_FORK_PER_REQUEST:
         server.run_fork();
