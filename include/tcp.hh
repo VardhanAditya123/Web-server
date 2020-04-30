@@ -21,7 +21,7 @@ class TCPSocket : public Socket {
     void write(std::string const&);
     void write(char const * const buf, size_t len);
     const int _socket2; 
-    int get_portno();
+    int get_portno(int portno);
 };
 
 class TCPSocketAcceptor : public SocketAcceptor {
