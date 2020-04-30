@@ -65,7 +65,7 @@ int p_no;
 // struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 void Server::run_linear() const {
   s1.min = 10;
-  s1.p_no = _acceptor.get_pno();
+  // s1.p_no = _acceptor.get_pno();
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
     handle(sock);
@@ -323,7 +323,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   msg+= "Longest request: "+ std::to_string(s1.max)+ "\n";
-  msg+= "Shortest request: "+ std::to_string(s1.min)+ "sec\n";
+  msg+= "Shortest request: "+ std::to_string(s1.min)+ "\n";
   msg+= "Longest request URL: "+s_url +s1.max_url+ "\n";
   msg+= "Shortest request URL: "+s_url+ s1.min_url+ "\n";
 
