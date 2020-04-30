@@ -173,7 +173,7 @@ void Server::handle(const Socket_t& sock) const {
   // TODO: implement parsing HTTP requests
   // recommendation:
   parse_request( sock, &request);
-   request.print();
+  //  request.print();
 
    if( request.message_body.length()==0  && (request.request_uri).length()==0){
      return;
@@ -223,10 +223,10 @@ void Server::handle(const Socket_t& sock) const {
     resp.headers["Content-Type"] = get_content_type(request.filename);
   }
     
+    cout <<  resp.headers["Content-Type"] << endl;
   sock->write(resp.to_string());
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end-start;
-  // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   s1->val = elapsed_seconds.count();
   update_stats(&request);
 
