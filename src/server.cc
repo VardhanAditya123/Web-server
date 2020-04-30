@@ -318,7 +318,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
   int port=sock->get_portno(); 
-  string s_url  ="data.cs.purdue.edu:42043";
+  string s_url  ="data.cs.purdue.edu:"+std::to_string(port);
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
