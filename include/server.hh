@@ -23,6 +23,7 @@ class Server {
     void loopthread() const ;
     void set_portno();
     int port_number;
+    int ip_address;
     int req_count;
 
 
