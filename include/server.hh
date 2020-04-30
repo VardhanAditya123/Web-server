@@ -25,6 +25,7 @@ class Server {
     int port_number;
     int ip_address;
     int req_count;
+    auto start_server = std::chrono::system_clock::now();
 
 
   
