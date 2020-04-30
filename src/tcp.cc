@@ -119,10 +119,6 @@ TCPSocketAcceptor::TCPSocketAcceptor(const int portno) {
         throw ConnectionError("Unable to listen to socket: " + std::string(strerror(errno)));
     }
 }
-
-int TCPSocketAcceptor::get_pno() const{
-    return port_number;
-}
  
 Socket_t TCPSocketAcceptor::accept_connection() const {
     struct sockaddr_in addr;
