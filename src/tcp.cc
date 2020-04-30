@@ -132,11 +132,6 @@ Socket_t TCPSocketAcceptor::accept_connection() const {
 }
 
 
-int ret_pno(){
-   return TCPSocketAcceptor::port_number;
-}
-
-
 TCPSocketAcceptor::~TCPSocketAcceptor() noexcept {
     std::cout << "Closing socket " << _master_socket << std::endl;
     close(_master_socket);
