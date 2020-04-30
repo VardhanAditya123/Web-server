@@ -326,6 +326,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Shortest request: "+ std::to_string(s1.min)+ "\n";
   msg+= "Longest request URL: "+s_url +s1.max_url+ "\n";
   msg+= "Shortest request URL: "+s_url+ s1.min_url+ "\n";
+  msg+= "IP :"+sock->set_ip();
 
   string first = vec.at(0);
   string second = vec.at(1);
