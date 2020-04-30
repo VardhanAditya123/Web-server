@@ -73,6 +73,8 @@ void Server::run_linear() const {
 }
 
 void Server::run_fork() const {  
+  s1->min = 10;
+  s1->p_no = _acceptor.get_pno();
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
     int ret = fork();
