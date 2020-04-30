@@ -98,7 +98,6 @@ void TCPSocket::write(char const * const buf, const size_t buf_len) {
 
 TCPSocketAcceptor::TCPSocketAcceptor(const int portno) {
     port_number = portno;
-    cout <<"FUCK " <<port_number << endl;
     addr.sin_family = AF_INET;
     addr.sin_port = htons(portno);
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -133,6 +132,7 @@ Socket_t TCPSocketAcceptor::accept_connection() const {
 }
 
 int TCPSocketAcceptor::get_portno() const {
+    cout << "FUCKL "<< port_number << endl;
    return port_number;
 }
 
