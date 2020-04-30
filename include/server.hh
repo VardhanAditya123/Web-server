@@ -25,7 +25,7 @@ class Server {
     int port_number;
     int ip_address;
     int req_count;
-    static std::chrono::time_point<std::chrono::system_clock> a;
+    std::chrono::time_point<std::chrono::system_clock> a;
 
   
 };
