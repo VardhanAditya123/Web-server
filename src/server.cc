@@ -250,7 +250,7 @@ void parse_request(const Socket_t& sock, HttpRequest* const request) {
     handle_cgi_bin(sock, request, vec);
   } else if (second.find("stats") != std::string::npos) {
     cout << "LOL" << endl;
-    
+
     handle_stat(sock, request, vec);
   } else if (second.find("logs") != std::string::npos) {
     handle_logs(sock, request, vec);
@@ -337,12 +337,21 @@ void update_stats(HttpRequest* const request) {
   findMin(request->request_uri);
 }
 
+<<<<<<< HEAD
 void update_logs(const Socket_t& sock, HttpRequest* const request) {
   string msg = "";
   msg += "\nIP :" + sock->set_ip() + "\n";
   msg += "Route: " + request->request_uri + "\n";
   msg += "Response code: " + std::to_string(200) + "\n\n";
 
+=======
+void update_logs(const Socket_t& sock,HttpRequest* const request){
+  string msg ="";
+  msg+= "IP :"+sock->set_ip()+"\n";
+  msg+= "Route: "+request->request_uri+ "\n";
+  msg+= "Response code: "+std::to_string(200)+ "\n";
+  
+>>>>>>> parent of accb8b5... Commit
   std::ofstream ofs;
   ofs.open("myhttpd.log", std::ofstream::out | std::ofstream::app);
   ofs << msg;
