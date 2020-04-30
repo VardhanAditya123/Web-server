@@ -210,6 +210,8 @@ void Server::handle(const Socket_t& sock) const {
   resp.headers["Connection"] = "close";
   resp.headers["Content-Length"] = request.message_body.length();
 
+request.print();
+
   if(request.filename.compare("/stats")==0){
      request.content_type="html";
   }
