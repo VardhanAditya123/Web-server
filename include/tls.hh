@@ -33,9 +33,8 @@ class TLSSocketAcceptor : public SocketAcceptor {
  public:
     explicit TLSSocketAcceptor(const int portno);
     ~TLSSocketAcceptor() noexcept;
+
     Socket_t accept_connection() const;
-   //   int get_pno() const;
-    int port_number;
 };
 
 #endif  // INCLUDE_TLS_HH_
