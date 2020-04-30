@@ -91,9 +91,6 @@ void TLSSocket::write(char const * const buf, const size_t buf_len) {
   }
 }
 
-int TLSSocket::get_portno(){
-    return _socket;
-}
 TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
 
    

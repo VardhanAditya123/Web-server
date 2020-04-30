@@ -51,9 +51,6 @@ char TCPSocket::getc() {
     return c;
 }
 
-int TCPSocket::get_portno(){
-    return _socket;
-}
 
 ssize_t TCPSocket::read(char* buf, size_t buf_len) {
     ssize_t r = recv(_socket, buf, buf_len, 0);

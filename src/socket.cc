@@ -25,9 +25,7 @@ std::string Socket::readline() {
     return str;
 }
 
-int Socket::get_portno(){
-    
-}
+
 
 
 
