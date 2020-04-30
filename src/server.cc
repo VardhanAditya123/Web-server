@@ -317,7 +317,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   string msg;
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
-  s1.url = "data.cs.purdue.edu:42043"+request->request_uri;
+  
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
@@ -341,7 +341,7 @@ double findMax(string &fn){
   
   if(s1.val > s1. max){
     s1.max = s1.val;
-    s1.url = fn;
+    s1.max_url = fn;
   }
    return s1.max;
 }
@@ -350,7 +350,7 @@ double findMin(string &fn){
   cout << "MIN "<<s1.min << endl;
   if(s1.val < s1. min){
     s1.min = s1.val;
-    s1.url = fn;
+    s1.min_url = fn;
   }
    return s1.min;
 }
