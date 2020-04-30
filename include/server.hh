@@ -24,8 +24,6 @@ class Server {
     int get_portno() const;
     int req_count;
 
-
-  
 };
 
 #endif  // INCLUDE_SERVER_HH_
