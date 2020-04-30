@@ -56,9 +56,9 @@ std::vector<double>timer;
 double max;
 double min;
 double val;
-};
+}s1;
 
-struct server_stats s1;
+
 
 
 // struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
