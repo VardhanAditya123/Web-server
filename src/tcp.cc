@@ -130,7 +130,7 @@ Socket_t TCPSocketAcceptor::accept_connection() const {
 
     return std::make_unique<TCPSocket>(s, addr);
 }
-TCPSocketAcceptor::get_portno(){
+int TCPSocketAcceptor::get_portno(){
     return 0;
 }
 
