@@ -230,9 +230,9 @@ void Server::handle(const Socket_t& sock) const {
   }
     
   sock->write(resp.to_string());
+  request.code = resp.status_code;
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end-start;
-  // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   s1.val = elapsed_seconds.count();
   update_stats(&request);
   update_logs( sock, &request);
@@ -380,7 +380,7 @@ void update_logs(const Socket_t& sock,HttpRequest* const request){
   string msg ="";
   msg+= "\nIP :"+sock->set_ip()+"\n";
   msg+= "Route: "+request->request_uri+ "\n";
-  msg+= "Response code: "+std::to_string(200)+ "\n\n";
+  msg+= "Response code: "+std::to_string(request->code)+ "\n\n";
   
   std::ofstream ofs;
   ofs.open ("myhttpd.log", std::ofstream::out | std::ofstream::app);
