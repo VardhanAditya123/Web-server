@@ -282,7 +282,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
      handle_stat(sock,request,vec);
   }
    else if(second.find("logs") != std::string::npos){
-     update_logs(sock,request,vec);
+
   }
   else{
     handle_htdocs(sock,request,vec);
