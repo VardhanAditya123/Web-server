@@ -377,9 +377,9 @@ void update_stats(HttpRequest* const request){
 
 void update_logs(const Socket_t& sock,HttpRequest* const request){
   string msg ="";
-  msg+= "IP :"+sock->set_ip()+"\n";
+  msg+= "\nIP :"+sock->set_ip()+"\n";
   msg+= "Route: "+request->request_uri+ "\n";
-  msg+= "Response code: "+std::to_string(200)+ "\n";
+  msg+= "Response code: "+std::to_string(200)+ "\n\n";
   
   std::ofstream ofs;
   ofs.open ("myhttpd.log", std::ofstream::out | std::ofstream::app);
