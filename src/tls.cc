@@ -106,7 +106,7 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     _addr.sin_family = AF_INET;
     _addr.sin_port = htons(portno);
     _addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    port_number = portno;
+    // port_number = portno;
     _master_socket = socket(AF_INET, SOCK_STREAM, 0);
     if ( _master_socket < 0) {
 	perror("Unable to create socket");
@@ -127,9 +127,9 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
 
 }
 
-int TLSSocketAcceptor::get_pno() const{
-    return port_number;
-}
+// int TLSSocketAcceptor::get_pno() const{
+//     return port_number;
+// }
 Socket_t TLSSocketAcceptor::accept_connection() const {
     // TODO: Task 2.1
     //call
