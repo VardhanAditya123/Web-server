@@ -48,7 +48,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 void update_stats();
 
 pthread_mutex_t _mutex;
-auto start_server = std::chrono::system_clock::now();
+// auto start_server = std::chrono::system_clock::now();
 
 struct server_stats{
 int req_count = 0;
