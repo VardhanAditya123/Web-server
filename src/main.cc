@@ -120,6 +120,7 @@ int main(int argc, char** argv) {
     }
     Server server(*acceptor);
     server.port_number = port_no;
+    server.a= std::chrono::system_clock::now();
     switch (mode) {
     case E_FORK_PER_REQUEST:
         server.run_fork();
