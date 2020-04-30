@@ -34,7 +34,7 @@ void generate_file(string& msg, string& fn, string& second);
 
 // You may find implementing this function and using it in server.cc helpful
 
-HttpResponse handle_htdocs(const Socket_t& sock, HttpRequest* const request, vector<string> vec) {
+HttpResponse  handle_htdocs(const Socket_t& sock, HttpRequest* const request, vector<string> vec) {
   int dir_flag = 0;
   HttpResponse response;
   string msg = "";
