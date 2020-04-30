@@ -313,7 +313,6 @@ void separate(HttpRequest* const request , string line){
 
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
 
-  s1.req_count+=1;
   string msg;
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
@@ -344,7 +343,7 @@ double findMax(string &fn){
    return s1.max;
 }
 
-double findMin(){
+double findMin(string &fn){
   cout << "MIN "<<s1.min << endl;
   if(s1.val < s1. min){
     s1.min = s1.val;
@@ -356,5 +355,6 @@ double findMin(){
 void update_stats(HttpRequest* const request){
   findMax(request->filename);
   findMin(request->filename);
+    s1.req_count+=1;
 }
 
