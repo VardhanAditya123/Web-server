@@ -42,7 +42,7 @@ TCPSocket::~TCPSocket() noexcept {
 }
 
 string TCPSocket:: set_ip(){
-return
+return ip;
 }
 char TCPSocket::getc() {
     char c;
