@@ -321,7 +321,8 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   msg+= "Longest request: "+ std::to_string(s1.max)+ "\n";
-  msg+= "Shortest request: "+ std::to_string(s1.min)+ "\n";
+  msg+= "Longest request URL: "+ std::to_string(s1.max)+ "\n";
+  msg+= "Shortest request URL: "+ std::to_string(s1.min)+ "\n";
 
   string first = vec.at(0);
   string second = vec.at(1);
@@ -339,6 +340,7 @@ double findMax(string &fn){
   
   if(s1.val > s1. max){
     s1.max = s1.val;
+    s1.url = fn;
   }
    return s1.max;
 }
@@ -347,7 +349,7 @@ double findMin(string &fn){
   cout << "MIN "<<s1.min << endl;
   if(s1.val < s1. min){
     s1.min = s1.val;
-    cout << "MIN "<<s1.min << endl;
+    s1.url = fn;
   }
    return s1.min;
 }
