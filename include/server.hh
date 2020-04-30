@@ -21,8 +21,7 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
-    int req_count;
-
+    int get_portno() const
 
   
 };
