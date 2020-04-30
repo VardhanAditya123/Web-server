@@ -352,7 +352,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 }
 
-double findMax(string &fn){
+double findMax(string &fn,struct server_stats &s1){
   
   if(s1.val > s1. max){
     s1.max = s1.val;
@@ -361,7 +361,7 @@ double findMax(string &fn){
    return s1.max;
 }
 
-double findMin(string &fn){
+double findMin(string &fn ,struct server_stats &s1){
   // cout << "MIN "<<s1.min << endl;
   if(s1.val < s1. min){
     s1.min = s1.val;
