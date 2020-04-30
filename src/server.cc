@@ -356,8 +356,8 @@ double findMin(){
    return s1.min;
 }
 
-void update_stats(){
-  findMax()
-  findMin()
+void update_stats(HttpRequest* const request){
+  findMax(request->fn);
+  findMin(request->fn);
 }
 
