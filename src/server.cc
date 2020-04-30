@@ -390,7 +390,7 @@ void update_logs(const Socket_t& sock,HttpRequest* const request){
 void handle_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
 
   string msg="";
-  fn = "myhttpd.log";
+  string fn = "myhttpd.log";
  
   std::ifstream is(fn);     // open file
   if(is.is_open()){
