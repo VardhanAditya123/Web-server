@@ -47,6 +47,7 @@ Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 void update_stats(HttpRequest* const request);
 void update_logs(const Socket_t& sock,HttpRequest* const request);
+void handle_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 auto start_server = std::chrono::system_clock::now();
 pthread_mutex_t _mutex;
 // auto start_server = std::chrono::system_clock::now();
@@ -282,7 +283,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
      handle_stat(sock,request,vec);
   }
    else if(second.find("logs") != std::string::npos){
-
+     handle_logs();
   }
   else{
     handle_htdocs(sock,request,vec);
@@ -369,7 +370,7 @@ double findMin(string &fn){
 }
 
 void update_stats(HttpRequest* const request){
-   s1.req_count+=1;
+  s1.req_count+=1;
   findMax(request->request_uri);
   findMin(request->request_uri);
 }
@@ -384,4 +385,32 @@ void update_logs(const Socket_t& sock,HttpRequest* const request){
   ofs.open ("myhttpd.log", std::ofstream::out | std::ofstream::app);
   ofs << msg;
   ofs.close();
+}
+
+void handle_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
+
+  string msg="";
+  fn = "myhttpd.log";
+ 
+  std::ifstream is(fn);     // open file
+  if(is.is_open()){
+    char c;
+    while (is.get(c))          // loop getting single characters
+      msg+=c;
+
+    is.close();
+
+  }
+  
+
+  string first = vec.at(0);
+  string second = vec.at(1);
+  string third = vec.at(2);
+  string fn = second;
+  request->method = first;
+  request->request_uri = second;
+  request-> http_version = third;
+  request->message_body = msg ;
+  request->filename=fn;
+
 }
