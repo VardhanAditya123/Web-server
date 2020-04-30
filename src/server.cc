@@ -46,6 +46,7 @@ void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 void update_stats(HttpRequest* const request);
+void update_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 auto start_server = std::chrono::system_clock::now();
 pthread_mutex_t _mutex;
 // auto start_server = std::chrono::system_clock::now();
