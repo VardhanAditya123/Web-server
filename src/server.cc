@@ -50,7 +50,7 @@ void update_logs(const Socket_t& sock,HttpRequest* const request);
 void handle_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 // auto start_server = std::chrono::system_clock::now();
 pthread_mutex_t _mutex;
-
+std::chrono::time_point<std::chrono::system_clock> start_server;
 
 struct server_stats{
 int req_count = 0;
@@ -68,6 +68,7 @@ struct server_stats s1 = *((server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRIT
 void Server::run_linear() const {
   s1.min = 10;
   s1.p_no = port_number;
+  start_server = a;
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
     handle(sock);
@@ -328,7 +329,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
   string msg;
   auto end_server = std::chrono::system_clock::now();
-  std::chrono::duration<double> elapsed_seconds = end_server-s1.a;
+  std::chrono::duration<double> elapsed_seconds = end_server-s1.start_server;
   string s_url  ="data.cs.purdue.edu:" + std::to_string( s1.p_no);
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
