@@ -120,7 +120,7 @@ TCPSocketAcceptor::TCPSocketAcceptor(const int portno) {
     }
 }
 
-int pno(){
+int TCPSocketAcceptor::get_pno()const{
     return port_number;
 }
 Socket_t TCPSocketAcceptor::accept_connection() const {
