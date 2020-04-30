@@ -52,7 +52,7 @@ char TCPSocket::getc() {
 }
 
 int TCPSocket::get_portno(){
-    return port_no;
+    return _socket;
 }
 
 ssize_t TCPSocket::read(char* buf, size_t buf_len) {
