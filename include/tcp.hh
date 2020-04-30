@@ -28,6 +28,7 @@ class TCPSocketAcceptor : public SocketAcceptor {
  private:
     int _master_socket;
     struct sockaddr_in addr;
+    int port_no;
  public:
     explicit TCPSocketAcceptor(const int portno);
     ~TCPSocketAcceptor() noexcept;
