@@ -390,9 +390,9 @@ void update_logs(const Socket_t& sock,HttpRequest* const request){
 void handle_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
 
   string msg="";
-  string fn = "myhttpd.log";
+
  
-  std::ifstream is(fn);     // open file
+  std::ifstream is("myhttpd.log");     // open file
   if(is.is_open()){
     char c;
     while (is.get(c))          // loop getting single characters
