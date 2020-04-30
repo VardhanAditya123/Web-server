@@ -26,7 +26,8 @@ std::string Socket::readline() {
 }
 
 int Socket::get_portno(){
-    return port_number;
+    
 }
+
 
 
