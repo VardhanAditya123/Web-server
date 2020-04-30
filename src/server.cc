@@ -358,7 +358,7 @@ double findMin(string &fn){
 
 void update_stats(HttpRequest* const request){
    s1.req_count+=1;
-  findMax(request->filename);
-  findMin(request->filename);
+  findMax(request->request_uri);
+  findMin(request->request_uri);
 }
 
