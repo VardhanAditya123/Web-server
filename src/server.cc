@@ -46,7 +46,7 @@ void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 void update_stats(HttpRequest* const request);
-void update_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
+void update_logs(const Socket_t& sock,HttpRequest* const request);
 auto start_server = std::chrono::system_clock::now();
 pthread_mutex_t _mutex;
 // auto start_server = std::chrono::system_clock::now();
@@ -233,7 +233,7 @@ void Server::handle(const Socket_t& sock) const {
   // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   s1.val = elapsed_seconds.count();
   update_stats(&request);
-  update_logs( sock, &request,NULL);
+  update_logs( sock, &request);
 
 }
 
@@ -374,6 +374,6 @@ void update_stats(HttpRequest* const request){
   findMin(request->request_uri);
 }
 
-void update_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
+void update_logs(const Socket_t& sock,HttpRequest* const request){
 
 }
