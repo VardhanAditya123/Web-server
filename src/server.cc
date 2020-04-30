@@ -357,7 +357,7 @@ double findMin(){
 }
 
 void update_stats(HttpRequest* const request){
-  findMax(request->fn);
-  findMin(request->fn);
+  findMax(request->filename;
+  findMin(request->filename);
 }
 
