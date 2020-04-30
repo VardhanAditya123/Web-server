@@ -45,6 +45,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
+void update_stats();
 auto start_server = std::chrono::system_clock::now();
 pthread_mutex_t _mutex;
 // auto start_server = std::chrono::system_clock::now();
@@ -223,7 +224,8 @@ void Server::handle(const Socket_t& sock) const {
   std::chrono::duration<double> elapsed_seconds = end-start;
   // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   s1.val = elapsed_seconds.count();
-  handle_stat();
+  update_stats(HttpRequest* const request);
+
 }
 
 void  parse_request(const Socket_t& sock, HttpRequest* const request){
@@ -345,12 +347,17 @@ double findMax(string &fn){
    return s1.max;
 }
 
-double findMin(string &fn){
+double findMin(){
   cout << "MIN "<<s1.min << endl;
   if(s1.val < s1. min){
     s1.min = s1.val;
     cout << "MIN "<<s1.min << endl;
   }
    return s1.min;
+}
+
+void update_stats(){
+  findMax()
+  findMin()
 }
 
