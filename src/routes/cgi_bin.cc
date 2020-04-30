@@ -95,7 +95,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
     }
 
     else
-      execl(fn.c_str(),NULL);
+      execl(fn.c_str(),fn.c_str(),NULL);
 
   }
 
