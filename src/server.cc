@@ -64,8 +64,8 @@ int p_no;
 
 struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 void Server::run_linear() const {
-  s1->min = 10;
-  s1->p_no = _acceptor.get_pno();
+  s1.min = 10;
+  s1.p_no = _acceptor.get_pno();
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
     handle(sock);
@@ -73,8 +73,6 @@ void Server::run_linear() const {
 }
 
 void Server::run_fork() const {  
-  s1->min = 10;
-  s1->p_no = _acceptor.get_pno();
   while (1) {
     Socket_t slaveSocket = _acceptor.accept_connection();
     int ret = fork();
@@ -223,11 +221,11 @@ void Server::handle(const Socket_t& sock) const {
     resp.headers["Content-Type"] = get_content_type(request.filename);
   }
     
-    cout <<  resp.headers["Content-Type"] << endl;
   sock->write(resp.to_string());
   auto end = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end-start;
-  s1->val = elapsed_seconds.count();
+  // cout << "BEFORE  " << elapsed_seconds.count() << endl;
+  s1.val = elapsed_seconds.count();
   update_stats(&request);
 
 }
@@ -320,14 +318,14 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   string msg;
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
-  string s_url  ="data.cs.purdue.edu:" + std::to_string( s1->p_no);
+  string s_url  ="data.cs.purdue.edu:" + std::to_string( s1.p_no);
   msg+= "Name: Aditya Vardhan\n" ;
-  msg+= "Number of Requests: " + std::to_string( s1->req_count) + "\n";
+  msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
-  msg+= "Longest request: "+ std::to_string(s1->max)+ " sec\n";
-  msg+= "Shortest request: "+ std::to_string(s1->min)+ " sec\n";
-  msg+= "Longest request URL: "+s_url +s1->max_url+ "\n";
-  msg+= "Shortest request URL: "+s_url+ s1->min_url+ "\n";
+  msg+= "Longest request: "+ std::to_string(s1.max)+ " sec\n";
+  msg+= "Shortest request: "+ std::to_string(s1.min)+ " sec\n";
+  msg+= "Longest request URL: "+s_url +s1.max_url+ "\n";
+  msg+= "Shortest request URL: "+s_url+ s1.min_url+ "\n";
 
   string first = vec.at(0);
   string second = vec.at(1);
@@ -343,24 +341,25 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 double findMax(string &fn){
   
-  if(s1->val > s1-> max){
-    s1->max = s1->val;
-    s1->max_url = fn;
+  if(s1.val > s1. max){
+    s1.max = s1.val;
+    s1.max_url = fn;
   }
-   return s1->max;
+   return s1.max;
 }
 
 double findMin(string &fn){
-  // cout << "MIN "<<s1->min << endl;
-  if(s1->val < s1-> min){
-    s1->min = s1->val;
-    s1->min_url = fn;
+  // cout << "MIN "<<s1.min << endl;
+  if(s1.val < s1. min){
+    s1.min = s1.val;
+    s1.min_url = fn;
   }
-   return s1->min;
+   return s1.min;
 }
 
 void update_stats(HttpRequest* const request){
-   s1->req_count+=1;
+   s1.req_count+=1;
   findMax(request->request_uri);
   findMin(request->request_uri);
 }
+
