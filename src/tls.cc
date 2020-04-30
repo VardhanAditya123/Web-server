@@ -102,7 +102,7 @@ TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
     configure_context(_ssl_ctx);
     int s;
 
-
+    port_number = portno;
     _addr.sin_family = AF_INET;
     _addr.sin_port = htons(portno);
     _addr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -153,7 +153,9 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
     return std::make_unique<TLSSocket>(client, addr,ssl);
 }
 
-
+int TLSSocketAcceptor::get_pno()const {
+    return port_number;
+}
 
 
 TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
