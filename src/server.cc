@@ -55,6 +55,7 @@ int req_count = 0;
 std::vector<double>timer;
 double max;
 double min;
+string uri;
 double val;
 }s1;
 
@@ -352,6 +353,7 @@ double findMin(){
 
 void update_stats(){
 s1.req_count+=1;
+
 findMax();
 findMin();
 

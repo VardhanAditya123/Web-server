@@ -54,6 +54,7 @@ int main(int argc, char** argv) {
     // sigemptyset(&sa.sa_mask);
     // sigaction(SIGINT, &sa, NULL);
     // signal(SIGCHLD,sigchildHandler1);
+    auto start_server = std::chrono::system_clock::now();
     enum concurrency_mode mode = E_NO_CONCURRENCY;
     char use_https = 0; 
     int port_no = 0;
