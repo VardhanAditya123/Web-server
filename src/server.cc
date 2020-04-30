@@ -250,6 +250,7 @@ void parse_request(const Socket_t& sock, HttpRequest* const request) {
     handle_cgi_bin(sock, request, vec);
   } else if (second.find("stats") != std::string::npos) {
     cout << "LOL" << endl;
+    
     handle_stat(sock, request, vec);
   } else if (second.find("logs") != std::string::npos) {
     handle_logs(sock, request, vec);
