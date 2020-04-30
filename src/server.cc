@@ -55,7 +55,8 @@ int req_count = 0;
 std::vector<double>timer;
 double max;
 double min;
-string url;
+string max_url;
+string min_url;
 double val;
 }s1;
 
