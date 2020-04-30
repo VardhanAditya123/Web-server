@@ -233,7 +233,7 @@ void Server::handle(const Socket_t& sock) const {
   // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   s1.val = elapsed_seconds.count();
   update_stats(&request);
-  update_logs( sock, &request, vec);
+  update_logs( sock, &request,NULL);
 
 }
 
