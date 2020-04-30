@@ -33,7 +33,7 @@ void sigchildHandler1(int sig_num)
 { 
   while (waitpid(-1, NULL, WNOHANG) > 0);
 }
-
+ auto start_server = std::chrono::system_clock::now();
 int main(int argc, char** argv) {
     // struct rlimit mem_limit = { .rlim_cur = 40960000, .rlim_max = 91280000 };
     // struct rlimit cpu_limit = { .rlim_cur = 300, .rlim_max = 600 };
@@ -53,7 +53,6 @@ int main(int argc, char** argv) {
     // sigemptyset(&sa.sa_mask);
     // sigaction(SIGINT, &sa, NULL);
     // signal(SIGCHLD,sigchildHandler1);
-    auto start_server = std::chrono::system_clock::now();
     enum concurrency_mode mode = E_NO_CONCURRENCY;
     char use_https = 0; 
     int port_no = 0;
