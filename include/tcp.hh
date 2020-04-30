@@ -31,7 +31,6 @@ class TCPSocketAcceptor : public SocketAcceptor {
  public:
     explicit TCPSocketAcceptor(const int portno);
     ~TCPSocketAcceptor() noexcept;
-      int get_portno() const;
       int port_number;
     Socket_t accept_connection() const;
 };

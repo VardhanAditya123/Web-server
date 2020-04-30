@@ -131,10 +131,7 @@ Socket_t TCPSocketAcceptor::accept_connection() const {
     return std::make_unique<TCPSocket>(s, addr);
 }
 
-int TCPSocketAcceptor::get_portno() const {
-    cout << "FUCKL "<< port_number << endl;
-   return port_number;
-}
+
 
 
 

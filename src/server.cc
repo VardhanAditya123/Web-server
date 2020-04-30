@@ -68,7 +68,7 @@ void Server::run_linear() const {
   s1.min = 10;
   while (1) {
     Socket_t sock = _acceptor.accept_connection();
-   cout<< _acceptor.get_portno() << endl;
+   cout<< _acceptor.port_number << endl;
     handle(sock);
   }
 }
