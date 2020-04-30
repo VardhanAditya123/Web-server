@@ -12,7 +12,7 @@ class Socket {
     virtual std::string readline();
     virtual void write(std::string const&) = 0;
     virtual void write(char const * const buf, size_t buf_len) = 0;
-    int get_portno();
+    virtual int get_portno();
 
 };
 
