@@ -322,8 +322,9 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
   msg+= "Longest request: "+ std::to_string(s1.max)+ "\n";
-  msg+= "Longest request URL: "+ std::to_string(s1.max)+ "\n";
-  msg+= "Shortest request URL: "+ std::to_string(s1.min)+ "\n";
+  msg+= "Shortest request: "+ std::to_string(s1.mim)+ "\n";
+  msg+= "Longest request URL: "+ s1.max_url+ "\n";
+  msg+= "Shortest request URL: "+ s1.min_url+ "\n";
 
   string first = vec.at(0);
   string second = vec.at(1);
