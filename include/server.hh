@@ -21,7 +21,7 @@ class Server {
     void run_thread() const;
     void handle(const Socket_t& sock) const;
     void loopthread() const ;
-    static int req_count;
+    auto start_server = std::chrono::system_clock::now();
 
 
   

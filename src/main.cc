@@ -33,7 +33,7 @@ void sigchildHandler1(int sig_num)
 { 
   while (waitpid(-1, NULL, WNOHANG) > 0);
 }
- auto start_server = std::chrono::system_clock::now();
+
 int main(int argc, char** argv) {
     // struct rlimit mem_limit = { .rlim_cur = 40960000, .rlim_max = 91280000 };
     // struct rlimit cpu_limit = { .rlim_cur = 300, .rlim_max = 600 };
