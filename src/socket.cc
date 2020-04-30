@@ -29,3 +29,7 @@ int Socket::get_portno(){
     
 }
 
+int SocketAcceptor::get_portno()const{
+    
+}
+
