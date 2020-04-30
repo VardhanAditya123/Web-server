@@ -127,6 +127,7 @@ pthread_create(&thrID, &attr, (void* (*)(void*) )dispatchThread,(void *) threadP
 void* Server::run_linear2(const Server* serv) const {
   while (1) {
     Socket_t sock = _acceptor.accept_connection(); 
+    // cout << _acceptor.get_portno();
     handle(sock);
   }
 }
@@ -317,7 +318,6 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
   string msg;
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
-  int port=_acceptor.get_portno(); 
   string s_url  ="data.cs.purdue.edu:"+std::to_string(port);
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
