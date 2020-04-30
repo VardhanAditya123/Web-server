@@ -39,8 +39,8 @@ using namespace std;
 
 
 
-double findMax();
-double findMin();
+double findMax(string &fn);
+double findMin(string &fn);
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
@@ -55,7 +55,7 @@ int req_count = 0;
 std::vector<double>timer;
 double max;
 double min;
-string uri;
+string url;
 double val;
 }s1;
 
@@ -312,10 +312,15 @@ void separate(HttpRequest* const request , string line){
 }
 
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
+
+  s1.req_count+=1;
+
+  findMax();
+  findMin();
   string msg;
   auto end_server = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = end_server-start_server;
-  
+  s1.url = "data.cs.purdue.edu:42043"+request->request_uri;
   msg+= "Name: Aditya Vardhan\n" ;
   msg+= "Number of Requests: " + std::to_string( s1.req_count) + "\n";
   msg+= "Elapsed time: " + std::to_string(elapsed_seconds.count()) + "\n";
@@ -351,10 +356,3 @@ double findMin(){
    return s1.min;
 }
 
-void update_stats(){
-s1.req_count+=1;
-
-findMax();
-findMin();
-
-}
