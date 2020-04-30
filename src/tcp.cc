@@ -101,7 +101,7 @@ TCPSocketAcceptor::TCPSocketAcceptor(const int portno) {
     addr.sin_family = AF_INET;
     addr.sin_port = htons(portno);
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    port_number = port_number;
+    port_number = portno;
     _master_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (_master_socket < 0) {
         throw ConnectionError("Unable to create socket: " + std::string(strerror(errno)));
