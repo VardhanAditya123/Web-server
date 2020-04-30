@@ -20,7 +20,7 @@ class TCPSocket : public Socket {
     std::string readline();
     void write(std::string const&);
     void write(char const * const buf, size_t len);
-    const int _socket2; 
+ 
 
 };
 
