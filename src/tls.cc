@@ -153,9 +153,7 @@ Socket_t TLSSocketAcceptor::accept_connection() const {
     return std::make_unique<TLSSocket>(client, addr,ssl);
 }
 
-int TLSSocketAcceptor::get_pno() const {
-    return port_number;
-}
+
 
 
 TLSSocketAcceptor::~TLSSocketAcceptor() noexcept {
