@@ -61,10 +61,6 @@ double val;
 }s1;
 
 
-int Server::get_portno()const{
-  return port_number;
-}
-
 // struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 void Server::run_linear() const {
   s1.min = 10;
