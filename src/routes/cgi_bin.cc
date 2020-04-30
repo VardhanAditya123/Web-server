@@ -26,7 +26,8 @@
 #include "misc.hh"
 #include "routes.hh"
 #include "server.hh"
-#include "socket.hh"
+
+
 using namespace std;
 typedef void (*httprunfunc)(int ssock, const char* querystring);
 // You could implement your logic for handling /cgi-bin requests here
