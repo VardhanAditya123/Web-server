@@ -39,8 +39,8 @@ using namespace std;
 
 
 
-double findMax(string &fn ,struct server_stats s1);
-double findMin(string &fn,struct server_stats s1);
+double findMax(string &fn ,struct server_stats &s1);
+double findMin(string &fn,struct server_stats &s1);
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
