@@ -120,10 +120,6 @@ TCPSocketAcceptor::TCPSocketAcceptor(const int portno) {
     }
 }
 
-int TCPSocketAcceptor::get_pno()const {
-    return port_number;
-}
- 
 Socket_t TCPSocketAcceptor::accept_connection() const {
     struct sockaddr_in addr;
     socklen_t addr_len = sizeof(addr);
@@ -133,6 +129,11 @@ Socket_t TCPSocketAcceptor::accept_connection() const {
     }
 
     return std::make_unique<TCPSocket>(s, addr);
+}
+
+
+int ret_pno(){
+   return TCPSocketAcceptor::port_number;
 }
 
 

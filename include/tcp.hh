@@ -21,7 +21,7 @@ class TCPSocket : public Socket {
     void write(std::string const&);
     void write(char const * const buf, size_t len);
     const int _socket2; 
-    int get_portno() ;
+    int get_portno();
 };
 
 class TCPSocketAcceptor : public SocketAcceptor {
@@ -31,9 +31,8 @@ class TCPSocketAcceptor : public SocketAcceptor {
  public:
     explicit TCPSocketAcceptor(const int portno);
     ~TCPSocketAcceptor() noexcept;
+
     Socket_t accept_connection() const;
-    int get_pno() const;
-    int port_number;
 };
 
 #endif  // INCLUDE_TCP_HH_
