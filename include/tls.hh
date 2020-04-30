@@ -14,6 +14,7 @@ class TLSSocket : public Socket {
     const int _socket;
     const struct sockaddr_in _addr;
     SSL* _ssl;
+    string ip;
  public:
     TLSSocket(int port_no, struct sockaddr_in _addr, SSL* ssl);
     ~TLSSocket() noexcept;
@@ -22,7 +23,7 @@ class TLSSocket : public Socket {
     std::string readline();
     void write(std::string const&);
     void write(char const * const buf, size_t len);
-
+    string  set_ip();
 };
 
 class TLSSocketAcceptor : public SocketAcceptor {

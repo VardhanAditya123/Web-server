@@ -29,21 +29,23 @@ TCPSocket::TCPSocket(int port_no, struct sockaddr_in addr) : _socket(port_no), _
     
 }
 
+string TCPSocket:: set_ip(){
+return ip;
+}
+
 TCPSocket::~TCPSocket() noexcept {
     std::cout << "Closing TCP socket fd " << _socket;
     char inet_pres[INET_ADDRSTRLEN];
     // sin_family will be AF_INET
     if (inet_ntop(_addr.sin_family, &(_addr.sin_addr), inet_pres, INET_ADDRSTRLEN)) {
-        ip = inet_pres;
         std::cout << " from " << inet_pres;
     }
     std::cout << std::endl;
     close(_socket);
 }
 
-string TCPSocket:: set_ip(){
-return ip;
-}
+
+
 char TCPSocket::getc() {
     char c;
     ssize_t read = recv( _socket, &c, 1, 0);
