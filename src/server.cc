@@ -39,29 +39,29 @@ using namespace std;
 
 
 
-double findMax(string &fn ,struct server_stats &s1);
-double findMin(string &fn,struct server_stats &s1);
+double findMax(string &fn);
+double findMin(string &fn);
 void  parse_request(const Socket_t& sock, HttpRequest* const request);
 void separate(HttpRequest* const request , string line);
 Server::Server(SocketAcceptor const& acceptor) : _acceptor(acceptor) { }
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
-void update_stats(HttpRequest* const request,struct  s1);
+void update_stats(HttpRequest* const request);
 void update_logs(const Socket_t& sock,HttpRequest* const request);
 void handle_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec);
 pthread_mutex_t _mutex;
 
 
-// struct server_stats{
-// int req_count = 0;
-// std::vector<double>timer;
-// std::chrono::time_point<std::chrono::system_clock>start_server;
-// double max;
-// double min;
-// string max_url;
-// string min_url;
-// double val;
-// int p_no;
-// }s1;
+struct server_stats{
+int req_count = 0;
+std::vector<double>timer;
+std::chrono::time_point<std::chrono::system_clock>start_server;
+double max;
+double min;
+string max_url;
+string min_url;
+double val;
+int p_no;
+}s1;
 
 
 // struct server_stats* s1 = (server_stats*)mmap(NULL, 1000, PROT_READ | PROT_WRITE,   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
@@ -234,7 +234,7 @@ void Server::handle(const Socket_t& sock) const {
   std::chrono::duration<double> elapsed_seconds = end-start;
   // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   s1.val = elapsed_seconds.count();
-  update_stats(&request,&s1);
+  update_stats(&request);
   update_logs( sock, &request);
 
 }
@@ -352,7 +352,7 @@ void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string>
 
 }
 
-double findMax(string &fn,struct server_stats &s1){
+double findMax(string &fn){
   
   if(s1.val > s1. max){
     s1.max = s1.val;
@@ -361,7 +361,7 @@ double findMax(string &fn,struct server_stats &s1){
    return s1.max;
 }
 
-double findMin(string &fn ,struct server_stats &s1){
+double findMin(string &fn){
   // cout << "MIN "<<s1.min << endl;
   if(s1.val < s1. min){
     s1.min = s1.val;
@@ -370,10 +370,10 @@ double findMin(string &fn ,struct server_stats &s1){
    return s1.min;
 }
 
-void update_stats(HttpRequest* const request,struct server_stats &s1){
+void update_stats(HttpRequest* const request){
   s1.req_count+=1;
-  findMax(request->request_uri,s1);
-  findMin(request->request_uri,s1);
+  findMax(request->request_uri);
+  findMin(request->request_uri);
 }
 
 void update_logs(const Socket_t& sock,HttpRequest* const request){
