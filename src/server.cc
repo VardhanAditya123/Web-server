@@ -233,6 +233,7 @@ void Server::handle(const Socket_t& sock) const {
   // cout << "BEFORE  " << elapsed_seconds.count() << endl;
   s1.val = elapsed_seconds.count();
   update_stats(&request);
+  update_logs( sock, &request, vec);
 
 }
 
@@ -374,5 +375,5 @@ void update_stats(HttpRequest* const request){
 }
 
 void update_logs(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
-  
+
 }
