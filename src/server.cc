@@ -151,7 +151,7 @@ void Server::run_thread_pool(const int num_threads) const {
 void Server::handle(const Socket_t& sock) const {
   auto start = std::chrono::system_clock::now();
   HttpRequest request;
-
+ 
   // TODO: implement parsing HTTP requests
   // recommendation:
   parse_request(sock, &request);
