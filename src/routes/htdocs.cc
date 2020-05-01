@@ -29,7 +29,7 @@ using namespace std;
 int isDir(const char *path);
 std::string generate_html(const char* pth);
 void generate_html(string& msg ,string& fn,HttpRequest* const request);
-void generate_file(string& msg ,string& fn,string& second);
+void generate_file(string& msg ,string& fn,string& second,HttpRequest* const request);
 
 // You may find implementing this function and using it in server.cc helpful
 
@@ -88,7 +88,6 @@ void generate_html(string& msg ,string& fn,HttpRequest* const request){
   string link;
   DIR * d = opendir(fn.c_str());
   if (NULL == d) {
-    request->content_type="text/plain";
     perror("opendir: ");
     exit(1);
   }
@@ -130,6 +129,9 @@ void generate_file(string& msg ,string& fn,string& second){
       msg+=c;
 
     is.close();
+
+  }
+  else{
 
   }
 }
