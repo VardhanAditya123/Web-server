@@ -87488,3 +87488,48 @@ IP :99.111.159.82
 Route: /dir1/d
 Response code: 404
 
+
+IP :99.111.159.82
+Route: /index.html
+Response code: 200
+
+
+IP :99.111.159.82
+Route: /simple.html
+Response code: 200
+
+
+IP :99.111.159.82
+Route: /dir1/
+Response code: 200
+
+
+IP :99.111.159.82
+Route: /dir1/b
+Response code: 404
+
+
+IP :99.111.159.82
+Route: /dir1/b
+Response code: 404
+
+
+IP :99.111.159.82
+Route: /dir1/chat.gif
+Response code: 200
+
+
+IP :99.111.159.82
+Route: /dir1/subdir1/
+Response code: 200
+
+
+IP :99.111.159.82
+Route: /dir1/c
+Response code: 404
+
+
+IP :99.111.159.82
+Route: /dir1/c
+Response code: 404
+
