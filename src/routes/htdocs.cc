@@ -133,5 +133,6 @@ void generate_file(string& msg ,string& fn,string& second,HttpRequest* const req
   }
   else{
     request->content_type="text/plain";
+    cout << "DBIGG" << endl;
   }
 }
