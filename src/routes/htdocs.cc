@@ -58,7 +58,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   }
 
   else{
-    generate_file(msg,fn,second);
+    generate_file(msg,fn,second,request);
   }
 
 
