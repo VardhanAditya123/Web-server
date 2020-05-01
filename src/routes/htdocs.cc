@@ -125,15 +125,16 @@ void generate_file(string& msg ,string& fn,string& second,HttpRequest* const req
   // cout << fn <<endl;
   std::ifstream is(fn);     // open file
   if(is.is_open()){
-    cout << "DBIGG" << endl;
+   
     char c;
     while (is.get(c))          // loop getting single characters
       msg+=c;
 
     is.close();
+    if(ms.length()==0){
+       request->content_type="text/plain";
+    }
 
   }
-  else{
-    request->content_type="text/plain";
-  }
+
 }
