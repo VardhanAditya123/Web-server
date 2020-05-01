@@ -60,7 +60,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
    std::ifstream is( fn);
    if(!is.open()) {
      request->message_body = "" ;
-     return;
+     return response;
    }  
    else{
      is.close();
