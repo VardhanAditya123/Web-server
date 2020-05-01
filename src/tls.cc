@@ -79,7 +79,7 @@ void TLSSocket::write(std::string const &str) { write(str.c_str(), str.length())
 
 void TLSSocket::write(char const *const buf, const size_t buf_len) {
   // cout << buf << endl;
-  
+  signal(SIGPIPE,SIG_IGN);
   if (buf == NULL || buf_len == 0)
     return;
   int ret_code = SSL_write(_ssl, buf, buf_len);
@@ -95,7 +95,7 @@ void TLSSocket::write(char const *const buf, const size_t buf_len) {
                           "\'. Expected " + std::to_string(buf_len) + " but actually sent " +
                           std::to_string(ret_code));
   }
-
+  signal(SIGPIPE,SIG_IGN);
 }
 
 TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
