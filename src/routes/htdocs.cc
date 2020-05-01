@@ -83,7 +83,7 @@ int isDir(const char *path)
   return 0;
 }
 
-void generate_html(string& msg ,string& fn,HttpRequest* const){
+void generate_html(string& msg ,string& fn,HttpRequest* const request){
   string name;
   string link;
   DIR * d = opendir(fn.c_str());
