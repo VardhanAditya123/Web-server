@@ -115,7 +115,7 @@ void generate_html(string& msg ,string& fn,HttpRequest* const request){
 
 }
 
-void generate_file(string& msg ,string& fn,string& second){
+void generate_file(string& msg ,string& fn,string& second,HttpRequest* const request){
   if(second.compare("/")==0)
     second="/index.html";
 
@@ -132,6 +132,6 @@ void generate_file(string& msg ,string& fn,string& second){
 
   }
   else{
-
+    request->content_type="text/plain";
   }
 }
