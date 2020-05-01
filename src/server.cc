@@ -293,6 +293,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
     else{
       request->message_body="";
       request->null_check= "yes" ;
+      cout << "DEBUG" << endl;
     }
   }
   else if(second.find("stats") != std::string::npos){
