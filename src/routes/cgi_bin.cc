@@ -59,8 +59,14 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   string fn = "http-root-dir"+second2;
    std::ifstream is( fn);
    if(!is.is_open()) {
-     request->message_body = "" ;
-     return response;
+      request->message_body = "" ;
+      request->method = first;
+      request->request_uri = second;
+      request-> http_version = third;
+      request->filename=fn;
+      request->content_type="html";
+      return response
+
    }  
    else{
      is.close();
