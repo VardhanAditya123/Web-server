@@ -57,7 +57,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
   }
 
   string fn = "http-root-dir"+second2;
-  cout << second2 << endl;
+  // cout << second2 << endl;
    std::ifstream is( fn);
    if(!is.is_open()) {
       request->message_body = "" ;
