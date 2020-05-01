@@ -231,6 +231,7 @@ void Server::handle(const Socket_t& sock) const {
   if( resp.headers["Content-Type"].compare( "text/plain")==0){
     resp.status_code=200;
     resp.message_body="1";
+    cout << "HEREEE" << endl;
   }
   sock->write(resp.to_string());
   request.code = resp.status_code;
