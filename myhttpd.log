@@ -87533,3 +87533,28 @@ IP :99.111.159.82
 Route: /dir1/c
 Response code: 404
 
+
+IP :99.111.159.82
+Route: /index.html
+Response code: 200
+
+
+IP :99.111.159.82
+Route: /dir1/
+Response code: 200
+
+
+IP :99.111.159.82
+Route: /dir1/a
+Response code: 404
+
+
+IP :99.111.159.82
+Route: /dir1/a
+Response code: 404
+
+
+IP :99.111.159.82
+Route: /dir1/a
+Response code: 404
+

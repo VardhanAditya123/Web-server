@@ -88,7 +88,7 @@ void generate_html(string& msg ,string& fn,HttpRequest* const request){
   string link;
   DIR * d = opendir(fn.c_str());
   if (NULL == d) {
-    request->content_type="plain";
+    request->content_type="text/plain";
     perror("opendir: ");
     exit(1);
   }
