@@ -116,7 +116,7 @@ void generate_html(string& msg ,string& fn,HttpRequest* const request){
 }
 
 void generate_file(string& msg ,string& fn,string& second,HttpRequest* const request){
-  cout << "DBIGG" << endl;
+  
   if(second.compare("/")==0)
     second="/index.html";
 
@@ -125,6 +125,7 @@ void generate_file(string& msg ,string& fn,string& second,HttpRequest* const req
   // cout << fn <<endl;
   std::ifstream is(fn);     // open file
   if(is.is_open()){
+    cout << "DBIGG" << endl;
     char c;
     while (is.get(c))          // loop getting single characters
       msg+=c;
