@@ -116,6 +116,7 @@ void generate_html(string& msg ,string& fn,HttpRequest* const request){
 }
 
 void generate_file(string& msg ,string& fn,string& second,HttpRequest* const request){
+  cout << "DBIGG" << endl;
   if(second.compare("/")==0)
     second="/index.html";
 
@@ -133,6 +134,5 @@ void generate_file(string& msg ,string& fn,string& second,HttpRequest* const req
   }
   else{
     request->content_type="text/plain";
-    cout << "DBIGG" << endl;
   }
 }
