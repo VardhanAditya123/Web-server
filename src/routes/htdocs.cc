@@ -28,7 +28,7 @@ namespace fs = std::experimental::filesystem;
 using namespace std;
 int isDir(const char *path);
 std::string generate_html(const char* pth);
-void generate_html(string& msg ,string& fn);
+void generate_html(string& msg ,string& fn,HttpRequest* const request);
 void generate_file(string& msg ,string& fn,string& second);
 
 // You may find implementing this function and using it in server.cc helpful
@@ -53,7 +53,7 @@ HttpResponse handle_htdocs(const Socket_t& sock,HttpRequest* const request,vecto
   // cout << "FLAG  "<< dir_flag <<endl; 
   if(dir_flag==1){
     request->content_type="text/html;charset=us-ascii";
-    generate_html(msg,fn);
+    generate_html(msg,fn,request);
 
   }
 
@@ -83,11 +83,12 @@ int isDir(const char *path)
   return 0;
 }
 
-void generate_html(string& msg ,string& fn){
+void generate_html(string& msg ,string& fn,HttpRequest* const){
   string name;
   string link;
   DIR * d = opendir(fn.c_str());
   if (NULL == d) {
+    request->content_type="text/plain";
     perror("opendir: ");
     exit(1);
   }
