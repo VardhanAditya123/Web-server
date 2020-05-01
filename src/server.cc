@@ -232,9 +232,6 @@ void Server::handle(const Socket_t& sock) const {
     resp.status_code=200;
   }
 
-  if(request.null_check.compare("yes")==0){
-    resp.status_code=404;
-  }
   sock->write(resp.to_string());
   request.code = resp.status_code;
   auto end = std::chrono::system_clock::now();
@@ -284,17 +281,7 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
  
 
   if (second.find("cgi-bin") != std::string::npos) {
-    
-  std::ifstream is( "http-root-dir"+second);     // open file
-  if(is.is_open()){
     handle_cgi_bin(sock,request,vec);
-    is.close();
-   }
-    else{
-      request->message_body="";
-      request->null_check= "yes" ;
-      cout << "DEBUG" << endl;
-    }
   }
   else if(second.find("stats") != std::string::npos){
      handle_stat(sock,request,vec);
