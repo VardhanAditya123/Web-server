@@ -131,7 +131,7 @@ void generate_file(string& msg ,string& fn,string& second,HttpRequest* const req
       msg+=c;
 
     is.close();
-    if(ms.length()==0){
+    if(msg.length()==0){
        request->content_type="text/plain";
     }
 
