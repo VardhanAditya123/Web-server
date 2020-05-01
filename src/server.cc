@@ -280,8 +280,11 @@ void  parse_request(const Socket_t& sock, HttpRequest* const request){
  
 
   if (second.find("cgi-bin") != std::string::npos) {
-    cout << second << endl;
+    
+  std::ifstream is( "http-root-dir"+second);     // open file
+  if(is.is_open())
     handle_cgi_bin(sock,request,vec);
+    is.close();
   }
   else if(second.find("stats") != std::string::npos){
      handle_stat(sock,request,vec);
