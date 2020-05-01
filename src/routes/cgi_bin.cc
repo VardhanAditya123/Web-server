@@ -65,7 +65,7 @@ HttpResponse handle_cgi_bin(const Socket_t& sock,HttpRequest* const request,vect
       request-> http_version = third;
       request->filename=fn;
       request->content_type="html";
-      return response
+      return response;
 
    }  
    else{
