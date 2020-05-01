@@ -90,12 +90,12 @@ void TLSSocket::write(char const *const buf, const size_t buf_len) {
     std::stringstream buf_hex_stream;
     for (i = 0; i < buf_len; i++)
       buf_hex_stream << std::hex << buf[i];
-
+        signal(SIGPIPE,SIG_IGN);
     throw ConnectionError("Could not write all bytes of: \'" + buf_hex_stream.str() +
                           "\'. Expected " + std::to_string(buf_len) + " but actually sent " +
                           std::to_string(ret_code));
   }
-  signal(SIGPIPE,SIG_IGN);
+
 }
 
 TLSSocketAcceptor::TLSSocketAcceptor(const int portno) {
