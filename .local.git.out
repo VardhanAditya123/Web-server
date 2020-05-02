@@ -61013,3 +61013,25 @@ D	http-root-dir/cgi-src/jj.o
 D	http-root-dir/cgi-src/util.o
 M	src/server.cc
 Your branch is up to date with 'origin/master'.
+[master d2b5e40] Commit
+ Committer: Aditya Vardhan Merla <amerla@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 7 files changed, 24 insertions(+), 1 deletion(-)
+ delete mode 100755 http-root-dir/cgi-bin/jj
+ delete mode 100755 http-root-dir/cgi-bin/jj-mod.so
+ delete mode 100644 http-root-dir/cgi-src/jj-mod.o
+ delete mode 100644 http-root-dir/cgi-src/jj.o
+ delete mode 100644 http-root-dir/cgi-src/util.o
+M	.local.git.out
+Your branch is up to date with 'origin/master'.
