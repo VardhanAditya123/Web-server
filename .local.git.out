@@ -61067,3 +61067,19 @@ After doing this, you may fix the identity used for this commit with:
     git commit --amend --reset-author
 
  1 file changed, 17 insertions(+)
+D	bin/http_messages.cc.o
+D	bin/main.cc.o
+D	bin/misc.cc.o
+D	bin/routes/cgi_bin.cc.o
+D	bin/routes/defaults.cc.o
+D	bin/routes/htdocs.cc.o
+D	bin/server.cc.o
+D	bin/socket.cc.o
+D	bin/tcp.cc.o
+D	bin/tls.cc.o
+M	http-root-dir/cgi-bin/jj
+M	http-root-dir/cgi-src/jj.o
+M	http-root-dir/cgi-src/util.o
+D	myhttpd
+M	myhttpd.log
+Your branch is up to date with 'origin/master'.
