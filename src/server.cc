@@ -326,7 +326,7 @@ void separate(HttpRequest* const request , string line){
   
   request->headers[trim(first)]=trim(second); 
 
-}
+} 
 
 void handle_stat(const Socket_t& sock,HttpRequest* const request,vector <string> vec){
 
