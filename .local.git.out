@@ -61083,3 +61083,29 @@ M	http-root-dir/cgi-src/util.o
 D	myhttpd
 M	myhttpd.log
 Your branch is up to date with 'origin/master'.
+[master fbfc4f8] Commit
+ Committer: Aditya Vardhan Merla <amerla@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 16 files changed, 37863 insertions(+), 582 deletions(-)
+ delete mode 100644 bin/http_messages.cc.o
+ delete mode 100644 bin/main.cc.o
+ delete mode 100644 bin/misc.cc.o
+ delete mode 100644 bin/routes/cgi_bin.cc.o
+ delete mode 100644 bin/routes/defaults.cc.o
+ delete mode 100644 bin/routes/htdocs.cc.o
+ delete mode 100644 bin/server.cc.o
+ delete mode 100644 bin/socket.cc.o
+ delete mode 100644 bin/tcp.cc.o
+ delete mode 100644 bin/tls.cc.o
+ delete mode 100755 myhttpd
